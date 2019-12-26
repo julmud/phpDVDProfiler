@@ -822,7 +822,7 @@ global $uclass, $yclass, $ws_month, $usejpgraph, $dolast, $domost, $dobest, $dow
 			# This gets the month name in the current locale
 			$amth = fix88595(ucwords(strftime("%B", mktime(0,0,0,$mth,1,0))));
 				# $width = 45 + (cal_days_in_month(CAL_GREGORIAN, $mth, $year) * 10);
-				$width = 45 + (date("j", mktime(0,0,0,$month+1,0, $year)) * 10);
+				$width = 45 + (date("j", mktime(0,0,0,intval($month)+1,0, $year)) * 10);
 				$mouse = "<a href=\"$link\"";
 				if ($usejpgraph && $ws_month) {
 					$mouse .= " onmouseover=\"";

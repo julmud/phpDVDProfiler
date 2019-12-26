@@ -23,7 +23,7 @@ class sql_db
 	//
 	// Constructor
 	//
-	function sql_db($sqlserver, $sqluser, $sqlpassword, $database, $port = false, $persistency = false, $DebugSQL=false, $bequiet=false)
+	function __construct($sqlserver, $sqluser, $sqlpassword, $database, $port = false, $persistency = false, $DebugSQL=false, $bequiet=false)
 	{
 		$this->open_queries = array();
 		$this->ErrorArray = array('message' => '', 'code' => 0);

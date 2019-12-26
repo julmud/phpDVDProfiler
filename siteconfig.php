@@ -18,7 +18,7 @@ if (!defined('IN_SCRIPT')) {
 // $usetemptable will speed up statistics calculation on updates. It requires that the mysql user
 // that the update runs as be allowed to create temporary tables (and that the db support that).
 // This may require the database administrator to GRANT CREATE TEMPORARY TABLES on db.* to dbuser
-$dbtype			= 'mysql';
+$dbtype			= 'mysqli';
 $dbhost			= 'localhost';
 $dbuser			= 'admin';
 $dbpasswd		= 'admin';

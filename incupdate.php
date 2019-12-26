@@ -41,6 +41,19 @@ global $db, $lang, $inbrowser, $eoln, $table_prefix, $UpdateLast;
 	$UpdateLast = UpdateUpdateLast();	// There is no data in the db, so let everyone know
 }
 
+function interpretEscapedXml($subject) {
+  $result = preg_replace_callback('/&amp;/', function($matches) { 
+	  foreach ($matches as $match) { 
+		  return '&'; 
+		} 
+	}, $subject);
+  return preg_replace_callback('/&#(\d+);/', function($matches) { 
+	  foreach ($matches as $match) { 
+		  return chr($match); 
+		} 
+	}, $result);
+}
+
 function ProcessLocalitiesCallback($matches) {
 global $Locale, $RatingSystem, $RatingCallbackResult;
 
@@ -50,12 +63,12 @@ global $Locale, $RatingSystem, $RatingCallbackResult;
 	}
 	else if (strncmp($matches[1], 'Ratings ', strlen('Ratings ')) == 0) {
 		preg_match('/Description="([^"]*)"/', $matches[1], $theid);
-		$RatingSystem = preg_replace(array('/&amp;/', '/&#(\d+);/e'), array('&', 'chr($1)'), $theid[1]);
+		$RatingSystem = interpretEscapedXml($theid[1]);
 	}
 	else if (strncmp($matches[1], 'Rating ', strlen('Rating ')) == 0) {
 		preg_match('/Name="([^"]*)".*Description="([^"]*)"/', $matches[1], $theid);
-		$theid[1] = preg_replace(array('/&amp;/', '/&#(\d+);/e'), array('&', 'chr($1)'), $theid[1]);
-		$theid[2] = preg_replace(array('/&amp;/', '/&#(\d+);/e'), array('&', 'chr($1)'), $theid[2]);
+		$theid[1] = interpretEscapedXml($theid[1]);
+		$theid[2] = interpretEscapedXml($theid[2]);
 		if ($RatingCallbackResult != '') $RatingCallbackResult .= ',';
 		$RatingCallbackResult .= "('Rating~$Locale~$RatingSystem~$theid[1]','$theid[2]')";
 	}
@@ -162,7 +175,7 @@ var $sql;
 var $room_left;
 var $col_names;
 
-	function BufferedInsert(&$db, $max_packet, $table, $col_names) {
+	function __construct(&$db, $max_packet, $table, $col_names) {
 		$this->db = $db;
 		$this->room_left = $this->max_packet = $max_packet;
 		$this->table = $table;
@@ -437,15 +450,15 @@ global $DVD_COMMON_ACTOR_TABLE, $DVD_COMMON_CREDITS_TABLE;
 			$res = $db->sql_query("SELECT * FROM $DVD_COMMON_ACTOR_TABLE ORDER BY caid") or die($db->sql_error());
 			$key = '';
 			while ($row = $db->sql_fetch_array($res)) {
-				$key = "$row[firstname]|$row[middlename]|$row[lastname]|$row[birthyear]";
-				$common_actor[$key] = array($row['caid'], 0);
+				$key = implode('|', array($row['firstname'], $row['middlename'], $row['lastname'], $row['birthyear']));
+				$common_actor[$key][] = array($row['caid'], 0);
 			}
 			$db->sql_freeresult($res);
 			if ($key != '') {
 				if ($common_actor[$key][0] == -1)
 					$common_actor_stats['maxid'] = 0;
 				else
-					$common_actor_stats['maxid'] = $common_actor[$key][0];
+					$common_actor_stats['maxid'] = intval($common_actor[$key][0]);
 			}
 		}
 
@@ -453,7 +466,7 @@ global $DVD_COMMON_ACTOR_TABLE, $DVD_COMMON_CREDITS_TABLE;
 			$res = $db->sql_query("SELECT * FROM $DVD_COMMON_CREDITS_TABLE ORDER BY caid") or die($db->sql_error());
 			$key = '';
 			while ($row = $db->sql_fetch_array($res)) {
-				$key = "$row[firstname]|$row[middlename]|$row[lastname]|$row[birthyear]";
+				$key = implode('|', array($row['firstname'], $row['middlename'], $row['lastname'], $row['birthyear']));
 				$common_credit[$key] = array($row['caid'], 0);
 			}
 			$db->sql_freeresult($res);
@@ -461,7 +474,7 @@ global $DVD_COMMON_ACTOR_TABLE, $DVD_COMMON_CREDITS_TABLE;
 				if ($common_credit[$key][0] == -1)
 					$common_credit_stats['maxid'] = 0;
 				else
-					$common_credit_stats['maxid'] = $common_credit[$key][0];
+					$common_credit_stats['maxid'] = intval($common_credit[$key][0]);
 			}
 		}
 	}
@@ -852,7 +865,7 @@ global $common_actor, $common_actor_stats, $common_credit, $common_credit_stats,
 
 	$users = '';
 	$maxuserid = 0;
-	$common_actor = $common_credit = '';
+	$common_actor = $common_credit = [];
 	$common_actor_stats = array('maxid' => 1, 'numadded' => 0, 'numinserted' => 0, 'amttime' => (float)0);
 	$common_credit_stats = array('maxid' => 1, 'numadded' => 0, 'numinserted' => 0, 'amttime' => (float)0);
 	if (!isset($db_fast_update))
@@ -1272,8 +1285,7 @@ global $common_actor, $common_actor_stats, $common_credit, $common_credit_stats;
 		if ($table == $DVD_COMMON_ACTOR_TABLE) {
 			$common_name = &$common_actor;
 			$common_stats = &$common_actor_stats;
-		}
-		else {
+		} else {
 			$common_name = &$common_credit;
 			$common_stats = &$common_credit_stats;
 		}
@@ -1281,8 +1293,7 @@ global $common_actor, $common_actor_stats, $common_credit, $common_credit_stats;
         	if (isset($common_name[$fullname])) {
                 	list($id, $add) = $common_name[$fullname];
                 	return($id);
-        	}
-		else {
+        	} else {
                 	$common_stats['maxid']++;
                 	$common_name[$fullname] = array($common_stats['maxid'], 1);
 			$hints[] = $fullname;
@@ -1353,10 +1364,11 @@ global $common_actor, $common_actor_stats, $common_credit, $common_credit_stats,
 	$primedir = '';
 	$purchase_day = $purchase_month = $purchase_year = 0;
 	if (isset($dvd_info['PURCHASEINFO'][0]['PURCHASEDATE'][0]['VALUE'])) {
-		if (strstr($dvd_info['PURCHASEINFO'][0]['PURCHASEDATE'][0]['VALUE'], '/'))
+		if (strpos($dvd_info['PURCHASEINFO'][0]['PURCHASEDATE'][0]['VALUE'], '/') !== false) {
 			list($purchase_day, $purchase_month, $purchase_year) = explode('/', $dvd_info['PURCHASEINFO'][0]['PURCHASEDATE'][0]['VALUE']);
-		else
+		} else {
 			list($purchase_year, $purchase_month, $purchase_day) = explode('-', $dvd_info['PURCHASEINFO'][0]['PURCHASEDATE'][0]['VALUE']);
+		}
 	}
 
 	$lastedited_day = $lastedited_month = $lastedited_year = 0;

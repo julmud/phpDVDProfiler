@@ -535,7 +535,7 @@ function my_mktime() {
 	if (!is_numeric($isdst)) $isdst = -1;
 	unset($temp);
 //echo "$hours,$minutes,$seconds,$mon,$mday,$year,$isdst\n\n";
-	$ret = @mktime($hours, $minutes, $seconds, $mon, $mday, $year, $isdst);
+	$ret = @mktime($hours, $minutes, $seconds, $mon, $mday, $year);
 	if ($ret === false || $ret < 0) $ret = 0;
 	return($ret);
 }
