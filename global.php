@@ -441,7 +441,8 @@ $alang_translation = array(
 
 $aformat_translation = array(
 	'' => $lang[''],
-/***/	'Dolby Digital' => '<acronym title="'.$lang['AUDIO']['DD'].'" style="text-decoration:underline"><img src="gfx/DolbyDigital.jpg"></acronym>',
+/***/	'Dolby Atmos' => '<acronym title="'.$lang['AUDIO']['DD'].'" style="text-decoration:underline"><img src="gfx/DolbyAtmos.jpg"></acronym>',
+	'Dolby Digital' => '<acronym title="'.$lang['AUDIO']['DD'].'" style="text-decoration:underline"><img src="gfx/DolbyDigital.jpg"></acronym>',
 	'Dolby Digital Mono' => '<acronym title="'.$lang['AUDIO']['DD'].'" style="text-decoration:underline"><img src="gfx/DolbyDigital.jpg"></acronym>',
 	'Dolby Digital Stereo' => '<acronym title="'.$lang['AUDIO']['DD'].'" style="text-decoration:underline"><img src="gfx/DolbyDigital.jpg"></acronym>',
 	'Dolby Digital Surround' => '<acronym title="'.$lang['AUDIO']['DD'].'" style="text-decoration:underline"><img src="gfx/DolbyDigital.jpg"></acronym>',
@@ -479,7 +480,8 @@ $aformat_translation = array(
 );
 $aformat_name = array (
 	''				=> $lang[''],
-/***/	'Dolby Digital'			=> $lang['AUDIO']['DD'],
+/***/	'Dolby Atmos'			=> 'Dolby Atmos',
+	'Dolby Digital'			=> $lang['AUDIO']['DD'],
 	'Dolby Digital Mono'		=> $lang['AUDIO']['DD'].' '.$lang['AUDIO']['MONO'],
 	'Dolby Digital Stereo'		=> $lang['AUDIO']['DD'].' '.$lang['AUDIO']['STEREO'],
 	'Dolby Digital Surround'	=> $lang['AUDIO']['DD'].' '.$lang['AUDIO']['SURROUND'],
@@ -533,7 +535,8 @@ $newachan_name = array(
 	'5.1'			=> '5.1',
 	'5.1 (Matrixed 6.1)'	=> $lang['AUDIO']['5.1M'],
 	'6.1 (Discrete)'	=> $lang['AUDIO']['6.1'],
-	'7.1'			=> '7.1'
+	'7.1'			=> '7.1',
+	'3D'			=> '3D'
 );
 $newaformat_image = array(
 	''			=> '<img src="gfx/dd00.gif" class="audioimage" title="'.$lang[''].'" alt=""/>&nbsp;',
@@ -548,7 +551,8 @@ $newaformat_image = array(
 	'5.1'			=> '<img src="gfx/dd51.gif" class="audioimage" title="5.1" alt=""/>&nbsp;',
 	'5.1 (Matrixed 6.1)'	=> '<img src="gfx/dd52.gif" class="audioimage" title="'.$lang['AUDIO']['5.1M'].'" alt=""/>&nbsp;',
 	'6.1 (Discrete)'	=> '<img src="gfx/dd61.gif" class="audioimage" title="'.$lang['AUDIO']['6.1'].'" alt=""/>&nbsp;',
-	'7.1'			=> '<img src="gfx/dd71.gif" class="audioimage" title="7.1" alt=""/>&nbsp;'
+	'7.1'			=> '<img src="gfx/dd71.gif" class="audioimage" title="7.1" alt=""/>&nbsp;',
+	'3D'			=> '<img src="gfx/dd3d.gif" class="audioimage" title="3D" alt=""/>&nbsp;'
 );
 $aformat_image = array(
 	''				=> $lang['AUDIO'][''],
