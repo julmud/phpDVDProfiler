@@ -1,0 +1,397 @@
+Version 3.8.2.1 (phpdvdprofiler_v3-20140306.zip)
+Changes since version 3.8.2.0 (phpdvdprofiler_v3-20130126.zip)
+    - fixed typo for NoBackImageNotFound in globalinits (thanks dedcap!)
+    - added missing genre_translations (thanks dedcap!)
+    - changed imagedata.php to prevent update failing on server error (thanks DJ Doena! Mithi! zaphod666! koliniol!)
+    - updated usage of htmlspecialchars() to work correctly with php5.4 and above (thanks DJ Doena!)
+    - updated the update code to print out best guess for location of javascript errors (thanks jonbreen2000!)
+    - added code to allow ollection= parameter to refer to user-defined collections (thanks Mithi!)
+    - added 2 new actors statistics based on originaltitle (thanks DJ Doena!)
+
+Version 3.8.2.0 (phpdvdprofiler_v3-20130126.zip)
+Changes since version 3.8.1.0 (phpdvdprofiler_v3-20120702.zip)
+    - fixed formatting bug in color display (thanks Mithi!)
+    - changed code to prevent SQL error in case of overflow in ListOfPurchaseDates (thanks koliniol!)
+    - fixed display of loan due-date in menu frame (thanks dedcap!)
+    - added code to add a watched event for each returned event (tunable $AddWatchedEventWhenReturned: default false) (thanks dedcap!)
+    - updated TestFonts to understand the $GDFontPathOverride option
+    - put additional instrumentation into incupdate (thanks koliniol!)
+    - added wikipedia search function in links when no wikipedia in MyLinks (thanks DSig!)
+    - fixed $titleorig to swap title and original title on main profile as well as in menu (thanks VinceCorto!)
+    - attempted a patch to have parent images displayed when profile images are absent (thanks DJ Doena!)
+    - added code to suppress back thumnails when not found (tunable $NoBackImageNotFound: default false) (thanks DJ Doena!)
+    - fixed some element positioning in the updater; very minor
+
+Version 3.8.1.0 (phpdvdprofiler_v3-20120702.zip)
+Changes since version 3.8.0.0 (phpdvdprofiler_v3-20120610.zip)
+    - added support for check-boxed color formats
+    - fixed update bug that made the updater fail to recognise the final stages of an update (thanks RossRoy!)
+    - tried to close a conflict window with changing XML files during updates (thanks RossRoy!)
+    - fixed a bug trying to unzip an XML file without a writable $imagecachedir
+    - removed code distinguishing client screens < 800 pixels in width. This also fixed a possibly important HTML error.
+    - removed some minor javascript warnings
+    - fiddled with support for <IMDB> tags in notes, adding support for numbers enclosed in quotes
+
+Version 3.8.0.0 (phpdvdprofiler_v3-20120610.zip)
+Changes since version 3.7.2.2 (phpdvdprofiler_v3-20120214.zip)
+    - added flags for locales 46-51 (thanks JMM!) (Romania, Iran, Russia, Chile, Columbia, Peru)
+    - fixed Countries table to include countries 49-51 (Chile, Columbia, Peru)
+    - fixed a bug I introduced in ws.php when custommediatypes were added (thanks DJ Doena!)
+    - fixed another bug I introduced in ws.php (thanks DJ Doena!)
+    - fixed the phpDVDProfiler skin to reference Invelos correctly, and to pop into a new tab (thanks cmeans!)
+    - added 'Director" as a column option (thanks Varluche!)
+    - added support for the XML of Windows version 3.8.0 - schema changes required, sorry
+    - added support for Gift purchases
+    - added users table to support gifts (users were previously onloy in events)
+    - changes to support users table, particularly in ws.php; fairly significant changes requried
+    - added support for MyLinks - links table and UI support
+    - added support for Color and Dimensions and Event Notes
+    - added # occurrances to #profiles in cast/crew statistics (thanks magmadrag!)
+    - added support for renamed MPEG-2 audio type
+
+Version 3.7.2.2 (phpdvdprofiler_v3-20120214.zip)
+Changes since version 3.7.2.1 (phpdvdprofiler_v3-20111006.zip)
+    - added knob to support IMDB numbers in disc slot (sorry about that, Mithi)
+    - added updated Russian translation file (thanks JMM!)
+    - fixes to error processing for bad XML files
+    - massive rework to update. Now automatic restart from error
+    - fixed some bugs in ws.php (thanks DJ Doena!)
+    - fixed some bugs related to MediaTypes not represented in localsiteconfig.php (thanks DJ Doena!)
+    - changed some javascript to remove the cross-frame errors
+    - processed some XML file errors better
+    - made the $pscommand default to just memory (too much variation in ps commands for a default)
+    - added support for multiple headshot directories (thanks magmadrag!)
+    - added a utility to fiddle with headshot filenames (thanks magmadrag!)
+
+Version 3.7.2.1 (phpdvdprofiler_v3-20111006.zip)
+Changes since version 3.7.2.0 (phpdvdprofiler_v3-20110208.zip)
+    - fixed cosmetic typo and added recommendation and directory info in TestFonts.php
+    - added first-view tunables $gallerysorttype and $gallerysortorder for the gallery (thanks cseb95!)
+    - added an action that will simply force stats update to be run
+    - updated code to use the new URL for IMDB searches (thanks DJ Doena!)
+    - updated code to support headshot filenames that match scheme used by Windows program
+    - changed ws.php such that imagecache cleanup is based on file access times, if possible
+    - corrected some error messages revolving around the syntax of usernames in mysql
+    - added support for Cyrillic characters (AFAICT) ==> changes to many files
+    - updated slider menu to fit some Swedish translations properly (thanks JMM!)
+    - added filters for audio languages and subtitle languages (thanks JMM!)
+    - modified updates to try to indicate how much time is being consumed
+    - added sitetitle translation support (thanks JMM!)
+    - changed TYPE= keyword to ENGINE= in schema.sql (thanks abobader!)
+    - added support for language override files, documented in siteconfig.php (thanks JMM!)
+    - updated siteconfig.php documentation on $CollectionsNotInOwned variable (thanks 8ballmax!)
+    - made a change to gallery.php to bring the image-search code in line with changes in the rest of the program
+    - fixed the $hidexxx options to work completely. Note that $DefaultCollection must be set to something that is
+      not hidden for this to work correctly (for example $DefaultCollection = 'all';)
+    - fixed a problem with query size (max_allowed_packet is 2 bytes larger than it should be)
+    - refactored update to speed things up and ensure that multiple updates should always be able to complete
+    - made changes to allow multiple IMDB number references per profile
+    - fixed a bug with collection names (thanks cmeans!)
+    - put TRANSACTION barriers around the updates, which may speed things up (although it doesn't seem to on my system)
+    - put newer version of the tooltip code into our source
+    - cleaned up some translation strings that are no longer used
+    - added support for XML files in compressed archives of type gzip, bzip2 and zip (depending on host configurations)
+    - changed algorithm for finding XML file (checks for case-sensitivity, archive extensions, etc.)
+    - added preparatory work for auto-updates when update unable to finish all in one go.
+
+Version 3.7.2.0 (phpdvdprofiler_v3-20110208.zip)
+Changes since version 3.6.1.3 (phpdvdprofiler_v3-20101024.zip)
+    - added PCM logo and changed DTS logo for better aesthetics (thanks Mithi!)
+    - fixed missing countries in $CountryToLocality array (thanks epicureanist!)
+    - added some memory debug stuff to help isolate OOM issues in updates
+    - added support for 3 more locales to sync with versions of the windows program 3.7 and greater
+    - updated siteconfig.php to be a little less confusing
+    - changed default for $AddHDLogos to true to mimic Windows program (I thought I had done this previously)
+    - fixed Automatic rear banners in incupdate (thanks xradman!)
+    - added an existence check before the unlink in resize_jpeg() to try to stop an odd error on a user's site
+    - put a favicon.ico into the gfx directory and made index.php point to it (thanks cseb95!)
+    - fix the update bug for xml directories introduced in last release (thanks wewonit5times!)
+    - gave ws.php a way to override GDFONTPATH issues (tunable $GDFontPathOverride: default '' - is a host-based path to fonts)
+    - Added a program TestFonts.php which tries to figure out if you have the fonts necessary to print sig strips
+    - changed the way Media Types are handled (to a way that works :() This means a schema change - sorry. But now we support
+      custom Icons, Banners, and tiny formaticons for custom media types. We can also filter on them properly.
+    - added tunable to allow for a heading in the upper left hand window ($ULHSTitle: default '')
+    - fixed missing global $reviewsort (thanks scat!)
+    - added a tunable to filter srp totals ($srpspecialcondition: default '') (thanks DJ Doena!)
+    - made some javascript changes to make the slidermenu language choices work. No idea when that broke ...
+    - updated French translation (thanks cseb95!)
+
+Version 3.6.1.3 (phpdvdprofiler_v3-20101024.zip)
+Changes since version 3.6.1.2 (phpdvdprofiler_v3-20100611.zip)
+    - fixed some audio statistics bugs
+    - enhanced the import error messages somewhat
+    - repaired the HD banner problem I introduced in 3.6.1.2 when "fixing" the getimages==3 problem
+    - changed one-profile-per-file import to ignore files without an extension of .xml
+    - changed ereg[i]_replace() calls to preg_replace calls in gallery.php
+    - moved some javascript around in the main page to make Chrome happier
+    - added runningtime support to Pick-A-Flick
+    - made the import use HideNames() on loaninfo in addition to events
+    - added code and tunable to make stats ignore countas=0 profiles ($IgnoreCount0Profiles: default false)
+    - did some cosmetic work on ws.php code
+    - fixed some javascript event errors not ignored by Opera
+    - changed some visual styles for Opera
+    - fixed a display issue in popup.php (thanks wewonit5times!)
+    - fixed an update problem with un-escaped loaninfo (thanks KinkyCyborg!)
+    - tweaked parsing code to allow parameters in the main <DVD> tag (thanks DJ Doena)
+    - added a hack-o-rama to make my machine stop coring (PNG library broken)
+    - fixed an ancient epg filename bug (thanks wewonit5times!)
+    - added images for audio formats (thanks wewonit5times!)
+    - added ability to specify formaticonimages - see siteconfig.php
+
+Version 3.6.1.2 (phpdvdprofiler_v3-20100611.zip)
+Changes since version 3.6.1.1 (phpdvdprofiler_v3-20100418.zip)
+    - fixed the tweaked in-browser detection again. I think it's fixed now.
+    - refactored some code into functions, and remembered stuff to minimise SQL calls
+    - added some statistics for non-TV, refactored statistics update significantly
+    - added a profile count to the title of gr_byprodyear graph
+    - fixed a media banner bug in getimages=3, and several other $getimages=3 problems
+    - suppressed overly aggressive logging in incupdate when single XML files involved
+    - tweaked incupdate to remove the NTSC video standard from Blu-ray-only and HDDVD-only discs
+    - reorganized the code somewhat, taking some code out of index.php
+    - added action=smallupdate which will force missing profile to be left alone
+    - updated Danish translation (thanks again CalInTheZone!)
+    - fiddled a little with BorrowADVD.php to stop pointing to my email :) and add language support
+    - updated popups for actor lists to mimic the Windows behaviour (mostly)
+    - changed some data and minor display inconsistencies
+
+Version 3.6.1.1 (phpdvdprofiler_v3-20100418.zip)
+Changes since version 3.6.1.0 (phpdvdprofiler_v3-20100403.zip)
+    - tweaked the in-browser detection again. I think it's fixed now.
+    - fixed the missing delete-from-exclusions-table bit.
+    - plugged a couple of memory leaks in ws.php
+    - exposed $CollectionsNotInOwned array, and documented it in siteconfig.php
+    - fixed that annoying url-encoding bug in the textbox display
+    - added support for gzip'ed xml files (thanks zeiram!)
+    - put the skin processing back in (sorry BoomStick)
+    - pumped the skin processing up a little (to reduce breakage)
+
+Version 3.6.1.0 (phpdvdprofiler_v3-20100403.zip)
+Changes since version 3.5.1.1 (phpdvdprofiler_v3-20090527.zip)
+    - fixed sort order in ws.php (thanks DJ Doena)
+    - removed bogus comment in siteconfig.php (thanks *mike*)
+    - added $ClassColor support to the menu slider (thanks Phe0nix!)
+    - further fixes to $ClassColor support, including ws.php
+    - upgraded the lightbox to 2.04 (also upgraded prototype and scriptaculous)
+    - fixed stupid bug involving explode() not returning enough values in functions.php
+    - added Media Companies Top10 list
+    - tweaked check for in-browser
+    - fixed SQL query that counted profiles
+    - Modified Chooser to allow user to pick a single movie
+    - modified gallery.php to use the $SecondarySortFollowPrimary knob (thanks DJ Doena!)
+    - ensured version information is carried around properly
+    - removed deprecated split() function in favor of explode()
+    - changed studios statistics to exclude media companies
+    - changed notes to allow for large notes (**WARNING** schema change)
+    - made some changes to gallery.php to fix some missing sql variables (mea culpa)
+    - added a knob to suppress duplicate entries in the watched summary image ($CullDupsFromWatched: default false)
+    - fixed gr_bycurrency.php to add things up correctly (thanks DJ Doena!)
+    - added utility to remove profile from db (thanks kosvines!)
+    - fixed the pesky clipping bug in the thumbnails (thanks DJ Doena!)
+    - many schema changes to support the Windows 3.6 version
+
+Version 3.5.1.1 (phpdvdprofiler_v3-20090527.zip)
+Changes since version 3.5.1.0 (phpdvdprofiler_v3-20090119.zip)
+    - updated Danish translation (thanks again CalInTheZone!)
+    - modified update parser to support utf-8 encodings
+    - changed gallery to display thumbs using resize_jpg() code, which provides HD headers appropriately
+    - fixed bug in regex handling epg colors
+    - added some Finnish ratings images (thanks Jykke!)
+    - added code to Highlight titles differently in some circumstances (loaned, overdue, recent, etc.)
+    - added missing urlencode() call around ratings filenames
+    - added code and tunable to work around libxml bug affecting some users ($WorkAroundLibxmlBug: default false)
+    - modified audio presentation to be more verbose (thanks tomricci!)
+    - changed actor/credit popups to count profiles as well as results (thanks 8ballMax!)
+    - update database to grab Rating descriptions from localities file
+    - minor code changes to facilitate skins functionality
+    - fixed an ancient octal bug related to date processing in incupdate
+    - fixed broken DD4.0 support in global.php
+    - fixed region support, which has been wrong for Blu-ray since the beginning
+    - fixed an old bug in AcquireAThumbnail() routine caused when mode 3 was introduced
+    - added a tunable to specify resize image quality in gallery ($thumbqual: default 80)
+    - made some performance enhancements for adding HD banners to thumbnails
+    - added Profile Links to Miscellaneous links
+    - added option for originaltitle display ($titleorig: default 0 - documented in siteconfig.php)
+    - fixed problem with searchtext containing meta-characters (&, etc.)
+    - updated ratings icons for locale 5 (Germany)
+    - incorporated changes to ws.php (thanks DJ Doena!)
+    - fixed bug in summarising roles in actor popup
+    - fixed case-sensitivity problem in recognizing XML encoding
+    - updated ws.php version and infrastructure
+    - modified ws.php to work with all-zero runtimes
+    - added a knob to control the secondary sort order ($SecondarySortFollowPrimary: default true)
+    - put all of the ini_set() calls under the $TryToChangeMemoryAndTimeLimits knob
+    - changed code to not emit warnings if locks missing from XML file
+    - tried to make incomplete XML warning more noticeable
+
+Version 3.5.1.0 (phpdvdprofiler_v3-20090119.zip)
+Changes since version 3.5.0.0 (phpdvdprofiler_v3-20081126.zip)
+    - changed default for $AllowHTMLInOverview to true, to support bold and italic in v3.5
+    - changed 'Korea' to 'South Korea' in CountryTranslation array in global.php to match build 1240 change
+    - replaced VALUE with VALUES in insert queries (finger check on my part)
+    - fix to handle post-php5.1 behaviour of mktime
+    - added a tunable to control refusing to serve images ($RefuseBots: default true)
+    - fix to stop displaying incorrect NTSC/PAL indications on HiDef media
+    - fix for bug caused by not using $lang consistantly on media searches
+    - updated out-of-date schema messages to reflect current procedures
+    - fixed bug in gallery introduced by new genres table
+    - made changes to clean up css code
+    - suppressed display when formataspectratio was blank
+    - fixed rss.php issue with extra quotes around boxparent
+    - changed css to be configurable. NOTE: previous variable $ClassColorxx have changed to an array.***
+    - repaired Pick-a-Flick code to use genres.
+    - fixed bug where the database gets nuked if the profile ID is blank. Made it warn.
+    - updated code and database to handle 3.5.1 Media Companies (schema change)
+    - changed to support the new rating system. ratings files renamed, searches fixed
+    - added tunable to turn on/off Pick-a-Flick feature ($AllowChooser: default false)
+    - added support for multi-site installations by addition of multisite.php file to disambiguate localsiteconfig.php
+    - added support for DD4.0 sound
+    - fixed some problems in the rss.php code
+    - change mysql[i].php to use the mysql_real_escape_string() function
+
+Version 3.5.0.0 (phpdvdprofiler_v3-20081126.zip)
+Changes since version 3.1.1.1 (phpdvdprofiler_v3-20080301.zip)
+    - updated Danish translation (thanks CalInTheZone!)
+    - updated rss.php with iPhone code (thanks Dr. Killpatient!)
+    - add a tunable to prevent trying to change memory limits and time limit
+      in updates ($TryToChangeMemoryAndTimeLimits: default true)
+    - add a knob ($AllowHTMLInOverview: default false) to provide support for markup in overviews
+    - added a tunable to suppress the surname of users in the events tables ($HideNames: default false)
+    - changes to incupdate to speed updates (disabling indices while inserting)
+    - some code and HTML cleanup
+    - added Pick-a-Flick code and associated Picker
+    - changed old references to Intervocative to Invelos (thanks Peter von Frosta!)
+    - added a tunable to allow for site-specific post-update code to be executed
+    - updated gr_bymonth.php to break out HD profiles (thanks ajm!)
+    - updated rss.php (thanks Dr. KillPatient!)
+    - changed occurrances of POSIX regex functions to PCRE versions (future compatibility)
+    - document statistics specialcondition variables better in siteconfig.php
+    - fix average calculation in statistics.php (thanks DJ Doena!)
+    - put in temporary fix for sorting in ws.php, pending a new version from ajm
+    - fixed bug in gr_bygenre.php (thanks ya_shin!)
+    - remove code to do "normalised" statistics as it's no longer meaningful
+    - fixed schema bugs (default empty text and size of UPC field) (Thanks JMM!)
+    - fixed processing of styles in notes/epgs
+    - added code to merge divider continuations ($ApplyDividerContinuations: default false)
+    - expanded meaning of $displayplace to include displaying any information about purchase place
+    - fixed quoting bug in boxset checks in incupdate.php (thanks cinemafan and DJ Doena!)
+    - corrected statistics to use $currencyspecialcondition (thanks DJ Doena!)
+    - added knob to make SRP display optional ($displaySRP: default 1).
+      This changes the behaviour of the main profile display.
+    - put in code to allow profile-specific headshots
+    - set title and alt text to profile name in image display (thanks DJ Doena!)
+    - fix code to allow deep linking - support for specifying sort and search in urls directly
+    - set title and alt text to profile name in main profile display, remove superflous title tag on anchor
+    - fix numerous bugs relating to display of HD logos
+    - added code to speed importing by caching checksums for parts of each profile
+    - fixed sorting issue with subsorts not matching order of primary key
+    - added support for distribution studios introduced in 3.5
+    - changed genre support to use separate table to support 3.5 customizable genres
+    - updated incupdate to improve performance
+    - added code to prevent cast/crew dividers that would expand to nothing
+    - fixed bug in mysqli.php that would prevent it from importing the XML file, hmmmm ...
+    - fixed casetype bug for adding HDLogos (thanks Pistol Pete!)
+    - fixed an observed abuse of the img= display code
+    - updated comments in siteconfig.php (thanks pauls42!)
+    - updates to audio and subtitles strings
+    - additions to crew types for 3.5
+    - made the how-many-profiles-per-output variable - $displayfreq - a global knob
+    - cleaned up some update output
+    - changed incupdate to put the watched_list update before the image load to dvdaholic
+    - changed the title of the main profile window to the profile title, from the sorttitle
+    - added knob to mimic DVDProfiler option for display of notes as HTML ($DisplayNotesAsHTML, default: true)
+    - updated lang*.php files to note name change of locale 18 from Korea to South Korea
+    - updated schema to store new ratings info
+
+Version 3.1.1.1 (phpdvdprofiler_v3-20080301.zip)
+Changes since version 3.1.1.0 (phpdvdprofiler_v3-20071014.zip)
+    - fixed filename problem with rating files
+    - added knob to control height of iframes
+    - added epg_replacement processing to external epg files
+    - added a function to change backslashes into forward slashes only in html parameters
+    - fixed bug displaying crew headshots (thanks ajm!)
+    - updated imagedata.php to version 1.6 (thanks ajm!)
+    - fixed quoting problem in headshots
+    - fixed resize_jpg() to always return physical path.
+    - fixed things which use resize_jpg() to understand the above point
+    - changed index.php, functions.php, ws.php and gallery.php to get physical/web paths correct
+    - fix to handle blank collection numbers properly
+    - added $expandoverview default and made overviews collapsible
+    - fixed adding of HD banners ... and again ... (thanks ajm)
+    - added $AddFormatIcons variable and code to put small media-type icons into the menu (thanks KyleN!)
+    - made changes to gallery.php to handle sites that don't allow short-form escapes to php
+    - cleaned up some suspicious handling of EPGs
+    - added specialconditions to most statistics
+    - added code to allow gallery to be initial right-hand frame
+    - changes to gallery to allow that (thanks SH84!)
+    - fixes to code organisation to support the above (nastier job than expected!)
+    - cleaned up security warnings in incupdate.php
+    - added $xmldir to allow one-profile-per-xmlfile; it reads any files from $xmldir
+    - updated german translation (thanks Jano!)
+    - enhancements to rss (thanks Dr. Killpatient!)
+    - fix to searching by DVD classification to separate similarly-named classifications from different locales
+
+Version 3.1.1.0 (phpdvdprofiler_v3-20071014.zip)
+Changes since version 3.1.0.0 (phpdvdprofiler_v3-20070922.zip)
+    - fixed typo in schema.pre-4.1.sql
+    - changed indentation of children
+    - fixed missing global $order in separators
+    - fixed off-by-one bug in column sorting
+    - fixed bug that prevented removal of deleted profiles from command line
+    - added no_coo.php
+    - fixed missing break; in finnish locale support
+    - fixed missing space in statistics sql
+    - added $thumbnails variable to help with mixed-case names for the thumbsnails directory
+    - updated imagedata.php to version 1.5 (thanks ajm)
+    - added some checking to incupdate to detect partial XML files; cleaned up strings
+    - cleanedup code in genre graphs and added option to display value rather than percentages in one
+    - gallery positioning problem sorted, and support for user-definable background (thanks SH84)
+    - updated finnish language file (thanks Pistol Pete!)
+    - added some ratings images (thanks ya_shin!)
+    - made changes to slidermenu to support Safari (non-visible events and height of iframe)
+    - added variable $epg_RemoveLocale (default to true) to allow different naming conventions of epg files
+    - added $UseIframeForEPGs variable to complement the $UseIframeForNotes variable. Both should
+      make EPGs more self-contained, with less playing about with styles.
+    - enhancements to add HD banners, controlled by $AddHDLogos boolean variable
+
+Version 3.1.0.0 (phpdvdprofiler_v3-20070922.zip)
+Changes since version 3.0.2.1 (phpdvdprofiler_v3-20070416.zip)
+    - addition of Finnish to language files (thanks Pistol Pete!)
+    - updates to various translations
+    - enhance incupdate to support $db_fast_update=true as default
+    - enhancements to cover gallery
+    - enhancements to rss
+    - enhancements to statistical graphs
+    - updates to statistics page
+    - support for multi-level boxsets
+    - support for DVDProfiler v3.1 (new strings)
+    - new ratings graphics (MORE NEEDED, and better ones)
+    - updates to flags graphics
+    - support for attempted auto-update of schema
+    - fix date bug with MySQL V5
+    - some code cleanup
+    - other minor enhancements
+
+Version 3.0.2.1 (phpdvdprofiler_v3-20070416.zip)
+Changes since version 3.0.2 (phpdvdprofiler_v3-20070331.zip)
+    - fixed a notes size bug in phpdvdprofiler skins
+    - fix all skins handling of style= in <body> tags in notes
+    - fixed a notes size bug in phpdvdprofiler skins
+    - added support for EPGs in external files
+    - fixed memory leaks in incupdate.php and mysql[i].php (thanks ajm)
+    - made crew/cast/notes/epgs and dividers in cast/crew configurably collapsible
+    - fix bug having Directors appear multiple times in top list
+    - fixed issue with blank sorttitle
+    - added headers to try to force appropriate charset indication from server
+    - added support for headshots (thanks ajm)
+    - added gr_byorigin.php, a COO graph
+    - added new ws.php and imagedata.php (thanks ajm)
+    - changed code to allow tag-based URLs (collection=tagname)
+    - fixed case of dividers being counted as actors.
+    - made review displays when zero configurable
+    - fixed utf8_decode bug in statistics
+    - added statistics omitting voice-only roles
+    - fixed statistics to only count 1 cast per profile
+    - update lang_de.php (thanks Jano, SH84 and ya_shin!)
+
+Version 3.0.2 (phpdvdprofiler_v3-20070331.zip)
+Initial Release based on V2-20070225

@@ -1,0 +1,549 @@
+﻿<!--
+
+NOTE: 	This file is intended for read use only.
+	Users should not edit this file.  Any changes will be overwritten automatically as database updates are received.
+-->
+<Localities LastUsedID="48">
+	<Locality Description="Argentina" ID="32" DVDRegion="4" BDRegion="A">
+		<Ratings Description="Film" ID="0">
+			<Rating LegacyValue="1" Name="ATP" Description="ATP" Age="1"/>
+			<Rating LegacyValue="3" Name="PM13" Description="PM13" Age="13"/>
+			<Rating LegacyValue="4" Name="PM16" Description="PM16" Age="16"/>
+			<Rating LegacyValue="5" Name="PM18" Description="PM18" Age="18"/>
+		</Ratings>
+	</Locality>
+	<Locality Description="Australia" ID="2" DVDRegion="4" BDRegion="B">
+		<Ratings Description="Film" ID="0">
+			<Rating LegacyValue="1" Name="G" Description="General" Age="1"/>
+			<Rating LegacyValue="2" Name="PG" Description="Parental guidance recommended" Age="10"/>
+			<Rating LegacyValue="3" Name="M" Description="Recommended for mature audiences" Age="13"/>
+			<Rating LegacyValue="4" Name="MA 15+" Description="Not suitable for people under 15. Under 15s must be accompanied by a parent or adult guardian" Age="15"/>
+			<Rating LegacyValue="5" Name="R 18+" Description="Restricted to 18 and over" Age="18"/>
+			<Rating LegacyValue="6" Name="X 18+" Description="Restricted to 18 and over" Age="18" Variant="1" Adult="True"/>
+		</Ratings>
+	</Locality>
+	<Locality Description="Austria" ID="40" DVDRegion="2" BDRegion="B" AmazonSiteName="Amazon.at" AmazonSite="www.amazon.at">
+		<Ratings Description="Film" ID="0">
+			<Rating LegacyValue="1" Name="FSK-0" Description="Freigegeben f&#252;r alle Altersstufen" Age="1"/>
+			<Rating LegacyValue="2" Name="FSK-6" Description="Freigegeben ab 6 Jahren" Age="6"/>
+			<Rating Name="FSK-10" Description="Freigegeben ab 10 Jahren" Age="10"/>
+			<Rating LegacyValue="3" Name="FSK-12" Description="Freigegeben ab 12 Jahren" Age="12"/>
+			<Rating Name="FSK-14" Description="Freigegeben ab 14 Jahren" Age="12"/>
+			<Rating LegacyValue="4" Name="FSK-16" Description="Freigegeben ab 16 Jahren" Age="16"/>
+			<Rating LegacyValue="5" Name="FSK-18" Description="FSK-18" Age="18"/>
+		</Ratings>
+	</Locality>
+	<Locality Description="Belgium" ID="30" DVDRegion="2" BDRegion="B" AmazonSiteName="Amazon.de" AmazonSite="www.amazon.de">
+		<Ratings Description="Film" ID="0">
+			<Rating LegacyValue="1" Name="AL" Description="AL" Age="1"/>
+			<Rating LegacyValue="2" Name="6" Description="6" Age="6"/>
+			<Rating LegacyValue="3" Name="12" Description="12" Age="12"/>
+			<Rating LegacyValue="4" Name="16" Description="16" Age="16"/>
+			<Rating LegacyValue="5" Name="18" Description="18" Age="18"/>
+		</Ratings>
+	</Locality>
+	<Locality Description="Brazil" ID="23" DVDRegion="4" BDRegion="A">
+		<Ratings Description="Film" ID="0">
+			<Rating Name="ER" Description="Especialmente Recomendado para Crian&#231;as e Adolescentes" Age="1"/>
+			<Rating LegacyValue="1" Name="L" Description="Livre para Todos os P&#250;blicos" Age="2"/>
+			<Rating Name="10" Description="N&#227;o Recomendando para Menores de 10 Anos" Age="10"/>
+			<Rating LegacyValue="2" Name="12" Description="N&#227;o Recomendando para Menores de 12 Anos" Age="12"/>
+			<Rating LegacyValue="3" Name="14" Description="N&#227;o Recomendando para Menores de 14 Anos" Age="14"/>
+			<Rating LegacyValue="4" Name="16" Description="N&#227;o Recomendando para Menores de 16 Anos" Age="16"/>
+			<Rating LegacyValue="5" Name="18" Description="N&#227;o Recomendando para Menores de 18 Anos" Age="18"/>
+		</Ratings>
+	</Locality>
+	<Locality Description="Canada" ID="3" DVDRegion="1" BDRegion="A" AmazonSiteName="Amazon.ca" AmazonSite="www.amazon.ca">
+		<Ratings Description="Film, Television" ID="0">
+			<Rating LegacyValue="1" Name="G" Description="General" Age="1"/>
+			<Rating LegacyValue="2" Name="PG" Description="Parental Guidance" Age="10"/>
+			<Rating LegacyValue="3" Name="14A" Description="14 Accompaniment" Age="14"/>
+			<Rating LegacyValue="4" Name="18A" Description="18 Accompaniment" Age="17"/>
+			<Rating LegacyValue="5" Name="R" Description="Restricted" Age="18"/>
+		</Ratings>
+		<Ratings Description="TV (Obsolete)" ID="1">
+			<Rating Name="G" Description="Suitable for all ages" Age="1"/>
+			<Rating Name="PG" Description="Parental Guidance Advised" Age="10"/>
+			<Rating Name="14+" Description="Persons under 14 years of age must be accompanied by an adult" Age="14"/>
+			<Rating Name="18+" Description="Persons under 18 years of age must be accompanied by an adult" Age="17"/> 
+		</Ratings>
+	</Locality>
+	<Locality Description="Canada (Quebec)" ID="19" DVDRegion="1" BDRegion="A" AmazonSiteName="Amazon.ca" AmazonSite="www.amazon.ca">
+		<Ratings Description="Film" ID="0">
+			<Rating LegacyValue="1" Name="G" Description="G&#233;n&#233;ral" Age="1"/>
+			<Rating LegacyValue="2" Name="13+" Description="13 ans et plus" Age="13"/>
+			<Rating LegacyValue="3" Name="16+" Description="16 ans et plus" Age="16"/>
+			<Rating LegacyValue="4" Name="18+" Description="18 ans et plus" Age="18"/>
+		</Ratings>
+		<Ratings Description="Television" ID="1">
+			<Rating Name="G" Description="Visa g&#233;n&#233;ral" Age="1"/>
+			<Rating Name="8+" Description="8 ans+" Age="8"/>
+			<Rating Name="13+" Description="13 ans+" Age="13"/>
+			<Rating Name="16+" Description="16 ans+" Age="16"/>
+			<Rating Name="18+" Description="18 ans+" Age="18"/>
+		</Ratings>
+	</Locality>
+	<Locality Description="Chile" ID="49" DVDRegion="4" BDRegion="A">
+		<Ratings Description="Film" ID="0">
+			<Rating Name="TE" Description="Todo Espectador" Age="1"/>
+			<Rating Name="7" Description="Inconveniente para menores de 7 años" Age="7"/>
+			<Rating Name="14" Description="Mayores de 14 años" Age="14"/>
+			<Rating Name="18" Description="Mayores de 18 años" Age="18"/>
+			<Rating Name="18/S" Description="Mayores de 18 años" Age="18"/>
+			<Rating Name="18/V" Description="Mayores de 18 años" Age="18"/>
+		</Ratings>
+	</Locality>
+	<Locality Description="China" ID="6" DVDRegion="6" BDRegion="C">
+		<Ratings Description="Film" ID="0">
+			<Rating LegacyValue="1" Name="G" Description="G" Age="1"/>
+			<Rating LegacyValue="2" Name="PG" Description="PG" Age="10"/>
+			<Rating LegacyValue="3" Name="PG-13" Description="PG-13" Age="13"/>
+			<Rating LegacyValue="4" Name="R" Description="R" Age="17"/>
+			<Rating LegacyValue="5" Name="NC-17" Description="NC-17" Age="18"/>
+		</Ratings>
+	</Locality>
+	<Locality Description="Columbia" ID="50" DVDRegion="4" BDRegion="A">
+		<Ratings Description="Film" ID="0">
+			<Rating Name="Exempt" Description="Exempt" Age="1"/>
+			<Rating Name="T" Description="Todos" Age="1"/>
+			<Rating Name="7" Description="Suitable for children aged 7 and above" Age="7"/>
+			<Rating Name="12" Description="Suitable for children aged 12 and above" Age="12"/>
+			<Rating Name="15" Description="Suitable for children aged 15 and above" Age="15"/>
+			<Rating Name="18" Description="Suitable for people aged 18 and above" Age="18"/>
+			<Rating Name="X" Description="X" Age="18" Adult="True"/>
+			<Rating Name="Banned" Description="Banned" Age="18"/>
+		</Ratings>
+	</Locality>
+	<Locality Description="Czech Republic" ID="36" DVDRegion="2" BDRegion="B">
+		<Ratings Description="Film" ID="0">
+			<Rating LegacyValue="1" Name="U" Description="U" Age="1"/>
+			<Rating LegacyValue="2" Name="12" Description="12" Age="12"/>
+			<Rating LegacyValue="3" Name="15" Description="15" Age="15"/>
+			<Rating LegacyValue="5" Name="18" Description="18" Age="18"/>
+		</Ratings>
+	</Locality>
+	<Locality Description="Denmark" ID="14" DVDRegion="2" BDRegion="B">
+		<Ratings Description="Film" ID="0">
+			<Rating LegacyValue="1" Name="A" Description="A" Age="1"/>
+			<Rating LegacyValue="2" Name="7 &#229;r" Description="7 &#229;r" Age="7"/>
+			<Rating LegacyValue="3" Name="11 &#229;r" Description="11 &#229;r" Age="11"/>
+			<Rating LegacyValue="4" Name="15 &#229;r" Description="15 &#229;r" Age="15"/>
+			<Rating LegacyValue="5" Name="18 &#229;r" Description="18 &#229;r" Age="18"/>
+		</Ratings>
+	</Locality>
+	<Locality Description="Estonia" ID="45" DVDRegion="5" BDRegion="C">
+		<Ratings Description="Film" ID="0">
+			<Rating LegacyValue="1" Name="L" Description="L" Age="1"/>
+			<Rating LegacyValue="2" Name="MS6" Description="MS6" Age="6"/>
+			<Rating LegacyValue="3" Name="MS12" Description="MS12" Age="12"/>
+			<Rating LegacyValue="4" Name="K12" Description="K12" Age="13"/>
+			<Rating LegacyValue="4" Name="K14" Description="K14" Age="14"/>
+			<Rating LegacyValue="5" Name="K16" Description="K16" Age="16"/>
+		</Ratings>
+	</Locality>
+	<Locality Description="Finland" ID="16" DVDRegion="2" BDRegion="B">
+		<Ratings Description="Ik&#228;rajat 2001-2011, tarkastetut" ID="0">
+			<Rating LegacyValue="1" Name="3" Description="Sallittu kaikenik&#228;isille" Age="3"/>
+			<Rating LegacyValue="2" Name="7" Description="Kielletty alle 7-vuotiailta" Age="7"/>
+			<Rating LegacyValue="3" Name="11" Description="Kielletty alle 11-vuotiailta" Age="11"/>
+			<Rating Name="13" Description="Kielletty alle 13-vuotiailta" Age="13"/>
+			<Rating LegacyValue="4" Name="15" Description="Kielletty alle 15-vuotiailta" Age="15"/>
+			<Rating LegacyValue="5" Name="18" Description="Kielletty alle 18-vuotiailta" Age="18"/>
+		</Ratings>
+		<Ratings Description="Ik&#228;rajat 2001-2011, tarkastamattomat" ID="2">
+			<Rating Name="[3]" Description="Tarkastamaton, sallittu kaikenik&#228;isille" Age="3"/>
+			<Rating Name="[7]" Description="Tarkastamaton, ei suositella 7 vuotta nuoremmille" Age="7"/>
+			<Rating Name="[11]" Description="Tarkastamaton, ei suositella 11 vuotta nuoremmille" Age="11"/>
+			<Rating Name="[13]" Description="Tarkastamaton, ei suositella 13 vuotta nuoremmille" Age="13"/>
+			<Rating Name="[18]" Description="Tarkastamaton, kielletty alle 18-vuotiailta" Age="18"/>	
+		</Ratings>	
+		<Ratings Description="Ik&#228;rajat ennen vuotta 2001" ID="1">
+			<Rating Name="S/T" Description="Sallittu kaikenik&#228;isille" Age="1"/>
+			<Rating Name="S/T 6" Description="Suositusik&#228;raja 6 vuotta" Age="6"/>
+			<Rating Name="S/T 8" Description="Suositusik&#228;raja 8 vuotta" Age="8"/>
+			<Rating Name="S/T 10" Description="Suositusik&#228;raja 10 vuotta" Age="10"/>
+			<Rating Name="S/T 12" Description="Suositusik&#228;raja 12 vuotta" Age="12"/>
+			<Rating Name="S/T 14" Description="Suositusik&#228;raja 14 vuotta" Age="14"/>
+			<Rating Name="K/F 16" Description="Kielletty alle 16-vuotiailta" Age="16"/>
+		</Ratings>
+		<Ratings Description="Ik&#228;rajat 2012 alkaen" ID="3">
+			<Rating Name="S" Description="Sallittu kaikenik&#228;isille" Age="1"/>
+			<Rating Name="T" Description="Till&#229;tet f&#246;r alla &#229;ldrar" Age="1" Variant="1"/>
+			<Rating Name="7" Description="Sallittu yli 7-vuotiaille" Age="7"/>
+			<Rating Name="12" Description="Sallittu yli 12-vuotiaille" Age="12"/>
+			<Rating Name="16" Description="Sallittu yli 16-vuotiaille" Age="16"/>
+			<Rating Name="18" Description="Vain aikuisille" Age="18"/>
+			<Rating Name="[18]" Description="Luokittelematon, vain aikuisille" Age="18" Variant="2"/>
+		</Ratings>
+	</Locality>
+	<Locality Description="Former Soviet Union" ID="7" DVDRegion="5" BDRegion="C">
+		<Ratings Description="Film" ID="0">
+			<Rating LegacyValue="1" Name="G" Description="G" Age="1"/>
+			<Rating LegacyValue="2" Name="PG" Description="PG" Age="10"/>
+			<Rating LegacyValue="3" Name="PG-13" Description="PG-13" Age="13"/>
+			<Rating LegacyValue="4" Name="R" Description="R" Age="17"/>
+			<Rating LegacyValue="5" Name="NC-17" Description="NC-17" Age="18"/>
+		</Ratings>
+	</Locality>
+	<Locality Description="France" ID="8" DVDRegion="2" BDRegion="B" AmazonSiteName="Amazon.fr" AmazonSite="www.amazon.fr">
+		<Ratings Description="Film" ID="0">
+			<Rating LegacyValue="1" Name="U" Description="Tous publics" Age="1"/>
+			<Rating Name="AP" Description="Accord Parental" Age="2"/>
+			<Rating LegacyValue="2" Name="12" Description="Interdit aux moins de 12 ans" Age="12"/>
+			<Rating LegacyValue="3" Name="16" Description="Interdit aux moins de 16 ans" Age="16"/>
+			<Rating LegacyValue="4" Name="18" Description="Interdit aux mineurs" Age="18"/>
+		</Ratings>
+	</Locality>
+	<Locality Description="Germany" ID="5" DVDRegion="2" BDRegion="B" AmazonSiteName="Amazon.de" AmazonSite="www.amazon.de">
+		<Ratings Description="Film &amp; Television" ID="0">
+			<Rating LegacyValue="1" Name="FSK-0" Description="Freigegeben ohne Altersbeschr&#228;nkung" Age="1"/>
+			<Rating LegacyValue="2" Name="FSK-6" Description="Freigegeben ab 6 Jahren" Age="6"/>
+			<Rating LegacyValue="3" Name="FSK-12" Description="Freigegeben ab 12 Jahren" Age="12"/>
+			<Rating LegacyValue="4" Name="FSK-16" Description="Freigegeben ab 16 Jahren" Age="16"/>
+			<Rating LegacyValue="5" Name="FSK-18/KJ" Description="Keine Jugendfreigabe" Age="18"/>
+			<Rating Name="SPIO/JK KSJ" Description="SPIO/JK gepr&#252;ft: keine schwere Jugendgef&#228;hrdung" Age="18" Variant="2"/>
+			<Rating Name="SPIO/JK SU" Description="SPIO/JK gepr&#252;ft: strafrechtlich unbedenklich" Age="18" Variant="3"/>
+			<Rating Name="INFO" Description="Infoprogramm gem&#228;&#223; &#167;14 JuSchG" Age="1" Variant="1"/>
+			<Rating Name="LEHR" Description="Lehrprogramm gem&#228;&#223; &#167;14 JuSchG" Age="1" Variant="2"/>
+		</Ratings>
+	</Locality>
+	<Locality Description="Greece" ID="41" DVDRegion="2" BDRegion="B">
+		<Ratings Description="Film" ID="0">
+			<Rating LegacyValue="1" Name="K" Description="K" Age="1"/>
+			<Rating LegacyValue="3" Name="A-13" Description="A-13" Age="13"/>
+			<Rating LegacyValue="4" Name="A-17" Description="A-17" Age="17"/>
+		</Ratings>
+	</Locality>
+	<Locality Description="Hong Kong" ID="21" DVDRegion="3" BDRegion="A">
+		<Ratings Description="Film" ID="0">
+			<Rating LegacyValue="1" Name="Category I" Description="Category I" Age="1"/>
+			<Rating LegacyValue="2" Name="Category IIA" Description="Category IIA" Age="10"/>
+			<Rating LegacyValue="3" Name="Category IIB" Description="Category IIB" Age="13"/>
+			<Rating LegacyValue="5" Name="Category III" Description="Category III" Age="17"/>
+		</Ratings>
+	</Locality>
+	<Locality Description="Hungary" ID="34" DVDRegion="2" BDRegion="B">
+		<Ratings Description="Film" ID="0">
+			<Rating LegacyValue="1" Name="All" Description="All" Age="1"/>
+			<Rating LegacyValue="2" Name="12" Description="12" Age="12"/>
+			<Rating LegacyValue="3" Name="16" Description="16" Age="16"/>
+			<Rating LegacyValue="5" Name="18" Description="18" Age="18"/>
+		</Ratings>
+	</Locality>
+	<Locality Description="Iceland" ID="26" DVDRegion="2" BDRegion="B">
+		<Ratings Description="Film" ID="0">
+			<Rating LegacyValue="1" Name="L" Description="L" Age="1"/>
+			<Rating LegacyValue="2" Name="7" Description="7" Age="7"/>
+			<Rating LegacyValue="3" Name="12" Description="12" Age="12"/>
+			<Rating LegacyValue="4" Name="16" Description="16" Age="16"/>
+			<Rating LegacyValue="5" Name="18" Description="18" Age="18"/>
+		</Ratings>
+	</Locality>
+	<Locality Description="India" ID="39" DVDRegion="5" BDRegion="C">
+		<Ratings Description="Film" ID="0">
+			<Rating LegacyValue="1" Name="A" Description="A" Age="1"/>
+			<Rating LegacyValue="2" Name="G" Description="G" Age="10"/>
+			<Rating LegacyValue="3" Name="U" Description="U" Age="15"/>
+			<Rating LegacyValue="4" Name="UA" Description="UA" Age="18"/>
+		</Ratings>
+	</Locality>
+	<Locality Description="Indonesia" ID="27" DVDRegion="3" BDRegion="A">
+		<Ratings Description="Film" ID="0">
+			<Rating LegacyValue="1" Name="SU: Semua Umur" Description="SU: Semua Umur" Age="1"/>
+			<Rating LegacyValue="2" Name="BO: Bimbingan Orang Tua" Description="BO: Bimbingan Orang Tua" Age="10"/>
+			<Rating LegacyValue="4" Name="DW: Dewasa" Description="DW: Dewasa" Age="16"/>
+		</Ratings>
+	</Locality>
+	<Locality Description="Iran" ID="47" DVDRegion="2" BDRegion="B">
+		<Ratings Description="Film" ID="0">
+		</Ratings>
+	</Locality>
+	<Locality Description="Ireland" ID="44" DVDRegion="2" BDRegion="B">
+		<Ratings Description="Film" ID="0">
+			<Rating LegacyValue="1" Name="G" Description="G" Age="1"/>
+			<Rating LegacyValue="2" Name="PG" Description="PG" Age="10"/>
+			<Rating LegacyValue="3" Name="12" Description="12" Age="12"/>
+			<Rating LegacyValue="4" Name="15" Description="15" Age="15"/>
+			<Rating LegacyValue="5" Name="18" Description="18" Age="18"/>
+		</Ratings>
+	</Locality>
+	<Locality Description="Israel" ID="24" DVDRegion="2" BDRegion="B">
+		<Ratings Description="Film" ID="0">
+			<Rating LegacyValue="1" Name="G" Description="All ages admitted" Age="1"/>
+			<Rating LegacyValue="3" Name="14" Description="Nobody under 14 permitted to view" Age="14"/>
+			<Rating LegacyValue="4" Name="16" Description="Nobody under 16 permitted to view" Age="16"/>
+			<Rating LegacyValue="5" Name="18" Description="Nobody under 18 permitted to view" Age="18"/>
+		</Ratings>
+		<Ratings Description="Television" ID="1">
+			<Rating LegacyValue="1" Name="G" Description="All ages" Age="1"/>
+			<Rating Name="8" Description="Nobody under 8 permitted to view" Age="14"/>
+			<Rating Name="14" Description="Nobody under 14 permitted to view" Age="16"/>
+			<Rating Name="18" Description="Nobody under 18 permitted to view" Age="18"/>
+		</Ratings>
+	</Locality>
+	<Locality Description="Italy" ID="13" DVDRegion="2" BDRegion="B" AmazonSiteName="Amazon.it" AmazonSite="www.amazon.it">
+		<Ratings Description="Film" ID="0">
+			<Rating LegacyValue="1" Name="T" Description="T" Age="1"/>
+			<Rating LegacyValue="2" Name="VM14" Description="VM14" Age="14"/>
+			<Rating LegacyValue="3" Name="VM18" Description="VM18" Age="18"/>
+		</Ratings>
+	</Locality>
+	<Locality Description="Japan" ID="17" DVDRegion="2" BDRegion="A" AmazonSiteName="Amazon.co.jp" AmazonSite="www.amazon.co.jp">
+		<Ratings Description="Film" ID="0">
+			<Rating LegacyValue="1" Name="G" Description="General audiences. All ages admitted." Age="1"/>
+			<Rating LegacyValue="2" Name="PG-12" Description="Parental guidance requested. Some material may be unsuitable for children under 12. Accompanying parent or adult guardian is desirable." Age="10"/>
+			<Rating LegacyValue="3" Name="R-15" Description="Restricted to mature audiences 15 years and over. No one younger than 15 admitted." Age="17"/>
+			<Rating LegacyValue="4" Name="R-18" Description="Restricted to adults 18 years and over. No one younger than 18 admitted." Age="18"/>
+		</Ratings>
+	</Locality>
+	<Locality Description="Malaysia" ID="37" DVDRegion="3" BDRegion="A">
+		<Ratings Description="Film" ID="0">
+			<Rating LegacyValue="1" Name="U" Description="U" Age="1"/>
+			<Rating LegacyValue="2" Name="18SG" Description="18SG" Age="18"/>
+			<Rating LegacyValue="3" Name="18SX" Description="18SX" Age="18" Variant="4"/>
+			<Rating LegacyValue="4" Name="18PA" Description="18PA" Age="18" Variant="2"/>
+			<Rating LegacyValue="5" Name="18PL" Description="18PL" Age="18" Variant="3"/>
+		</Ratings>
+	</Locality>
+	<Locality Description="Mexico" ID="25" DVDRegion="4" BDRegion="A" AmazonSiteName="Amazon.es" AmazonSite="www.amazon.es">
+		<Ratings Description="Film" ID="0">
+			<Rating LegacyValue="1" Name="AA" Description="AA" Age="1"/>
+			<Rating LegacyValue="2" Name="A" Description="A" Age="10"/>
+			<Rating LegacyValue="3" Name="B" Description="B" Age="13"/>
+			<Rating LegacyValue="4" Name="C" Description="C" Age="17"/>
+		</Ratings>
+	</Locality>
+	<Locality Description="Netherlands" ID="9" DVDRegion="2" BDRegion="B" AmazonSiteName="Amazon.de" AmazonSite="www.amazon.de">
+		<Ratings Description="Kijkwijzer" ID="0">
+			<Rating LegacyValue="1" Name="AL" Description="Niet schadelijk/Alle leeftijden" Age="1"/>
+			<Rating LegacyValue="2" Name="6" Description="Let op met kinderen tot 6 jaar" Age="6"/>
+			<Rating Name="9" Description="Let op met kinderen tot 9 jaar" Age="9"/>
+			<Rating LegacyValue="3" Name="12" Description="Let op met kinderen tot 12 jaar" Age="12"/>
+			<Rating LegacyValue="4" Name="16" Description="Let op met kinderen tot 16 jaar" Age="16"/>
+		</Ratings>
+		<Ratings Description="Videovoorlichtingsysteem" ID="1">
+			<Rating Name="AL" Description="Geschikt voor alle leeftijden" Age="1"/>
+			<Rating Name="AL+MG" Description="Geschikt voor alle leeftijden, maar meekijken gewenst" Age="6"/>
+			<Rating Name="12" Description="Niet geschikt voor kinderen onder de 12 jaar" Age="12"/>
+			<Rating Name="16" Description="Niet geschikt voor kinderen onder de 16 jaar" Age="16"/>
+		</Ratings>
+	</Locality>
+	<Locality Description="New Zealand" ID="1" DVDRegion="4" BDRegion="B">
+		<Ratings Description="Film" ID="0">
+			<Rating LegacyValue="1" Name="G" Description="G" Age="1"/>
+			<Rating LegacyValue="2" Name="PG" Description="PG" Age="10"/>
+			<Rating LegacyValue="3" Name="M" Description="M" Age="13"/>
+			<Rating LegacyValue="4" Name="R16" Description="R16" Age="16"/>
+			<Rating LegacyValue="5" Name="R18" Description="R18" Age="18"/>
+		</Ratings>
+	</Locality>
+	<Locality Description="Norway" ID="12" DVDRegion="2" BDRegion="B">
+		<Ratings Description="Film" ID="0">
+			<Rating LegacyValue="1" Name="A" Description="Tillatt for alle" Age="1"/>
+			<Rating LegacyValue="2" Name="7 &#229;r" Description="Aldersgrense 7 &#229;r" Age="7"/>
+			<Rating LegacyValue="3" Name="11 &#229;r" Description="Aldersgrense 11 &#229;r" Age="11"/>
+			<Rating LegacyValue="4" Name="15 &#229;r" Description="Aldersgrense 15 &#229;r" Age="15"/>
+			<Rating LegacyValue="5" Name="18 &#229;r" Description="Aldersgrense 18 &#229;r" Age="18"/>
+		</Ratings>
+	</Locality>
+	<Locality Description="Peru" ID="51" DVDRegion="4" BDRegion="A">
+		<Ratings Description="Film" ID="0">
+			<Rating Name="Apt" Description="General Ages. All ages admitted" Age="1"/>
+			<Rating Name="14" Description="No Children under 14 admitted without an adult" Age="14"/>
+			<Rating Name="18" Description="No Children under 18 allowed without the company of an adult" Age="18"/>
+		</Ratings>
+	</Locality>
+	<Locality Description="Philippines" ID="43" DVDRegion="3" BDRegion="A">
+		<Ratings Description="Film" ID="0">
+			<Rating LegacyValue="1" Name="G(P)" Description="G(P)" Age="1"/>
+			<Rating LegacyValue="3" Name="PG-13" Description="PG-13" Age="13"/>
+			<Rating LegacyValue="4" Name="R-13" Description="R-13" Age="14"/>
+			<Rating LegacyValue="5" Name="R-18" Description="R-18" Age="18"/>
+		</Ratings>
+	</Locality>
+	<Locality Description="Poland" ID="29" DVDRegion="2" BDRegion="B">
+		<Ratings Description="Film" ID="0">
+			<Rating LegacyValue="1" Name="BO" Description="no age limit" Age="1"/>
+			<Rating LegacyValue="2" Name="over 12 years" Description="over 12 years" Age="12"/>
+			<Rating LegacyValue="3" Name="over 15 years" Description="over 15 years" Age="15"/>
+			<Rating LegacyValue="4" Name="over 18 years" Description="over 18 years" Age="18"/>
+		</Ratings>
+	</Locality>
+	<Locality Description="Portugal" ID="15" DVDRegion="2" BDRegion="B">
+		<Ratings Description="Film" ID="0">
+			<Rating LegacyValue="1" Name="M/4" Description="Maiores de 4" Age="4"/>
+			<Rating LegacyValue="2" Name="M/6" Description="Maiores de 6" Age="6"/>
+			<Rating LegacyValue="3" Name="M/12" Description="Maiores de 12" Age="12"/>
+			<Rating LegacyValue="4" Name="M/16" Description="Maiores de 16" Age="16"/>
+			<Rating LegacyValue="5" Name="M/18" Description="Maiores de 18" Age="18"/>
+			<Rating LegacyValue="6" Name="M/18-P" Description="Maiores de 18 - Pornogr&#225;fico" Age="18" Adult="True"/>
+		</Ratings>
+	</Locality>
+	<Locality Description="Romania" ID="46" DVDRegion="2" BDRegion="B">
+		<Ratings Description="Film" ID="0">
+			<Rating Name="A.G." Description="Audienta generala" Age="1"/>
+			<Rating Name="I.C.-14" Description="Interzis copiilor sub 14 ani" Age="14"/>
+			<Rating Name="I.M.-18" Description="Interzis minorilor sub 18 ani" Age="18"/>
+			<Rating Name="XXX" Description="Interzis proiectiei cu public" Age="18" Adult="True"/>
+		</Ratings>
+		<Ratings Description="Televiziune" ID="1">
+			<Rating Name="AP" Description="Acordul parintilor" Age="12"/>
+			<Rating Name="12" Description="Interzis copiilor sub 12 ani" Age="12"/>
+			<Rating Name="15" Description="Acordul parintilor" Age="15"/>
+			<Rating Name="16" Description="Interzis minorilor sub 16 ani" Age="16"/>
+			<Rating Name="18" Description="Interzis minorilor sub 18 ani " Age="18"/>
+		</Ratings>
+	</Locality>
+	<Locality Description="Russia" ID="48" DVDRegion="6" BDRegion="C">
+		<Ratings Description="Film" ID="0">
+			<Rating LegacyValue="1" Name="G" Description="Suitable for all viewers" Age="1"/>
+			<Rating LegacyValue="2" Name="PG" Description="Parental Guidance recommended for children under 15 years of age" Age="15"/>
+			<Rating LegacyValue="4" Name="R" Description="Restricted" Age="18"/>
+			<Rating Name="E" Description="Exempt from classification" Age="1" Variant="1"/>
+		</Ratings>
+	</Locality>
+	<Locality Description="Singapore" ID="35" DVDRegion="3" BDRegion="A">
+		<Ratings Description="Film" ID="0">
+			<Rating LegacyValue="1" Name="G" Description="G" Age="1"/>
+			<Rating LegacyValue="2" Name="PG" Description="PG" Age="10"/>
+			<Rating LegacyValue="3" Name="NC16" Description="NC16" Age="16"/>
+			<Rating LegacyValue="4" Name="M18" Description="M18" Age="18"/>
+		</Ratings>
+	</Locality>
+	<Locality Description="Slovakia" ID="33" DVDRegion="2" BDRegion="B">
+		<Ratings Description="Film" ID="0">
+			<Rating LegacyValue="1" Name="U" Description="U" Age="1"/>
+			<Rating LegacyValue="2" Name="12" Description="12" Age="12"/>
+			<Rating LegacyValue="3" Name="15" Description="15" Age="15"/>
+			<Rating LegacyValue="5" Name="18" Description="18" Age="18"/>
+		</Ratings>
+	</Locality>
+	<Locality Description="South Africa" ID="20" DVDRegion="2" BDRegion="B">
+		<Ratings Description="Film" ID="0">
+			<Rating LegacyValue="1" Name="A" Description="No restrictions" Age="1"/>
+			<Rating Name="PG" Description="Parental guidance recommended" Age="8"/>
+			<Rating LegacyValue="2" Name="10" Description="For children 10 years and older" Age="10"/>
+			<Rating Name="PG13" Description="Parental guidance for children under 13" Age="13" Variant="1"/>
+			<Rating LegacyValue="3" Name="13" Description="For children 13 years and older" Age="13"/>
+			<Rating LegacyValue="4" Name="16" Description="For persons 16 years and older" Age="16"/>
+			<Rating LegacyValue="5" Name="18" Description="For adults only" Age="18"/>
+			<Rating Name="X18" Description="Restricted for adults only" Age="18" Variant="2" Adult="True"/>
+			<Rating Name="XX" Description="Restricted, not for distribution" Age="18" Variant="3" Adult="True"/>
+		</Ratings>
+	</Locality>
+	<Locality Description="South Korea" ID="18" DVDRegion="3" BDRegion="A">
+		<Ratings Description="Film" ID="0">
+			<Rating LegacyValue="1" Name="All" Description="All" Age="1"/>
+			<Rating LegacyValue="3" Name="12" Description="12" Age="12"/>
+			<Rating LegacyValue="4" Name="15" Description="15" Age="15"/>
+			<Rating LegacyValue="5" Name="18" Description="18" Age="18"/>
+		</Ratings>
+	</Locality>
+	<Locality Description="Spain" ID="10" DVDRegion="2" BDRegion="B" AmazonSiteName="Amazon.es" AmazonSite="www.amazon.es">
+		<Ratings Description="Hasta el a&#241;o 2010" ID="0">
+			<Rating LegacyValue="1" Name="TP" Description="Autorizada para todos los p&#250;blicos" Age="1" />
+			<Rating LegacyValue="2" Name="7" Description="No recomendada para menores de 7 a&#241;os" Age="7" />
+			<Rating LegacyValue="3" Name="13" Description="No recomendada para menores de 13 a&#241;os" Age="13" />
+			<Rating LegacyValue="4" Name="18" Description="No recomendada para menores de 18 a&#241;os" Age="18" />
+		</Ratings>
+		<Ratings Description="Desde el a&#241;o 2010" ID="1">
+			<Rating Name="A" Description="Apta para todos los p&#250;blicos" Age="1" />
+			<Rating Name="&#161;A" Description="Especialmente recomendada para la infancia" Age="1" Variant="1" />
+			<Rating Name="7" Description="No recomendada para menores de siete a&#241;os" Age="7" />
+			<Rating Name="&#161;7" Description="Especialmente recomendada para la infancia (No recomendada para menores de siete a&#241;os)" Age="7" Variant="1" />
+			<Rating Name="12" Description="No recomendada para menores de doce a&#241;os" Age="12" />
+			<Rating Name="16" Description="No recomendada para menores de diecis&#233;is a&#241;os" Age="16" />
+			<Rating Name="18" Description="No recomendada para menores de dieciocho a&#241;os" Age="18" />
+			<Rating Name="X" Description="Pel&#237;cula X, prohibido el acceso a menores de dieciocho a&#241;os" Age="18" Variant="1" Adult="True" />
+		</Ratings>
+	</Locality>
+	<Locality Description="Sweden" ID="11" DVDRegion="2" BDRegion="B">
+		<Ratings Description="Film" ID="0">
+			<Rating LegacyValue="1" Name="Barntill&#229;ten" Description="Barntill&#229;ten" Age="1"/>
+			<Rating LegacyValue="2" Name="Fr&#229;n 7 &#229;r" Description="Fr&#229;n 7 &#229;r" Age="7"/>
+			<Rating LegacyValue="3" Name="Fr&#229;n 11 &#229;r" Description="Fr&#229;n 11 &#229;r" Age="11"/>
+			<Rating LegacyValue="4" Name="Fr&#229;n 15 &#229;r" Description="Fr&#229;n 15 &#229;r" Age="15"/>
+		</Ratings>
+	</Locality>
+	<Locality Description="Switzerland" ID="22" DVDRegion="2" BDRegion="B">
+		<Ratings Description="FSK" ID="0">
+			<Rating LegacyValue="1" Name="FSK-0" Description="FSK-0" Age="1"/>
+			<Rating LegacyValue="2" Name="FSK-6" Description="FSK-6" Age="6"/>
+			<Rating LegacyValue="3" Name="FSK-12" Description="FSK-12" Age="12"/>
+			<Rating LegacyValue="4" Name="FSK-16" Description="FSK-16" Age="16"/>
+			<Rating LegacyValue="5" Name="FSK-18" Description="FSK-18" Age="18"/>
+		</Ratings>
+		<Ratings Description="Altersfreigabe SVV/Age limite recommand&#233; ASV" ID="1">
+			<Rating Name="0+" Description="Altersfreigabe SVV/Age limite recommand&#233; ASV 0+" Age="1"/>
+			<Rating Name="6+" Description="Altersfreigabe SVV/Age limite recommand&#233; ASV 6+" Age="6"/>
+			<Rating Name="7+" Description="Altersfreigabe SVV/Age limite recommand&#233; ASV 7+" Age="7"/>
+			<Rating Name="10+" Description="Altersfreigabe SVV/Age limite recommand&#233; ASV 10+" Age="10"/>
+			<Rating Name="12+" Description="Altersfreigabe SVV/Age limite recommand&#233; ASV 12+" Age="12"/>
+			<Rating Name="14+" Description="Altersfreigabe SVV/Age limite recommand&#233; ASV 14+" Age="14"/>
+			<Rating Name="16+" Description="Altersfreigabe SVV/Age limite recommand&#233; ASV 16+" Age="16"/>
+			<Rating Name="18+" Description="Altersfreigabe SVV/Age limite recommand&#233; ASV 18+" Age="18"/>
+		</Ratings>
+	</Locality>
+	<Locality Description="Taiwan" ID="28" DVDRegion="3" BDRegion="A">
+		<Ratings Description="Film &amp; Television" ID="0">
+			<Rating LegacyValue="1" Name="G" Description="General audiences category" Age="1"/>
+			<Rating LegacyValue="2" Name="P" Description="Protected category" Age="10"/>
+			<Rating LegacyValue="3" Name="PG" Description="Parental guidance category" Age="13"/>
+			<Rating LegacyValue="4" Name="R" Description="Restricted category" Age="17"/>
+			<Rating LegacyValue="5" Name="no age limit" Description="no age limit" Age="17"/>
+		</Ratings>
+	</Locality>
+	<Locality Description="Thailand" ID="38" DVDRegion="3" BDRegion="A">
+		<Ratings Description="Film" ID="0">
+			<Rating LegacyValue="1" Name="P" Description="Promotional, film is educational and viewing is encouraged for all Thai people" Age="1"/>
+			<Rating LegacyValue="2" Name="G" Description="Suitable for general audiences" Age="1"/>
+			<Rating LegacyValue="3" Name="Under 13" Description="Viewers under age 13 not admitted" Age="13"/>
+			<Rating LegacyValue="4" Name="Under 15" Description="Viewers under age 15 not admitted" Age="15"/>
+			<Rating LegacyValue="5" Name="Under 18" Description="Viewers under age 18 not admitted" Age="18"/>
+			<Rating Name="Under 20" Description="Viewers under age 20 not admitted" Age="20"/>
+		</Ratings>
+	</Locality>
+	<Locality Description="Turkey" ID="31" DVDRegion="2" BDRegion="B">
+		<Ratings Description="Film" ID="0">
+			<Rating LegacyValue="1" Name="GI" Description="GI" Age="1"/>
+			<Rating LegacyValue="2" Name="7+" Description="7+" Age="7"/>
+			<Rating LegacyValue="3" Name="13+" Description="13+" Age="13"/>
+			<Rating LegacyValue="4" Name="15+" Description="15+" Age="15"/>
+			<Rating LegacyValue="5" Name="16+" Description="16+" Age="16"/>
+		</Ratings>
+	</Locality>
+	<Locality Description="United Kingdom" ID="4" DVDRegion="2" BDRegion="B" AmazonSiteName="Amazon.co.uk" AmazonSite="www.amazon.co.uk">
+		<Ratings Description="Film" ID="0">
+			<Rating Name="Uc" Description="Pre-school children" Age="1"/>
+			<Rating LegacyValue="1" Name="U" Description="Suitable for all ages" Age="4"/>
+			<Rating LegacyValue="2" Name="PG" Description="Parental guidance suggested" Age="8"/>
+			<Rating LegacyValue="3" Name="12" Description="Nobody under 12 permitted to view" Age="12"/>
+			<Rating LegacyValue="4" Name="15" Description="Suitable for 15 years and over" Age="15"/>
+			<Rating LegacyValue="5" Name="18" Description="Suitable for adults only" Age="18"/>
+			<Rating Name="R18" Description="R18 Restricted" Age="18" Variant="2" Adult="True"/>
+			<Rating Name="E" Description="Exempt from classification" Age="1" Variant="1"/>
+		</Ratings>
+	</Locality>
+	<Locality Description="United States" ID="0" DVDRegion="1" BDRegion="A" AmazonSiteName="Amazon.com" AmazonSite="www.amazon.com">
+		<Ratings Description="Film" ID="0">
+			<Rating LegacyValue="1" Name="G" Description="All ages admitted" Age="1"/>
+			<Rating LegacyValue="2" Name="PG" Description="Parental guidance suggested" Age="10"/>
+			<Rating LegacyValue="3" Name="PG-13" Description="Parents strongly cautioned" Age="13"/>
+			<Rating LegacyValue="4" Name="R" Description="Restricted" Age="17"/>
+			<Rating LegacyValue="5" Name="NC-17" Description="No one 17 and under admitted" Age="18"/>
+			<Rating Name="Unrated" Description="Unrated" Age="18" Variant="2"/>
+		</Ratings>
+		<Ratings Description="Television" ID="1">
+			<Rating Name="TV-Y" Description="Suitable for all ages" Age="1"/>
+			<Rating Name="TV-G" Description="Suitable for all ages" Age="1" Variant="1"/>
+			<Rating Name="TV-Y7" Description="Unsuitable for children under 7" Age="7"/>
+			<Rating Name="TV-PG" Description="Unsuitable for younger children, and pre-teenagers until asking their parents" Age="12"/>
+			<Rating Name="TV-14" Description="Unsuitable for children under 14" Age="14"/>
+			<Rating Name="TV-MA" Description="Adults Only" Age="18"/>
+		</Ratings>
+	</Locality>
+	<Locality Description="Vietnam" ID="42" DVDRegion="3" BDRegion="A">
+		<Ratings Description="Film" ID="0">
+		</Ratings>
+	</Locality>
+</Localities>

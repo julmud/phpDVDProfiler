@@ -1,0 +1,124 @@
+http://dvd.snowhopers.com/phpdvdprofiler_on_windoze.txt
+
+phpdvdprofiler installation instructions for windows (for phpdvdprofiler 2.3.13/2.4.0)
+	Updated 2005/08/28 version 2
+
+1.   Download XAMPP from http://www.apachefriends.org/en/
+2.   Install XAMPP following its install instructions.
+3.   Download the latest phpdvdprofiler from http://www.tfintzel.de/dvdprofiler/ 
+4.   Extract it to C:\Program Files\xampp\htdocs (assuming you've not changed
+	the installation directory in step 2)
+5.   Download jpgraph from http://www.aditus.nu/jpgraph/jpdownload.php
+6.   Use winzip unzip them it to C:\Program Files\xampp\htdocs\
+7.   jpgraph will unzip to a directory called 'jpgraph-1.19' or something with
+	a version number. Rename the directory so it doesn't have the version 
+	number on the end. So its just called 'jpgraph'.
+8.   Using your favourite editor (I'd recommend wordpad) edit 
+     	C:\Program Files\xampp\htdocs\phpdvdprofiler\siteconfig.php and change 
+	the follow :-
+
+	$dbuser from 'fred' to 'root'
+	$sitetitle from "Fred's DVD Collection" to whatever you want
+	$xmlfile 'DVDAll.xml' to 'collection.xml' assuming you're going to 
+		use the dvdprofiler default name and not the Fred name ;-)
+	$img_physpath from 'images/' to	
+		'C:/Program Files/InterVocative Software/DVD Profiler/IMAGES/' 
+		The case is important.
+	$img_webpath from 'images/' to	'IMAGES/'
+	$usejpgraph from false to true;
+	$jpgraphlocation from '../jpgraph/' to '../jpgraph/src/'
+	$local_lan include your local lan 
+		(for example "127.0.0.1" and "192.168.1.") :-
+
+		$local_lan = array(
+ 		     "192.168.1",
+  		    "127.0.0.1"
+		);
+
+	Set $forumuser to you dvdprofiler forums user name
+	Set $collectonurl to the public url for your collection. However, if your
+		collection won't be publicly available, still set it, but set it
+		to 'http://localhost/phpdvdprofiler/'
+
+     Save siteconfig.php
+
+9.   Create a mysql database :-
+   	Open a dos window
+   	cd \program files\xampp\mysql\bin
+   	mysqladmin -u root create phpdvdprofiler
+   
+10.  Load the phpdvdprofiler schema
+   	mysql -u root phpdvdprofiler < ..\..\htdocs\phpdvdprofiler\schema.sql
+
+11.  At this point you should be able to go to http://localhost/phpdvdprofiler/ 
+     	in your browser. Obviously you'll see an empty collection.
+
+12.  In dvdprofiler do 'File->Export Profile Database'. Accept the conditions, 
+     	nd select 'xml format'. Change the Output file to 
+     	'C:\Program Files\xampp\htdocs\phpdvdprofiler\collection.xml' 
+     	(It will remember this in future exports).
+
+13.  Once the export has completed, in your browser, move your pointer over 
+     	the 'navigation' side bar and click on 'update'. Enter the admin for
+	both the user and password unless you also changed this in step 5.
+
+     At this point you might see lots of the following errors :-
+
+	Warning: mktime() [function.mktime]: Windows does not support negative
+		values for this function in 
+		C:\Program Files\xampp\htdocs\phpdvdprofiler\incupdate.php on
+		 line 487
+
+	Warning: mktime() [function.mktime]: Windows does not support negative
+		 values for this function in 
+		C:\Program Files\xampp\htdocs\phpdvdprofiler\incupdate.php 
+		on line 529
+
+     Just ignore them. Thats what you get for using toy operating systems.
+
+     Once you've clicked on the "Click here to continue to Main Page", you'll 
+     see your collection. However no images will be displayed.
+
+13.  So to get the images working do the following :-
+
+     1. Stop apache using the xampp control panel (press stop for apache. 
+	May take a few seconds).
+     2. using your favourite editor edit 
+	C:\Program Files\xampp\apache\conf\httpd.conf
+
+	Add to the end of the file :-
+
+	Alias /phpdvdprofiler/IMAGES "C:/Program Files/InterVocative Software/DVD Profiler/IMAGES/"
+	<Directory "C:/Program Files/InterVocative Software/DVD Profiler/IMAGES">
+    		Order allow,deny
+    		Allow from all
+	</Directory>
+
+     2a. If you use tv episode guides in the notes section, also add the following
+		to the end of the file. It assumes your epg images are under 
+		 C:/Program Files/InterVocative Software/DVD Profiler/epg :-
+
+
+	Alias /phpdvdprofiler/epg "C:/Program Files/InterVocative Software/DVD Profiler/epg/"
+	<Directory "C:/Program Files/InterVocative Software/DVD Profiler/epg">
+    		Order allow,deny
+    		Allow from all
+	</Directory>
+
+
+     3. Start apache from the xampp control panel. 
+     4. Refresh your collection web page. Images should now be displayed.
+
+14.  You should also check the statistics link from the navigation bar to 
+     ensure that the graphs are displayed.
+ 
+And in theory that should be it.
+
+NOTES
+-----
+
+These instructions don't require creating a new mysql or setting the mysql root
+password. Well thats bad if your collection is available externally. So, if
+your collection is going to be viewable externally, please create yourself a
+new mysql or set the root password. Then update the siteconfig.php with the
+new user/password ($dbuser/$dbpasswd).

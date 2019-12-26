@@ -1,0 +1,86 @@
+                     Phpdvdprofiler version 3.5.0.0  11/26/2008
+ 
+userpref.php 
+ 
+Line 160  - changes the color of the hyperlink on the "User Prefrences" page back to the main Page
+Line  471  changes the color of the hyperlink on the "User Prefrences" page back to the main Page
+ 
+ 
+ 
+index.php
+ 
+Line 970-- changes color of 0-9 A-Z characters 
+Line 971-- Changes highlight color of 0-9 A-Z characters,
+ 
+format.css.php
+ 
+Line 28 =  Hightlight color of titles in DVD List in left pane
+                  Hightlight color of Items in both Java menu bars
+                  Hightlight color of Director,UPC,Cast & Crew
+                  Hightlight color of Studio links
+Line 29 =   changes text color of Title,Genre and bought in left pane
+                    Also changes text color of Title,Running Time and Date when movies
+                   Watched are listed in the watched statistics page. ( I prefer the default -white)
+ 
+                   Changes the text color of "last Watched" "Most Watched" etc#
+Line 33 = Hightlight color of "audio format" "extras" and "cast" upper RH corner of page .
+                 Hightlight color of Title,Genere, Bought, and Released links top left pane
+ 
+Line 155 ---- Changes the color of the movie title at the top center of the right pane. Also changes the Title on "site statistics" and "user prefrences" pages
+ 
+Line 306--- Changes the text color of the "search" and "clear" buttons
+Line 202 =changes text color in right pane of DVD Covers,Misc,Overview,Studios
+Subtitles,Discs,Cast & Crew etc#..    ( I prefer the default - white )
+Line 264=  -----Changes the Text  color  ("DVD Counts: 711 Owned, 711 Total (Updated 08 Sep 06) ")
+ 
+ 
+Line 269=  ------Changes the Text  color of "search in" to the left of the  "Title" pull down search box.
+$ClassColor1  =----Background color around drop down boxes and search & clear button and the color of the bar behind the "User Prefrences" title on the User Prefrences page.. As well as the background color behind the thumbnails on the right pane and background color for the Gallery page. ( Now wood background )
+This is also the background color behind the large box with all the dropdown boxes on the user prefrences page.
+ 
+$ClassColor2  =----------
+When you click on "Title, Genre or Released" on the left pane at the top to sort your listing , this is the color of the heading bar that (be sure skin is set to "internal in user preferences ) separates each group of your searches.
+.
+This is also the outline color of all the boxes in the right pane. This is also the background color behind country of origin, production year, director, rating, UPC, running time etc# in the right pane.
+ 
+This also highlights the Large Box with all the user prefrences drop down boxes and is the background color for the Update page and Site Statistics page.
+ 
+$ClassColor3  =---
+Every other line gets highlighted a different color in the left pane. This is 1 of the 2 colors. This color also shades in the the info under the heading bars on the right pane. Also is the background color behind info for : Production year, director, rating, UPC,
+Running time, case type etc..
+ 
+ 
+$ClassColor4  =---Every other line get highlighted a different color in the left pane. This is the 2nd of the 2 colors.
+ 
+ClassColor5  =
+  Changes All Title bars in the right pane:
+ 
+Title,Genre and Bought (  sort buttons in left pane for DVD titles )
+Bar color behind 0-9 ABCDEFGHIJKLMNOPQRSTUVWXYZ
+Color behind selected DVD title in right pane and all remaining
+Bars in right pane Overview,Studios,Subtitles #etc
+ 
+$ClassColor6  = Month background color in watched statistics
+$ClassColor7  = Month background color in watched statistics
+$ClassColor8  =  Primary viewer background color in watched  statistics
+$ClassColor9  =  Year background color in wathed statistics
+$ClassColor10 = Don't see any changes reflected here
+ 
+$ClassColor 6,7,8 and 9 were handled in format.css in 3.0.2.1 and also required
+Changes to be made to the skin.html file and was very tedious to alter. This
+Is a welcome change.
+ 
+momItems.
+ 
+Note: This file like others is case sensitive when using a FTP to transfer note the case, as the "I" must remain uppercase or the navigation bar will not appear.
+This changes the colors in the Java Menu bars ie: Languages & watched statistics
+ 
+ 
+hdrFontColor
+hdrBGColor
+linkBGColor
+linkOverBGColor
+barBGColor
+barFontColor
+ 
+ 

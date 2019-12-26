@@ -1,0 +1,11 @@
+	- boxset association doesn't occur when searching. This is
+	  because I can't get the records to order properly.
+	- collection=loaned ignores boxchildren. This is related to
+	  the above problem with displaying boxsets when searches happen.
+	- need a TitlesPerPage userpref
+	- pagination needs pages, not just previous/next
+
+	- boxset spacing is whack
+	- this doesn't account for people who don't have gd as part of php ...
+
+	- update can break with media-type issue if offset is borked

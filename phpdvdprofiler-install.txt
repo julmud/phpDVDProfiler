@@ -1,0 +1,139 @@
+phpDVDprofiler
+
+The original implementation of phpDVDprofiler was written by Soenke J. Peters
+(peters [at] opcenter [dot] de) and can be found at:
+	http://www.opcenter.de/awf/index.php?id=59
+
+This version has been extensively modified since the original release, primarily
+by Fred Whiteside (fred [at] bws [dot] com) based on code and suggestions from
+a wide variety of respondents. This document is based on a document created by
+Andrea Whitlock (andrea [at] mobius-soft [dot] com).
+
+	This software requires the following:
+		1) a webserver
+		2) something that will process PHP scripts
+		3) a MySQL database (others may work; contact me for assistance)
+
+Specifically, this software needs an installation of PHP which has php-xml
+installed and with either the mysql or the mysqli extentions. Versions of PHP
+previous to PHP 5 generally have the mysql extentions already installed. The
+software should work with almost any version of MySQL, although it is tested
+primarily on my system, which has MySQL 3.23.42. 
+
+All of the things which require configuration are in the file siteconfig.php,
+which is extensively documented regarding what the available options are.
+The software tries to determine if the environment is set up correctly by
+examining the schema, and printing messages if it has problems. The most
+common problem is that the schema in the database doesn't match the schema
+the program expects. The shell command:
+$ mysql -u root -p phpdvdprofiler < schema.sql
+will cause the schema to be updated to the correct values. This is detailed
+further below.
+
+To make it easier to apply updates to the software, a new file has been
+added to the configuration: localsiteconfig.php. This file overrides the
+values set in siteconfig.php. The intended usage is that one makes a copy
+of siteconfig.php, named localsiteconfig.php. Then you make any changes to
+suit your site in localsiteconfig.php. When a new release is made, the
+distribution will contain a new siteconfig.php which can then safely over-
+write the old siteconfig.php. Distributions will not contain a file named
+localsiteconfig.php, so it won't be overwritten. You can inspect any new
+features in siteconfig.php, making any changes to the provided defaults
+in localsiteconfig.php. This also means that you can safely change the
+names of the db, accounts, and passwords, and not worry about the new
+version breaking everything :)
+
+	There are several possible URLs that can be used. The one most people
+will use is http://your.site/your/path/index.php which starts running the
+program and displays the DVDs. If one runs index.php?action=update then the
+program attempts to import your collection into the database (after checking
+some passwords). The other major URL is index.php?action=userpref which will
+bring up a page wherein users can configure some parts of the UI for themselves.
+This last section uses cookies to remember preferences, and if cookies are
+shut off, then the user will be stuck with the site default values.
+
+Here are some installation notes from Andrea Whitlock (edited for the current
+details of the installation)
+================================================================================
+
+I'm running apache 2.0.47, php 4.3.2, and mysql 4.0.15.  My web server runs
+as the user apache in the group apache.  I installed phpdvdprofiler in my
+~/public_html directory.
+
+--------------------------------------------------------------------------------
+
+cd ~/public_html
+unzip -a phpDVDprofiler-v20050102.zip
+
+--------------------------------------------------------------------------------
+
+Edit siteconfig.php and configure $dbuser, $dbpasswd, $update_login, $update_pass.
+I set my $dbuser to 'guest'.  The $update vars are the login name and password
+that you need to type in on the web page form when you try to update your
+collection.  Set these to whatever you'd like.
+
+--------------------------------------------------------------------------------
+
+Change permissions on files so apache can read them.
+Remember to also give execute permissions on the directories.  After you setup 
+siteconfig.php, you might want to make apache own the file and have no one else 
+with permissions on it, so no one on your system can look at your settings in 
+the file (database user names, passwords, web page logins, etc.).
+
+Change group on images/thumbnails to apache and make it group writeable
+(everyone else has read and execute permissions on it). 
+
+--------------------------------------------------------------------------------
+
+Export dvdprofiler collection to DVDAll.xml (on your PC) and transfer 
+DVDAll.xml to your web server into ~/public_html/phpdvdprofiler. You can use
+whatever name you like rather than DVDAll.xml; it is configured in siteconfig.php
+
+--------------------------------------------------------------------------------
+
+Transfer copies of all jpg files in 
+C:\Program Files\InterVocative Software\DVD Profiler\IMAGES to 
+~/public_html/phpdvdprofiler/images.
+
+Transfer copies of all jpg files in 
+C:\Program Files\InterVocative Software\DVD Profiler\IMAGES\THUMBNAILS to 
+~/public_html/phpdvdprofiler/images/thumbnails.
+
+Don't forget to CHMOD the image files so that the Apache user can read them.
+
+Here is some DVD Profiler trivia. You might notice that there is an IMAGES 
+directory and an IMAGES\THUMBNAILS directory for DVD Profiler.  And some 
+pictures are not in the THUMBNAILS directory.  The thumbnails are created 
+when you run a report that displays thumbnails.  If you have not run a recent 
+report that uses thumbnails and have entered in new DVDs, there will only be 
+pictures for the new DVDs in the IMAGES directory and not in the THUMBNAILS 
+directory.  You should run a report (I recommend the IVS Classic DVD Listing 
+report with Options set to "Standard (show all records, sort by title)") to 
+refresh all the pictures in THUMBNAILS and then copy the files 
+from C:\Program Files\InterVocative Software\DVD Profiler\IMAGES\THUMBNAILS 
+to your web server (~/public_html/phpdvdprofiler/images/thumbnails).  
+
+--------------------------------------------------------------------------------
+
+I set $dbuser to guest in siteconfig.php, so I did the following commands to 
+create a mysql database called phpdvdprofiler for the user guest.
+
+$ mysqladmin -u root -p create phpdvdprofiler
+$ mysql -u root -p phpdvdprofiler < schema.sql
+$ mysql -u root -p phpdvdprofiler
+mysql> grant select,insert,update,delete on phpdvdprofiler.* to 'guest@localhost';
+
+Note: After ugrading to mysql version 4.0.20, I had to change the above grant
+statement to NOT use quotes:
+
+mysql> grant select,insert,update,delete on phpdvdprofiler.* to guest@localhost;
+
+--------------------------------------------------------------------------------
+
+Next, run the webpage (adjust the url to match your setup):
+http://yoursite/phpdvdprofiler/index.php?action=update
+Alternatively, you can run the import from a command-line (for those who like
+to set up scripts to automagically do things):
+$ php index.php action=update
+
+================================================================================

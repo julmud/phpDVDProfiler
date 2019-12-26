@@ -1,0 +1,1037 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=iso-8859-1">
+<title><DP NAME="SORTTITLE"></title>
+<script type="text/javascript">
+//
+// This variable controls the way reviews are shown. If set to true, it
+// causes reviews to be shown as separate images per review type.
+// If set to false, it causes reviews to be shown as a chart, a la 
+// DVDProfiler default. This variable will be over-ridden by the
+// installation default if the skin is used in phpDVDProfiler.
+//
+var SeparateReviews=true;
+
+</script>
+<style type="text/css">
+body {	background-color: #ADA9A9; }
+
+a {	color: black;
+	text-decoration: none;
+}
+a:hover { color: white; }
+a.n {	color: white;
+	text-decoration: none;
+}
+a.n:hover {
+	color: red;
+	text-decoration: none;
+}
+
+.t {	font-family: Arial,Helvetica,sans-serif;
+	font-size: 10pt;
+	font-weight: Bold;
+	background-color: #0000A0;
+	color: white;
+	padding: 1px;
+}
+
+.l {	font-family: Arial,Helvetica,sans-serif;
+	font-size: 9pt;
+	background-color: #D9E1FF;
+	color: black;
+	vertical-align: top;
+	padding: 1px;
+	padding-left: 3px;
+}
+
+.o {	font-family: Arial,Helvetica,sans-serif;
+	font-size: 9pt;
+	background-color: #ADC0D3;
+	color: black;
+	vertical-align: top;
+	padding: 1px;
+	padding-left: 3px;
+}
+
+.d {	font-family: Arial,Helvetica,sans-serif;
+	font-size: 9pt;
+	background-color: #BDD9A7;
+	color: black;
+	vertical-align: top;
+	padding: 1px;
+}
+
+.a {	font-family: Arial,Helvetica,sans-serif;
+	font-size: 9pt;
+	font-weight: Bold;
+	background-color: #BDD9A7;
+	color: black;
+	vertical-align: top;
+	padding-left: 15px;
+}
+
+.f1 {	font-family: Arial,Helvetica,sans-serif;
+	font-size: 18pt;
+	background-color: #0000A0;
+	color: white;
+	text-align: center;
+}
+
+.f1sm {	font-family: Arial,Helvetica,sans-serif;
+	font-size: 10pt;
+	background-color: #0000A0;
+	color: white;
+	text-align: center;
+}
+
+.f2np {	font-family: Arial,Helvetica,sans-serif;
+	font-size: 9pt;
+	background-color: #D9E1FF;
+	color: black;
+}
+
+.f2 {	font-family: Arial,Helvetica,sans-serif;
+	font-size: 9pt;
+	background-color: #D9E1FF;
+	color: black;
+	vertical-align: top;
+	padding: 3px;
+	padding-left: 5px;
+}
+
+.f3 {	font-family: Arial,Helvetica,sans-serif;
+	font-size: 9pt;
+	font-weight: Bold;
+	background-color: #BDD9A7;
+	color: #0000A0;
+	vertical-align: top;
+	padding: 3px;
+	padding-left: 5px;
+}
+
+.f4 {	font-family: Arial,Helvetica,sans-serif;
+	font-size: 9pt;
+	font-weight: Bold;
+	background-color: #0000A0;
+	color: white;
+	padding: 3px;
+	padding-left: 5px;
+}
+
+.s {	font-family: Arial,Helvetica,sans-serif;
+	font-size: 7pt;
+	color: black;
+}
+
+.bgl {	background-color: #BDD9A7; }
+
+.bgd {	background-color: #ADA9A9;
+	height: 2;
+}
+
+.nav {	font-family: Arial,Helvetica,sans-serif;
+	font-size: 7pt;
+	background-color: #0000A0;
+	color: white;
+	text-align: right;
+	padding: 4px;
+}
+
+.line {	background-color: #ADA9A9;
+	height: 1;
+}
+
+.input { font-family: Arial,Helvetica,sans-serif;
+	font-size: 8pt;
+	color: black;
+}
+
+span { font-family: Verdana,Arial,Helvetica,sans-serif; }
+
+img.b {
+	border-style: solid;
+	border-color: #ADA9A9;
+	border-width: 2px;
+}
+</style>
+<SCRIPT language=javascript>
+// Thanks to Matthias Wolf, Germany AKA goodguy
+//   
+// Catch possible syntax error in HEADER_VARS. This *must* be a separate script block.
+// Note: Won't do any good if script debugging is enabled.
+var g_oErrHV = null;
+window.onerror = window_onerrorHV;
+function window_onerrorHV(szDesc, szUrl, nLine) {
+	g_oErrHV = new Error();
+	g_oErrHV.description = "Error at line " + nLine + " of '" + szUrl + "':\n" + szDesc;
+}
+</SCRIPT>
+<SCRIPT id=idHeaderVars language=javascript>
+<DP NAME="HEADER_VARS" Language="JavaScript" Comments="True" IncludeCast="False" IncludeCrew="False">
+</SCRIPT>
+<SCRIPT language=javascript>
+// Revert to default error handling.
+// Again, this *must* be separate from the block containing HEADER_VARS.
+window.onerror = null;
+</SCRIPT>
+</head>
+<body>
+<form style="display:none">
+<textarea id=imgloc>$DPIMAGES.</textarea>
+<textarea id=frontimage><DP NAME="IMAGE" FACE="FRONT"></textarea>
+<textarea id=backimage><DP NAME="IMAGE" FACE="BACK"></textarea>
+<textarea id=idsrc><DP NAME="UPC" FORMATTED="N"></textarea>
+<textarea id=regionsrc><DP NAME="REGIONS" NOREGION="0"></textarea>
+<textarea id=featuressrc><DP NAME="FEATURES" DIVIDER="<br>&nbsp;&bull;&nbsp;"></textarea>
+<textarea id=audiosrc><DP NAME="AUDIOTRACKS" DIVIDER="|"></textarea>
+<textarea id=subtitlessrc><DP NAME="SUBTITLES" DIVIDER="|"></textarea>
+<textarea id=titlesrc><DP NAME="TITLE" SHOWDESC="NO"></textarea>
+<textarea id=originaltitlesrc><DP NAME="ORIGINAL_TITLE" USETITLEIFBLANK="NO"></textarea>
+<textarea id=notessrc><DP NAME="NOTES"></textarea>
+<textarea id=tagssrc><DP NAME="TAGS" DIVIDER="BREAK"></textarea>
+<textarea id=discssrc><DP NAME="DISCS" SHOWDESCRIPTIONS="y" SHOWLOCATIONS="y" SHOWSLOTS="y" SHOWLABELS="y" SHOWSIDES="y" SHOWLAYERS="y" SHOWDISCIDS="y" SUBDIVIDER="&#01;" DIVIDER="|"></textarea>
+<textarea id=eventssrc><DP NAME="EVENTS" SHOWFIRSTNAME="N" SHOWLASTNAME="N" SHOWFULLNAME="Y" PREFIX="<tr><td class=f2>" SEPARATOR="</td><td class=f2 align=center>" DIVIDER="</td></tr><tr><td class=f2>" SUFFIX="</td></tr>"></textarea>
+<textarea id=eastereggssrc><DP NAME="EASTEREGGS"></textarea>
+<textarea id=creditssrc>
+<DP NAME="CREDITS_WRITING" SUFFIX="</td></tr>" PREFIX="<tr><td colspan=3><b>$lang[WRITING]</b></td></tr><tr><td style='padding-left:10px'>" SHOWROLES="YES" ROLEDIVIDER="</td><td>....</td><td>" DIVIDER="</td></tr><tr><td style='padding-left:10px'>">
+<DP NAME="CREDITS_PRODUCTION" SUFFIX="</td></tr>" PREFIX="<tr><td colspan=3><b>$lang[PRODUCTION]</b></td></tr><tr><td style='padding-left:10px'>" SHOWROLES="YES" ROLEDIVIDER="</td><td>....</td><td>" DIVIDER="</td></tr><tr><td style='padding-left:10px'>">
+<DP NAME="CREDITS_CINEMATOGRAPHY" SUFFIX="</td></tr>" PREFIX="<tr><td colspan=3><b>$lang[CINEMATOGRAPHY]</b></td></tr><tr><td style='padding-left:10px'>" SHOWROLES="YES" ROLEDIVIDER="</td><td>....</td><td>" DIVIDER="</td></tr><tr><td style='padding-left:10px'>">
+<DP NAME="CREDITS_FILMEDITING" SUFFIX="</td></tr>" PREFIX="<tr><td colspan=3><b>$lang[FILMEDITING]</b></td></tr><tr><td style='padding-left:10px'>" SHOWROLES="YES" ROLEDIVIDER="</td><td>....</td><td>" DIVIDER="</td></tr><tr><td style='padding-left:10px'>">
+<DP NAME="CREDITS_MUSIC" SUFFIX="</td></tr>" PREFIX="<tr><td colspan=3><b>$lang[MUSIC]</b></td></tr><tr><td style='padding-left:10px'>" SHOWROLES="YES" ROLEDIVIDER="</td><td>....</td><td>" DIVIDER="</td></tr><tr><td style='padding-left:10px'>">
+<DP NAME="CREDITS_SOUND" SUFFIX="</td></tr>" PREFIX="<tr><td colspan=3><b>$lang[SOUND]</b></td></tr><tr><td style='padding-left:10px'>" SHOWROLES="YES" ROLEDIVIDER="</td><td>....</td><td>" DIVIDER="</td></tr><tr><td style='padding-left:10px'>">
+<DP NAME="CREDITS_ART" SUFFIX="</td></tr>" PREFIX="<tr><td colspan=3><b>$lang[ART]</b></td></tr><tr><td style='padding-left:10px'>" SHOWROLES="YES" ROLEDIVIDER="</td><td>....</td><td>" DIVIDER="</td></tr><tr><td style='padding-left:10px'>">
+</textarea>
+<textarea id=settings><DP NAME="SETTINGS"></textarea>
+<textarea id=colltype><DP NAME="OWNERSHIP"></textarea>
+<textarea id=loanedto><DP NAME="LOANEDTO"></textarea>
+<textarea id=reviews><DP NAME="REVIEW" WIDTH="240"></textarea>
+<textarea id=overviewsrc><DP NAME="OVERVIEW"></textarea>
+</form>
+<script type="text/javascript">
+var IsPrivate=true;
+var VersionNum='';
+var reviewfilm=true;
+var reviewvideo=true;
+var reviewaudio=true;
+var reviewextras=true;
+var settings=document.getElementById('settings').value;
+	if (settings != '') {
+	var temp=settings.replace(/\r\n/g,'\n').split('\n');
+		for (var i in temp) {
+		var vars=temp[i].split('=');
+			vars[1] = vars[1].replace(/\n/g, '');
+			if (vars[0] == 'IsPrivate')
+				IsPrivate = vars[1]=='true';
+			else if (vars[0] == 'VersionNum')
+				VersionNum = vars[1];
+			else if (vars[0] == 'SeparateReviews')
+				SeparateReviews = vars[1]=='true';
+			else if (vars[0] == 'reviewfilm')
+				reviewfilm = vars[1]=='true';
+			else if (vars[0] == 'reviewvideo')
+				reviewvideo = vars[1]=='true';
+			else if (vars[0] == 'reviewaudio')
+				reviewaudio = vars[1]=='true';
+			else if (vars[0] == 'reviewextras')
+				reviewextras = vars[1]=='true';
+		}
+	}
+
+var imgLoc=document.getElementById('imgloc').value;
+var locale = new Array();
+locale['0']  = "$lang['LOCALE0']";
+locale['1']  = "$lang['LOCALE1']";
+locale['2']  = "$lang['LOCALE2']";
+locale['3']  = "$lang['LOCALE3']";
+locale['4']  = "$lang['LOCALE4']";
+locale['5']  = "$lang['LOCALE5']";
+locale['6']  = "$lang['LOCALE6']";
+locale['7']  = "$lang['LOCALE7']";
+locale['8']  = "$lang['LOCALE8']";
+locale['9']  = "$lang['LOCALE9']";
+locale['10'] = "$lang['LOCALE10']";
+locale['11'] = "$lang['LOCALE11']";
+locale['12'] = "$lang['LOCALE12']";
+locale['13'] = "$lang['LOCALE13']";
+locale['14'] = "$lang['LOCALE14']";
+locale['15'] = "$lang['LOCALE15']";
+locale['16'] = "$lang['LOCALE16']";
+locale['17'] = "$lang['LOCALE17']";
+locale['18'] = "$lang['LOCALE18']";
+locale['19'] = "$lang['LOCALE19']";
+locale['20'] = "$lang['LOCALE20']";
+locale['21'] = "$lang['LOCALE21']";
+locale['22'] = "$lang['LOCALE22']";
+locale['23'] = "$lang['LOCALE23']";
+locale['24'] = "$lang['LOCALE24']";
+locale['25'] = "$lang['LOCALE25']";
+locale['26'] = "$lang['LOCALE26']";
+locale['27'] = "$lang['LOCALE27']";
+locale['28'] = "$lang['LOCALE28']";
+locale['29'] = "$lang['LOCALE29']";
+locale['30'] = "$lang['LOCALE30']";
+
+var CountryToLocality = new Array();
+CountryToLocality['United States']		= 0;
+CountryToLocality['New Zealand']		= 1;
+CountryToLocality['Australia']			= 2;
+CountryToLocality['Canada']			= 3;
+CountryToLocality['United Kingdom']		= 4;
+CountryToLocality['Germany']			= 5;
+CountryToLocality['China']			= 6;
+CountryToLocality['Former Soviet Union']	= 7;
+CountryToLocality['France']			= 8;
+CountryToLocality['Netherlands']		= 9;
+CountryToLocality['Spain']			= 10;
+CountryToLocality['Sweden']			= 11;
+CountryToLocality['Norway']			= 12;
+CountryToLocality['Italy']			= 13;
+CountryToLocality['Denmark']			= 14;
+CountryToLocality['Portugal']			= 15;
+CountryToLocality['Finland']			= 16;
+CountryToLocality['Japan']			= 17;
+CountryToLocality['South Korea']		= 18;
+CountryToLocality['Canada (Quebec)']		= 19;
+CountryToLocality['South Africa']		= 20;
+CountryToLocality['Hong Kong']			= 21;
+CountryToLocality['Switzerland']		= 22;
+CountryToLocality['Brazil']			= 23;
+CountryToLocality['Israel']			= 24;
+CountryToLocality['Mexico']			= 25;
+CountryToLocality['Iceland']			= 26;
+CountryToLocality['Indonesia']			= 27;
+CountryToLocality['Taiwan']			= 28;
+CountryToLocality['Poland']			= 29;
+CountryToLocality['Belgium']			= 30;
+CountryToLocality['Turkey']			= 31;
+CountryToLocality['Argentina']			= 32;
+CountryToLocality['Slovakia']			= 33;
+CountryToLocality['Hungary']			= 34;
+CountryToLocality['Singapore']			= 35;
+CountryToLocality['Czech Republic']		= 36;
+CountryToLocality['Malaysia']			= 37;
+CountryToLocality['Thailand']			= 38;
+CountryToLocality['India']			= 39;
+CountryToLocality['Austria']			= 40;
+CountryToLocality['Greece']			= 41;
+CountryToLocality['Vietnam']			= 42;
+CountryToLocality['Philippines']		= 43;
+CountryToLocality['Ireland']			= 44;
+CountryToLocality['Estonia']			= 45;
+
+var alang = new Array();
+alang[''] =           '<img src="'+imgLoc+'ukn.gif"> '+"$lang['AUDIO']['']";
+alang['Chinese'] =    '<img src="'+imgLoc+'cn.gif"> '+"$lang['AUDIO']['CHINESE']";
+alang['Cantonese'] =  '<img src="'+imgLoc+'cn.gif"> '+"$lang['AUDIO']['CANTONESE']";
+alang['Czech'] =      '<img src="'+imgLoc+'cz.gif"> '+"$lang['AUDIO']['CZECH']";
+alang['Danish'] =     '<img src="'+imgLoc+'dk.gif"> '+"$lang['AUDIO']['DANISH']";
+alang['Dutch'] =      '<img src="'+imgLoc+'nl.gif"> '+"$lang['AUDIO']['DUTCH']";
+alang['English'] =    '<img src="'+imgLoc+'en.gif"> '+"$lang['AUDIO']['ENGLISH']";
+alang['Finnish'] =    '<img src="'+imgLoc+'fi.gif"> '+"$lang['AUDIO']['FINNISH']";
+alang['French'] =     '<img src="'+imgLoc+'fr.gif"> '+"$lang['AUDIO']['FRENCH']";
+alang['German'] =     '<img src="'+imgLoc+'de.gif"> '+"$lang['AUDIO']['GERMAN']";
+alang['Hindi'] =      '<img src="'+imgLoc+'in.gif"> '+"$lang['AUDIO']['HINDI']";
+alang['Italian'] =    '<img src="'+imgLoc+'it.gif"> '+"$lang['AUDIO']['ITALIAN']";
+alang['Japanese'] =   '<img src="'+imgLoc+'jp.gif"> '+"$lang['AUDIO']['JAPANESE']";
+alang['Korean'] =     '<img src="'+imgLoc+'kr.gif"> '+"$lang['AUDIO']['KOREAN']";
+alang['Mandarin'] =   '<img src="'+imgLoc+'cn.gif"> '+"$lang['AUDIO']['MANDARIN']";
+alang['Norwegian'] =  '<img src="'+imgLoc+'no.gif"> '+"$lang['AUDIO']['NORWEGIAN']";
+alang['Portuguese'] = '<img src="'+imgLoc+'pt.gif"> '+"$lang['AUDIO']['PORTUGUESE']";
+alang['Russian'] =    '<img src="'+imgLoc+'ru.gif"> '+"$lang['AUDIO']['RUSSIAN']";
+alang['Spanish'] =    '<img src="'+imgLoc+'es.gif"> '+"$lang['AUDIO']['SPANISH']";
+alang['Swedish'] =    '<img src="'+imgLoc+'se.gif"> '+"$lang['AUDIO']['SWEDISH']";
+alang['Commentary'] = '<img src="'+imgLoc+'com.gif"> '+"$lang['AUDIO']['COMMENTARY']";
+alang['Music Only'] = '<img src="'+imgLoc+'musik.gif"> '+"$lang['AUDIO']['MUSICONLY']";
+alang['Afrikaans'] =  '<img src="'+imgLoc+'za.gif"> '+"$lang['AUDIO']['AFRIKAANS']";
+alang['Arabic'] =     '<img src="'+imgLoc+'sa.gif"> '+"$lang['AUDIO']['ARABIC']";
+alang['Bulgarian'] =  '<img src="'+imgLoc+'hu.gif"> '+"$lang['AUDIO']['BULGARIAN']";
+alang['Croatian'] =   '<img src="'+imgLoc+'hr.gif"> '+"$lang['AUDIO']['CROATIAN']";
+alang['Farsi'] =      '<img src="'+imgLoc+'ir.gif"> '+"$lang['AUDIO']['FARSI']";
+alang['Greek'] =      '<img src="'+imgLoc+'gr.gif"> '+"$lang['AUDIO']['GREEK']";
+alang['Hebrew'] =     '<img src="'+imgLoc+'il.gif"> '+"$lang['AUDIO']['HEBREW']";
+alang['Hungarian'] =  '<img src="'+imgLoc+'hu.gif"> '+"$lang['AUDIO']['HUNGARIAN']";
+alang['Icelandic'] =  '<img src="'+imgLoc+'is.gif"> '+"$lang['AUDIO']['ICELANDIC']";
+alang['Polish'] =     '<img src="'+imgLoc+'pl.gif"> '+"$lang['AUDIO']['POLISH']";
+alang['Romanian'] =   '<img src="'+imgLoc+'ro.gif"> '+"$lang['AUDIO']['ROMANIAN']";
+alang['Slovakian'] =  '<img src="'+imgLoc+'sk.gif"> '+"$lang['AUDIO']['SLOVAKIAN']";
+alang['Slovenian'] =  '<img src="'+imgLoc+'si.gif"> '+"$lang['AUDIO']['SLOVENIAN']";
+alang['Tagalog'] =    '<img src="'+imgLoc+'ph.gif"> '+"$lang['AUDIO']['TAGALOG']";
+alang['Thai'] =       '<img src="'+imgLoc+'th.gif"> '+"$lang['AUDIO']['THAI']";
+alang['Tjeckish'] =   '<img src="'+imgLoc+'cz.gif"> '+"$lang['AUDIO']['TJECKISH']";
+alang['Turkish'] =    '<img src="'+imgLoc+'tr.gif"> '+"$lang['AUDIO']['TURKISH']";
+alang['Xhosa'] =      '<img src="'+imgLoc+'za.gif"> '+"$lang['AUDIO']['XHOSA']";
+alang['Zulu'] =       '<img src="'+imgLoc+'za.gif"> '+"$lang['AUDIO']['ZULU']";
+alang['Trivia'] =     '<img src="'+imgLoc+'com.gif"> '+"$lang['AUDIO']['TRIVIA']";
+alang['Other'] =      '<img src="'+imgLoc+'ukn.gif"> '+"$lang['AUDIO']['OTHER']";
+
+var acomp = new Array();
+acomp[''] =     "$lang['AUDIO']['']";
+acomp['DD'] =   '<acronym title="$lang[AUDIO][DD]" style="text-decoration:underline">DD</acronym>';
+acomp['DTS'] =  '<acronym title="$lang[AUDIO][DTS]" style="text-decoration:underline">DTS</acronym>';
+acomp['PCM'] =  '<acronym title="$lang[AUDIO][PCM]" style="text-decoration:underline">PCM</acronym>';
+acomp['MPEG'] = '<acronym title="$lang[AUDIO][MPEG]" style="text-decoration:underline">MPEG</acronym>';
+
+var achan = new Array();
+achan[''] =   "$lang['AUDIO']['']";
+achan['1'] =  '<img src="'+imgLoc+'dd10.gif" style="vertical-align:-30%; margin-bottom:2px" title="$lang[AUDIO][MONO]">';
+achan['2'] =  '<img src="'+imgLoc+'dd20.gif" style="vertical-align:-30%; margin-bottom:2px" title="$lang[AUDIO][STEREO]">';
+achan['4'] =  '<img src="'+imgLoc+'dd30.gif" style="vertical-align:-30%; margin-bottom:2px" title="$lang[AUDIO][PROLOGIC]">';
+achan['3'] =  '<img src="'+imgLoc+'dd40.gif" style="vertical-align:-30%; margin-bottom:2px" title="$lang[AUDIO][DOLBYSUR]">';
+achan['5'] =  '<img src="'+imgLoc+'dd30.gif" style="vertical-align:-30%; margin-bottom:2px" title="$lang[AUDIO][5.0SUR]">';
+achan['5.1'] = '<img src="'+imgLoc+'dd51.gif" style="vertical-align:-30%; margin-bottom:2px" title="$lang[AUDIO][5.1SUR]">';
+achan['6.1'] = '<img src="'+imgLoc+'dd61.gif" style="vertical-align:-30%; margin-bottom:2px" title="$lang[AUDIO][6.1SUR]">';
+achan['7.1'] = '<img src="'+imgLoc+'dd61.gif" style="vertical-align:-30%; margin-bottom:2px" title="$lang[AUDIO][7.1SUR]">';
+
+function DisplayDate(adate) {
+var Months = new Array("January","February","March","April","May","June","July","August","September","October","November","December");
+var arrdate = adate.split("/");
+	ret = Months[arrdate[1]-1] + " " + arrdate[0] + ", " + arrdate[2];
+// This should sorrespond to the DATEFORMAT value in the language file, but I'm not about to write a parser just for that.
+	return(ret);
+}
+
+function SwitchOutRows(theitems, obj) {
+var item=document.getElementById(theitems);
+	if (item.style.display == 'none') {
+		item.style.display = '';
+		obj.src = 'gfx/minus.gif';
+	}
+	else {
+		item.style.display = 'none';
+		obj.src = 'gfx/plus.gif';
+	}
+}
+function AddZero(number) {
+var i=number;
+	if (number < 10)
+		i = '0' + number;
+	return(i);
+}
+
+function BRandSpecialChars(str) {
+	return(str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<BR>'));
+}
+
+function HideMeIfBlank(TheData, prefix, suffix) {
+var tmp=document.getElementById(TheData).value;
+
+	if (tmp.replace(/[ \t\r\n]/g, '') != '')
+		document.write(prefix+tmp+suffix);
+}
+</script>
+<table width="100%">
+<tr>
+<td class=f1 rowspan=3><script type="text/javascript">
+if (DP_MediaTypeDVD) document.write('<img alt="" align=left src="$DPIMAGES.dvd.jpg">');
+if (DP_MediaTypeHDDVD) document.write('<img alt="" align=left src="$DPIMAGES.hddvd.jpg">');
+if (DP_MediaTypeBluRay) document.write('<img alt="" align=left src="$DPIMAGES.bluray.jpg">');
+</script><DP NAME="TITLE" SHOWDESC="NO"><DP NAME="LOCK_TITLE" IFNOTSET="" IFSET=" <img src='$DPIMAGES.locked.gif'>"><br><span class=f1sm><DP NAME="TITLE" SHOWTITLE="NO" SHOWDESC="YES"></span></td>
+
+<td class=nav width="70"><a class=n target="_self" href="#1">$lang[AUDIOFORMAT]</a><br>
+<a class=n target="_self" href="#2">$lang[EXTRAS]</a><br>
+<a class=n target="_self" href="#3">$lang[CAST]</a></td>
+</tr>
+</table>
+
+<table class=bgl width="100%">
+<tr>
+<td valign=top class=bgd width="100%" rowspan=2>
+<table width="100%" cellpadding=0>
+<tr>
+<td>
+<table width="100%" cellspacing=0>
+<script type="text/javascript">
+	HideMeIfBlank('originaltitlesrc',
+			"<tr><td class=f3>$lang[ORIGINALTITLE]:</td><td class=f2>",
+			'</td></tr>');
+	if (DP_CountryOfOrigin != '')
+		document.write("<tr><td class=f3>$lang[COUNTRYOFORIGIN]:</td><td class=f2>"
+			+'<img src="'+imgLoc+'loc'+CountryToLocality[DP_CountryOfOrigin]
+			+'.gif" style="vertical-align:-30%; margin-bottom:2px" title="'
+			+DP_CountryOfOrigin+'"> '+DP_CountryOfOrigin+'</td></tr>');
+</script>
+<tr>
+<td class=f3>$lang[PRODUCTIONYEAR]:</td>
+<td class=f2><DP NAME="PRODYEAR"><DP NAME="LOCK_PRODUCTIONYEAR" IFNOTSET="" IFSET=" <img src='$DPIMAGES.locked.gif'>"></td>
+</tr>
+
+<tr>
+<td class=f3>$lang[DIRECTORS]:</td>
+<td class=f2><DP NAME="DIRECTORS"></td>
+</tr>
+
+<tr>
+<td class=f3>$lang[RATING]:</td>
+<td class=f2><DP NAME="RATING"><DP NAME="LOCK_RATING" IFNOTSET="" IFSET=" <img src='$DPIMAGES.locked.gif'>"></td>
+</tr>
+
+<tr>
+<td colspan=2 class=bgd></td>
+</tr>
+
+<tr>
+<td class=f3>$lang[REGIONCODE]:</td>
+<script type="text/javascript">
+var tmp=document.getElementById('regionsrc').value.replace(/, /g, '');
+var regions=tmp.split('');
+var id=document.getElementById('idsrc').value;
+	tmp = id.split('.');
+	if (tmp.length == 1)
+		tmp[1] = '0';
+	document.write('<td class=f2><a target="_blank" href="http://www.invelos.com/Forums.aspx?task=contributionnotes'
+			+'&type=DVD&ProfileUPC='+id+'"><DP NAME="UPC"></a> <img src="'+imgLoc+'loc'+tmp[1]
+			+'.gif" style="vertical-align:-30%; margin-bottom:2px" title="'+locale[tmp[1]]+'"> ');
+	for (var i in regions) {
+		document.write('<img src="'+imgLoc+'region_'+regions[i]+'.gif" style="vertical-align:-30%; '
+				+'margin-bottom:2px" title="$lang[REGION] '+regions[i]+'">');
+	}
+</script>
+<DP NAME="LOCK_REGIONS" IFNOTSET="" IFSET=" <img src='$DPIMAGES.locked.gif'>"></td>
+</tr>
+
+<tr>
+<td class=f3>$lang[RUNNINGTIME]:</td>
+<td class=f2><DP NAME="RUNTIME"> (<DP NAME="RUNTIME" TOTALINMINS="YES"> $lang[MINUTES]) <DP NAME="LOCK_RUNNINGTIME" IFNOTSET="" IFSET=" <img src='$DPIMAGES.locked.gif'>"></td>
+</tr>
+
+<tr>
+<td class=f3>$lang[CASETYPE]:</td>
+<td class=f2><DP NAME="CASETYPE"><DP NAME="LOCK_CASETYPE" IFNOTSET="" IFSET=" <img src='$DPIMAGES.locked.gif'>"></td>
+</tr>
+
+<tr>
+<td class=f3>$lang[FORMAT]:</td>
+<td class=f2><DP NAME="VIDSTANDARD">, <DP NAME="VIDFORMATS" RATIOS="y"><DP NAME="LOCK_VIDEOFORMATS" IFNOTSET="" IFSET=" <img src='$DPIMAGES.locked.gif'>"></td>
+</tr>
+
+<tr>
+<td class=f3>$lang[MEDIA]:</td>
+<td class=f2><DP NAME="SIDES">, <DP NAME="LAYERS"></td>
+</tr>
+
+<tr>
+<td class=f3>$lang[RELEASED]:</td>
+<td class=f2><script type="text/javascript"> var reldate="<DP NAME="RELDATE">";document.write(DisplayDate(reldate));</script><DP NAME="LOCK_RELEASEDATE" IFNOTSET="" IFSET=" <img src='$DPIMAGES.locked.gif'>"></td>
+</tr>
+
+<tr>
+<td class=f3>$lang[COLLECTIONTYPE]:</td>
+<textarea id=collnum style="display:none"><DP NAME="COLLNUM" SHOWWISHLISTPRIORITY="YES"></textarea>
+<script type="text/javascript">
+var colltype=document.getElementById('colltype').value;
+var coln=document.getElementById('collnum').value;
+	if (coln.length != 0) {
+	var tmp=parseInt(coln);
+		if (!isNaN(tmp))
+			coln = ' (#'+coln+')';
+		else
+			coln = ' ('+coln+')';
+	}
+	document.write('<td class=f2>'+colltype+coln+'</td>');
+</script>
+</tr>
+
+<script type="text/javascript">
+var discdata=document.getElementById('discssrc').value;
+var TheDiscs = new Array();
+var locval='', locname='';
+var loanedto=document.getElementById('loanedto').value;
+
+	if (discdata != '') {
+	var adisc, hdr1, hdr2;
+		adisc = discdata.split('|');
+		for (var i in adisc) {
+// 0 - Description
+// 1 - Location
+// 2 - Slot
+// 3 - "IdA" or "IdA, IdB" or ", IdB"
+// 4 - "LabelA" or "LabelA, LabelA" or ", LabelA"
+// 5 - Flipper or Single-Sided or Double-Sided
+// 6 - Single-Layered or Double-Layered
+
+		var anentry=adisc[i].split(String.fromCharCode(1));
+		var discid=anentry[3].split(', ');
+		var labelid=anentry[4].split(', ');
+		var ds='', dl='', fl='';
+			if (discid.length == 1) discid[1] = '';
+			if (labelid.length == 1) labelid[1] = '';
+			if (discid[0] != '')
+				discid[0] = '<img src="'+imgLoc+'discid.gif" title="$lang[SIDEAID] = '+labelid[0]+' ('+discid[0]+')">';
+			if (discid[1] != '')
+				discid[1] = '<img src="'+imgLoc+'discid.gif" title="$lang[SIDEBID] = '+labelid[1]+' ('+discid[1]+')">';
+			if (anentry[5] == '$lang[DUALSIDED]')
+				ds = '<img src="'+imgLoc+'check.gif" title="$lang[DUALSIDED]">';
+			if (anentry[6] == '$lang[DUALLAYERED]')
+				dl = '<img src="'+imgLoc+'check.gif" title="$lang[DUALLAYERED]">';
+			if (anentry[5] == '$lang[FLIPPER]')
+				fl = '<img src="'+imgLoc+'check.gif" title="$lang[FLIPPER]">';
+
+			temp = parseInt(i)+1;
+			TheDiscs[i] = new Array();
+			TheDiscs[i]['discno'] = temp;
+			TheDiscs[i]['description'] = anentry[0];
+			TheDiscs[i]['discidsidea'] = discid[0];
+			TheDiscs[i]['discidsideb'] = discid[1];
+			TheDiscs[i]['doublesided'] = ds;
+			TheDiscs[i]['duallayered'] = dl;
+			TheDiscs[i]['flipper'] = fl;
+			TheDiscs[i]['location'] = anentry[1];
+			TheDiscs[i]['slot'] = anentry[2]
+			if (i == 0 && anentry[1] != '')
+				locval = anentry[1]+', '+anentry[2];
+		}
+	}
+
+	if (IsPrivate) {
+		locname = "$lang[LOCATION]";
+		if (loanedto == '')
+			locval = '<b>'+locval+'</b>';
+		else
+			locval = '<b>$lang[LOANEDTO] '+loanedto+' - '+locval+'</b>';
+	}
+	else {
+		locname = "$lang[STATUS]";
+		if (loanedto != '')
+			locval = "$lang[LOANEDOUT]";
+		else
+			locval = "$lang[NOTLOANEDOUT]";
+	}
+	if (colltype != '$lang[OWNED]') { // Check for different names for collection types
+		if (colltype == '$lang[ORDERED]' || colltype == 'Ordered')
+			locval = "$lang[ORDERED]";
+		else if (colltype == '$lang[WISHLIST]' || colltype == 'Wish list')
+			locval = "$lang[WISHLIST]";
+	}
+	document.write('<tr><td class=f3>'+locname+':</td><td class=f2>'+locval+'</td></tr>');
+
+var ReviewNames=new Array();
+	ReviewNames['#0080FF'] = 'film';
+	ReviewNames['#00FF80'] = 'video';
+	ReviewNames['#FF8080'] = 'audio';
+	ReviewNames['#FFFF80'] = 'extras';
+var counts=new Array();
+	counts['film'] = 0;
+	counts['video'] = 0;
+	counts['audio'] = 0;
+	counts['extras'] = 0;
+var TheReview=document.getElementById('reviews').value;
+var t=TheReview.split('<');
+var divisor=1, numreviews=4;
+
+	for (var i in t) {
+		if (t[i].substr(0,3) == 'TD ') {
+			a = t[i].split(' ');
+			if (a.length == 3) {
+				z = a[1].split('='); width=z[1];
+				z = a[2].split('"'); color=z[1];
+				width++;
+				if (divisor == 1) {
+					divisor = width/2;
+					numreviews = (2*24)/width;
+				}
+				counts[ReviewNames[color]] += width/divisor;
+			}
+		}
+	}
+</script>
+<tr>
+<td colspan=2 class=bgd></td>
+</tr>
+
+<tr>
+<td class=f3>$lang[PURCHASEDATE]:</td>
+<td class=f2><script type="text/javascript"> var purdate="<DP NAME="PURCHDATE">"; document.write(DisplayDate(purdate));</script></td>
+</tr>
+
+<tr>
+<td class=f3>$lang[PURCHASEPRICE]:</td>
+<td class=f2><DP NAME="PURCHPRICE"></td>
+</tr>
+
+<tr>
+<td class=f3>$lang[SRP]:</td>
+<td class=f2><DP NAME="SRP"><DP NAME="LOCK_SRP" IFNOTSET="" IFSET=" <img src='$DPIMAGES.locked.gif'>"></td>
+</tr>
+
+<tr>
+<td class=f3>$lang[PURCHASEPLACE]:</td>
+<td class=f2><DP NAME="PURCHPLACE"></td>
+</tr>
+
+<script type="text/javascript">
+	if (SeparateReviews) {
+		if (reviewfilm)
+			document.write('<tr><td class=f3>$lang[REVIEWFILM]:</td>'
+				+'<td class=f2><img src="'+imgLoc+AddZero(counts['film'])
+				+'.gif" alt="'+counts['film']+' / 10">'
+				+'</td></tr>');
+		if (reviewvideo)
+			document.write('<tr><td class=f3>$lang[REVIEWVIDEO]:</td>'
+				+'<td class=f2><img src="'+imgLoc+AddZero(counts['video'])
+				+'.gif" alt="'+counts['video']+' / 10">'
+				+'</td></tr>');
+		if (reviewaudio)
+			document.write('<tr><td class=f3>$lang[REVIEWAUDIO]:</td>'
+				+'<td class=f2><img src="'+imgLoc+AddZero(counts['audio'])
+				+'.gif" alt="'+counts['audio']+' / 10">'
+				+'</td></tr>');
+		if (reviewextras)
+			document.write('<tr><td class=f3>$lang[REVIEWEXTRA]:</td>'
+				+'<td class=f2><img src="'+imgLoc+AddZero(counts['extras'])
+				+'.gif" alt="'+counts['extras']+' / 10">'
+				+'</td></tr>');
+	}
+	else {
+	var str, temp;
+		str = '<td class=f2><div title="';
+		if (reviewfilm) {
+			temp = ''+counts['film']/2;
+			if (temp == '0') temp = 'N/R';
+			else if (temp.length == 1) temp += '.0';
+			str += "$lang[REVIEWNAMES][F]:"+temp+' ';
+		}
+		if (reviewvideo) {
+			temp = ''+counts['video']/2;
+			if (temp == '0') temp = 'N/R';
+			else if (temp.length == 1) temp += '.0';
+			str += "$lang[REVIEWNAMES][V]:"+temp+' ';
+		}
+		if (reviewaudio) {
+			temp = ''+counts['audio']/2;
+			if (temp == '0') temp = 'N/R';
+			else if (temp.length == 1) temp += '.0';
+			str += "$lang[REVIEWNAMES][A]:"+temp+' ';
+		}
+		if (reviewextras) {
+			temp = ''+counts['extras']/2;
+			if (temp == '0') temp = 'N/R';
+			else if (temp.length == 1) temp += '.0';
+			str += "$lang[REVIEWNAMES][E]:"+temp;
+		}
+
+		document.write('<tr><td class=f3>$lang[REVIEWS]:</td>'
+			+str+'">'
+			+TheReview+'</div></td></tr>');
+	}
+</script>
+
+<tr>
+<td colspan=2 class=bgd></td>
+</tr>
+
+<tr>
+<td colspan=2 class=f4><img src="gfx/minus.gif" style="vertical-align:middle" onClick="SwitchOutRows('overviewloc', this)">&nbsp;$lang[OVERVIEW]<DP NAME="LOCK_OVERVIEW" IFNOTSET="" IFSET=" <img src='$DPIMAGES.locked.gif'>"></td>
+</tr>
+<tr>
+<td id=overviewloc colspan=2 class=f2>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<script type="text/javascript">
+var zz, tmp=document.getElementById('notessrc');
+var re1=/\s*<\s*IMDB\s+number\s*=\s*([0-9]+)\s*\/?>\s*/i;
+var re2=/\s*<\s*IMDB\s*>(.*)<\/\s*IMDB\s*>\s*/i;
+
+	IMDBNum = '';
+	if ((zz=tmp.value.match(re1)) != null) {
+		IMDBNum = 'tt' + zz[1];
+		tmp.value = tmp.value.replace(re1, '');
+	}
+	if ((zz=tmp.value.match(re2)) != null) {
+		IMDBNum = 'tt' + zz[1];
+		tmp.value = tmp.value.replace(re2, '');
+	}
+
+	tmp.value = tmp.value.replace(/\.\.[\\\/]epg[\\\/]/gi, '../../epg/');
+	if (tmp.value.length > 0) {
+		bgs = bdy = bgos = bgc = bgi = bgt = '';
+		if (tmp.value.match(/<body [^>]*>/i)) {
+			obdy = bdy = tmp.value.replace(/[\s\S]*<body ([^>]*)>[\s\S]*/i, "$1");
+			bdy = bdy.replace(/'/g, '"');
+			if (bdy.match(/bgcolor=/i)) {bgc = bdy.replace(/[\s\S]*bgcolor="([^"]*)"[\s\S]*/i, "background-color:$1;"); bdy = bdy.replace(/bgcolor="([^"]*)"/i, ""); }
+			if (bdy.match(/text=/i)) {bgt = bdy.replace(/[\s\S]*text="([^"]*)"[\s\S]*/i, "color:$1;"); bdy = bdy.replace(/text="([^"]*)"/i, ""); }
+			if (bdy.match(/background=/i)) {bgi = bdy.replace(/[\s\S]*background="([^"]*)"[\s\S]*/i, "background-image:url($1);"); bdy = bdy.replace(/background="([^"]*)"/i, ""); }
+			if (bdy.match(/style=/i)) {bgos = bdy.replace(/[\s\S]*style="([^"]*)"[\s\S]*/i, "$1;"); bdy = bdy.replace(/style="([^"]*)"/i, ""); }
+			bgs = 'style="'+bgos+" "+bgc+" "+bgt+" "+bgi+'"';
+			tmp.value = tmp.value.replace(/<body ([^>]*)>/i, "<body "+bdy+">");
+//			alert("bdy=>"+obdy+"<\nbgc=>"+bgc+"<\nbgt=>"+bgt+"<\nbgi=>"+bgi+"<\nbgs=>"+bgs+"<\nbgos=>"+bgos+"<");
+//			alert("notes=>"+tmp.value+"<");
+		}
+		tmp.value = "<table width='100%'><td "+bgs+">"+tmp.value+"</td></table>";
+	}
+	
+	HideMeIfBlank('notessrc',
+			"<tr><td class=f4>$lang[NOTES]</td></tr><tr><td class=f2np>",
+			'</td></tr>');
+//	document.getElementById('overviewloc').innerHTML = BRandSpecialChars(document.getElementById('overviewsrc').value.replace(/<BR>\r?\n/g,'\n'));
+	document.getElementById('overviewloc').innerHTML = document.getElementById('overviewsrc').value.replace(/<BR>\r?\n/g,'<BR>').replace(/&/g,'&amp');
+</script>
+</table>
+</td>
+<td class=bgd valign=top>
+<table cellpadding=0 cellspacing=0>
+<tr>
+<td class=f4 valign=top>
+$lang[COVERS]<DP NAME="LOCK_COVERS" IFNOTSET="" IFSET=" <img src='$DPIMAGES.locked.gif'>">
+</td>
+</tr>
+<tr>
+<td class=bgd valign=top>
+<script type="text/javascript">
+var fimage=document.getElementById('frontimage').value;
+var bimage=document.getElementById('backimage').value;
+	if (fimage == '')
+		fimage = '<IMG src="'+imgLoc+'unknown.jpg" WIDTH=180>';
+	if (bimage == '')
+		bimage = '<IMG src="'+imgLoc+'unknown.jpg" WIDTH=180>';
+	document.write(fimage+'\n'+bimage+'\n');
+</script>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr>
+<td class=bgd valign=top style="vertical-align:bottom">
+<table width="100%">
+<tr>
+<td class=f4>$lang[MISCLINKS]</td>
+</tr>
+
+<tr>
+<td class=f2>
+&nbsp;&bull;&nbsp;<a href="javascript:;" onClick="window.open('http://www.intervocative.com/dvdpro/userinfo/ProfileContributors.aspx?UPC=<DP NAME="UPC" FORMATTED="NO">','Contributors','toolbar=no,width=702,height=499,resizable=yes,scrollbars=yes,status=yes'); return false;">$lang[CONTRIBUTORS]</a><br>
+<script type="text/javascript">
+	if (IMDBNum == '')
+		document.write('&nbsp;&bull;&nbsp;<a target="_blank" href="$lang[IMDBURL]/Title?'+document.getElementById('titlesrc').value+'">$lang[IMDBNAME]</a>');
+	else
+		document.write('&nbsp;&bull;&nbsp;<a target="_blank" href="$lang[IMDBSITE]/title/'+IMDBNum+'/">$lang[IMDBNAME]</a>');
+</script>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr>
+<td class=bgd colspan=2>
+<table width="100%" cellpadding=0 cellspacing=0>
+<tr>
+<td width="50%" valign=top>
+<table width="100%">
+<tr>
+<td class=f4>$lang[GENRES]<DP NAME="LOCK_GENRES" IFNOTSET="" IFSET=" <img src='$DPIMAGES.locked.gif'>"></td>
+</tr>
+
+<tr>
+<td class=f2><DP NAME="GENRES" DIVIDER="BREAK"></td>
+</tr>
+</table>
+</td>
+<td width="50%" valign=top>
+<table width="100%">
+<tr>
+<td class=f4>$lang[STUDIOS]<DP NAME="LOCK_STUDIOS" IFNOTSET="" IFSET=" <img src='$DPIMAGES.locked.gif'>"></td>
+</tr>
+
+<tr>
+<td class=f2><DP NAME="STUDIOS" DIVIDER="BREAK"></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr>
+<td class=bgd colspan=2><a name=1></a>
+<table width="100%" cellpadding=0 cellspacing=0>
+<tr>
+<td width="50%" valign=top>
+<table width="100%">
+<tr>
+<td class=f4>$lang[AUDIOFORMAT]<DP NAME="LOCK_AUDIO" IFNOTSET="" IFSET=" <img src='$DPIMAGES.locked.gif'>"></td>
+</tr>
+
+<tr>
+<td class=f2>
+<script type="text/javascript">
+var audio=document.getElementById("audiosrc").value;
+var tmp1=audio.split("|");
+var total='';
+
+	for (var i in tmp1) {
+	var xx=tmp1[i].split(":");
+		if (xx.length >= 1) {
+//		var tt=xx[1].split(' ');
+		var lang=alang[xx[0]];
+//		var comp=acomp[xx[1]];
+		var comp=xx[1];
+//		var chan=achan[tt[2]];
+		var chan='';
+
+			total += '<tr><td class=f2np style="padding-left:5px">'+lang+'</td>'
+				+'<td class=f2np>'+comp+'</td>'
+				+'<td class=f2np>'+chan+'</td></tr>';
+		}
+	}
+	if (total != '')
+		document.write('<table width="100%" cellpadding=0 cellspacing=0>'+total+'</table>');
+	else
+		document.write('&nbsp;');
+</script>
+</td>
+</tr>
+</table>
+</td>
+<td width="50%" valign=top>
+<table width="100%">
+<tr>
+<td class=f4>$lang[SUBTITLES]<DP NAME="LOCK_SUBTITLES" IFNOTSET="" IFSET=" <img src='$DPIMAGES.locked.gif'>"></td>
+</tr>
+
+<tr>
+<td class=f2>
+<script type="text/javascript">
+var tmp1=document.getElementById('subtitlessrc').value;
+var tmp=tmp1.split("|");
+var total='';
+
+	if (tmp1 != '') {
+		for (var i in tmp) {
+			if (i != 0)
+				total += '<br>';
+			total += alang[tmp[i]];
+		}
+	}
+	if (total == '') total = '&nbsp;';
+	document.write(total);
+</script>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<script type="text/javascript">
+	HideMeIfBlank('tagssrc',
+			 '<tr><td class=bgd colspan=2><a name=2></a><table width="100%"><tr>'
+			+"<td class=f4>$lang[TAGS]</td></tr><tr><td class=f2>",
+			 '</td></tr></table></td></tr>');
+</script>
+<tr>
+<td class=bgd colspan=2><a name=2></a>
+<table width="100%">
+<script type="text/javascript">
+	if (TheDiscs.length > 0) {
+	var hdr1, hdr2;
+		hdr1 =   '<tr><td class=f4>$lang[DISCS]'
+			+'<DP NAME="LOCK_DISCINFO" IFNOTSET="" IFSET=" <img src=\''+imgLoc+'locked.gif\'>"></td></tr>'
+			+'<tr><td class=bgd colspan=2><a name=2></a><table width="100%"><tr><td class=f4>$lang[DISCNO]</td>'
+			+'<td class=f4>$lang[DESCRIPTION]</td><td class=f4 align=center title="$lang[SIDEAID]">'
+			+'$lang[SIDEA]</td><td class=f4 align=center title="$lang[SIDEBID]">$lang[SIDEB]</td>'
+			+'<td class=f4 align=center title="$lang[DUALSIDED]">$lang[DS]</td>'
+			+'<td class=f4 align=center title="$lang[DUALLAYERED]">$lang[DL]</td>'
+			+'<td class=f4 align=center title="$lang[FLIPPER]">$lang[F]</td>';
+		hdr2 =   '<td class=f4>$lang[LOCATION]</td><td class=f4>$lang[SLOT]</td>';
+
+		for (var i in TheDiscs) {
+			if (i == 0) {
+				document.write(hdr1);
+				if (TheDiscs[0]['location'] != '')
+					document.write(hdr2);
+				document.write('</tr>');
+			}
+			document.write(
+				 '<tr><td class=f2np>'+TheDiscs[i]['discno']+'</td>'
+				+'<td class=f2np>'+TheDiscs[i]['description']+'</td>'
+				+'<td class=f2np align=center>'+TheDiscs[i]['discidsidea']+'</td>'
+				+'<td class=f2np align=center>'+TheDiscs[i]['discidsideb']+'</td>'
+				+'<td class=f2np align=center>'+TheDiscs[i]['doublesided']+'</td>'
+				+'<td class=f2np align=center>'+TheDiscs[i]['duallayered']+'</td>'
+				+'<td class=f2np align=center>'+TheDiscs[i]['flipper']+'</td>');
+			if (TheDiscs[i]['location'] != '')
+				document.write('<td class=f2np>'+TheDiscs[i]['location']+'</td>'
+						+'<td class=f2np>'+TheDiscs[i]['slot']+'</td>');
+			document.write('</tr>');
+		}
+	}
+</script>
+</table>
+</tr>
+<script type="text/javascript">
+	HideMeIfBlank('eventssrc',
+			 "<tr><td class=bgd colspan=2><a name=2></a><table width=\"100%\"><tr><td class=f4>$lang[EVENTS]</td></tr>"
+			+"<tr><td class=bgd colspan=2><a name=2></a><table width=\"100%\"><tr><td class=f4>$lang[USERNAME]</td>"
+			+"<td class=f4 align=center>$lang[PHONE]</td><td class=f4 align=center>$lang[EMAIL]</td>"
+			+"<td class=f4 align=center>$lang[EVENT]</td><td class=f4 align=center>$lang[TIMESTAMP]</td></tr>",
+			 '</table></td></tr></table></td></tr>');
+</script>
+<tr>
+<td class=bgd colspan=2><a name=2></a>
+<table width="100%">
+<tr>
+<td class=f4>$lang[EXTRAS]<DP NAME="LOCK_FEATURES" IFNOTSET="" IFSET=" <img src='$DPIMAGES.locked.gif'>"></td>
+</tr>
+<tr>
+<td class=f2>
+<script type="text/javascript">
+var tmp=document.getElementById('featuressrc').value;
+
+	if (tmp != '')
+		document.write('&nbsp;&bull;&nbsp;'+tmp);
+	else
+		document.write('&nbsp;');
+</script>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<script type="text/javascript">
+var tmp=document.getElementById('eastereggssrc').value;
+	if (tmp.replace(/[ \t\r\n]/g, '') != '') {
+		document.write('<tr><td class=bgd colspan=2><table width="100%"><tr><td class=f4>$lang[EASTEREGGS]'
+			+'<DP NAME="LOCK_EASTEREGGS" IFNOTSET="" IFSET=" <img src=\''+imgLoc+'locked.gif\'>">'
+			+'</td></tr><tr><td id=eastereggloc class=f2>'
+			+'</td></tr></table></td></tr>');
+		document.getElementById('eastereggloc').innerHTML = BRandSpecialChars(tmp);
+	}
+</script>
+
+<script type="text/javascript">
+	HideMeIfBlank('creditssrc',
+			 "<tr><td class=bgd colspan=2><table width=\"100%\"><tr><td class=f4>$lang[CREDITHEAD]"
+			+'<DP NAME="LOCK_CREW" IFNOTSET="" IFSET=" <img src=\''+imgLoc+'locked.gif\'>"></td></tr>'
+			+'<tr><td class=f2><table cellpadding=1 cellspacing=1 border=0 class=f2>',
+			 '</table></td></tr></table></td></tr>');
+</script>
+
+<tr>
+<td class=bgd colspan=2><a name=3></a>
+<table width="100%">
+<tr>
+<td class=f4>$lang[CAST]<DP NAME="LOCK_CAST" IFNOTSET="" IFSET=" <img src='$DPIMAGES.locked.gif'>"></td>
+</tr>
+
+<tr>
+<td class=f2>
+<table cellpadding=1 cellspacing=1 border=0 class=f2>
+<tr><td><DP NAME="ACTORS" SHOWROLES="yes" ROLEDIVIDER="</td><td>....</td><td>" DIVIDER="</td></tr><tr><td>">
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>

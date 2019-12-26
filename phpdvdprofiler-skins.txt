@@ -1,0 +1,41 @@
+Skins
+Instructions for creating a phpDVDProfiler skin from a DVDProfiler skin.
+
+Navigate to the DVD Profiler's TEMP folder. This folder is named TEMP and is
+located in the main DVDProfiler folder 
+(e.g. C:\Program Files\InterVocative Software\DVD Profiler\TEMP).
+
+
+In this TEMP folder you will find two directories (DESIGN and PREVIEWS) and
+possibly lots of other files. Delete all of the other files, leaving DESIGN
+and PREVIEWS alone.
+
+Start DVDProfiler
+
+
+Select "Skins..." from the View menu.
+
+
+Highlight the skin you want to use, and click "Edit Skin".
+
+
+Pick "Export to HTML File" from the File menu. In the file chooser, save the
+file into the TEMP directory as above.
+
+
+Next go to the Images tab, and click on each image in turn to preview it.
+This will cause each of the image files to be extracted into the TEMP
+directory.
+
+
+The TEMP directory now contains all of the files required for a
+phpDVDProfiler skin. I would recommend copying them to another, empty
+directory for safe keeping until you can put them into your phpDVDProfiler
+installation.
+
+
+phpDVDProfiler looks for skins in a subdirectory of the main phpDVDProfiler
+directory named "skins". Inside the skins directory should be
+subdirectories: one for each skin (the name can be anything you like).
+phpDVDProfiler searches each subdirectory of the skins directory for files
+ending in ".htm" or ".html" and considers these to be skin files.
