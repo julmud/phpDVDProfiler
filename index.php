@@ -2359,28 +2359,33 @@ if ($action == 'show') {
 			. (($dvd['formatduallayered']==1)      ? ", $lang[DUALLAYERED]": ", $lang[SINGLELAYERED]");
 		$dvd['media'] = preg_replace('/^, /', '', $dvd['media']);
 
-		$dvd['p_extras'] = (($dvd['featuresceneaccess']==1)	? "<br>$bullet$lang[SCENEACCESS]": '')
-			. (($dvd['featuretrailer']==1)			? "<br>$bullet$lang[TRAILER]": '')
-			. (($dvd['featurebonustrailers']==1)		? "<br>$bullet$lang[BONUSTRAILERS]": '')
-			. (($dvd['featuremakingof']==1)			? "<br>$bullet$lang[MAKINGOF]": '')
-			. (($dvd['featurecommentary']==1)		? "<br>$bullet$lang[COMMENTARY]": '')
-			. (($dvd['featuredeletedscenes']==1)		? "<br>$bullet$lang[DELETEDSCENES]": '')
-			. (($dvd['featureinterviews']==1)		? "<br>$bullet$lang[INTERVIEWS]": '')
-			. (($dvd['featurebdlive']==1)			? "<br>$bullet$lang[BDLIVE]": '')
-			. (($dvd['featurepip']==1)			? "<br>$bullet$lang[PIP]": '')
-			. (($dvd['featuredigitalcopy']==1)		? "<br>$bullet$lang[DIGITALCOPY]": '')
-			. (($dvd['featureouttakes']==1)			? "<br>$bullet$lang[OUTTAKES]": '')
-			. (($dvd['featurestoryboardcomparisons']==1)	? "<br>$bullet$lang[STORYBOARDCOMPARISONS]": '')
-			. (($dvd['featurephotogallery']==1)		? "<br>$bullet$lang[PHOTOGALLERY]": '')
-			. (($dvd['featureproductionnotes']==1)		? "<br>$bullet$lang[PRODUCTIONNOTES]": '')
-			. (($dvd['featuredvdromcontent']==1)		? "<br>$bullet$lang[DVDROMCONTENT]": '')
-			. (($dvd['featuregame']==1)			? "<br>$bullet$lang[GAME]": '')
-			. (($dvd['featuremultiangle']==1)		? "<br>$bullet$lang[MULTIANGLE]": '')
-			. (($dvd['featuremusicvideos']==1)		? "<br>$bullet$lang[MUSICVIDEOS]": '')
-			. (($dvd['featurethxcertified']==1)		? "<br>$bullet$lang[THXCERTIFIED]": '')
-			. (($dvd['featureclosedcaptioned']==1)		? "<br>$bullet$lang[CLOSEDCAPTIONED]": '')
-			. ((strlen($dvd['featureother'])>0)		? "<br>$bullet$dvd[featureother]": '');
-		$dvd['extras'] = explode("<br>$bullet", $dvd['p_extras']);
+		$dvd['p_extras'] = (($dvd['featuresceneaccess']==1)	? ", $lang[SCENEACCESS]": '')
+			. ((isset($dvd['featureplayall']) && $dvd['featureplayall']==1)		? ", $lang[PLAYALL]": '')
+			. (($dvd['featuretrailer']==1)			? ", $lang[TRAILER]": '')
+			. (($dvd['featurebonustrailers']==1)		? ", $lang[BONUSTRAILERS]": '')
+			. (($dvd['featuremakingof']==1)			? ", $lang[MAKINGOF]": '')
+			. (($dvd['featurecommentary']==1)		? ", $lang[COMMENTARY]": '')
+			. (($dvd['featuredeletedscenes']==1)		? ", $lang[DELETEDSCENES]": '')
+			. (($dvd['featureinterviews']==1)		? ", $lang[INTERVIEWS]": '')			
+			. (($dvd['featureouttakes']==1)			? ", $lang[OUTTAKES]": '')
+			. (($dvd['featurestoryboardcomparisons']==1)	? ", $lang[STORYBOARDCOMPARISONS]": '')			
+			. (($dvd['featurephotogallery']==1)		? ", $lang[PHOTOGALLERY]": '')
+			. (($dvd['featureproductionnotes']==1)		? ", $lang[PRODUCTIONNOTES]": '')
+			. (($dvd['featuredvdromcontent']==1)		? ", $lang[DVDROMCONTENT]": '')			
+			. (($dvd['featuregame']==1)			? ", $lang[GAME]": '')			
+			. (($dvd['featuremultiangle']==1)		? ", $lang[MULTIANGLE]": '')
+			. (($dvd['featuremusicvideos']==1)		? ", $lang[MUSICVIDEOS]": '')
+			. (($dvd['featurethxcertified']==1)		? ", $lang[THXCERTIFIED]": '')
+			. (($dvd['featureclosedcaptioned']==1)		? ", $lang[CLOSEDCAPTIONED]": '')
+			. (($dvd['featuredigitalcopy']==1)		? ", $lang[DIGITALCOPY]": '')			
+			. (($dvd['featurepip']==1)		? ", $lang[PIP]": '')	
+			. (($dvd['featurebdlive']==1)			? ", $lang[BDLIVE]": '')			
+			. ((isset($dvd['featuredbox']) && $dvd['featuredbox']==1)			? ", $lang[DBOX]": '')
+			. ((isset($dvd['featurecinechat']) && $dvd['featurecinechat']==1)			? ", $lang[CINECHAT]": '')			
+			. ((isset($dvd['featuremovieiq']) && $dvd['featuremovieiq']==1)		? ", $lang[MOVIEIQ]": '')
+			. ((strlen($dvd['featureother'])>0)		? ", $dvd[featureother]": '');
+
+			$dvd['extras'] = explode("<br>$bullet", $dvd['p_extras']);
 		unset($dvd['extras'][0]);	// first element is always blank
 		if (strlen($dvd['p_extras']) > 0)
 			$dvd['p_extras'] = substr($dvd['p_extras'], 4);

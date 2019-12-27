@@ -1349,6 +1349,7 @@ global $DVD_COMMON_CREDITS_TABLE, $DVD_CREDITS_TABLE, $DVD_BOXSET_TABLE, $DVD_ST
 global $DVD_SUPPLIER_TABLE, $DVD_GENRES_TABLE, $DVD_EXCLUSIONS_TABLE, $DVD_LINKS_TABLE, $AddWatchedEventWhenReturned;
 global $db, $img_episode, $episode_replacements, $pcre_episode_replacements, $delete, $all_in_one_go, $CollectionsNotInOwned;
 global $common_actor, $common_actor_stats, $common_credit, $common_credit_stats, $max_packet, $db_fast_update, $lang;
+global $db_schema_version;
 
 	$TheProfileID = $dvd_info['ID'][0]['VALUE'];
 
@@ -1921,43 +1922,50 @@ global $common_actor, $common_actor_stats, $common_credit, $common_credit_stats,
 	$fvs = StringIfThere($dvd_info['FORMAT'][0]['FORMATVIDEOSTANDARD'][0]['VALUE']);
 	if ($builtinmediatype == MEDIA_TYPE_BLURAY || $builtinmediatype == MEDIA_TYPE_HDDVD)	// DVDProfiler stuffs NTSC rather than blanks
 		$fvs = '';
-	$f .= ',formatvideostandard';		$v .= ",'$fvs'";
+	$f .= ',formatvideostandard';	$v .= ",'$fvs'";
 	$f .= ',formatletterbox';		$v .= ',' . $formatletterbox;
 	$f .= ',format16x9';			$v .= ',' . $format16x9;
 	$f .= ',formataspectratio';		$v .= ",'$formataspectratio'";
 	$f .= ',formatcolorcolor';		$v .= ',' . $fmcc;
 	$f .= ',formatcolorbw';			$v .= ',' . $fmcb;
-	$f .= ',formatcolorcolorized';		$v .= ',' . $fmccz;
+	$f .= ',formatcolorcolorized';	$v .= ',' . $fmccz;
 	$f .= ',formatcolormixed';		$v .= ',' . $fmcm;
 	$f .= ',formatpanandscan';		$v .= ','  . TrueFalse($dvd_info['FORMAT'][0]['FORMATPANANDSCAN'][0]['VALUE']);
 	$f .= ',formatfullframe';		$v .= ','  . TrueFalse($dvd_info['FORMAT'][0]['FORMATFULLFRAME'][0]['VALUE']);
 	$f .= ',formatdualsided';		$v .= ','  . TrueFalse($dvd_info['FORMAT'][0]['FORMATDUALSIDED'][0]['VALUE']);
 	$f .= ',formatduallayered';		$v .= ','  . TrueFalse($dvd_info['FORMAT'][0]['FORMATDUALLAYERED'][0]['VALUE']);
-	$f .= ',dim2d';				$v .= ','  . @TrueFalse($dvd_info['FORMAT'][0]['DIMENSIONS'][0]['DIM2D'][0]['VALUE']);
+	$f .= ',dim2d';					$v .= ','  . @TrueFalse($dvd_info['FORMAT'][0]['DIMENSIONS'][0]['DIM2D'][0]['VALUE']);
 	$f .= ',dim3danaglyph';			$v .= ','  . @TrueFalse($dvd_info['FORMAT'][0]['DIMENSIONS'][0]['DIM3DANAGLYPH'][0]['VALUE']);
 	$f .= ',dim3dbluray';			$v .= ','  . @TrueFalse($dvd_info['FORMAT'][0]['DIMENSIONS'][0]['DIM3DBLURAY'][0]['VALUE']);
 
-	$f .= ',featuresceneaccess';		$v .= ','  . TrueFalse($dvd_info['FEATURES'][0]['FEATURESCENEACCESS'][0]['VALUE']);
-	$f .= ',featurecommentary';		$v .= ','  . TrueFalse($dvd_info['FEATURES'][0]['FEATURECOMMENTARY'][0]['VALUE']);
+	$f .= ',featuresceneaccess';	$v .= ','  . TrueFalse($dvd_info['FEATURES'][0]['FEATURESCENEACCESS'][0]['VALUE']);
 	$f .= ',featuretrailer';		$v .= ','  . TrueFalse($dvd_info['FEATURES'][0]['FEATURETRAILER'][0]['VALUE']);
-	$f .= ',featurephotogallery';		$v .= ','  . TrueFalse($dvd_info['FEATURES'][0]['FEATUREPHOTOGALLERY'][0]['VALUE']);
-	$f .= ',featuredeletedscenes';		$v .= ','  . TrueFalse($dvd_info['FEATURES'][0]['FEATUREDELETEDSCENES'][0]['VALUE']);
+	$f .= ',featurebonustrailers';	$v .= ','  . TrueFalse($dvd_info['FEATURES'][0]['FEATUREBONUSTRAILERS'][0]['VALUE']);
 	$f .= ',featuremakingof';		$v .= ','  . TrueFalse($dvd_info['FEATURES'][0]['FEATUREMAKINGOF'][0]['VALUE']);
-	$f .= ',featureproductionnotes';	$v .= ','  . TrueFalse($dvd_info['FEATURES'][0]['FEATUREPRODUCTIONNOTES'][0]['VALUE']);
-	$f .= ',featuregame';			$v .= ','  . TrueFalse($dvd_info['FEATURES'][0]['FEATUREGAME'][0]['VALUE']);
-	$f .= ',featuredvdromcontent';		$v .= ','  . TrueFalse($dvd_info['FEATURES'][0]['FEATUREDVDROMCONTENT'][0]['VALUE']);
-	$f .= ',featuremultiangle';		$v .= ','  . TrueFalse($dvd_info['FEATURES'][0]['FEATUREMULTIANGLE'][0]['VALUE']);
-	$f .= ',featuremusicvideos';		$v .= ','  . TrueFalse($dvd_info['FEATURES'][0]['FEATUREMUSICVIDEOS'][0]['VALUE']);
+	$f .= ',featurecommentary';		$v .= ','  . TrueFalse($dvd_info['FEATURES'][0]['FEATURECOMMENTARY'][0]['VALUE']);
+	$f .= ',featuredeletedscenes';	$v .= ','  . TrueFalse($dvd_info['FEATURES'][0]['FEATUREDELETEDSCENES'][0]['VALUE']);
 	$f .= ',featureinterviews';		$v .= ','  . TrueFalse($dvd_info['FEATURES'][0]['FEATUREINTERVIEWS'][0]['VALUE']);
-	$f .= ',featurestoryboardcomparisons';	$v .= ','  . TrueFalse($dvd_info['FEATURES'][0]['FEATURESTORYBOARDCOMPARISONS'][0]['VALUE']);
 	$f .= ',featureouttakes';		$v .= ','  . TrueFalse($dvd_info['FEATURES'][0]['FEATUREOUTTAKES'][0]['VALUE']);
-	$f .= ',featureclosedcaptioned';	$v .= ','  . TrueFalse($dvd_info['FEATURES'][0]['FEATURECLOSEDCAPTIONED'][0]['VALUE']);
-	$f .= ',featurethxcertified';		$v .= ','  . TrueFalse($dvd_info['FEATURES'][0]['FEATURETHXCERTIFIED'][0]['VALUE']);
-	$f .= ',featurebonustrailers';		$v .= ','  . TrueFalse($dvd_info['FEATURES'][0]['FEATUREBONUSTRAILERS'][0]['VALUE']);
-	$f .= ',featurebdlive';			$v .= ','  . TrueFalse($dvd_info['FEATURES'][0]['FEATUREBDLIVE'][0]['VALUE']);
+	$f .= ',featurestoryboardcomparisons';	$v .= ','  . TrueFalse($dvd_info['FEATURES'][0]['FEATURESTORYBOARDCOMPARISONS'][0]['VALUE']);	
+	$f .= ',featurephotogallery';	$v .= ','  . TrueFalse($dvd_info['FEATURES'][0]['FEATUREPHOTOGALLERY'][0]['VALUE']);
+	$f .= ',featureproductionnotes';$v .= ','  . TrueFalse($dvd_info['FEATURES'][0]['FEATUREPRODUCTIONNOTES'][0]['VALUE']);
+	$f .= ',featuredvdromcontent';	$v .= ','  . TrueFalse($dvd_info['FEATURES'][0]['FEATUREDVDROMCONTENT'][0]['VALUE']);
+	$f .= ',featuregame';			$v .= ','  . TrueFalse($dvd_info['FEATURES'][0]['FEATUREGAME'][0]['VALUE']);
+	$f .= ',featuremultiangle';		$v .= ','  . TrueFalse($dvd_info['FEATURES'][0]['FEATUREMULTIANGLE'][0]['VALUE']);
+	$f .= ',featuremusicvideos';	$v .= ','  . TrueFalse($dvd_info['FEATURES'][0]['FEATUREMUSICVIDEOS'][0]['VALUE']);
+	$f .= ',featurethxcertified';	$v .= ','  . TrueFalse($dvd_info['FEATURES'][0]['FEATURETHXCERTIFIED'][0]['VALUE']);
+	$f .= ',featureclosedcaptioned';$v .= ','  . TrueFalse($dvd_info['FEATURES'][0]['FEATURECLOSEDCAPTIONED'][0]['VALUE']);
+	$f .= ',featuredigitalcopy';	$v .= ','  . TrueFalse($dvd_info['FEATURES'][0]['FEATUREDIGITALCOPY'][0]['VALUE']);	
 	$f .= ',featurepip';			$v .= ','  . TrueFalse($dvd_info['FEATURES'][0]['FEATUREPIP'][0]['VALUE']);
-	$f .= ',featuredigitalcopy';		$v .= ','  . TrueFalse($dvd_info['FEATURES'][0]['FEATUREDIGITALCOPY'][0]['VALUE']);
+	$f .= ',featurebdlive';			$v .= ','  . TrueFalse($dvd_info['FEATURES'][0]['FEATUREBDLIVE'][0]['VALUE']);
 	$f .= ',featureother';			$v .= ",'" . StringIfThere($dvd_info['FEATURES'][0]['OTHERFEATURES'][0]['VALUE']) . "'";
+
+	if (version_compare($db_schema_version, '2.8') >= 0) {
+		$f .= ',featureplayall';		$v .= ','  . TrueFalse($dvd_info['FEATURES'][0]['FEATUREPLAYALL'][0]['VALUE']);	
+		$f .= ',featuredbox';			$v .= ','  . TrueFalse($dvd_info['FEATURES'][0]['FEATUREDBOX'][0]['VALUE']);
+		$f .= ',featurecinechat';		$v .= ','  . TrueFalse($dvd_info['FEATURES'][0]['FEATURECINECHAT'][0]['VALUE']);
+		$f .= ',featuremovieiq';		$v .= ','  . TrueFalse($dvd_info['FEATURES'][0]['FEATUREMOVIEIQ'][0]['VALUE']);
+	}
 
 	$f .= ',reviewfilm';			$v .= ','  . $dvd_info['REVIEW'][0]['ATTRIBUTES']['FILM'];
 	$f .= ',reviewvideo';			$v .= ','  . $dvd_info['REVIEW'][0]['ATTRIBUTES']['VIDEO'];

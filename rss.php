@@ -265,8 +265,8 @@ if ($filter <> "NA" && $filter <> "") {
 		break;
 
 	case 'Features':
-		$tmp1=array('Scene Access','Trailers','Featurettes','Commentary','Deleted Scenes','Interviews','Outtakes/Bloopers','Storyboard Comparisons','Gallery',     'Production Notes/Bios','DVD-ROM Content','Interactive Game','Multi-Angle','Music Videos','THX Certified','Closed Captioned');
-		$tmp2=array('sceneaccess','trailer',  'makingof',   'commentary','deletedscenes', 'interviews','outtakes',         'storyboardcomparisons', 'photogallery','productionnotes',      'dvdromcontent',  'game',            'multiangle', 'musicvideos', 'thxcertified', 'closedcaptioned');
+		$tmp1=array('Scene Access','Play All','Trailers','Featurettes','Commentary','Deleted Scenes','Interviews','Outtakes/Bloopers','Storyboard Comparisons','Gallery','Production Notes/Bios','DVD-ROM Content','Interactive Game','Multi-Angle','Music Videos','THX Certified','Closed Captioned');
+		$tmp2=array('sceneaccess','playall','trailer','makingof','commentary','deletedscenes', 'interviews','outtakes','storyboardcomparisons','photogallery','productionnotes','dvdromcontent','game','multiangle','musicvideos','thxcertified','closedcaptioned');
 		$count=count($tmp1);
 		echo "<description>Features</description>";
 		for ($loop = 0; $loop < $count; $loop++) {
