@@ -1,6 +1,6 @@
 <?php
 
-// $Id: lang_sv.php,v 3.0.2 2007/06/08 Swedish translation by Håkan Wassberg $
+// $Id: lang_sv.php,v 3.0.2 2007/06/08 Swedish translation by Hï¿½kan Wassberg $
 
 /* Strings in this file should avoid the use of non-usascii characters, and
    instead use HTML entities (eg. &eacute;) to make the strings more portable to different charsets */
@@ -523,33 +523,36 @@ $lang['CLICKHERE'] = "Click Here";
 $lang['CG']['PAGE'] = "Sida";
 $lang['CG']['OF'] = "av";
 
-$lang['AUDIO']['DD'] = "DD (Dolby Digital)";
-$lang['AUDIO']['DTS'] = "DTS (Digital Theater Systems)";
-$lang['AUDIO']['PCM'] = "PCM (Pulse Code Modulation)";
-$lang['AUDIO']['MPEG'] = "MPEG Audio Stream";
-$lang['AUDIO']['MONO'] = "Mono";
-$lang['AUDIO']['STEREO'] = "Stereo";
 $lang['AUDIO']['2CHANNELSTEREO'] = "2-Channel Stereo";
-$lang['AUDIO']['PROLOGIC'] = "Pro-logic";
-$lang['AUDIO']['DOLBYSUR'] = "Dolby Surround";
+$lang['AUDIO']['3D'] = '3D';
 $lang['AUDIO']['5.0SUR'] = "5.0 Surround";
+$lang['AUDIO']['5.1M'] = "5.1 (Matrixed 6.1)";
 $lang['AUDIO']['5.1SUR'] = "5.1 Surround";
+$lang['AUDIO']['6.1'] = "6.1 (Discrete)";
 $lang['AUDIO']['6.1SUR'] = "6.1 Surround";
 $lang['AUDIO']['7.1SUR'] = "7.1 Surround";
-$lang['AUDIO']['SURROUND'] = "Surround";
-$lang['AUDIO']['5.1M'] = "5.1 (Matrixed 6.1)";
-$lang['AUDIO']['6.1'] = "6.1 (Discrete)";
-$lang['AUDIO']['EX'] = "EX";
-$lang['AUDIO']['SURROUNDEX'] = "Surround EX";
-$lang['AUDIO']['PLUS'] = "Plus";
-$lang['AUDIO']['TRUEHD'] = "TrueHD";
+$lang['AUDIO']['AURO-3D'] = 'Auro-3D';
+$lang['AUDIO']['DA'] = "Dolby Atmos";
+$lang['AUDIO']['DD'] = "DD (Dolby Digital)";
+$lang['AUDIO']['DOLBYSUR'] = "Dolby Surround";
+$lang['AUDIO']['DTS'] = "DTS (Digital Theater Systems)";
 $lang['AUDIO']['ES'] = "ES";
-$lang['AUDIO']['ESMATRIX'] = "ES (Matrixed)";
 $lang['AUDIO']['ESDISCRETE'] = "ES (Discrete)";
+$lang['AUDIO']['ESMATRIX'] = "ES (Matrixed)";
+$lang['AUDIO']['EX'] = "EX";
 $lang['AUDIO']['HD'] = "HD";
 $lang['AUDIO']['HDHR'] = "HD HR";
 $lang['AUDIO']['HDMASTERAUDIO'] = "HD Master Audio";
+$lang['AUDIO']['MONO'] = "Mono";
 $lang['AUDIO']['MP2'] = "Audio Layer II (MP2)";
+$lang['AUDIO']['MPEG'] = "MPEG Audio Stream";
+$lang['AUDIO']['PCM'] = "PCM (Pulse Code Modulation)";
+$lang['AUDIO']['PLUS'] = "Plus";
+$lang['AUDIO']['PROLOGIC'] = "Pro-logic";
+$lang['AUDIO']['STEREO'] = "Stereo";
+$lang['AUDIO']['SURROUND'] = "Surround";
+$lang['AUDIO']['SURROUNDEX'] = "Surround EX";
+$lang['AUDIO']['TRUEHD'] = "TrueHD";
 
 $lang['AUDIO'][''] = '[Ospecifierad]';
 $lang['AUDIO']['AFRIKAANS'] = "Afrikaans";

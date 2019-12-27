@@ -1,6 +1,6 @@
 # phpDVDProfiler
 
-The phpDVDProfiler project allows you to display on the web your DVD collection maintained with Invelos's DVDProfiler software. 
+The phpDVDProfiler project allows you to display on the web your DVD collection maintained with Invelos's DVDProfiler software.
 
 Alas, the project seems to have been dead for some time and has stopped working with newer versions of PHP. So for my own needs, I've decided to make it work again with PHP 7.2, and publish it too so that others can benefit if they need it. I have no intention on making more work than basic maintenance to support newer versions of PHP.
 

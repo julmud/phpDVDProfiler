@@ -441,8 +441,9 @@ $alang_translation = array(
 
 $aformat_translation = array(
 	'' => $lang[''],
-/***/	'Dolby Atmos' => '<acronym title="'.$lang['AUDIO']['DD'].'" style="text-decoration:underline"><img src="gfx/DolbyAtmos.jpg"></acronym>',
-	'Dolby Digital' => '<acronym title="'.$lang['AUDIO']['DD'].'" style="text-decoration:underline"><img src="gfx/DolbyDigital.jpg"></acronym>',
+/***/	'Auro-3D' => '<acronym title="'.$lang['AUDIO']['AURO-3D'].'" style="text-decoration:underline"><img src="gfx/Auro3d.png"></acronym>',
+/***/	'Dolby Atmos' => '<acronym title="'.$lang['AUDIO']['DA'].'" style="text-decoration:underline"><img src="gfx/DolbyAtmos.jpg"></acronym>',
+    'Dolby Digital' => '<acronym title="'.$lang['AUDIO']['DD'].'" style="text-decoration:underline"><img src="gfx/DolbyDigital.jpg"></acronym>',
 	'Dolby Digital Mono' => '<acronym title="'.$lang['AUDIO']['DD'].'" style="text-decoration:underline"><img src="gfx/DolbyDigital.jpg"></acronym>',
 	'Dolby Digital Stereo' => '<acronym title="'.$lang['AUDIO']['DD'].'" style="text-decoration:underline"><img src="gfx/DolbyDigital.jpg"></acronym>',
 	'Dolby Digital Surround' => '<acronym title="'.$lang['AUDIO']['DD'].'" style="text-decoration:underline"><img src="gfx/DolbyDigital.jpg"></acronym>',
@@ -465,6 +466,7 @@ $aformat_translation = array(
 /***/	'DTS-HD Master Audio' => '<acronym title="'.$lang['AUDIO']['DTS'].'" style="text-decoration:underline"><img src="gfx/DTS-HDMasterAudio.jpg"></acronym>',
 /**/	'DTS HD HR' => '<acronym title="'.$lang['AUDIO']['DTS'].'" style="text-decoration:underline"><img src="gfx/DTS-HD_HR.jpg"></acronym>',
 /**/	'DTS HD Master Audio' => '<acronym title="'.$lang['AUDIO']['DTS'].'" style="text-decoration:underline"><img src="gfx/DTS-HDMasterAudio.jpg"></acronym>',
+    'DTS-X' => '<acronym title="'.$lang['AUDIO']['DTS'].'" style="text-decoration:underline"><img src="gfx/DTS-X.gif"></acronym>',
 	'PCM Stereo' => '<acronym title="'.$lang['AUDIO']['PCM'].'" style="text-decoration:underline"><img src="gfx/pcm_logo.jpg"></acronym>',
 /***/	'PCM' => '<acronym title="'.$lang['AUDIO']['PCM'].'" style="text-decoration:underline"><img src="gfx/pcm_logo.jpg"></acronym>',
 /**/	'PCM 5.0' => '<acronym title="'.$lang['AUDIO']['PCM'].'" style="text-decoration:underline"><img src="gfx/pcm_logo.jpg"></acronym>',
@@ -480,8 +482,9 @@ $aformat_translation = array(
 );
 $aformat_name = array (
 	''				=> $lang[''],
-/***/	'Dolby Atmos'			=> 'Dolby Atmos',
-	'Dolby Digital'			=> $lang['AUDIO']['DD'],
+/***/	'Auro-3D'			=> $lang['AUDIO']['AURO-3D'],
+/***/	'Dolby Atmos'			=> $lang['AUDIO']['DA'],
+    'Dolby Digital'			=> $lang['AUDIO']['DD'],
 	'Dolby Digital Mono'		=> $lang['AUDIO']['DD'].' '.$lang['AUDIO']['MONO'],
 	'Dolby Digital Stereo'		=> $lang['AUDIO']['DD'].' '.$lang['AUDIO']['STEREO'],
 	'Dolby Digital Surround'	=> $lang['AUDIO']['DD'].' '.$lang['AUDIO']['SURROUND'],
@@ -504,6 +507,7 @@ $aformat_name = array (
 /**/	'DTS HD HR'			=> 'DTS '.$lang['AUDIO']['HDHR'],
 /***/	'DTS-HD Master Audio'		=> 'DTS '.$lang['AUDIO']['HDMASTERAUDIO'],
 /**/	'DTS HD Master Audio'		=> 'DTS '.$lang['AUDIO']['HDMASTERAUDIO'],
+	'DTS-X'					=> 'DTS-X',
 /***/	'PCM'				=> 'PCM',
 	'PCM Stereo'			=> 'PCM '.$lang['AUDIO']['STEREO'],
 /**/	'PCM 5.0'			=> 'PCM 5.0',
@@ -536,7 +540,7 @@ $newachan_name = array(
 	'5.1 (Matrixed 6.1)'	=> $lang['AUDIO']['5.1M'],
 	'6.1 (Discrete)'	=> $lang['AUDIO']['6.1'],
 	'7.1'			=> '7.1',
-	'3D'			=> '3D'
+	'3D'			=> $lang['AUDIO']['3D']
 );
 $newaformat_image = array(
 	''			=> '<img src="gfx/dd00.gif" class="audioimage" title="'.$lang[''].'" alt=""/>&nbsp;',
@@ -552,10 +556,12 @@ $newaformat_image = array(
 	'5.1 (Matrixed 6.1)'	=> '<img src="gfx/dd52.gif" class="audioimage" title="'.$lang['AUDIO']['5.1M'].'" alt=""/>&nbsp;',
 	'6.1 (Discrete)'	=> '<img src="gfx/dd61.gif" class="audioimage" title="'.$lang['AUDIO']['6.1'].'" alt=""/>&nbsp;',
 	'7.1'			=> '<img src="gfx/dd71.gif" class="audioimage" title="7.1" alt=""/>&nbsp;',
-	'3D'			=> '<img src="gfx/dd3d.gif" class="audioimage" title="3D" alt=""/>&nbsp;'
+	'3D'			=> '<img src="gfx/dd3d.gif" class="audioimage" title="'.$lang['AUDIO']['3D'].'" alt=""/>&nbsp;'
 );
 $aformat_image = array(
 	''				=> $lang['AUDIO'][''],
+	'Auro-3D'		=> '<img src="gfx/dd3d.gif" class="audioimage" title="'.$lang['AUDIO']['AURO-3D'].' '.$lang['AUDIO']['3D'].'" alt=""/>&nbsp;'.$lang['AUDIO']['AURO-3D'].' '.$lang['AUDIO']['3D'],
+	'Dolby Atmos'		=> '<img src="gfx/dd3d.gif" class="audioimage" title="'.$lang['AUDIO']['DA'].' '.$lang['AUDIO']['3D'].'" alt=""/>&nbsp;'.$lang['AUDIO']['DA'].' '.$lang['AUDIO']['3D'],
 	'Dolby Digital Mono'		=> '<img src="gfx/dd10.gif" class="audioimage" title="'.$lang['AUDIO']['DD'].' '.$lang['AUDIO']['MONO'].'" alt=""/>&nbsp;'.$lang['AUDIO']['DD'].' '.$lang['AUDIO']['MONO'],
 	'Dolby Digital Stereo'		=> '<img src="gfx/dd20.gif" class="audioimage" title="'.$lang['AUDIO']['DD'].' '.$lang['AUDIO']['STEREO'].'" alt=""/>&nbsp;'.$lang['AUDIO']['DD'].' '.$lang['AUDIO']['STEREO'],
 	'Dolby Digital Surround'	=> '<img src="gfx/dd30.gif" class="audioimage" title="'.$lang['AUDIO']['DD'].' '.$lang['AUDIO']['SURROUND'].'" alt=""/>&nbsp;'.$lang['AUDIO']['DD'].' '.$lang['AUDIO']['SURROUND'],
@@ -572,6 +578,7 @@ $aformat_image = array(
 	'DTS HD'			=> '<img src="gfx/dd71.gif" class="audioimage" title="DTS '.$lang['AUDIO']['HD'].'" alt=""/>&nbsp;DTS '.$lang['AUDIO']['HD'],
 /**/	'DTS HD HR'			=> '<img src="gfx/dd71.gif" class="audioimage" title="DTS '.$lang['AUDIO']['HDHR'].'" alt=""/>&nbsp;DTS '.$lang['AUDIO']['HDHR'],
 /**/	'DTS HD Master Audio'		=> '<img src="gfx/dd71.gif" class="audioimage" title="DTS '.$lang['AUDIO']['HDMASTERAUDIO'].'" alt=""/>&nbsp;DTS '.$lang['AUDIO']['HDMASTERAUDIO'],
+	'DTS-X'					=> '<img src="gfx/dd3d.gif" class="audioimage" title="'.$lang['AUDIO']['DTS'].' '.$lang['AUDIO']['3D'].'" alt=""/>&nbsp;'.$lang['AUDIO']['DTS'].' '.$lang['AUDIO']['3D'],
 	'PCM Stereo'			=> '<img src="gfx/dd20.gif" class="audioimage" title="PCM '.$lang['AUDIO']['STEREO'].'" alt=""/>&nbsp;PCM '.$lang['AUDIO']['STEREO'],
 /**/	'PCM 5.0'			=> '<img src="gfx/dd50.gif" class="audioimage" title="PCM 5.0" alt=""/>&nbsp;PCM 5.0',
 	'PCM 5.1'			=> '<img src="gfx/dd51.gif" class="audioimage" title="PCM 5.1" alt=""/>&nbsp;PCM 5.1',
@@ -603,7 +610,8 @@ $achan_translation = array(
 	'5.0 Surround' => '<img src="gfx/dd30.gif" style="vertical-align:-30%; margin-bottom:2px" title="'.$lang['AUDIO']['5.0SUR'].'" alt=""/>',
 	'5.1 Surround' => '<img src="gfx/dd51.gif" style="vertical-align:-30%; margin-bottom:2px" title="'.$lang['AUDIO']['5.1SUR'].'" alt=""/>',
 	'6.1 Surround' => '<img src="gfx/dd61.gif" style="vertical-align:-30%; margin-bottom:2px" title="'.$lang['AUDIO']['6.1SUR'].'" alt=""/>',
-	'7.1 Surround' => '<img src="gfx/dd61.gif" style="vertical-align:-30%; margin-bottom:2px" title="'.$lang['AUDIO']['7.1SUR'].'" alt=""/>'
+	'7.1 Surround' => '<img src="gfx/dd61.gif" style="vertical-align:-30%; margin-bottom:2px" title="'.$lang['AUDIO']['7.1SUR'].'" alt=""/>',
+	'3D' => '<img src="gfx/dd3d.gif" style="vertical-align:-30%; margin-bottom:2px" title="3D" alt=""/>'
 );
 
 $achan_rev_translation = array(
@@ -615,7 +623,8 @@ $achan_rev_translation = array(
 	'Mono' => '1',
 	'Dolby Surround' => '3',
 	'6.1 Surround' => '6.1',
-	'7.1 Surround' => '7.1'
+	'7.1 Surround' => '7.1',
+	'3D' => '3D'
 );
 
 $skindisplayname = $lang['PREFS']['SKINS']['INTERNAL'];
