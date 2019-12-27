@@ -1663,11 +1663,11 @@ EOT;
 		$ii_ignorelocked = false;
 	if (!isset($locale)) 
 		$locale = "en";
-	if (is_readable('imagedata.php') && $forumuser && $collectionurl) echo <<<EOT
-	momItems[num++]=["$lang[IMAGE]", "http://dvdaholic.me.uk/ii/index.php?user=$forumuser&locked=$ii_ignorelocked&lang=$locale", "_new"]
-	momItems[num++]=["$lang[IMAGEUSERS]", "$ImageUserURL", "entry"]
-
-EOT;
+//	if (is_readable('imagedata.php') && $forumuser && $collectionurl) echo <<<EOT
+//	momItems[num++]=["$lang[IMAGE]", "http://dvdaholic.me.uk/ii/index.php?user=$forumuser&locked=$ii_ignorelocked&lang=$locale", "_new"]
+//	momItems[num++]=["$lang[IMAGEUSERS]", "$ImageUserURL", "entry"]
+//
+//EOT;
 	if (is_readable('upload.php')) {
 		echo <<<EOT
 	momItems[num++]=["$lang[UPLOADM]", "$PHP_SELF?action=upload", "_top", 1, "no"]
@@ -1683,11 +1683,11 @@ EOT;
 	}
 	echo <<<EOT
 	momItems[num++]=["$lang[MISCLINKS]"]
-	momItems[num++]=["$lang[ANDYFORUM]", "http://forums.dvdaholic.me.uk", "_blank"]
+//	momItems[num++]=["$lang[ANDYFORUM]", "http://forums.dvdaholic.me.uk", "_blank"]
 //	momItems[num++]=["DVD Profiler V2.x", "http://www.intervocative.com", "_blank"]
 	momItems[num++]=["DVD Profiler V3.x", "http://www.invelos.com", "_blank"]
 //	momItems[num++]=["$lang[FORUMS] V2.x", "http://www.intervocative.com/Forums.aspx?task=viewtopic&topicid=6404", "_blank"]
-	momItems[num++]=["$lang[NEWRELEASES]", "http://www.joblo.com/releases.php?mode=dvd", "_blank"]
+	momItems[num++]=["$lang[NEWRELEASES]", "https://www.joblo.com/blu-rays-dvds/release-dates/", "_blank"]
 
 EOT;
 	if ($AllowChooser) echo "\tmomItems[num++]=[\"$lang[CHOOSERSHORT]\", \"Chooser.php\", \"entry\"]\n";
