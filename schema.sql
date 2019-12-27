@@ -392,5 +392,5 @@ CREATE TABLE DVDPROFILER_dvd_links (
   KEY id (id)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 #
-INSERT INTO DVDPROFILER_dvd_properties VALUES ("db_schema_version", "2.7");
+INSERT INTO DVDPROFILER_dvd_properties VALUES ("db_schema_version", "2.8");
 # --------------------------------------------------------
