@@ -17,7 +17,7 @@ if ($graphy == 'auto')
 
 $sql = $db->sql_query("SELECT date_format(from_unixtime(purchasedate), '%Y/%m') AS month, "
 			."COUNT(title) AS count, SUM(paid) AS price "
-			."FROM $DVD_TABLE WHERE collectiontype='owned' AND purchaseplace>0 AND purchasepricecurrencyid='$currency' "
+			."FROM $DVD_TABLE WHERE collectiontype='owned' AND purchaseplace>0 AND purchasepricecurrencyid='".$db->sql_escape($currency)."' "
 			."$currencyspecialcondition GROUP BY month") or die($db->sql_error());
 
 $dates = array();

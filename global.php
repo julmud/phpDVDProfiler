@@ -740,7 +740,7 @@ if ($db_Errors['code'] == 0) {
 			$UpdateLast = UpdateUpdateLast();
 			$result = $db->sql_query("SELECT CONNECTION_ID() AS Id") or die($db->sql_error());
 			$item = $db->sql_fetchrow($result);
-			$db->sql_query("INSERT IGNORE INTO $DVD_PROPERTIES_TABLE (property,value) VALUES ('CurrentPosition','0||0|0|0|0|$item[Id]')") or die($db->sql_error());
+			$db->sql_query("INSERT IGNORE INTO $DVD_PROPERTIES_TABLE (property,value) VALUES ('CurrentPosition','0||0|0|0|0|".$db->sql_escape($item[Id])."')") or die($db->sql_error());
 		}
 		$collectiontypelist = array();
 		$result = $db->sql_query("SELECT DISTINCT realcollectiontype FROM $DVD_TABLE ORDER BY realcollectiontype", 0, true);

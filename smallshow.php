@@ -4,7 +4,7 @@ error_reporting(E_ALL);
 define('IN_SCRIPT', 1);
 include_once('global.php');
 
-	$result = $db->sql_query("SELECT * FROM $DVD_TABLE WHERE id='$mediaid' LIMIT 1") or die($db->sql_error());
+	$result = $db->sql_query("SELECT * FROM $DVD_TABLE WHERE id='".$db->sql_escape($mediaid)."' LIMIT 1") or die($db->sql_error());
 
 	$dvd = $db->sql_fetchrow($result);
 	$db->sql_freeresult($result);

@@ -116,7 +116,7 @@ if ($action == 'info') {
 }
 
 if ($action == 'notes') {
-	$result = $db->sql_query("SELECT notes FROM $DVD_TABLE WHERE id='$mediaid'") or die($db->sql_error());
+	$result = $db->sql_query("SELECT notes FROM $DVD_TABLE WHERE id='".$db->sql_escape($mediaid)."'") or die($db->sql_error());
 	$data = $db->sql_fetchrow($result);
 	$db->sql_freeresult($result);
 	header('Content-Type: text/html; charset="windows-1252";');
@@ -128,7 +128,7 @@ if ($action == 'notes') {
 if ($action == 'image') {
 	DiscourageAbuse($RefuseBots);
 	$TheTitle = $lang['DVDCOVER'];
-	$res = $db->sql_query("SELECT title, originaltitle, description, custommediatype FROM $DVD_TABLE WHERE id='$mediaid'") or die($db->sql_error());
+	$res = $db->sql_query("SELECT title, originaltitle, description, custommediatype FROM $DVD_TABLE WHERE id='".$db->sql_escape($mediaid)."'") or die($db->sql_error());
 	$dat = $db->sql_fetchrow($res);
 	$db->sql_freeresult($res);
 	if ($dat['title'] != '') {
@@ -708,7 +708,7 @@ if ($action == 'nav') {
 		$thetitle = "  ($lang[SEARCHED] $lang[GENRES] $lang[FOR] \"" . GenreTranslation($searchtext) . '")';
 		break;
 	case 'purchase':
-		$result = $db->sql_query("SELECT suppliername from $DVD_SUPPLIER_TABLE WHERE sid=$searchtext") or die($db->sql_error());
+		$result = $db->sql_query("SELECT suppliername from $DVD_SUPPLIER_TABLE WHERE sid=".$db->sql_escape($searchtext)) or die($db->sql_error());
 		$items = $db->sql_fetchrow($result);
 		$db->sql_freeresult($result);
 		$thetitle = "  ($lang[SEARCHED] $lang[PURCHASEPLACE] $lang[FOR] \"$items[suppliername]\")";
@@ -1249,6 +1249,7 @@ if (isset($letter) && $lettermeaning == 1) {
 }
 
 $srchtext = preg_replace('/(\\\\)*\'/', '\\\\\'', $searchtext);
+$srchtext = $db->sql_escape($srchtext);
 switch ($searchby) {
 case 'title':
 // Add the ability to anchor search to the start of the field
@@ -1892,7 +1893,7 @@ if ($action == 'show') {
 		DebugSQL($db, "$action: $mediaid");
 		exit;
 	}
-	$result = $db->sql_query("SELECT * FROM $DVD_TABLE WHERE id='$mediaid' LIMIT 1") or die($db->sql_error());
+	$result = $db->sql_query("SELECT * FROM $DVD_TABLE WHERE id='".$db->sql_escape($mediaid)."' LIMIT 1") or die($db->sql_error());
 
 	$dvd = $db->sql_fetchrow($result);
 	$db->sql_freeresult($result);
@@ -1907,7 +1908,7 @@ if ($action == 'show') {
 			$dispstyle = '';
 		}
 // Make list of actors
-		$sql = "SELECT a.*,ca.* FROM $DVD_ACTOR_TABLE a,$DVD_COMMON_ACTOR_TABLE ca WHERE a.caid=ca.caid AND id='$mediaid' $actorsortby";
+		$sql = "SELECT a.*,ca.* FROM $DVD_ACTOR_TABLE a,$DVD_COMMON_ACTOR_TABLE ca WHERE a.caid=ca.caid AND id='".$db->sql_escape($mediaid)."' $actorsortby";
 		$result = $db->sql_query($sql) or die($db->sql_error());
 		$dvd['p_actors'] = '';
 		$dvd['actors'] = array();
@@ -1981,7 +1982,7 @@ if ($action == 'show') {
 		$db->sql_freeresult($result);
 
 // Make list of ALL credits, remember directors separately
-		$sql = "SELECT c.*,ca.* FROM $DVD_CREDITS_TABLE c,$DVD_COMMON_CREDITS_TABLE ca WHERE c.caid=ca.caid AND id='$mediaid' $actorsortby";
+		$sql = "SELECT c.*,ca.* FROM $DVD_CREDITS_TABLE c,$DVD_COMMON_CREDITS_TABLE ca WHERE c.caid=ca.caid AND id='".$db->sql_escape($mediaid)."' $actorsortby";
 		$result = $db->sql_query($sql) or die($db->sql_error());
 		$dirname = $lang['DIRECTOR'];
 		$dvd['p_directors'] = '';
@@ -2080,7 +2081,7 @@ if ($action == 'show') {
 
 		$IMDBNum = array();
 // Make list of discs - ajm
-		$result = $db->sql_query("SELECT * FROM $DVD_DISCS_TABLE WHERE id='$mediaid' ORDER BY discno ASC") or die($db->sql_error());
+		$result = $db->sql_query("SELECT * FROM $DVD_DISCS_TABLE WHERE id='".$db->sql_escape($mediaid)."' ORDER BY discno ASC") or die($db->sql_error());
 		$dvd['p_discs'] = '';
 		$dvd['discs'] = array();
 		$locval = '';
@@ -2147,7 +2148,7 @@ if ($action == 'show') {
 		$dvd['events'] = array();
 		$dvd['lastwatched'] = '';
 		if ($IsPrivate) {
-			$sql = "SELECT timestamp,eventtype,note,u.* FROM $DVD_EVENTS_TABLE e, $DVD_USERS_TABLE u WHERE e.uid=u.uid AND id='$mediaid' ORDER BY timestamp DESC";
+			$sql = "SELECT timestamp,eventtype,note,u.* FROM $DVD_EVENTS_TABLE e, $DVD_USERS_TABLE u WHERE e.uid=u.uid AND id='".$db->sql_escape($mediaid)."' ORDER BY timestamp DESC";
 			$result = $db->sql_query($sql) or die($db->sql_error());
 			while ($events = $db->sql_fetchrow($result)) {
 				if (isset($events['timestamp']))
@@ -2180,7 +2181,7 @@ if ($action == 'show') {
 
 		if (DisplayIfIsPrivateOrAlways($searchlocks)) {
 // Make list of locks - ajm
-			$result = $db->sql_query("SELECT * FROM $DVD_LOCKS_TABLE WHERE id='$mediaid'") or die($db->sql_error());
+			$result = $db->sql_query("SELECT * FROM $DVD_LOCKS_TABLE WHERE id='".$db->sql_escape($mediaid)."'") or die($db->sql_error());
 			$locks = $db->sql_fetchrow($result);
 			$db->sql_freeresult($result);
 			$locked = " <img src=\"gfx/locked.gif\" title=\"$lang[LOCKED]\" alt=\"\"/>";
@@ -2221,7 +2222,7 @@ if ($action == 'show') {
 // Make list of audio specs
 		$dvd['p_audio'] = '';
 		$dvd['audio'] = array();
-		$result = $db->sql_query("SELECT * FROM $DVD_AUDIO_TABLE WHERE id='$mediaid' ORDER BY dborder ASC") or die($db->sql_error());
+		$result = $db->sql_query("SELECT * FROM $DVD_AUDIO_TABLE WHERE id='".$db->sql_escape($mediaid)."' ORDER BY dborder ASC") or die($db->sql_error());
 		while ($audio = $db->sql_fetchrow($result)) {
 			$dvd['audio'][] = $audio;
 			if (is_null($audio['audiochannels'])) {
@@ -2249,7 +2250,7 @@ if ($action == 'show') {
 // Make list of subtitles
 		$dvd['p_subtitles'] = '';
 		$dvd['subtitles'] = array();
-		$result = $db->sql_query("SELECT * FROM $DVD_SUBTITLE_TABLE WHERE id='$mediaid' ORDER BY subtitle ASC") or die($db->sql_error());
+		$result = $db->sql_query("SELECT * FROM $DVD_SUBTITLE_TABLE WHERE id='".$db->sql_escape($mediaid)."' ORDER BY subtitle ASC") or die($db->sql_error());
 		while ($subtitle = $db->sql_fetchrow($result)) {
 			if (strlen($dvd['p_subtitles']) > 0) {
 				$dvd['p_subtitles'] .= "<br>";
@@ -2266,7 +2267,7 @@ if ($action == 'show') {
 		$ps = $mc = '';
 		$dvd['studios'] = array();
 		$dvd['mediacompanies'] = array();
-		$result = $db->sql_query("SELECT * FROM $DVD_STUDIO_TABLE WHERE id='$mediaid' ORDER BY ismediacompany ASC,dborder ASC") or die($db->sql_error());
+		$result = $db->sql_query("SELECT * FROM $DVD_STUDIO_TABLE WHERE id='".$db->sql_escape($mediaid)."' ORDER BY ismediacompany ASC,dborder ASC") or die($db->sql_error());
 		while ($studio = $db->sql_fetchrow($result)) {
 			$NewWindow = "window.open('popup.php?acttype=STUDIO&amp;fullname="
 				.urlencode($studio['studio'])."','Actors',$ActorWindowSettings); return false;";
@@ -2292,7 +2293,7 @@ if ($action == 'show') {
 
 		$dvd['p_genres'] = '';
 		$dvd['genres'] = array();
-		$result = $db->sql_query("SELECT genre FROM $DVD_GENRES_TABLE WHERE id='$mediaid' ORDER BY dborder") or die($db->sql_error());
+		$result = $db->sql_query("SELECT genre FROM $DVD_GENRES_TABLE WHERE id='".$db->sql_escape($mediaid)."' ORDER BY dborder") or die($db->sql_error());
 		while ($row = $db->sql_fetchrow($result)) {
 			$dvd['p_genres'] .= '<br>' . GenreTranslation($row['genre']);
 			$dvd['genres'][] = $row['genre'];
@@ -2615,7 +2616,7 @@ if ($action == 'show') {
 		$dvd['tags'] = array();
 		$HasEPG = false;
 
-		$result = $db->sql_query("SELECT * FROM $DVD_TAGS_TABLE WHERE id='$mediaid' ORDER BY fullyqualifiedname") or die($db->sql_error());
+		$result = $db->sql_query("SELECT * FROM $DVD_TAGS_TABLE WHERE id='".$db->sql_escape($mediaid)."' ORDER BY fullyqualifiedname") or die($db->sql_error());
 
 		while ($tags = $db->sql_fetchrow($result)) {
 			if ($tags['fullyqualifiedname'] == $EPGTagname)

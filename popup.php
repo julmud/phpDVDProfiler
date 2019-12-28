@@ -27,7 +27,7 @@ global $DVD_ACTOR_TABLE, $DVD_CREDITS_TABLE, $db, $lang, $ApplyDividerContinuati
 	if ($acttype == 'ACTOR')
 		$table = $DVD_ACTOR_TABLE;
 
-	$result = $db->sql_query("SELECT * FROM $table WHERE id='$id' AND (caid=$role OR caid<0) ORDER BY lineno") or die($db->sql_error());
+	$result = $db->sql_query("SELECT * FROM $table WHERE id='".$db->sql_escape($id)."' AND (caid=".$db->sql_escape($role)." OR caid<0) ORDER BY lineno") or die($db->sql_error());
 	$onlyone = 0;
 
 	$thedetail = '';
@@ -176,7 +176,7 @@ EOT;
 	$chsimg = '';
 	$numresults = $numdistinctprofiles = '';
 	if ($acttype == 'ACTOR') {
-		$result = $db->sql_query("SELECT firstname,middlename,lastname,fullname AS realfullname,birthyear,COUNT(a.id) AS numresults,COUNT(DISTINCT a.id) AS numprofiles FROM $DVD_COMMON_ACTOR_TABLE ca, $DVD_ACTOR_TABLE a WHERE ca.caid=$fullname AND ca.caid=a.caid GROUP BY a.caid") or die($db->sql_error());
+		$result = $db->sql_query("SELECT firstname,middlename,lastname,fullname AS realfullname,birthyear,COUNT(a.id) AS numresults,COUNT(DISTINCT a.id) AS numprofiles FROM $DVD_COMMON_ACTOR_TABLE ca, $DVD_ACTOR_TABLE a WHERE ca.caid=".$db->sql_escape($fullname)." AND ca.caid=a.caid GROUP BY a.caid") or die($db->sql_error());
 		$actor = $db->sql_fetchrow($result);
 		$db->sql_freeresult($result);
 		$numdistinctprofiles = $actor['numprofiles'];
@@ -206,7 +206,7 @@ EOT;
 			."WHERE caid='$fullname' AND a.id=d.id AND sid=purchaseplace $noadult GROUP BY a.id ORDER BY $sortby";
 	}
 	else if ($acttype == 'CREDIT') {
-		$result = $db->sql_query("SELECT firstname,middlename,lastname,fullname AS realfullname,birthyear,COUNT(c.id) AS numresults,COUNT(DISTINCT c.id) AS numprofiles FROM $DVD_COMMON_CREDITS_TABLE cc, $DVD_CREDITS_TABLE c WHERE cc.caid=$fullname AND cc.caid=c.caid GROUP BY c.caid") or die($db->sql_error());
+		$result = $db->sql_query("SELECT firstname,middlename,lastname,fullname AS realfullname,birthyear,COUNT(c.id) AS numresults,COUNT(DISTINCT c.id) AS numprofiles FROM $DVD_COMMON_CREDITS_TABLE cc, $DVD_CREDITS_TABLE c WHERE cc.caid=".$db->sql_escape($fullname)." AND cc.caid=c.caid GROUP BY c.caid") or die($db->sql_error());
 		$actor = $db->sql_fetchrow($result);
 		$db->sql_freeresult($result);
 		$numdistinctprofiles = $actor['numprofiles'];
@@ -233,19 +233,19 @@ EOT;
 		$sql = "SELECT mediabannerfront,runningtime,suppliername,purchasedate,purchaseprice,purchasepricecurrencyid,productionyear,released,rating,"
 			."builtinmediatype,custommediatype,formatletterbox,formatpanandscan,formatfullframe,format16x9,upc,caid AS role,"
 			."title,originaltitle,description,COUNT(caid) AS numthisprofile,a.id AS mediaid FROM $DVD_CREDITS_TABLE a,$DVD_TABLE d,$DVD_SUPPLIER_TABLE s "
-			."WHERE caid='$fullname' AND a.id=d.id AND sid=purchaseplace $noadult GROUP BY a.id ORDER BY $sortby,mediaid,creditsubtype";
+			."WHERE caid='".$db->sql_escape($fullname)."' AND a.id=d.id AND sid=purchaseplace $noadult GROUP BY a.id ORDER BY $sortby,mediaid,creditsubtype";
 	}
 	else if ($acttype == 'STUDIO') {
 		$sql = "SELECT mediabannerfront,runningtime,suppliername,purchasedate,purchaseprice,purchasepricecurrencyid,productionyear,released,rating,a.studio AS role,"
 			."builtinmediatype,custommediatype,formatletterbox,formatpanandscan,formatfullframe,format16x9,upc,"
 			."title,originaltitle,description,a.id AS mediaid FROM $DVD_STUDIO_TABLE a,$DVD_TABLE d,$DVD_SUPPLIER_TABLE s "
-			."WHERE studio='$slashedfullname' AND a.id=d.id AND sid=purchaseplace $noadult ORDER BY $sortby,mediaid";
+			."WHERE studio='".$db->sql_escape($slashedfullname)."' AND a.id=d.id AND sid=purchaseplace $noadult ORDER BY $sortby,mediaid";
 	}
 	else if ($acttype == 'REGION') {
 		$sql = "SELECT mediabannerfront,runningtime,suppliername,purchasedate,purchaseprice,purchasepricecurrencyid,productionyear,released,rating,region AS role,"
 			."builtinmediatype,custommediatype,formatletterbox,formatpanandscan,formatfullframe,format16x9,upc,"
 			."title,originaltitle,description,id AS mediaid FROM $DVD_TABLE d,$DVD_SUPPLIER_TABLE s "
-			."WHERE sid=purchaseplace AND region='$slashedfullname' $noadult ORDER BY $sortby,mediaid";
+			."WHERE sid=purchaseplace AND region='".$db->sql_escape($slashedfullname)."' $noadult ORDER BY $sortby,mediaid";
 	}
 	$result = $db->sql_query($sql) or die($db->sql_error());
 	

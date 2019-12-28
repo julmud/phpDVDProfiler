@@ -26,7 +26,7 @@ $galleryver = "2 v1.5";
 function get_children($id,$bs){
 	global $sql, $DVD_TABLE, $db, $plusclass, $FnExt, $FnWebPath, $img_physpath, $PHP_SELF;
 
-	$bsql = str_replace( "boxparent = ''", "boxparent = '".$id."'", $sql);
+	$bsql = str_replace( "boxparent = ''", "boxparent = '".".$db->sql_escape($id)."."'", $sql);
 	$bsql = preg_replace('/(.*)(LIMIT)(.*)(,)(.*)/i', '\1', $bsql);
 
 	$boxresult = $db->sql_query($bsql);
@@ -404,7 +404,7 @@ function site_header (){
    <span class="print">
      <?php echo $CurrentSiteTitle; ?><br>
      <?php echo $tmp. " ". $search; ?><br>
-     <?php echo $sort; ?><br>
+     <?php echo isset($sort) ? $sort : ''; ?><br>
      <?php echo $lang['UPDATED']." ".$thedatetime ?>
    </span>
    </span>
@@ -641,7 +641,7 @@ function get_SQL($page, $dpp = 60){
 		if ( $_GET['letter'] == "0")
 			$where .= " AND sorttitle < 'A'";
 		else
-			$where .= " AND sorttitle LIKE '".$_GET['letter']."%'";
+			$where .= " AND sorttitle LIKE '".$db->sql_escape($_GET['letter'])."%'";
 	}
 	
 	$base = 'dvd.id, dvd.title, dvd.originaltitle, dvd.sorttitle, dvd.description, dvd.boxchild, dvd.mediabannerfront, dvd.mediabannerback, dvd.custommediatype';

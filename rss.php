@@ -223,7 +223,7 @@ if ($filter <> "NA" && $filter <> "") {
 		break;
 
 	case 'castlist':
-		$sql="SELECT fullname, birthyear FROM $DVD_COMMON_ACTOR_TABLE WHERE lastname like '" . $_GET['alpha'] . "%' OR (lastname='' AND firstname like '" . $_GET['alpha'] . "%') " . $AdultFilter . " ORDER BY fullname";
+		$sql="SELECT fullname, birthyear FROM $DVD_COMMON_ACTOR_TABLE WHERE lastname like '" . $db->sql_escape($_GET['alpha']) . "%' OR (lastname='' AND firstname like '" . $db->sql_escape($_GET['alpha']) . "%') " . $AdultFilter . " ORDER BY fullname";
 		$result=$db->sql_query($sql);
 		echo "<description>Cast List - " . $_GET['alpha'] . "</description>";
 		while ($tmp = $db->sql_fetch_array($result)) {
@@ -251,7 +251,7 @@ if ($filter <> "NA" && $filter <> "") {
 		break;
 
 	case 'crewlist':
-		$sql="SELECT fullname, birthyear FROM $DVD_COMMON_CREDITS_TABLE WHERE lastname like '" . $_GET['alpha'] . "%' OR (lastname='' AND firstname like '" . $_GET['alpha'] . "%') " . $AdultFilter . " ORDER BY fullname";
+		$sql="SELECT fullname, birthyear FROM $DVD_COMMON_CREDITS_TABLE WHERE lastname like '" . $db->sql_escape($_GET['alpha']) . "%' OR (lastname='' AND firstname like '" . $db->sql_escape($_GET['alpha']) . "%') " . $AdultFilter . " ORDER BY fullname";
 		$result=$db->sql_query($sql);
 		echo "<description>Crew List - " . $_GET['alpha'] . "</description>";
 		while ($tmp = $db->sql_fetch_array($result)) {

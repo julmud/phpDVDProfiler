@@ -325,7 +325,7 @@ global $DontBreakOnBadPNGGDRoutines, $me_updating;
 		$hdbanner = '';
 		if ($AddHDLogos) {
 			if (!isset($dvd)) {
-				$result = $db->sql_query("SELECT title,mediabannerfront,mediabannerback,custommediatype FROM $DVD_TABLE WHERE id='$id' LIMIT 1") or die($db->sql_error());
+				$result = $db->sql_query("SELECT title,mediabannerfront,mediabannerback,custommediatype FROM $DVD_TABLE WHERE id='".$db->sql_escape($id)."' LIMIT 1") or die($db->sql_error());
 				$dvd = $db->sql_fetchrow($result);
 				$db->sql_freeresult($result);
 			}
@@ -810,7 +810,7 @@ global $debugSQL;
 function GetLastUpdateTime($which) {
 global $xmldir, $xmlfile, $db, $DVD_PROPERTIES_TABLE;
 
-	$result = $db->sql_query("SELECT value FROM $DVD_PROPERTIES_TABLE WHERE property='$which'") or die($db->sql_error());
+	$result = $db->sql_query("SELECT value FROM $DVD_PROPERTIES_TABLE WHERE property='".$db->sql_escape($which)."'") or die($db->sql_error());
 	if ($dvd = $db->sql_fetchrow($result)) {
 		$thedatetime = $dvd['value'];
 	}

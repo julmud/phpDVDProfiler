@@ -111,7 +111,7 @@ global $getimages, $img_webpathf, $thumbnails;
 		}
 		if (substr($key, 0, 8) == 'watched_') {
 			if ($value != '?') {
-				$uid = urldecode(substr($key, 8));
+				$uid = $db->sql_escape(urldecode(substr($key, 8)));
 				$sql = "SELECT DISTINCT id FROM $DVD_EVENTS_TABLE WHERE uid=$uid AND eventtype='watched'";
 				$res = $db->sql_query($sql) or die($db->sql_error());
 				if ($db->sql_numrows($res) != 0) {

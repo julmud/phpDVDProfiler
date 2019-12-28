@@ -8,7 +8,7 @@ include_once('global.php');
 	if (!isset($mediaid))
 		die($lang['BORROW_BAD_ARGS']);
 
-	$result = $db->sql_query("SELECT title,description,location,slot from $DVD_TABLE d, $DVD_DISCS_TABLE f where d.id='$mediaid' AND f.id=d.id and f.discno=1") or die($db->sql_error());
+	$result = $db->sql_query("SELECT title,description,location,slot from $DVD_TABLE d, $DVD_DISCS_TABLE f where d.id='".$db->sql_escape($mediaid)."' AND f.id=d.id and f.discno=1") or die($db->sql_error());
 	$dvd = $db->sql_fetchrow($result);
 	$db->sql_freeresult($result);
 

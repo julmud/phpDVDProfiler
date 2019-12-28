@@ -409,7 +409,7 @@ if ($ii) {
 
 	    if ( $update ) {
 		    # Only check the lock if we're doing an update. Should stop things displaying as unlocked
-		    $sql = "SELECT covers FROM $DVD_LOCKS_TABLE WHERE id = '$id'";
+		    $sql = "SELECT covers FROM $DVD_LOCKS_TABLE WHERE id = '".$db->sql_escape($id)."'";
 		    $res = $db->sql_query($sql) or die($db->sql_error());
 		    $row = $db->sql_fetchrow($res);
 		    $locked = $row['covers'];
