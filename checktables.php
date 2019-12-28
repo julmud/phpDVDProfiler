@@ -32,7 +32,7 @@ function DisplayAResultSet(&$db, $sql) {
 	if ($table == '')
 		$table = $DVD_STATS_TABLE;
 
-	$request = "SELECT * FROM $table";
+	$request = "SELECT * FROM ".$db->sql_escape($table);
 	echo "<html><head><title>Dump of table $table</title></head><body>\n";
 	DisplayAResultSet($db, $request);
 	echo "</body></html>\n";
