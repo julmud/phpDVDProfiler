@@ -26,7 +26,7 @@ $galleryver = "2 v1.5";
 function get_children($id,$bs){
 	global $sql, $DVD_TABLE, $db, $plusclass, $FnExt, $FnWebPath, $img_physpath, $PHP_SELF;
 
-	$bsql = str_replace( "boxparent = ''", "boxparent = '".".$db->sql_escape($id)."."'", $sql);
+	$bsql = str_replace( "boxparent = ''", "boxparent = '".$db->sql_escape($id)."'", $sql);
 	$bsql = preg_replace('/(.*)(LIMIT)(.*)(,)(.*)/i', '\1', $bsql);
 
 	$boxresult = $db->sql_query($bsql);
