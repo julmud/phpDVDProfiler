@@ -2386,10 +2386,10 @@ if ($action == 'show') {
 			. ((isset($dvd['featuremovieiq']) && $dvd['featuremovieiq']==1)		? ", $lang[MOVIEIQ]": '')
 			. ((strlen($dvd['featureother'])>0)		? ", $dvd[featureother]": '');
 
-			$dvd['extras'] = explode("<br>$bullet", $dvd['p_extras']);
+		$dvd['extras'] = explode("<br>$bullet", $dvd['p_extras']);
 		unset($dvd['extras'][0]);	// first element is always blank
 		if (strlen($dvd['p_extras']) > 0)
-			$dvd['p_extras'] = substr($dvd['p_extras'], 4);
+			$dvd['p_extras'] = trim(substr($dvd['p_extras'], strpos($dvd['p_extras'], ',') + 1));
 		else
 			$dvd['p_extras'] = '&nbsp;';
 
