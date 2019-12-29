@@ -85,6 +85,11 @@ class sql_db
 		$this->return_on_error = $fail;
 	}
 
+	function sql_ret_queries()
+	{
+		return $this->sql_list;
+	}
+
 	function sql_num_queries()
 	{
 		return $this->num_queries;
