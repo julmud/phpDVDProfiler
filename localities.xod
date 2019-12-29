@@ -3,7 +3,7 @@
 NOTE: 	This file is intended for read use only.
 	Users should not edit this file.  Any changes will be overwritten automatically as database updates are received.
 -->
-<Localities LastUsedID="48">
+<Localities LastUsedID="51">
 	<Locality Description="Argentina" ID="32" DVDRegion="4" BDRegion="A">
 		<Ratings Description="Film" ID="0">
 			<Rating LegacyValue="1" Name="ATP" Description="ATP" Age="1"/>
@@ -34,12 +34,19 @@ NOTE: 	This file is intended for read use only.
 		</Ratings>
 	</Locality>
 	<Locality Description="Belgium" ID="30" DVDRegion="2" BDRegion="B" AmazonSiteName="Amazon.de" AmazonSite="www.amazon.de">
-		<Ratings Description="Film" ID="0">
-			<Rating LegacyValue="1" Name="AL" Description="AL" Age="1"/>
-			<Rating LegacyValue="2" Name="6" Description="6" Age="6"/>
-			<Rating LegacyValue="3" Name="12" Description="12" Age="12"/>
-			<Rating LegacyValue="4" Name="16" Description="16" Age="16"/>
+		<Ratings Description="Kijkwijzer" ID="0">
+			<Rating LegacyValue="1" Name="AL" Description="Niet schadelijk/Alle leeftijden" Age="1"/>
+			<Rating LegacyValue="2" Name="6" Description="Let op met kinderen tot 6 jaar" Age="6"/>
+			<Rating Name="9" Description="Let op met kinderen tot 9 jaar" Age="9"/>
+			<Rating LegacyValue="3" Name="12" Description="Let op met kinderen tot 12 jaar" Age="12"/>
+			<Rating LegacyValue="4" Name="16" Description="Let op met kinderen tot 16 jaar" Age="16"/>
 			<Rating LegacyValue="5" Name="18" Description="18" Age="18"/>
+		</Ratings>
+		<Ratings Description="Videovoorlichtingsysteem" ID="1">
+			<Rating Name="AL" Description="Geschikt voor alle leeftijden" Age="1"/>
+			<Rating Name="AL+MG" Description="Geschikt voor alle leeftijden, maar meekijken gewenst" Age="6"/>
+			<Rating Name="12" Description="Niet geschikt voor kinderen onder de 12 jaar" Age="12"/>
+			<Rating Name="16" Description="Niet geschikt voor kinderen onder de 16 jaar" Age="16"/>
 		</Ratings>
 	</Locality>
 	<Locality Description="Brazil" ID="23" DVDRegion="4" BDRegion="A">
@@ -102,7 +109,7 @@ NOTE: 	This file is intended for read use only.
 			<Rating LegacyValue="5" Name="NC-17" Description="NC-17" Age="18"/>
 		</Ratings>
 	</Locality>
-	<Locality Description="Columbia" ID="50" DVDRegion="4" BDRegion="A">
+	<Locality Description="Colombia" ID="50" DVDRegion="4" BDRegion="A">
 		<Ratings Description="Film" ID="0">
 			<Rating Name="Exempt" Description="Exempt" Age="1"/>
 			<Rating Name="T" Description="Todos" Age="1"/>
@@ -345,6 +352,14 @@ NOTE: 	This file is intended for read use only.
 			<Rating LegacyValue="4" Name="15 &#229;r" Description="Aldersgrense 15 &#229;r" Age="15"/>
 			<Rating LegacyValue="5" Name="18 &#229;r" Description="Aldersgrense 18 &#229;r" Age="18"/>
 		</Ratings>
+		<Ratings Description="Film (2015+)" ID="1">
+			<Rating Name="A" Description="Tillatt for alle" Age="1"/>
+			<Rating Name="6 &#229;r" Description="Aldersgrense 6 &#229;r" Age="6"/>
+			<Rating Name="9 &#229;r" Description="Aldersgrense 9 &#229;r" Age="9"/>
+			<Rating Name="12 &#229;r" Description="Aldersgrense 12 &#229;r" Age="12"/>
+			<Rating Name="15 &#229;r" Description="Aldersgrense 15 &#229;r" Age="15"/>
+			<Rating Name="18 &#229;r" Description="Aldersgrense 18 &#229;r" Age="18"/>
+		</Ratings>
 	</Locality>
 	<Locality Description="Peru" ID="51" DVDRegion="4" BDRegion="A">
 		<Ratings Description="Film" ID="0">
@@ -495,12 +510,12 @@ NOTE: 	This file is intended for read use only.
 	</Locality>
 	<Locality Description="Thailand" ID="38" DVDRegion="3" BDRegion="A">
 		<Ratings Description="Film" ID="0">
-			<Rating LegacyValue="1" Name="P" Description="Promotional, film is educational and viewing is encouraged for all Thai people" Age="1"/>
-			<Rating LegacyValue="2" Name="G" Description="Suitable for general audiences" Age="1"/>
-			<Rating LegacyValue="3" Name="Under 13" Description="Viewers under age 13 not admitted" Age="13"/>
-			<Rating LegacyValue="4" Name="Under 15" Description="Viewers under age 15 not admitted" Age="15"/>
-			<Rating LegacyValue="5" Name="Under 18" Description="Viewers under age 18 not admitted" Age="18"/>
-			<Rating Name="Under 20" Description="Viewers under age 20 not admitted" Age="20"/>
+			<Rating LegacyValue="1" Name="Recommend" Description="Recommend for all audiences" Age="1"/>
+			<Rating LegacyValue="2" Name="General" Description="Suitable for general audiences" Age="1"/>
+			<Rating LegacyValue="3" Name="13+" Description="Appropriate for the audiences over 13" Age="13"/>
+			<Rating LegacyValue="4" Name="15+" Description="Appropriate for the audiences over 15" Age="15"/>
+			<Rating LegacyValue="5" Name="18+" Description="Appropriate for the audiences over 18" Age="18"/>
+			<Rating Name="20-" Description="No one under 20 admitted" Age="20"/>
 		</Ratings>
 	</Locality>
 	<Locality Description="Turkey" ID="31" DVDRegion="2" BDRegion="B">
