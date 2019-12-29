@@ -700,7 +700,7 @@ $mobilepage = $PHP_SELF;
 if ($mobileshow)
 	$mobilepage = 'smallshow.php';
 
-$code_schema_version = '2.7';
+$code_schema_version = '2.8';
 $db_schema_version = 'Unknown';
 
 $db = new sql_db($dbhost, $dbuser, $dbpasswd, $dbname, $dbport, false, $debugSQL, true);
