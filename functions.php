@@ -1010,4 +1010,51 @@ function MakeAUnixTime($entry, $default) {
 	}
 	return($retval);
 }
+
+function _testFile($filename) {
+	if (!empty($filename) && file_exists("gfx/Ratings/$filename")) {
+		return "gfx/Ratings/" . rawurlencode($filename);
+	}
+	return FALSE;
+}
+
+// Try to get a sanitized version of the rating logo's filename
+function GetRatingLogo($locale, $ratingsystem, $rating) {
+	$rfn = "rating_{$locale}_" . str_replace('/', '-', strtolower($ratingsystem.'_'.$rating)) . '.gif';
+	if (extension_loaded('intl')) {
+		$transliterator = Transliterator::createFromRules(':: Any-Latin; :: Latin-ASCII; :: NFD; :: [:Nonspacing Mark:] Remove; :: Lower(); :: NFC;', Transliterator::FORWARD);
+		$normalized = $transliterator->transliterate(utf8_encode($rfn));
+		$logo = _testFile($normalized);
+		if ($logo) {
+			return $logo;
+		}
+	}
+
+	$normalized = iconv('ISO-8859-1', 'ascii//TRANSLIT', $rfn);
+	$logo = _testFile($normalized);
+	if ($logo) {
+		return $logo;
+	}
+
+	// Filename string sanitizer, from https://stackoverflow.com/questions/2021624/string-sanitizer-for-filename
+	// Remove anything which isn't a word, whitespace, number
+	// or any of the following caracters -_~,;[]()+.
+	// If you don't need to handle multi-byte characters
+	// you can use preg_replace rather than mb_ereg_replace
+	// Thanks @Łukasz Rysiak!
+	$normalized = mb_ereg_replace("([^\w\s\d\-_~,;\[\]\(\).\+])", '', $normalized);
+	// Remove any runs of periods (thanks falstro!)
+	$normalized = mb_ereg_replace("([\.]{2,})", '', $normalized);
+	$logo = _testFile($normalized);
+	if ($logo) {
+		return $logo;
+	}
+
+	// Fallback, no sanitized version of the file was found, use the rating system and rating by itself
+	$logo = _testFile($rfn);
+	if ($logo) {
+		return $logo;
+	}
+	return NULL;
+}
 ?>

@@ -42,15 +42,11 @@ global $db, $lang, $inbrowser, $eoln, $table_prefix, $UpdateLast;
 }
 
 function interpretEscapedXml($subject) {
-  $result = preg_replace_callback('/&amp;/', function($matches) { 
-	  foreach ($matches as $match) { 
-		  return '&'; 
-		} 
+  $result = preg_replace_callback('/&amp;/', function($matches) {
+	  return '&';
 	}, $subject);
-  return preg_replace_callback('/&#(\d+);/', function($matches) { 
-	  foreach ($matches as $match) { 
-		  return chr($match); 
-		} 
+  return preg_replace_callback('/&#(\d+);/', function($matches) {
+	  return chr($matches[1]); 
 	}, $result);
 }
 

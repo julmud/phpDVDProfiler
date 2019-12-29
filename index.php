@@ -2860,8 +2860,9 @@ if ($action == 'show') {
 			$rdesc = "$rdesc($dvd[ratingsystem])";
 		$ratinglogo = $rdesc;
 		$rfn = "rating_{$locale}_" . str_replace('/', '-', strtolower($dvd['ratingsystem'].'_'.$dvd['rating'])) . '.gif';
-		if (file_exists("gfx/Ratings/$rfn")) {
-			$ratinglogo = '<img src="gfx/Ratings/' . rawurlencode($rfn) . "\" height=30 title=\"$rdesc\" alt=\"$lang[RATING]\"/>";
+		$rfn = GetRatingLogo($locale, $dvd['ratingsystem'], $dvd['rating']);
+		if (isset($rfn)) {
+			$ratinglogo = '<img src="' . $rfn . "\" height=30 title=\"$rdesc\" alt=\"$lang[RATING]\"/>";
 			if ($ExposeRatingDetails)
 				$ratinglogo .= "&nbsp;$rdesc";
 		}
