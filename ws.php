@@ -301,6 +301,7 @@ $besturl="$WS_SELF?user=$uuser&amp;year=$year&amp;month=$month&amp;dolast=$dolas
 $nextworst=($doworst==1)?0:1;
 $worsturl="$WS_SELF?user=$uuser&amp;year=$year&amp;month=$month&amp;dolast=$dolast&amp;domost=$domost&amp;dobest=$dobest&amp;doworst=$nextworst&amp;sort=$sort&amp;order=$order";
 
+header('Content-Type: text/html; charset="windows-1252";');
 echo<<<EOT
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
