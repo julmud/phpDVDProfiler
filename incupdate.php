@@ -476,11 +476,19 @@ global $DVD_COMMON_ACTOR_TABLE, $DVD_COMMON_CREDITS_TABLE;
 	}
 }
 
-function FigureOutBuiltinMediaType($mediatypedvd, $mediatypehddvd, $mediatypebluray) {
+function FigureOutBuiltinMediaType($mediatypedvd, $mediatypehddvd, $mediatypebluray, $mediatypeultrahd) {
 	if ($mediatypehddvd) {
 		if ($mediatypedvd)
 			return(MEDIA_TYPE_HDDVD_DVD);
 		return(MEDIA_TYPE_HDDVD);
+	}
+	if ($mediatypeultrahd) {
+		if ($mediatypebluray)
+			return(MEDIA_TYPE_ULTRAHD_BLURAY);
+		// I don't think there's any 4k releases that have Just a DVD and no BD?
+		if ($mediatypedvd)
+			return(MEDIA_TYPE_ULTRAHD_BLURAY_DVD);
+		return(MEDIA_TYPE_ULTRAHD);
 	}
 	if ($mediatypebluray) {
 		if ($mediatypedvd)
@@ -1881,7 +1889,8 @@ global $db_schema_version;
 	$mediatypedvd = TrueFalse($dvd_info['MEDIATYPES'][0]['DVD'][0]['VALUE']);
 	$mediatypehddvd = TrueFalse($dvd_info['MEDIATYPES'][0]['HDDVD'][0]['VALUE']);
 	$mediatypebluray = TrueFalse($dvd_info['MEDIATYPES'][0]['BLURAY'][0]['VALUE']);
-	$builtinmediatype = FigureOutBuiltinMediaType($mediatypedvd, $mediatypehddvd, $mediatypebluray);
+	$mediatypeultrahd = TrueFalse($dvd_info['MEDIATYPES'][0]['ULTRAHD'][0]['VALUE']);
+	$builtinmediatype = FigureOutBuiltinMediaType($mediatypedvd, $mediatypehddvd, $mediatypebluray, $mediatypeultrahd);
 	$custommediatype = (isset($dvd_info['MEDIATYPES'][0]['CUSTOMMEDIATYPE'][0]['VALUE']) ? $db->sql_escape($dvd_info['MEDIATYPES'][0]['CUSTOMMEDIATYPE'][0]['VALUE']) : '');
 
 	$TheDVDTitle = $db->sql_escape($dvd_info['TITLE'][0]['VALUE']);
@@ -1916,7 +1925,7 @@ global $db_schema_version;
 	$f .= ',isadulttitle';			$v .= ','  . $isadulttitle;
 
 	$fvs = StringIfThere($dvd_info['FORMAT'][0]['FORMATVIDEOSTANDARD'][0]['VALUE']);
-	if ($builtinmediatype == MEDIA_TYPE_BLURAY || $builtinmediatype == MEDIA_TYPE_HDDVD)	// DVDProfiler stuffs NTSC rather than blanks
+	if ($builtinmediatype == MEDIA_TYPE_BLURAY || $builtinmediatype == MEDIA_TYPE_HDDVD || MEDIA_TYPE_ULTRAHD)	// DVDProfiler stuffs NTSC rather than blanks
 		$fvs = '';
 	$f .= ',formatvideostandard';	$v .= ",'$fvs'";
 	$f .= ',formatletterbox';		$v .= ',' . $formatletterbox;
