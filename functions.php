@@ -156,6 +156,7 @@ global $AddFormatIcons, $MediaTypes;
 			break;
 		case MEDIA_TYPE_HDDVD:
 		case MEDIA_TYPE_BLURAY:
+		case MEDIA_TYPE_ULTRAHD:
 			if ($MediaTypes[$dvd['builtinmediatype']]['FormatIcon'] != '')
 				$formaticon .= '<img src="' . $MediaTypes[$dvd['builtinmediatype']]['FormatIcon'] . '" alt="" border=0/>';
 			break;
@@ -166,6 +167,15 @@ global $AddFormatIcons, $MediaTypes;
 			if ($MediaTypes[MEDIA_TYPE_DVD]['FormatIcon'] != '')
 				$formaticon .= '<img src="' . $MediaTypes[MEDIA_TYPE_DVD]['FormatIcon'] . '" alt="" border=0/>';
 			break;
+		// Just display the 4k and BR icons for now to avoid clutter.
+		case MEDIA_TYPE_ULTRAHD_BLURAY:
+		case MEDIA_TYPE_ULTRAHD_BLURAY_DVD:
+			if ($MediaTypes[$dvd['builtinmediatype']]['FormatIcon'] != '')
+				$formaticon .= '<img src="' . $MediaTypes[$dvd['builtinmediatype']]['FormatIcon'] . '" alt="" border=0/>';
+			if ($MediaTypes[MEDIA_TYPE_BLURAY]['FormatIcon'] != '')
+				$formaticon .= '<img src="' . $MediaTypes[MEDIA_TYPE_BLURAY]['FormatIcon'] . '" alt="" border=0/>';
+			break;
+		break;
 		}
 		if ($formaticon != '')
 			$formaticon .= '&nbsp;';
