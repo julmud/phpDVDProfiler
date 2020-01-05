@@ -55,6 +55,9 @@ define('MEDIA_TYPE_HDDVD',	2);
 define('MEDIA_TYPE_HDDVD_DVD',	3);
 define('MEDIA_TYPE_BLURAY',	4);
 define('MEDIA_TYPE_BLURAY_DVD',	5);
+define('MEDIA_TYPE_ULTRAHD',	6);
+define('MEDIA_TYPE_ULTRAHD_BLURAY',	7);
+define('MEDIA_TYPE_ULTRAHD_BLURAY_DVD',	8);
 
 $ActorWindowSettings		= "'toolbar=no,location=no,width=670,height=255,resizable=yes,scrollbars=yes,status=yes'";
 $MediaTypes			= array(
@@ -63,7 +66,11 @@ $MediaTypes			= array(
 	MEDIA_TYPE_HDDVD	=> array('FormatIcon' => 'gfx/iconhddvdpng.png',  'Icon' => 'gfx/hddvd.jpg',  'Banner' => 'gfx/Banner_HDDVD.png'),
 	MEDIA_TYPE_HDDVD_DVD	=> array('FormatIcon' => 'gfx/iconhddvdpng.png',  'Icon' => 'gfx/hddvd.jpg',  'Banner' => 'gfx/Banner_HDDVD_DVD.png'),
 	MEDIA_TYPE_BLURAY	=> array('FormatIcon' => 'gfx/iconbluraypng.png', 'Icon' => 'gfx/bluray.jpg', 'Banner' => 'gfx/Banner_BluRay.png'),
-	MEDIA_TYPE_BLURAY_DVD	=> array('FormatIcon' => 'gfx/iconbluraypng.png', 'Icon' => 'gfx/bluray.jpg', 'Banner' => 'gfx/Banner_BluRayDVD.png')
+	MEDIA_TYPE_BLURAY_DVD	=> array('FormatIcon' => 'gfx/iconbluraypng.png', 'Icon' => 'gfx/bluray.jpg', 'Banner' => 'gfx/Banner_BluRayDVD.png'),
+	MEDIA_TYPE_ULTRAHD	=> array('FormatIcon' => 'gfx/iconultrahd.png', 'Icon' => 'gfx/ultrahd.jpg', 'Banner' => 'gfx/Banner_UltraHD.png'),
+	MEDIA_TYPE_ULTRAHD_BLURAY	=> array('FormatIcon' => 'gfx/iconultrahd.png', 'Icon' => 'gfx/ultrahd.jpg', 'Banner' => 'gfx/Banner_UltraHDBD.png'),
+	MEDIA_TYPE_ULTRAHD_BLURAY_DVD => array('FormatIcon' => 'gfx/iconultrahd.png', 'Icon' => 'gfx/ultrahd.jpg', 'Banner' => 'gfx/Banner_UltraHDBDDVD.png'),
+
 );
 
 $IgnoreCount0Profiles		= false;
