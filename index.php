@@ -1024,7 +1024,7 @@ EOT;
 	}
 
 	if ($mediatypecombo) {
-		$totdvd = $totbluray = $tothddvd = 0;
+		$totdvd = $totbluray = $tothddvd = $totultrahd = 0;
 		$result = $db->sql_query("SELECT builtinmediatype,COUNT(*) AS count FROM $DVD_TABLE GROUP BY builtinmediatype") or die($db->sql_error());
 		while ($mtype = $db->sql_fetchrow($result)) {
 			switch ($mtype['builtinmediatype']) {
@@ -1045,6 +1045,18 @@ EOT;
 				$totbluray += $mtype['count'];
 				$totdvd += $mtype['count'];
 				break;
+			case MEDIA_TYPE_ULTRAHD:
+				$totultrahd += $mtype['count'];
+				break;
+			case MEDIA_TYPE_ULTRAHD_BLURAY:
+				$totultrahd += $mtype['count'];
+				$totbluray += $mtype['count'];
+				break;
+			case MEDIA_TYPE_ULTRAHD_BLURAY_DVD:
+				$totultrahd += $mtype['count'];
+				$totbluray += $mtype['count'];
+				$totdvd += $mtype['count'];
+				break;
 			}
 		}
 		$db->sql_freeresult($result);
@@ -1060,6 +1072,10 @@ EOT;
 		if ($tothddvd > 0) {
 			$msel = ($searchtext == $lang['HDDVD']) ? ' selected' : '';
 			echo "<option value=\"$lang[HDDVD]\"$msel>$lang[HDDVD]</option>\n";
+		}
+		if ($totultrahd > 0) {
+			$msel = ($searchtext == $lang['ULTRAHD']) ? ' selected' : '';
+			echo "<option value=\"$lang[ULTRAHD]\"$msel>$lang[ULTRAHD]</option>\n";
 		}
 		$result = $db->sql_query("SELECT custommediatype,COUNT(*) AS count FROM $DVD_TABLE WHERE custommediatype != '' GROUP BY custommediatype") or die($db->sql_error());
 		while ($mtype = $db->sql_fetchrow($result)) {
@@ -1288,6 +1304,9 @@ case 'mediatype':
 			break;
 		case $lang['HDDVD']:
 			$sfield = '(builtinmediatype='.MEDIA_TYPE_HDDVD_DVD.' or builtinmediatype='.MEDIA_TYPE_HDDVD.')';
+			break;
+		case $lang['ULTRAHD']:
+			$sfield = '(builtinmediatype='.MEDIA_TYPE_ULTRAHD.'  or builtinmediatype='.MEDIA_TYPE_ULTRAHD_BLURAY.' or builtinmediatype='.MEDIA_TYPE_ULTRAHD_BLURAY_DVD.')';
 			break;
 		default:
 			$sfield = "(custommediatype='$srchtext')";

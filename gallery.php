@@ -708,6 +708,9 @@ function get_SQL($page, $dpp = 60){
 		case $lang['HDDVD']:
 			$sfield = '(builtinmediatype='.MEDIA_TYPE_HDDVD_DVD.' or builtinmediatype='.MEDIA_TYPE_HDDVD.')';
 			break;
+		case $lang['ULTRAHD']:
+			$sfield = '(builtinmediatype='.MEDIA_TYPE_ULTRAHD.'  or builtinmediatype='.MEDIA_TYPE_ULTRAHD_BLURAY.' or builtinmediatype='.MEDIA_TYPE_ULTRAHD_BLURAY_DVD.')';
+			break;
 		default:
 			$sfield = "(custommediatype='$searchtext')";
 			break;
