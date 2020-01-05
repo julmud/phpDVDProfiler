@@ -285,7 +285,7 @@ global $DontBreakOnBadPNGGDRoutines, $me_updating;
 		$dvd = $idstring;
 		$id = $dvd['id'];
 	}
-	if ($bgcolor != '' && $bgcolor{0} == '#')
+	if ($bgcolor != '' && $bgcolor[0] == '#')
 		$bgcolor = substr($bgcolor, 1);
 	$RequestedHeight = round($RequestedHeight);
 
@@ -386,7 +386,7 @@ global $DontBreakOnBadPNGGDRoutines, $me_updating;
 		$offx = $offy = 0;
 		if ($ImageWidth != $ThumbImageWidth || ($ImageHeight + $BannerHeight) != $ThumbImageHeight) {
 			if ($bgcolor != '') {
-				$col = ImageColorAllocate($im2, hexdec('0x'.$bgcolor{0}.$bgcolor{1}), hexdec('0x'.$bgcolor{2}.$bgcolor{3}), hexdec('0x'.$bgcolor{4}.$bgcolor{5}));
+				$col = ImageColorAllocate($im2, hexdec('0x'.$bgcolor[0].$bgcolor[1]), hexdec('0x'.$bgcolor[2].$bgcolor[3]), hexdec('0x'.$bgcolor[4].$bgcolor[5]));
 				ImageFill($im2, 0, 0, $col);
 			}
 			if ($center) {
@@ -586,8 +586,8 @@ function AddCommas($str) {
 	if (strlen($str) < 2)
 		return($str);
 	for ($out='',$i=0; $i<strlen($str)-1; $i++)
-		$out .= $str{$i}.', ';
-	return($out.$str{strlen($str)-1});
+		$out .= $str[$i].', ';
+	return($out.$str[strlen($str)-1]);
 }
 
 function MakeImageWindow($fn, $id, $mtype) {
@@ -655,7 +655,7 @@ function microtime_float() {
 
 function findfilecase($dir, $name) {
 	$realname = '';
-	if ($dir{strlen($dir)-1} == '/')
+	if ($dir[strlen($dir)-1] == '/')
 		$dir = substr($dir, 0, -1);
 	if (is_dir($dir)) {
 		if (file_exists($dir.'/'.$name))
@@ -729,7 +729,7 @@ function AcquireAThumbnail($filename) {
 global $getimages, $img_physpath, $createthumbs, $thumbnails;
 
 	if (!file_exists($img_physpath.$thumbnails.'/'.$filename) && $getimages == 2) {	// if $getimages == 2, try to grab an image from the Invelos server
-		if ($thumb=@file_get_contents('http://www.invelos.com/mpimages/'.$filename{0}.$filename{1}.'/'.$filename)) {
+		if ($thumb=@file_get_contents('http://www.invelos.com/mpimages/'.$filename[0].$filename[1].'/'.$filename)) {
 			if ($handle = fopen($img_physpath.$thumbnails.'/'.$filename, 'wb')) {
 				fwrite($handle, $thumb);
 				fclose($handle);
@@ -775,7 +775,7 @@ function find_a_file($id, $isfront, $checkthumb=true) {
 global $try_prev3_images;
 
 	$ret = real_find_a_file($id, $isfront, $checkthumb);
-	if ($ret == '' && $try_prev3_images && $id{0} != 'I' && $id{0} != 'M') {
+	if ($ret == '' && $try_prev3_images && $id[0] != 'I' && $id[0] != 'M') {
 		$locale = '';
 		$EANUPC = $id;
 		if (strpos($id, '.') !== false)
@@ -937,8 +937,8 @@ function hexdump($string, $len, $leader='') {
 	$out = $leader;
 	$hex = ''; $asc = '';
 	for ($i=0; $i<$max; $i++) {
-		$hex .= mydechex($string{$i}) . ' ';
-		$asc .= myasciz($string{$i}) . ' ';
+		$hex .= mydechex($string[$i]) . ' ';
+		$asc .= myasciz($string[$i]) . ' ';
 		if ($i%8 == 7) {
 			$out .= "$hex  $asc\n$leader";
 			$hex = $asc = '';
