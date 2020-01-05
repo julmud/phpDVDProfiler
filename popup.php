@@ -367,6 +367,9 @@ EOT;
 			if ($fmts != '') $fmts .= ' ';
 
 			$typs = '';
+			if ($actor['builtinmediatype'] == MEDIA_TYPE_ULTRAHD || $actor['builtinmediatype'] == MEDIA_TYPE_ULTRAHD_BLURAY || $actor['builtinmediatype'] == MEDIA_TYPE_ULTRAHD_BLURAY_DVD) {
+				$typs .= $lang['ULTRAHD'];
+			}
 			if ($actor['builtinmediatype'] == MEDIA_TYPE_BLURAY || $actor['builtinmediatype'] == MEDIA_TYPE_BLURAY_DVD) {
 				$typs .= $lang['BLURAY'];
 			}
