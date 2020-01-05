@@ -12,6 +12,7 @@ include_once('global.php');
 		$dvd['p_released'] = ($dvd['released'] === NULL? '': fix88595(ucwords(strftime($lang['DATEFORMAT'], $dvd['released']))));
 		if ($dvd['builtinmediatype'] == MEDIA_TYPE_HDDVD || $dvd['builtinmediatype'] == MEDIA_TYPE_HDDVD_DVD ) $dvd['upc'] .= ' HDDVD';
 		if ($dvd['builtinmediatype'] == MEDIA_TYPE_BLURAY || $dvd['builtinmediatype'] == MEDIA_TYPE_BLURAY_DVD ) $dvd['upc'] .= ' Blu-ray';
+		if ($dvd['builtinmediatype'] == MEDIA_TYPE_ULTRAHD || $dvd['builtinmediatype'] == MEDIA_TYPE_ULTRAHD_BLURAY || $dvd['builtinmediatype'] == MEDIA_TYPE_ULTRAHD_BLURAY_DVD ) $dvd['upc'] .= ' ULTRAHD';
 		if (substr($dvd['upc'], 0, strlen('Disc ID: ')) == 'Disc ID: ')
 			$dvd['upc'] = 'I' . substr($dvd['upc'], strlen('Disc ID: '));
 
