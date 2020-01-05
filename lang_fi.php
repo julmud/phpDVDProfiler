@@ -74,6 +74,7 @@ $lang['ALL'] = "Kaikki";
 $lang['DVD'] = "DVD";
 $lang['BLURAY'] = "Blu-ray";
 $lang['HDDVD'] = "HD-DVD";
+$lang['ULTRAHD'] = "4K Ultra HD";
 $lang['MEDIATYPE'] = "Media";
 $lang['TITLE'] = "Nimi";
 $lang['YEAR'] = "Vuosi";

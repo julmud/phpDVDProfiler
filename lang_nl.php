@@ -79,6 +79,7 @@ $lang['ALL'] = "Alles";
 $lang['DVD'] = "DVD";
 $lang['BLURAY'] = "Blu-ray";
 $lang['HDDVD'] = "HD-DVD";
+$lang['ULTRAHD'] = "4K Ultra HD";
 $lang['MEDIATYPE'] = "Media type";
 $lang['TITLE'] = "Titel";
 $lang['YEAR'] = "Jaar";
