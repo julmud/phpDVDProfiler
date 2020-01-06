@@ -2,3 +2,8 @@ ERROR_LOG
 DEBUG_LOG
 imagecache/
 images/
+
+# Prevent local collection and configuration from being uploaded to git
+localsiteconfig.php
+*.xml
+*.xml.gz
