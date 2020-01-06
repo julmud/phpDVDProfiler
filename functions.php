@@ -274,8 +274,8 @@ global $TryToFiddleIndices, $db;
 }
 
 function resize_jpg(&$idstring, $side, $RequestedWidth, $qual, $RequestedHeight=0, $bgcolor='', $center=true) {
-global $lang, $img_physpath, $imagecachedir, $thumbnails, $AddHDLogos, $DVD_TABLE, $db, $MediaTypes;
-global $DontBreakOnBadPNGGDRoutines, $me_updating;
+global $img_physpath, $imagecachedir, $thumbnails, $AddHDLogos, $DVD_TABLE, $db, $MediaTypes;
+global $DontBreakOnBadPNGGDRoutines;
 // we wish to put high-def banners at the top, if necessary.
 // allow plain string id (causing possible SQL lookup) or array with pre-looked-up banner data
 // possible array is passed by reference, so don't muck with the variable (hence the $idstring)
@@ -752,7 +752,7 @@ global $getimages, $img_physpath, $createthumbs, $thumbnails;
 // that is either created, or found. If no file is created or found, then it returns an empty string.
 
 function real_find_a_file($id, $isfront, $checkthumb=true) {
-global $getimages, $img_physpath, $thumbnails;
+global $img_physpath, $thumbnails;
 
 	$name = $id . (($isfront)? 'f': 'b') . '.jpg';
 	$dir = $img_physpath;
@@ -790,12 +790,12 @@ global $try_prev3_images;
 }
 
 function find_files_in_set(&$dvd, &$img, &$thmb, $isfront) {
-global $img_webpath, $tuumbnails;
+global $img_webpath, $thumbnails;
 
 	$img = find_a_file($dvd['id'], $isfront, false);
 	$thmb = find_a_file($dvd['id'], $isfront, true);
 	if ($thmb != '') {
-		$thmb = "{$img_webpathf}$thumbnails/$thmb";
+		$thmb = "{$img_webpath}$thumbnails/$thmb";
 	}
 	else {
 		if ($img != '')
@@ -931,7 +931,7 @@ function mydechex($c) {
 }
 
 function hexdump($string, $len, $leader='') {
-	$max = $stringlen = strlen($string);
+	$max = strlen($string);
 	if ($max > $len)
 		$max = $len;
 	$out = $leader;
