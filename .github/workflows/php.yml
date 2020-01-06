@@ -1,0 +1,14 @@
+name: PHP Syntax Checker
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+
+    - name: PHP Syntax Checker (Lint)
+      uses: StephaneBour/actions-php-lint@7.2
