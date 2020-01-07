@@ -10,9 +10,10 @@ See the file phpdvdprofiler-install.txt for instructions on installing the appli
 
 ## Authors
 
-* **FredLooks** - *Initial work* - [FredLooks](http://www.invelos.com/UserProfile.aspx?Alias=FredLooks)
+* **FredLooks and contributors** - *Initial work* - [FredLooks](http://www.invelos.com/UserProfile.aspx?Alias=FredLooks)
 * **Thomas Fintzel** - *Gallery code for the covers*
 * **Julien Mudry** - *Compatibility with PHP 7.2*
+* **Gavin-John Noonan** - *Suport of 4K UHD media types and numerous fixes* - [Gavin-John Noonan](https://github.com/gjnoonan)
 
 ## License
 
