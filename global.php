@@ -44,7 +44,7 @@ function StripMagicQuotes(&$var) {
 }
 	foreach ($EGPCS as $k => $v)
 		StripMagicQuotes($$v);
-} 
+}
 @extract($_POST);
 @extract($_GET);
 
@@ -604,7 +604,7 @@ $acomp_translation = array(
 $achan_translation = array(
 	'' => $lang['AUDIO'][''],
 	'Mono' => '<img src="gfx/dd10.gif" style="vertical-align:-30%; margin-bottom:2px" title="'.$lang['AUDIO']['MONO'].'" alt=""/>',
-	'Stereo' =>'<img src="gfx/dd20.gif" style="vertical-align:-30%; margin-bottom:2px" title="'.$lang['AUDIO']['STEREO'].'" alt=""/>', 
+	'Stereo' =>'<img src="gfx/dd20.gif" style="vertical-align:-30%; margin-bottom:2px" title="'.$lang['AUDIO']['STEREO'].'" alt=""/>',
 	'Pro-logic' => '<img src="gfx/dd30.gif" style="vertical-align:-30%; margin-bottom:2px" title="'.$lang['AUDIO']['PROLOGIC'].'" alt=""/>',
 	'Dolby Surround' => '<img src="gfx/dd40.gif" style="vertical-align:-30%; margin-bottom:2px" title="'.$lang['AUDIO']['DOLBYSUR'].'" alt=""/>',
 	'5.0 Surround' => '<img src="gfx/dd30.gif" style="vertical-align:-30%; margin-bottom:2px" title="'.$lang['AUDIO']['5.0SUR'].'" alt=""/>',
@@ -706,6 +706,7 @@ $db_schema_version = 'Unknown';
 $db = new sql_db($dbhost, $dbuser, $dbpasswd, $dbname, $dbport, false, $debugSQL, true);
 $db_Errors = $db->GetErrorState();
 
+$collectiontypelist = array();
 if ($db_Errors['code'] == 0) {
 	$result = $db->sql_query("SELECT * FROM $DVD_PROPERTIES_TABLE WHERE property NOT LIKE 'Rating%' ORDER BY property", 0, true);
 	$masterauxcolltype = array();
@@ -742,7 +743,6 @@ if ($db_Errors['code'] == 0) {
 			$item = $db->sql_fetchrow($result);
 			$db->sql_query("INSERT IGNORE INTO $DVD_PROPERTIES_TABLE (property,value) VALUES ('CurrentPosition','0||0|0|0|0|".$db->sql_escape($item['Id'])."')") or die($db->sql_error());
 		}
-		$collectiontypelist = array();
 		$result = $db->sql_query("SELECT DISTINCT realcollectiontype FROM $DVD_TABLE ORDER BY realcollectiontype", 0, true);
 		while ($item = $db->sql_fetchrow($result)) {
 			$rct = strtolower(str_replace(' ', '', $item['realcollectiontype']));
