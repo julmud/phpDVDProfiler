@@ -1,3 +1,40 @@
+Version 20200107 (phpdvdprofiler.20200107.zip)
+Changes since version 20191229 (phpDVDProfiler.20191229.tar.gz)
+    - add support for the 4K/UHD media format (thanks Gavin-John!)
+    - fix the character set encoding in the "Watched Statistics" page
+    - fix the database schema creation script for compatibility with MySQL 5.7
+    - add support for MySQL 8
+    - switch back to zip files for the "official" distribution as it was the format used before
+    - fix small behind the scenes stuff for better code in the future
+
+Version 20191229 (phpDVDProfiler.20191229.tar.gz)
+Changes since version 20191228_b (phpDVDProfiler.20191228_b.tar.gz)
+    - remove the DB schema update script, as there's already a process in place during normal updates
+    - update handling of rating system logos for rating systems with diacritics in their name
+    - fix the boxset display in the cover gallery
+    - update the localities.xod file
+
+Version 20191228_b (phpDVDProfiler.20191228_b.tar.gz)
+Changes since version 20191228 (phpDVDProfiler.20191228.tar.gz)
+    - fix the missing first two characters from the DVD feature list
+
+Version 20191228 (phpDVDProfiler.20191228.tar.gz)
+Changes since version 20191227 (phpDVDProfiler.20191227.tar.gz)
+    - fix SQL injections
+    - fix a missed PHP notice in the gallery
+    - remove dead links to dvdaholic in the navigation menu
+
+Version 20191227 (phpDVDProfiler.20191227.tar.gz)
+Changes since version 20191226 (phpDVDProfiler.20191226.tar.gz)
+    - add support of Auro-3D and DTS-X audio formats
+    - add support of DVD Profiler 4 new features for a DVD: Play all, D-Box, Cine-Chat, and MovieIQ
+    - add a script for DB schema updates
+
+Version 20191226 (phpDVDProfiler.20191226.tar.gz)
+Changes since version 3.8.2.1 (phpdvdprofiler_v3-20140306.zip)
+    - add support of PHP version 7.2
+    - add support of Dolby Atmos audio format
+
 Version 3.8.2.1 (phpdvdprofiler_v3-20140306.zip)
 Changes since version 3.8.2.0 (phpdvdprofiler_v3-20130126.zip)
     - fixed typo for NoBackImageNotFound in globalinits (thanks dedcap!)
