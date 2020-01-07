@@ -40,6 +40,7 @@ class sql_db
 		$this->db_connect_id = ($this->persistency) ? @mysql_pconnect($this->server, $this->user, $this->password) : @mysql_connect($this->server, $this->user, $this->password);
 		if ($this->db_connect_id && $this->dbname != '')
 		{
+			mysql_set_charset("latin1", $this->db_connect_id);
 			if (@mysql_select_db($this->dbname))
 			{
 				return $this->db_connect_id;
@@ -200,7 +201,7 @@ class sql_db
 
 					$this->sql_report .= "<hr>\n";
 				}
-// This is cacheing of query results, and is not really implemented properly ... 
+// This is cacheing of query results, and is not really implemented properly ...
 //				$this->open_queries[] = $this->query_result;
 			}
 
@@ -219,12 +220,12 @@ class sql_db
 	}
 
 	// 20030406 Ashe: switched up $total and $offset as per MySQL manual
-	function sql_query_limit($query, $total, $offset = 0, $expire_time = 0) 
-	{ 
-		if ($query != '') 
-		{ 
-			$this->query_result = false; 
-			$this->num_queries++; 
+	function sql_query_limit($query, $total, $offset = 0, $expire_time = 0)
+	{
+		if ($query != '')
+		{
+			$this->query_result = false;
+			$this->num_queries++;
 			if ($this->DebugSQL)
 				$this->sql_list .= "\n\t$query";
 
@@ -236,12 +237,12 @@ class sql_db
 
 			$query .= ' LIMIT ' . ((!empty($offset)) ? $offset . ', ' . $total : $total);
 
-			return $this->sql_query($query, $expire_time); 
-		} 
-		else 
-		{ 
-			return false; 
-		} 
+			return $this->sql_query($query, $expire_time);
+		}
+		else
+		{
+			return false;
+		}
 	}
 
 	// Idea for this from Ikonboard
