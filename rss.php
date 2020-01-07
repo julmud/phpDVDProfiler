@@ -662,6 +662,9 @@ else
 		if ($dvd['builtinmediatype'] == MEDIA_TYPE_BLURAY) $mediatype = 'Blu-ray';
 		if ($dvd['builtinmediatype'] == MEDIA_TYPE_HDDVD_DVD) $mediatype = 'DVD/HD-DVD Hybrid';
 		if ($dvd['builtinmediatype'] == MEDIA_TYPE_BLURAY_DVD) $mediatype = 'DVD/Blu-ray Hybrid';
+		if ($dvd['builtinmediatype'] == MEDIA_TYPE_ULTRAHD) $mediatype = '4K UHD';
+		if ($dvd['builtinmediatype'] == MEDIA_TYPE_ULTRAHD_BLURAY) $mediatype = '4K UHD/Blu-ray Hybrid';
+		if ($dvd['builtinmediatype'] == MEDIA_TYPE_ULTRAHD_BLURAY_DVD) $mediatype = '4K UHD/Blu-ray/DVD Hybrid';
 		$pupdate = date ('r', $dvd['purchasedate']);
 		$releaseddate_int=intval($dvd['released']);
 		$dvd['purchasedate'] = fix88595(ucwords(strftime($lang['DATEFORMAT'], $dvd['purchasedate'])));
