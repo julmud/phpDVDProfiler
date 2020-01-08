@@ -271,25 +271,28 @@ $lang['CREATUREDESIGN'] = "Creature Design";
 $lang['SOUNDMIXER'] = "Lydmikser";
 $lang['BASEDONCHARACTERSCREATEDBY'] = "Basert p&aring; karakterer laget av";
 
+# Case types
 $lang['BOX'] = "Box";
-$lang['DIGIBOOK'] = "Digibook";
 $lang['CLAMSHELL'] = "Clam shell";
 $lang['CUSTOM'] = "Tilpasset";
+$lang['DIGIBOOK'] = "Digibook";
+$lang['DIGIPAK'] = "Digipak";
 $lang['DRAWER'] = "Drawer";
+$lang['ENVELOPE'] = "Envelope";
+$lang['HDKEEPCASE'] = "HD Keep Case";
+$lang['HDSLIM'] = "HD Slim";
 $lang['HUB'] = "Hub";
 $lang['JEWEL'] = "Jewel";
 $lang['KEEPCASE'] = "Keep Case";
-$lang['SNAPPER'] = "Snapper";
-$lang['DIGIPAK'] = "Digipak";
-$lang['BOXSET'] = "Box Set";
-$lang['SLIPCASE'] = "Slip Case";
-$lang['ENVELOPE'] = "Envelope";
-$lang['STEELBOOK'] = "SteelBook";
 $lang['METALCASE'] = "Metal Case";
+$lang['SLIPCASE'] = "Slip Case";
+$lang['SNAPPER'] = "Snapper";
+$lang['STEELBOOK'] = "SteelBook";
 $lang['THINPAK'] = "THINpak";
-$lang['HDKEEPCASE'] = "HD Keep Case";
-$lang['HDSLIM'] = "HD Slim";
+# Case type "attributes"
+$lang['BOXSET'] = "Box Set";
 $lang['SLIPCOVER'] = "Slip Cover";
+
 $lang['NONE'] = "Ingen";
 $lang['DISCS'] = "Plater";
 $lang['DESCRIPTION'] = "Beskrivelse";
