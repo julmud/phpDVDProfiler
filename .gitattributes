@@ -6,3 +6,4 @@
 **/svg                  export-ignore
 **/*.php                ident
 **/*.sql                ident
+gfx/countries/svg       export-ignore

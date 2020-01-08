@@ -2627,7 +2627,7 @@ if ($action == 'show') {
             $locale = '0';
 
         $regions = "<a target=\"_blank\" href=\"http://www.invelos.com/Forums.aspx?task=contributionnotes&amp;type=DVD&amp;ProfileUPC=$dvd[id]\">$dvd[upc]</a>";
-        $regions .= " <img src=\"gfx/countries/loc$locale.gif\" style=\"vertical-align:-30%; margin-bottom:2px\" title=\"" . $lang['LOCALE'.$locale] .'" alt=""/> ';
+        $regions .= " <img src=\"gfx/countries/loc$locale.png\" style=\"vertical-align:-30%; margin-bottom:2px\" title=\"" . $lang['LOCALE'.$locale] .'" alt=""/> ';
 
         if (strstr($dvd['region'], '0') !== false) {
             $regions .= "<img src=\"gfx/region_0.gif\" style=\"vertical-align:-30%; margin-bottom:2px\" title=\"$lang[ALLREGIONS]\" alt=\"\"/>\n";
@@ -2884,21 +2884,21 @@ if ($action == 'show') {
         if ($dvd['countryoforigin'] != '') {
             CountryToLang($dvd['countryoforigin'], $countryname, $countryloc);
             if ($countryloc != '')
-                $xxx .= "<img src=\"gfx/countries/loc$countryloc.gif\" style=\"vertical-align:-30%; margin-bottom:2px\" title=\"$countryname\" alt=\"\"/>";
+                $xxx .= "<img src=\"gfx/countries/loc$countryloc.png\" style=\"vertical-align:-30%; margin-bottom:2px\" title=\"$countryname\" alt=\"\"/>";
             $xxx .= "&nbsp;$countryname";
         }
         if ($dvd['countryoforigin2'] != '') {
             if ($xxx != '') $xxx .= ', ';
             CountryToLang($dvd['countryoforigin2'], $countryname, $countryloc);
             if ($countryloc != '')
-                $xxx .= "<img src=\"gfx/countries/loc$countryloc.gif\" style=\"vertical-align:-30%; margin-bottom:2px\" title=\"$countryname\" alt=\"\"/>";
+                $xxx .= "<img src=\"gfx/countries/loc$countryloc.png\" style=\"vertical-align:-30%; margin-bottom:2px\" title=\"$countryname\" alt=\"\"/>";
             $xxx .= "&nbsp;$countryname";
         }
         if ($dvd['countryoforigin3'] != '') {
             if ($xxx != '') $xxx .= ', ';
             CountryToLang($dvd['countryoforigin3'], $countryname, $countryloc);
             if ($countryloc != '')
-                $xxx .= "<img src=\"gfx/countries/loc$countryloc.gif\" style=\"vertical-align:-30%; margin-bottom:2px\" title=\"$countryname\" alt=\"\"/>";
+                $xxx .= "<img src=\"gfx/countries/loc$countryloc.png\" style=\"vertical-align:-30%; margin-bottom:2px\" title=\"$countryname\" alt=\"\"/>";
             $xxx .= "&nbsp;$countryname";
         }
         $dvd['countryoforigin'] = $xxx;
