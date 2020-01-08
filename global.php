@@ -393,7 +393,7 @@ $alang_translation = array(
 	'Estonian'		=> '<img src="gfx/ee.png" alt=""/> '.$lang['AUDIO']['ESTONIAN'],
 	'Farsi'			=> '<img src="gfx/ir.png" alt=""/> '.$lang['AUDIO']['FARSI'],
 	'Finnish'		=> '<img src="gfx/fi.png" alt=""/> '.$lang['AUDIO']['FINNISH'],
-	'Flemish'		=> '<img src="gfx/be.png" alt=""/> '.$lang['AUDIO']['FLEMISH'],			// Begium
+	'Flemish'		=> '<img src="gfx/be.png" alt=""/> '.$lang['AUDIO']['FLEMISH'],			// Belgium
 	'French'		=> '<img src="gfx/fr.png" alt=""/> '.$lang['AUDIO']['FRENCH'],
 	'Galician'		=> '<img src="gfx/es.png" alt=""/> '.$lang['AUDIO']['GALICIAN'],		// Spain
 	'Georgian'		=> '<img src="gfx/de.png" alt=""/> '.$lang['AUDIO']['GEORGIAN'],
@@ -417,7 +417,7 @@ $alang_translation = array(
 	'Polish'		=> '<img src="gfx/pl.png" alt=""/> '.$lang['AUDIO']['POLISH'],
 	'Portuguese'		=> '<img src="gfx/pt.png" alt=""/> '.$lang['AUDIO']['PORTUGUESE'],
 	'Romanian'		=> '<img src="gfx/ro.png" alt=""/> '.$lang['AUDIO']['ROMANIAN'],
-	'Rumantsch'		=> '<img src="gfx/ru.png" alt=""/> '.$lang['AUDIO']['RUMANTSCH'],
+	'Rumantsch'		=> '<img src="gfx/ch.png" alt=""/> '.$lang['AUDIO']['RUMANTSCH'],		// Switzerland
 	'Russian'		=> '<img src="gfx/ru.png" alt=""/> '.$lang['AUDIO']['RUSSIAN'],
 	'Serbian'		=> '<img src="gfx/rs.png" alt=""/> '.$lang['AUDIO']['SERBIAN'],
 	'Slovak'		=> '<img src="gfx/sk.png" alt=""/> '.$lang['AUDIO']['SLOVAK'],
