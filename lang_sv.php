@@ -271,7 +271,7 @@ $lang['CREATUREDESIGN'] = "Creature Design";
 $lang['SOUNDMIXER'] = "Ljudmixer";
 $lang['BASEDONCHARACTERSCREATEDBY'] = "Baserad p&aring; karakt&auml;rer skapade av";
 
-# Case type "attributes"
+# Case types
 $lang['BOX'] = "Box";
 $lang['CLAMSHELL'] = "Clamshell";
 $lang['CUSTOM'] = "Personlig";
@@ -279,6 +279,8 @@ $lang['DIGIBOOK'] = "Digibook";
 $lang['DIGIPAK'] = "Digipak";
 $lang['DRAWER'] = "Drawer";
 $lang['ENVELOPE'] = "Envelope";
+$lang['FR4ME'] = "Fr4me";
+$lang['HANDLE'] = "Handle";
 $lang['HDKEEPCASE'] = "HD Keep Case";
 $lang['HDSLIM'] = "HD Slim";
 $lang['HUB'] = "Hub";
