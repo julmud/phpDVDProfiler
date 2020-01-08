@@ -271,25 +271,28 @@ $lang['CREATUREDESIGN'] = "Creature Design";
 $lang['SOUNDMIXER'] = "Miksaaja";
 $lang['BASEDONCHARACTERSCREATEDBY'] = "Alkuper&auml;iset hahmot";
 
+# Case types
 $lang['BOX'] = "Box";
-$lang['DIGIBOOK'] = "Digibook";
 $lang['CLAMSHELL'] = "Simpukka";
 $lang['CUSTOM'] = "Erikoiskotelo";
+$lang['DIGIBOOK'] = "Digibook";
+$lang['DIGIPAK'] = "Digipak";
 $lang['DRAWER'] = "Vetokotelo";
+$lang['ENVELOPE'] = "Kirjekuori";
+$lang['HDKEEPCASE'] = "HD-kotelo";
+$lang['HDSLIM'] = "Ohut HD-kotelo";
 $lang['HUB'] = "Hub";
 $lang['JEWEL'] = "Pleksikotelo";
 $lang['KEEPCASE'] = "Muovikotelo";
-$lang['SNAPPER'] = "Pahvikotelo";
-$lang['DIGIPAK'] = "Digipak";
-$lang['BOXSET'] = "Boksi";
-$lang['SLIPCASE'] = "P&auml;&auml;llyskotelo";
-$lang['ENVELOPE'] = "Kirjekuori";
-$lang['STEELBOOK'] = "Ter&auml;skotelo";
 $lang['METALCASE'] = "Metal Case";
+$lang['SLIPCASE'] = "P&auml;&auml;llyskotelo";
+$lang['SNAPPER'] = "Pahvikotelo";
+$lang['STEELBOOK'] = "Ter&auml;skotelo";
 $lang['THINPAK'] = "Ohut muovikotelo";
-$lang['HDKEEPCASE'] = "HD-kotelo";
-$lang['HDSLIM'] = "Ohut HD-kotelo";
+# Case type "attributes"
+$lang['BOXSET'] = "Boksi";
 $lang['SLIPCOVER'] = "P&auml;&auml;llyskansi";
+
 $lang['NONE'] = "Ei mit&auml;&auml;n";
 $lang['DISCS'] = "Levyt";
 $lang['DESCRIPTION'] = "Kuvaus";
