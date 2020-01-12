@@ -1,13 +1,11 @@
 <?php
-/*	$Id: incupdate.php,v 2.00 2004/08/25 14:21:00 fred Exp $	*/
-
 error_reporting(E_ALL);
 define('IN_SCRIPT', 1);
 include_once('global.php');
 
 function CheckCommonTable($t1, $t2) {
 global $db;
-	$sql = "CREATE TEMPORARY TABLE TEMP_COMMON (caid int unique NOT NULL, count int unsigned NOT NULL default 0) TYPE=MyISAM;";
+	$sql = "CREATE TEMPORARY TABLE TEMP_COMMON (caid int unique NOT NULL, count int unsigned NOT NULL default 0);";
 	$db->sql_query($sql) or die($db->sql_error());
 
 	$sql = "INSERT INTO TEMP_COMMON SELECT caid,COUNT(caid) AS count FROM $t1 WHERE caid>0 GROUP BY caid";
