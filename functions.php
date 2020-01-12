@@ -16,10 +16,12 @@ function UpdateUpdateLast($str='0||0|0|0|0|0') {
 		$x['NewCollNum'],
 		$x['ConnectionId']
 	) = explode('|', $str);
-	@list(
-		$x['Filename'],
-		$x['Filesize']
-	) = explode('!', $x['Filename']);
+	if (isset($x['Filename']) && $x['Filename'] != '') {
+		@list(
+			$x['Filename'],
+			$x['Filesize']
+		) = explode('!', $x['Filename']);
+	}
 	if (!isset($x['ConnectionId']))
 		$x['ConnectionId'] = '-1';
 	return($x);
@@ -531,20 +533,15 @@ $replacement = array(
 }
 
 function my_mktime() {
-	@list($hours, $minutes, $seconds, $mon, $mday, $year, $isdst) = func_get_args();
-//echo "$hours,$minutes,$seconds,$mon,$mday,$year,$isdst\n";
+	@list($hours, $minutes, $seconds, $mon, $mday, $year) = func_get_args();
 	$temp = @getdate();
-//if (is_int($hours)) echo "IsInt is true\n";
-//if (is_numeric($hours)) echo "Isnumeric is true\n";
 	if (!is_numeric($hours)) $hours = $temp['hours'];
 	if (!is_numeric($minutes)) $minutes = $temp['minutes'];
 	if (!is_numeric($seconds)) $seconds = $temp['seconds'];
 	if (!is_numeric($mon)) $mon = $temp['mon'];
 	if (!is_numeric($mday)) $mday = $temp['mday'];
 	if (!is_numeric($year)) $year = $temp['year'];
-	if (!is_numeric($isdst)) $isdst = -1;
 	unset($temp);
-//echo "$hours,$minutes,$seconds,$mon,$mday,$year,$isdst\n\n";
 	$ret = @mktime($hours, $minutes, $seconds, $mon, $mday, $year);
 	if ($ret === false || $ret < 0) $ret = 0;
 	return($ret);
@@ -708,13 +705,13 @@ global $thumbnails;
 		$success = true;
 	}
 	else {
-// hack to create a true color image, even when we don't have 
+// hack to create a true color image, even when we don't have
 // access to GD 2
 		$image_p = ImageCreate($width, $height);
 		$success = @ImageJPEG($image_p, $img_path.$thumbnails.'/'.$file_name, 75);
 		$image_p = ImageCreateFromJPEG($img_path.$thumbnails.'/'.$file_name);
 		$function_resize = 'ImageCopyResized';
-	}  
+	}
 
 	$success = $success && @$function_resize($image_p, $image, 0, 0, 0, 0, $width, $height, $width_orig, $height_orig);
 	$success = $success && @ImageJPEG($image_p, $img_path.$thumbnails.'/'.$file_name, 75);
