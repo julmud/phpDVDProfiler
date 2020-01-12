@@ -5,8 +5,8 @@ define('IN_SCRIPT', 1);
 // from the symbol table.
 //
 function my_mktime() {
-	@list($hours, $minutes, $seconds, $mon, $mday, $year, $isdst) = func_get_args();
-//echo "$hours,$minutes,$seconds,$mon,$mday,$year,$isdst\n";
+	@list($hours, $minutes, $seconds, $mon, $mday, $year) = func_get_args();
+//echo "$hours,$minutes,$seconds,$mon,$mday,$year\n";
 	$temp = getdate();
 //if (is_int($hours)) echo "IsInt is true\n";
 //if (is_numeric($hours)) echo "Isnumeric is true\n";
@@ -16,10 +16,9 @@ function my_mktime() {
 	if (!is_numeric($mon)) $mon = $temp['mon'];
 	if (!is_numeric($mday)) $mday = $temp['mday'];
 	if (!is_numeric($year)) $year = $temp['year'];
-	if (!is_numeric($isdst)) $isdst = -1;
 	unset($temp);
-//echo "$hours,$minutes,$seconds,$mon,$mday,$year,$isdst\n\n";
-	$ret = @mktime($hours, $minutes, $seconds, $mon, $mday, $year, $isdst);
+//echo "$hours,$minutes,$seconds,$mon,$mday,$year\n\n";
+	$ret = @mktime($hours, $minutes, $seconds, $mon, $mday, $year);
 	if ($ret === false || $ret < 0) $ret = 0;
 	return($ret);
 }
