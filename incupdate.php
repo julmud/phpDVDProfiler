@@ -2256,7 +2256,7 @@ global $audiospecialcondition, $Highlight_Last_X_PurchaseDates, $UpdateLast, $My
 			."isadulttitle tinyint, "
 			."countas smallint, "
 			."KEY(id), KEY(caid)"
-			.") TYPE=MyISAM;";
+			.");";
 		$db->sql_query($sql) or die($db->sql_error());
 // this needs to be looked at
 		$sql = "INSERT IGNORE INTO TEMP_ACTORS SELECT a.id,caid,if(originaltitle != '', originaltitle, title),voice,uncredited,boxparent,isadulttitle,countas FROM $DVD_ACTOR_TABLE a,$DVD_TABLE d "
