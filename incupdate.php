@@ -598,7 +598,7 @@ EOT;
 }
 
 function ExtractFromZip($filename) {
-global $DeleteTemporaryFile, $imagecachedir, $eoln;
+global $DeleteTemporaryFile, $imagecachedir, $eoln, $lang;
 
 	$success = false;
 	$x = zip_open($filename);

@@ -423,8 +423,12 @@ class sql_db
 		{
 			$query_id = $this->query_result;
 		}
-
-		return ($query_id) ? @mysqli_free_result($query_id) : false;
+		if ($query_id) {
+			@mysqli_free_result($query_id);
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	function sql_escape($msg)

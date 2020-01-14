@@ -787,7 +787,7 @@ global $try_prev3_images;
 }
 
 function find_files_in_set(&$dvd, &$img, &$thmb, $isfront) {
-global $img_webpath, $thumbnails;
+global $img_webpath, $img_webpathf, $thumbnails;
 
 	$img = find_a_file($dvd['id'], $isfront, false);
 	$thmb = find_a_file($dvd['id'], $isfront, true);
@@ -800,8 +800,8 @@ global $img_webpath, $thumbnails;
 		else
 			$thmb = find_files_in_set($dvd['boxparent'], $dvd, $img, $thmb, $isfront);
 	}
-	if ($fn != '')
-		return($fn);
+	if ($thmb != '')
+		return($thmb);
 }
 
 function DebugSQL($db, $string) {
@@ -955,7 +955,7 @@ function hexdump($string, $len, $leader='') {
 
 function GimmeAThumb($id, $side='f', $addbanner='') {
 global $img_physpath, $thumbnails;
-global $DontBreakOnBadPNGGDRoutines;
+global $DontBreakOnBadPNGGDRoutines, $MediaTypes;
 // The intent of this function is to emit to output, an image with a named banner on it, at full quality
 // It explicitly does not check to see if that is appropriate for the particular profile
 // although it does only do it for front images
@@ -1048,7 +1048,7 @@ function GetRatingLogo($locale, $ratingsystem, $rating) {
 	// or any of the following caracters -_~,;[]()+.
 	// If you don't need to handle multi-byte characters
 	// you can use preg_replace rather than mb_ereg_replace
-	// Thanks @Łukasz Rysiak!
+	// Thanks @Lukasz Rysiak!
 	$normalized = mb_ereg_replace("([^\w\s\d\-_~,;\[\]\(\).\+])", '', $normalized);
 	// Remove any runs of periods (thanks falstro!)
 	$normalized = mb_ereg_replace("([\.]{2,})", '', $normalized);

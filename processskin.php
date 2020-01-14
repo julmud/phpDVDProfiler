@@ -222,23 +222,23 @@ $lang_en_WISHNAME[6] = 'Not Set';
 	$retval .= "\tvar DP_FeatureFeaturette = " . JSTrueFalse($dvd['featuremakingof']) . ";\r\n";
 	$retval .= "\tvar DP_FeatureCommentary = " . JSTrueFalse($dvd['featurecommentary']) . ";\r\n";
 	$retval .= "\tvar DP_FeatureDeletedScenes = " . JSTrueFalse($dvd['featuredeletedscenes']) . ";\r\n";
-	$retval .= "\tvar DP_FeatureInterviews = " . JSTrueFalse($dvd['featureinterviews']) . ";\r\n";	
+	$retval .= "\tvar DP_FeatureInterviews = " . JSTrueFalse($dvd['featureinterviews']) . ";\r\n";
 	$retval .= "\tvar DP_FeatureBloopers = " . JSTrueFalse($dvd['featureouttakes']) . ";\r\n";
-	$retval .= "\tvar DP_FeatureStoryboardComparisons = " . JSTrueFalse($dvd['featurestoryboardcomparisons']) . ";\r\n";	
+	$retval .= "\tvar DP_FeatureStoryboardComparisons = " . JSTrueFalse($dvd['featurestoryboardcomparisons']) . ";\r\n";
 	$retval .= "\tvar DP_FeatureGallery = " . JSTrueFalse($dvd['featurephotogallery']) . ";\r\n";
 	$retval .= "\tvar DP_FeatureProductionNotes = " . JSTrueFalse($dvd['featureproductionnotes']) . ";\r\n";
 	$retval .= "\tvar DP_FeatureDVDROMContent = " . JSTrueFalse($dvd['featuredvdromcontent']) . ";\r\n";
 	$retval .= "\tvar DP_FeatureInteractiveGame = " . JSTrueFalse($dvd['featuregame']) . ";\r\n";
 	$retval .= "\tvar DP_FeatureMultiAngle = " . JSTrueFalse($dvd['featuremultiangle']) . ";\r\n";
 	$retval .= "\tvar DP_FeatureMusicVideos = " . JSTrueFalse($dvd['featuremusicvideos']) . ";\r\n";
-	$retval .= "\tvar DP_FeatureTHXCertified = " . JSTrueFalse($dvd['featurethxcertified']) . ";\r\n";	
+	$retval .= "\tvar DP_FeatureTHXCertified = " . JSTrueFalse($dvd['featurethxcertified']) . ";\r\n";
 	$retval .= "\tvar DP_FeatureClosedCaptioned = " . JSTrueFalse($dvd['featureclosedcaptioned']) . ";\r\n";
 	$retval .= "\tvar DP_FeatureDigitalCopy = " . JSTrueFalse($dvd['featuredigitalcopy']) . ";\r\n";
 	$retval .= "\tvar DP_FeaturePIP = " . JSTrueFalse($dvd['featurepip']) . ";\r\n";
 	$retval .= "\tvar DP_FeatureBDLive = " . JSTrueFalse($dvd['featurebdlive']) . ";\r\n";
 	$retval .= "\tvar DP_FeatureDBOX = " . JSTrueFalse($dvd['featuredbox']) . ";\r\n";
-	$retval .= "\tvar DP_FeatureCineChat = " . JSTrueFalse($dvd['featurecinechat']) . ";\r\n";	
-	$retval .= "\tvar DP_FeatureMovieIQ = " . JSTrueFalse($dvd['featuremovieiq']) . ";\r\n";	
+	$retval .= "\tvar DP_FeatureCineChat = " . JSTrueFalse($dvd['featurecinechat']) . ";\r\n";
+	$retval .= "\tvar DP_FeatureMovieIQ = " . JSTrueFalse($dvd['featuremovieiq']) . ";\r\n";
     $retval .= "\tvar DP_FeatureOther = \"" . str_replace(array("\n",'"'), array('<BR>','\\"'), $dvd['featureother']). "\";\r\n"; // Line break fix.
 	$retval .= "\tvar DP_Overview = \"" . str_replace(array("\n",'"'), array('\r\n','\\"'), $dvd['overview']) . "\";\r\n";
 	$retval .= "\tvar DP_EasterEggs = \"" . str_replace(array("\n",'"'), array('\r\n','\\"'), $dvd['eastereggs']) . "\";\r\n";
@@ -1231,7 +1231,7 @@ global $dvd, $colornames, $lang;
 		if ($maxlist != 0 && $count>$maxlist)
 			break;
 		$c['creditsubtype'] = $lang[strtoupper(str_replace(' ','',$c['creditsubtype']))];
-		if (isset($a['oc']))
+		if (isset($c['oc']))
 			$dirname = "<A href=\"javascript:;\" onClick=\"$c[oc]\">".ColorName($c, $cn, true).'</A>';
 		else
 			$dirname = ColorName($c, $cn, true);

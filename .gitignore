@@ -2,6 +2,7 @@ ERROR_LOG
 DEBUG_LOG
 imagecache/
 images/
+.scannerwork/
 
 # Prevent local collection and configuration from being uploaded to git
 localsiteconfig.php
