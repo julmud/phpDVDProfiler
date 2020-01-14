@@ -46,7 +46,7 @@ function interpretEscapedXml($subject) {
 	  return '&';
 	}, $subject);
   return preg_replace_callback('/&#(\d+);/', function($matches) {
-	  return chr($matches[1]); 
+	  return chr($matches[1]);
 	}, $result);
 }
 
@@ -117,7 +117,7 @@ global $db, $TryToChangeMemoryAndTimeLimits, $DVD_STATS_TABLE, $IgnoreCount0Prof
 	$db->sql_query($sql) or die($db->sql_error());
 	$ProfileName[$numtimings] = $NAME.'Adult'; $Profile[$numtimings++] = microtime_float()-$t0; $t0 = microtime_float();
 
-	if ($noadulttitles) 
+	if ($noadulttitles)
 		$sql = "INSERT INTO $DVD_STATS_TABLE SELECT '{$NAME}NoAdult',namestring1,namestring2,id,counts FROM $DVD_STATS_TABLE WHERE stattype='{$NAME}Adult'";
 	else
 		$sql = "INSERT INTO $DVD_STATS_TABLE SELECT $Distinct '{$NAME}NoAdult',$WHATWHEREFROM $WHERE AND isadulttitle=0 $GROUPORDER";
@@ -598,7 +598,7 @@ EOT;
 }
 
 function ExtractFromZip($filename) {
-global $DeleteTemporaryFile, $imagecachedir, $eoln;
+global $DeleteTemporaryFile, $imagecachedir, $eoln, $lang;
 
 	$success = false;
 	$x = zip_open($filename);
@@ -1148,7 +1148,7 @@ global $common_actor, $common_actor_stats, $common_credit, $common_credit_stats,
 		printf("$lang[IMPORTNUMCHANGED]$eoln", $changed, $newcollnum);
 		echo $lang['IMPORTNUMREMOVED'] . $removed . $eoln;
 		echo $lang['SUPPLIERREMOVED'] . $ppdelete . $eoln;
-		echo $lang['IMPORTDONE2'] . number_format($totaltime, 3, $lang['MON_DECIMAL_POINT'], $lang['MON_THOUSANDS_SEP']) . 
+		echo $lang['IMPORTDONE2'] . number_format($totaltime, 3, $lang['MON_DECIMAL_POINT'], $lang['MON_THOUSANDS_SEP']) .
 			' (' .  number_format($DatabaseTime, 3, $lang['MON_DECIMAL_POINT'], $lang['MON_THOUSANDS_SEP']) .
 			' + ' . number_format($totaltime-$DatabaseTime, 3, $lang['MON_DECIMAL_POINT'], $lang['MON_THOUSANDS_SEP']) .
 			')' . $eoln;
@@ -1572,7 +1572,7 @@ global $db_schema_version;
 			else if ($c == 'Ratings') $sortorder = 5000 + $dborder;
 			else if ($c == 'General Information') $sortorder = 6000 + $dborder;
 			else if ($c == 'Games') $sortorder = 7000 + $dborder;
-			else 
+			else
 				$sortorder = 8000 + $dborder;
 			if ($d == '') {
 				$d = $u;
@@ -1861,7 +1861,7 @@ global $db_schema_version;
 		}
 		$bi->flush();
 		unset($bi);
-	
+
 		if ($db_fast_update && !$all_in_one_go && count($hints) != 0) {
 			UpdateCommonTableFromMemory($common_credit, $common_credit_stats, $DVD_COMMON_CREDITS_TABLE, $hints);
 		}
@@ -1951,7 +1951,7 @@ global $db_schema_version;
 	$f .= ',featuredeletedscenes';	$v .= ','  . TrueFalse($dvd_info['FEATURES'][0]['FEATUREDELETEDSCENES'][0]['VALUE']);
 	$f .= ',featureinterviews';		$v .= ','  . TrueFalse($dvd_info['FEATURES'][0]['FEATUREINTERVIEWS'][0]['VALUE']);
 	$f .= ',featureouttakes';		$v .= ','  . TrueFalse($dvd_info['FEATURES'][0]['FEATUREOUTTAKES'][0]['VALUE']);
-	$f .= ',featurestoryboardcomparisons';	$v .= ','  . TrueFalse($dvd_info['FEATURES'][0]['FEATURESTORYBOARDCOMPARISONS'][0]['VALUE']);	
+	$f .= ',featurestoryboardcomparisons';	$v .= ','  . TrueFalse($dvd_info['FEATURES'][0]['FEATURESTORYBOARDCOMPARISONS'][0]['VALUE']);
 	$f .= ',featurephotogallery';	$v .= ','  . TrueFalse($dvd_info['FEATURES'][0]['FEATUREPHOTOGALLERY'][0]['VALUE']);
 	$f .= ',featureproductionnotes';$v .= ','  . TrueFalse($dvd_info['FEATURES'][0]['FEATUREPRODUCTIONNOTES'][0]['VALUE']);
 	$f .= ',featuredvdromcontent';	$v .= ','  . TrueFalse($dvd_info['FEATURES'][0]['FEATUREDVDROMCONTENT'][0]['VALUE']);
@@ -1960,13 +1960,13 @@ global $db_schema_version;
 	$f .= ',featuremusicvideos';	$v .= ','  . TrueFalse($dvd_info['FEATURES'][0]['FEATUREMUSICVIDEOS'][0]['VALUE']);
 	$f .= ',featurethxcertified';	$v .= ','  . TrueFalse($dvd_info['FEATURES'][0]['FEATURETHXCERTIFIED'][0]['VALUE']);
 	$f .= ',featureclosedcaptioned';$v .= ','  . TrueFalse($dvd_info['FEATURES'][0]['FEATURECLOSEDCAPTIONED'][0]['VALUE']);
-	$f .= ',featuredigitalcopy';	$v .= ','  . TrueFalse($dvd_info['FEATURES'][0]['FEATUREDIGITALCOPY'][0]['VALUE']);	
+	$f .= ',featuredigitalcopy';	$v .= ','  . TrueFalse($dvd_info['FEATURES'][0]['FEATUREDIGITALCOPY'][0]['VALUE']);
 	$f .= ',featurepip';			$v .= ','  . TrueFalse($dvd_info['FEATURES'][0]['FEATUREPIP'][0]['VALUE']);
 	$f .= ',featurebdlive';			$v .= ','  . TrueFalse($dvd_info['FEATURES'][0]['FEATUREBDLIVE'][0]['VALUE']);
 	$f .= ',featureother';			$v .= ",'" . StringIfThere($dvd_info['FEATURES'][0]['OTHERFEATURES'][0]['VALUE']) . "'";
 
 	if (version_compare($db_schema_version, '2.8') >= 0) {
-		$f .= ',featureplayall';		$v .= ','  . TrueFalse($dvd_info['FEATURES'][0]['FEATUREPLAYALL'][0]['VALUE']);	
+		$f .= ',featureplayall';		$v .= ','  . TrueFalse($dvd_info['FEATURES'][0]['FEATUREPLAYALL'][0]['VALUE']);
 		$f .= ',featuredbox';			$v .= ','  . TrueFalse($dvd_info['FEATURES'][0]['FEATUREDBOX'][0]['VALUE']);
 		$f .= ',featurecinechat';		$v .= ','  . TrueFalse($dvd_info['FEATURES'][0]['FEATURECINECHAT'][0]['VALUE']);
 		$f .= ',featuremovieiq';		$v .= ','  . TrueFalse($dvd_info['FEATURES'][0]['FEATUREMOVIEIQ'][0]['VALUE']);
@@ -2001,7 +2001,7 @@ global $db_schema_version;
 	if ($hashs['hashcrew'] != $oldhashs['hashcrew']) {	// don't delete existing primedir if there was no change in crew
 		$f .= ',primedirector';			$v .= ",'" . $db->sql_escape($primedir) . "'";
 	}
-	$f .= ',boxparent';			$v .= ",''"; 
+	$f .= ',boxparent';			$v .= ",''";
 	$f .= ',boxchild';			$v .= ','  . (isset($dvd_info['BOXSET'][0]['CONTENTS'][0]['CONTENT'][0]['VALUE']) ? 1 : 0);
 	$f .= ',hashprofile';			$v .= ",'$hashs[hashprofile]'";
 	$f .= ',hashnocolid';			$v .= ",'$hashs[hashnocolid]'";

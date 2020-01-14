@@ -10,7 +10,7 @@
 	if (substr($_SERVER['REQUEST_URI'], 0, strlen('/phpdvdprofiler.pastel/')) == '/phpdvdprofiler.pastel/') {
 		$localsiteconfig = 'pastelsiteconfig.php';
 	}
-	return;
+
 //
 // The purpose of this piece of code is to set the variable $localsiteconfig to
 // the name of a particular "user" config-file, based on the URL that the viewer
@@ -63,5 +63,3 @@
 //    $sitetitle    - used in headers and page titles, etc.
 //    $forumuser    - set for image comparisons using ajm's site, if used
 //    $collectionurl - set for image comparisons using ajm's site, if used
-
-?>

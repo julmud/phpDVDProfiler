@@ -44,7 +44,7 @@ function get_children($id,$bs){
 }
 
 function format_addinfo (&$dvd){
-	GLOBAL $lang, $reviewsort, $sortby;
+	GLOBAL $lang, $reviewsort, $sortby, $ReviewLabels;
 
 	if (!isset($dvd['addinfo']) || empty($dvd['addinfo'])) {
 		$dvd['addinfo'] = '';
@@ -540,7 +540,7 @@ function get_SQL($page, $dpp = 60){
 		   $hideowned, $hideordered, $hidewishlist,
 		   $DVD_TABLE, $DVD_COMMON_ACTOR_TABLE, $DVD_ACTOR_TABLE, $DVD_EVENTS_TABLE, $DVD_DISCS_TABLE, $DVD_LOCKS_TABLE,
 		   $DVD_AUDIO_TABLE, $DVD_COMMON_CREDITS_TABLE, $DVD_CREDITS_TABLE, $DVD_BOXSET_TABLE, $DVD_STUDIO_TABLE,
-		   $DVD_TAGS_TABLE, $DVD_SUPPLIER_TABLE, $DVD_GENRES_TABLE;
+		   $DVD_TAGS_TABLE, $DVD_SUPPLIER_TABLE, $DVD_GENRES_TABLE, $db;
 
 	if ($stickyboxsets) {
 		$nobox = " AND boxparent = '' ";
@@ -559,9 +559,9 @@ function get_SQL($page, $dpp = 60){
 	if ($handleadult == 2 || ($handleadult == 1 && !$IsPrivate)) {
 		$noadult = "AND isadulttitle=0";
 	}
-	
-    	
-    
+
+
+
 
 	switch ($sortby)	{		// sort options for the sql-query
 		case 'productionyear':
@@ -594,9 +594,9 @@ function get_SQL($page, $dpp = 60){
 		}
 
 	$add = '';
-	
-	
-	
+
+
+
 	$secsort = 'ASC';
 	if ($SecondarySortFollowPrimary)
 		$secsort = $order;
@@ -643,7 +643,7 @@ function get_SQL($page, $dpp = 60){
 		else
 			$where .= " AND sorttitle LIKE '".$db->sql_escape($_GET['letter'])."%'";
 	}
-	
+
 	$base = 'dvd.id, dvd.title, dvd.originaltitle, dvd.sorttitle, dvd.description, dvd.boxchild, dvd.mediabannerfront, dvd.mediabannerback, dvd.custommediatype';
 
 	switch ($searchby) {
@@ -736,7 +736,7 @@ else
 
 
 	if (!isset($_GET['sort'])){
-        switch($defaultsorttype){           
+        switch($defaultsorttype){
             case ('secondcol'):
                 $sortby = $secondcol;
                 break;
@@ -750,27 +750,27 @@ else
     }
     else
         $sortby = $_GET['sort'];
-        
+
     if (!isset($_GET['order']))
     	$order = 'asc';
     else
     	$order = $_GET['order'];
-    
+
     if (!isset($_GET['searchby']))
     	$searchby = '';
     else
     	$searchby = $_GET['searchby'];
-    
+
     if (isset($_GET['searchtext']))
     	$searchtext = $_GET['searchtext'];
     else
     	$searchtext = '';
-    	
+
     if (isset ($_GET['letter']))
     	$letter = $_GET['letter'];
     else
     	$letter = '';
-    	
+
 	if (!isset ($_GET['ct']))
 		$ct = 'owned';
 	else
@@ -813,7 +813,7 @@ if (!isset($_GET['page']))
 	$page=1;
 else
 	$page = $_GET['page'];
-	
+
 
 $sql = get_SQL($page,$dpp);
 

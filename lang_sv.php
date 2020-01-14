@@ -1,7 +1,5 @@
 <?php
 
-// $Id: lang_sv.php,v 3.0.2 2007/06/08 Swedish translation by H�kan Wassberg $
-
 /* Strings in this file should avoid the use of non-usascii characters, and
    instead use HTML entities (eg. &eacute;) to make the strings more portable to different charsets */
 

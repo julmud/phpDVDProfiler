@@ -191,7 +191,7 @@ if (isset($phpdvdprofiler[0])) {
 	echo $lang['IMAGEDATA']['VALID1'] . $eoln;
 } else {
 	echo "{$lang['IMAGEDATA']['INVALID1']} \$collectionurl ($cu) {$lang['IMAGEDATA']['INVALID2']} $eoln";
-	echo "Received page =<pre>", var_dump($page), "</pre>$eoln";
+	echo "Received page =<pre>"; var_dump($page); echo "</pre>$eoln";
 }
 flush();
 @ob_flush();
