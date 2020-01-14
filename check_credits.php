@@ -2,6 +2,7 @@
 
 define('IN_SCRIPT', 1);
 include_once('global.php');
+SendNoCacheHeaders('Content-Type: text/html; charset="windows-1252";');
 
 	$check1 = "Checking for truncated 'uncredited' indicators [searching roles for '(u']";
 	$check2 = "Checking for truncated 'voice' indicators [searching roles for '(v']";
