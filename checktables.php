@@ -2,6 +2,7 @@
 
 define('IN_SCRIPT', 1);
 include_once('global.php');
+SendNoCacheHeaders('Content-Type: text/html; charset="windows-1252";');
 
 function DisplayAResultSet(&$db, $sql) {
 	$result = $db->sql_query($sql);

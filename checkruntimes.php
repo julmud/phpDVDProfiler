@@ -5,6 +5,7 @@ define('IN_SCRIPT', 1);
 if (!isset($_SERVER['QUERY_STRING']))
 	$_SERVER['QUERY_STRING'] = '(Null)';
 include('global.php');
+SendNoCacheHeaders('Content-Type: text/html; charset="windows-1252";');
 
 	if (!isset($runtimeslack))
 		$runtimeslack = 2;
