@@ -442,23 +442,23 @@ global $db_fast_update, $common_actor, $common_actor_stats, $common_credit, $com
 global $DVD_COMMON_ACTOR_TABLE, $DVD_COMMON_CREDITS_TABLE;
 
 	if ($db_fast_update) {
-		if ($which == 'common_actor' && $common_actor == '') {
+		if ($which == 'common_actor' && empty($common_actor)) {
 			$res = $db->sql_query("SELECT * FROM $DVD_COMMON_ACTOR_TABLE ORDER BY caid") or die($db->sql_error());
 			$key = '';
 			while ($row = $db->sql_fetch_array($res)) {
 				$key = implode('|', array($row['firstname'], $row['middlename'], $row['lastname'], $row['birthyear']));
-				$common_actor[$key][] = array($row['caid'], 0);
+				$common_actor[$key] = array($row['caid'], 0);
 			}
 			$db->sql_freeresult($res);
 			if ($key != '') {
-				if ($common_actor[$key][0] == -1)
+				if ($common_actor[$key][0] < 0)
 					$common_actor_stats['maxid'] = 0;
 				else
 					$common_actor_stats['maxid'] = intval($common_actor[$key][0]);
 			}
 		}
 
-		if ($which == 'common_credit' && $common_credit == '') {
+		if ($which == 'common_credit' && empty($common_credit)) {
 			$res = $db->sql_query("SELECT * FROM $DVD_COMMON_CREDITS_TABLE ORDER BY caid") or die($db->sql_error());
 			$key = '';
 			while ($row = $db->sql_fetch_array($res)) {
@@ -467,7 +467,7 @@ global $DVD_COMMON_ACTOR_TABLE, $DVD_COMMON_CREDITS_TABLE;
 			}
 			$db->sql_freeresult($res);
 			if ($key != '') {
-				if ($common_credit[$key][0] == -1)
+				if ($common_credit[$key][0] < 0)
 					$common_credit_stats['maxid'] = 0;
 				else
 					$common_credit_stats['maxid'] = intval($common_credit[$key][0]);
@@ -1284,7 +1284,7 @@ global $db, $db_fast_update, $DVD_COMMON_ACTOR_TABLE;
 global $common_actor, $common_actor_stats, $common_credit, $common_credit_stats;
 
 	if ($db_fast_update) {
-        	$fullname = "$fname|$mname|$lname|$birth";
+		$fullname = "$fname|$mname|$lname|$birth";
 
 		if ($table == $DVD_COMMON_ACTOR_TABLE) {
 			$common_name = &$common_actor;
@@ -1294,15 +1294,14 @@ global $common_actor, $common_actor_stats, $common_credit, $common_credit_stats;
 			$common_stats = &$common_credit_stats;
 		}
 
-        	if (isset($common_name[$fullname])) {
-                	list($id, $add) = $common_name[$fullname];
-                	return($id);
-        	} else {
-                	$common_stats['maxid']++;
-                	$common_name[$fullname] = array($common_stats['maxid'], 1);
+		if (isset($common_name[$fullname])) {
+			return $common_name[$fullname][0];
+		} else {
+			$common_stats['maxid']++;
+			$common_name[$fullname] = array($common_stats['maxid'], 1);
 			$hints[] = $fullname;
-                	return($common_stats['maxid']);
-        	}
+			return($common_stats['maxid']);
+		}
 	}
 
 	$sql = "SELECT * FROM $table WHERE firstname='" . $db->sql_escape($fname)
@@ -2257,7 +2256,7 @@ global $audiospecialcondition, $Highlight_Last_X_PurchaseDates, $UpdateLast, $My
 			."isadulttitle tinyint, "
 			."countas smallint, "
 			."KEY(id), KEY(caid)"
-			.") TYPE=MyISAM;";
+			.");";
 		$db->sql_query($sql) or die($db->sql_error());
 // this needs to be looked at
 		$sql = "INSERT IGNORE INTO TEMP_ACTORS SELECT a.id,caid,if(originaltitle != '', originaltitle, title),voice,uncredited,boxparent,isadulttitle,countas FROM $DVD_ACTOR_TABLE a,$DVD_TABLE d "

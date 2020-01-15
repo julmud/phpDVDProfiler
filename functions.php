@@ -16,10 +16,12 @@ function UpdateUpdateLast($str='0||0|0|0|0|0') {
 		$x['NewCollNum'],
 		$x['ConnectionId']
 	) = explode('|', $str);
-	@list(
-		$x['Filename'],
-		$x['Filesize']
-	) = explode('!', $x['Filename']);
+	if (isset($x['Filename']) && $x['Filename'] != '') {
+		@list(
+			$x['Filename'],
+			$x['Filesize']
+		) = explode('!', $x['Filename']);
+	}
 	if (!isset($x['ConnectionId']))
 		$x['ConnectionId'] = '-1';
 	return($x);
@@ -531,20 +533,15 @@ $replacement = array(
 }
 
 function my_mktime() {
-	@list($hours, $minutes, $seconds, $mon, $mday, $year, $isdst) = func_get_args();
-//echo "$hours,$minutes,$seconds,$mon,$mday,$year,$isdst\n";
+	@list($hours, $minutes, $seconds, $mon, $mday, $year) = func_get_args();
 	$temp = @getdate();
-//if (is_int($hours)) echo "IsInt is true\n";
-//if (is_numeric($hours)) echo "Isnumeric is true\n";
 	if (!is_numeric($hours)) $hours = $temp['hours'];
 	if (!is_numeric($minutes)) $minutes = $temp['minutes'];
 	if (!is_numeric($seconds)) $seconds = $temp['seconds'];
 	if (!is_numeric($mon)) $mon = $temp['mon'];
 	if (!is_numeric($mday)) $mday = $temp['mday'];
 	if (!is_numeric($year)) $year = $temp['year'];
-	if (!is_numeric($isdst)) $isdst = -1;
 	unset($temp);
-//echo "$hours,$minutes,$seconds,$mon,$mday,$year,$isdst\n\n";
 	$ret = @mktime($hours, $minutes, $seconds, $mon, $mday, $year);
 	if ($ret === false || $ret < 0) $ret = 0;
 	return($ret);

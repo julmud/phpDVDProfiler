@@ -4,30 +4,7 @@ define('IN_SCRIPT', 1);
 // DON'T CALL THIS SCRIPT FROM INSIDE PHPDVDPROFILER. It can remove config variables
 // from the symbol table.
 //
-function my_mktime() {
-	@list($hours, $minutes, $seconds, $mon, $mday, $year, $isdst) = func_get_args();
-//echo "$hours,$minutes,$seconds,$mon,$mday,$year,$isdst\n";
-	$temp = getdate();
-//if (is_int($hours)) echo "IsInt is true\n";
-//if (is_numeric($hours)) echo "Isnumeric is true\n";
-	if (!is_numeric($hours)) $hours = $temp['hours'];
-	if (!is_numeric($minutes)) $minutes = $temp['minutes'];
-	if (!is_numeric($seconds)) $seconds = $temp['seconds'];
-	if (!is_numeric($mon)) $mon = $temp['mon'];
-	if (!is_numeric($mday)) $mday = $temp['mday'];
-	if (!is_numeric($year)) $year = $temp['year'];
-	if (!is_numeric($isdst)) $isdst = -1;
-	unset($temp);
-//echo "$hours,$minutes,$seconds,$mon,$mday,$year,$isdst\n\n";
-	$ret = @mktime($hours, $minutes, $seconds, $mon, $mday, $year, $isdst);
-	if ($ret === false || $ret < 0) $ret = 0;
-	return($ret);
-}
-
-function DisplayIfIsPrivateOrAlways($var) {
-global $IsPrivate;
-	return(($var==0) || ($IsPrivate&&$var==1));
-}
+include_once('functions.php');
 
 function print_it($Array, $Key, $prefix='') {
 	if (!isset($Array[$Key]))
