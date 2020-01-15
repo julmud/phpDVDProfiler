@@ -1,4 +1,5 @@
 .editorconfig export-ignore
-.gitignore export-ignore
 .gitattributes export-ignore
 .github export-ignore
+.gitignore export-ignore
+.sonarcloud.properties export-ignore
