@@ -1,3 +1,13 @@
+Version 20200115 (phpdvdprofiler.20200115.zip)
+Changes since version 20200107 (phpdvdprofiler.20200107.zip)
+    - add support of the Fr4me and Handle case types
+    - fix fast incremental updates
+    - fix the use of temporary tables in incremental updates and CleanCommon script
+    - fix the French translation of the countries
+    - fix the displayed flag for language Rumantsch
+    - fix the RSS feed after our adding the support of 4K/UHD profiles
+    - cleanup some small notices / bugs for better maintainability
+
 Version 20200107 (phpdvdprofiler.20200107.zip)
 Changes since version 20191229 (phpDVDProfiler.20191229.tar.gz)
     - add support for the 4K/UHD media format (thanks Gavin-John!)
