@@ -4,6 +4,10 @@ imagecache/
 images/
 .scannerwork/
 
+# Sonar specifics
+.scannerwork/
+sonar-project.properties
+
 # Prevent local collection and configuration from being uploaded to git
 localsiteconfig.php
 *.xml
