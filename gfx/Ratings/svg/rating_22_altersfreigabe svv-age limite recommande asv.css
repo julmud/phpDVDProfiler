@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,900');
+text {
+	font-family: 'Roboto';
+}
+rect {
+	ry: 2%;
+	rx: 2%;
+	stroke: black;
+	stroke-width: 2;
+}
+rect.background {
+	stroke-width: 0;
+	rx: 0;
+	ry: 0;
+}
+.age {
+	font-weight: 900;
+	font-size: 140%;
+	color: black;
+	dominant-baseline: middle;
+	text-anchor: middle;
+}
+.website {
+	font-weight: bold;
+	font-size: 35%;
+	color: black;
+	dominant-baseline: middle;
+	text-anchor: middle;
+}
+.id {
+	font-size: 35%;
+	color: black;
+	dominant-baseline: middle;
+	text-anchor: middle;
+}
