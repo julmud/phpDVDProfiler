@@ -1938,6 +1938,8 @@ global $db_schema_version;
 	$f .= ',formatfullframe';		$v .= ','  . TrueFalse($dvd_info['FORMAT'][0]['FORMATFULLFRAME'][0]['VALUE']);
 	$f .= ',formatdualsided';		$v .= ','  . TrueFalse($dvd_info['FORMAT'][0]['FORMATDUALSIDED'][0]['VALUE']);
 	$f .= ',formatduallayered';		$v .= ','  . TrueFalse($dvd_info['FORMAT'][0]['FORMATDUALLAYERED'][0]['VALUE']);
+	$f .= ',drhdr10';	$v .= ','  . @TrueFalse($dvd_info['FORMAT'][0]['DYNAMICRANGE'][0]['DRHDR10'][0]['VALUE']);
+	$f .= ',drdolbyvision';	$v .= ','  . @TrueFalse($dvd_info['FORMAT'][0]['DYNAMICRANGE'][0]['DRDOLBYVISION'][0]['VALUE']);
 	$f .= ',dim2d';					$v .= ','  . @TrueFalse($dvd_info['FORMAT'][0]['DIMENSIONS'][0]['DIM2D'][0]['VALUE']);
 	$f .= ',dim3danaglyph';			$v .= ','  . @TrueFalse($dvd_info['FORMAT'][0]['DIMENSIONS'][0]['DIM3DANAGLYPH'][0]['VALUE']);
 	$f .= ',dim3dbluray';			$v .= ','  . @TrueFalse($dvd_info['FORMAT'][0]['DIMENSIONS'][0]['DIM3DBLURAY'][0]['VALUE']);

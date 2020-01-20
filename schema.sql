@@ -50,6 +50,8 @@ CREATE TABLE DVDPROFILER_dvd (
   format16x9 tinyint unsigned default NULL,
   formatdualsided tinyint unsigned default NULL,
   formatduallayered tinyint unsigned default NULL,
+  drhdr10 tinyint unsigned default NULL,
+  drdolbyvision tinyint unsigned default NULL,
   dim2d tinyint unsigned default NULL,
   dim3danaglyph tinyint unsigned default NULL,
   dim3dbluray tinyint unsigned default NULL,
