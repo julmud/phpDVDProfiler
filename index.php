@@ -2347,6 +2347,22 @@ if ($action == 'show') {
 		}
 		$dvd['format'] .= ' ' . $colours;
 
+		if ($dvd['format'] != '') {
+			$dvd['format'] .= '';
+		}
+
+		$dynamicRange = ''
+			. (($dvd['drhdr10']==1)	? "($lang[HDR10])": '')
+			. (($dvd['drdolbyvision']==1)	? "($lang[DOLBYVISION])": '');
+
+		if ($dvd['drhdr10']==1 && $dvd['drdolbyvision']==1) {
+			$dynamicRange = "($lang[HDR10], $lang[DOLBYVISION])";
+		}
+		if ($dynamicRange == '') {
+			$dvd['format'] .= '' . $dynamicRange;
+		} else {
+			$dvd['format'] .= ' ' . $dynamicRange;
+		}
 		if ($dvd['format'] != '')
 			$dvd['format'] .= ',';
 		$dims = ''
