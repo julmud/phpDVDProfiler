@@ -1,5 +1,7 @@
-.editorconfig export-ignore
-.gitattributes export-ignore
-.github export-ignore
-.gitignore export-ignore
-.sonarcloud.properties export-ignore
+.editorconfig           export-ignore
+.gitattributes          export-ignore
+.github                 export-ignore
+.gitignore              export-ignore
+.sonarcloud.properties  export-ignore
+**/*.php                ident
+**/*.sql                ident
