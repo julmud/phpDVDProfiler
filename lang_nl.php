@@ -914,4 +914,6 @@ $lang['COLOR'] = "Color";
 $lang['BLACK&WHITE'] = "Black &amp; White";
 $lang['COLORIZED'] = "Colorized";
 $lang['COLORUNSET'] = "[Color status unset]";
+$lang['HDR10'] = "HDR10";
+$lang['DOLBYVISION'] = "Dolby Vision";
 ?>
