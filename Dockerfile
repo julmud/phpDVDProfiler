@@ -13,6 +13,7 @@ RUN apk update && apk upgrade \
         jpeg-dev \
         libjpeg \
         libjpeg-turbo-dev \
+        git \
      && docker-php-ext-configure gd \
         --with-freetype-dir=/usr/include/ \
         --with-jpeg-dir=/usr/include/ \
