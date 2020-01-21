@@ -1,5 +1,5 @@
 <?php
-/*	$Id: global.php,v 1.6 2004/03/16 14:31:55 djoe Exp $	*/
+/*	$Id$	*/
 
 error_reporting(E_ALL);
 //error_reporting(7);
@@ -700,7 +700,7 @@ $mobilepage = $PHP_SELF;
 if ($mobileshow)
 	$mobilepage = 'smallshow.php';
 
-$code_schema_version = '2.8';
+$code_schema_version = '2.9';
 $db_schema_version = 'Unknown';
 
 $db = new sql_db($dbhost, $dbuser, $dbpasswd, $dbname, $dbport, false, $debugSQL, true);
