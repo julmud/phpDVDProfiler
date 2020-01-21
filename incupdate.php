@@ -1,5 +1,5 @@
 <?php
-/*	$Id: incupdate.php,v 2.00 2004/08/25 14:21:00 fred Exp $	*/
+/*	$Id$	*/
 
 if (!$inbrowser)
 	error_reporting(E_ALL);
@@ -1941,6 +1941,8 @@ global $db_schema_version;
 	$f .= ',dim2d';					$v .= ','  . @TrueFalse($dvd_info['FORMAT'][0]['DIMENSIONS'][0]['DIM2D'][0]['VALUE']);
 	$f .= ',dim3danaglyph';			$v .= ','  . @TrueFalse($dvd_info['FORMAT'][0]['DIMENSIONS'][0]['DIM3DANAGLYPH'][0]['VALUE']);
 	$f .= ',dim3dbluray';			$v .= ','  . @TrueFalse($dvd_info['FORMAT'][0]['DIMENSIONS'][0]['DIM3DBLURAY'][0]['VALUE']);
+	$f .= ',drhdr10';				$v .= ','  . @TrueFalse($dvd_info['FORMAT'][0]['DYNAMICRANGE'][0]['DRHDR10'][0]['VALUE']);
+	$f .= ',drdolbyvision';			$v .= ','  . @TrueFalse($dvd_info['FORMAT'][0]['DYNAMICRANGE'][0]['DRDOLBYVISION'][0]['VALUE']);
 
 	$f .= ',featuresceneaccess';	$v .= ','  . TrueFalse($dvd_info['FEATURES'][0]['FEATURESCENEACCESS'][0]['VALUE']);
 	$f .= ',featuretrailer';		$v .= ','  . TrueFalse($dvd_info['FEATURES'][0]['FEATURETRAILER'][0]['VALUE']);

@@ -1,4 +1,4 @@
-#	$Id: schema.sql,v 1.3 2005/02/22 11:21:23 fred Exp $
+#	$Id$
 # DB installation schema for phpdvdprofiler
 # replace DVDPROFILER_ with your $tableprefix
 # --------------------------------------------------------
@@ -53,19 +53,21 @@ CREATE TABLE DVDPROFILER_dvd (
   dim2d tinyint unsigned default NULL,
   dim3danaglyph tinyint unsigned default NULL,
   dim3dbluray tinyint unsigned default NULL,
+  drhdr10 tinyint unsigned default NULL,
+  drdolbyvision tinyint unsigned default NULL,
   featuresceneaccess tinyint unsigned default NULL,
   featureplayall tinyint unsigned default NULL,
-  featuretrailer tinyint unsigned default NULL,  
+  featuretrailer tinyint unsigned default NULL,
   featurebonustrailers tinyint unsigned default NULL,
-  featuremakingof tinyint unsigned default NULL,  
+  featuremakingof tinyint unsigned default NULL,
   featurecommentary tinyint unsigned default NULL,
   featuredeletedscenes tinyint unsigned default NULL,
-  featureinterviews tinyint unsigned default NULL,  
+  featureinterviews tinyint unsigned default NULL,
   featureouttakes tinyint unsigned default NULL,
-  featurestoryboardcomparisons tinyint unsigned default NULL,  
+  featurestoryboardcomparisons tinyint unsigned default NULL,
   featurephotogallery tinyint unsigned default NULL,
   featureproductionnotes tinyint unsigned default NULL,
-  featuredvdromcontent tinyint unsigned default NULL,   
+  featuredvdromcontent tinyint unsigned default NULL,
   featuregame tinyint unsigned default NULL,
   featuremultiangle tinyint unsigned default NULL,
   featuremusicvideos tinyint unsigned default NULL,
@@ -392,5 +394,5 @@ CREATE TABLE DVDPROFILER_dvd_links (
   KEY id (id)
 ) TYPE=MyISAM;
 #
-INSERT INTO DVDPROFILER_dvd_properties VALUES ("db_schema_version", "2.8");
+INSERT INTO DVDPROFILER_dvd_properties VALUES ("db_schema_version", "2.9");
 # --------------------------------------------------------
