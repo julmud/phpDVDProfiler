@@ -18,9 +18,6 @@ global $getimages, $img_webpathf, $thumbnails;
 	return($thumbs);
 }
 
-	$MyMySQLHasSubQueries = false;	// for the use we are making, sub-queries are *much* slower
-//	$MyMySQLHasSubQueries = MySQLHasSubQueries();
-
 	$pre = '';
 //	$pre .= '<pre>$_GET = '.print_r($_GET, true)."\n\$_POST = ".print_r($_POST, true).'</pre><br>';
 	if (count($_POST) != 0) {
@@ -69,22 +66,16 @@ global $getimages, $img_webpathf, $thumbnails;
 				$numgenretables++;
 				break;
 			case -1:
-				if ($MyMySQLHasSubQueries) {
-					$needtable['genre'] = true;
-					$where .= " AND (SELECT COUNT(*) FROM $DVD_GENRES_TABLE g WHERE g.id=d.id AND genre='".str_replace('_', ' ', $db->sql_escape(substr($key, 6)))."')=0";
-					$numgenretables++;
+				// for the use we are making, sub-queries are *much* slower
+				$result = $db->sql_query("SELECT DISTINCT id FROM $DVD_GENRES_TABLE WHERE genre='".str_replace('_', ' ', $db->sql_escape(substr($key, 6)))."'");
+				$tmp = '(';
+				while ($zzz = $db->sql_fetch_array($result)) {
+					if ($tmp != '(') $tmp .= ',';
+					$tmp .= "'$zzz[id]'";
 				}
-				else {
-					$result = $db->sql_query("SELECT DISTINCT id FROM $DVD_GENRES_TABLE WHERE genre='".str_replace('_', ' ', $db->sql_escape(substr($key, 6)))."'");
-					$tmp = '(';
-					while ($zzz = $db->sql_fetch_array($result)) {
-						if ($tmp != '(') $tmp .= ',';
-						$tmp .= "'$zzz[id]'";
-					}
-					$db->sql_freeresult($result);
-					if ($tmp != '(') {
-						$where .= " AND d.id NOT IN $tmp)";
-					}
+				$db->sql_freeresult($result);
+				if ($tmp != '(') {
+					$where .= " AND d.id NOT IN $tmp)";
 				}
 				break;
 			}

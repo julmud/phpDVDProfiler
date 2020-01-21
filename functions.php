@@ -43,17 +43,6 @@ global $db, $dbtype, $MyMySQLVersion;
 	return($MyMySQLVersion);
 }
 
-function MySQLHasSubQueries() {
-	$ret = false;
-	if (($ver=MySQLVersion()) !== false) {
-		list($major, $minor, $patch) = explode('.', $ver);
-		if ($major > 4 || ($major == 4 && $minor >= 1)) {
-			$ret = true;
-		}
-	}
-	return($ret);
-}
-
 function DebugLog($str) {
 global $DebugFilename;
 

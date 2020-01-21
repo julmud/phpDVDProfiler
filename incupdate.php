@@ -2102,25 +2102,18 @@ global $audiospecialcondition, $Highlight_Last_X_PurchaseDates, $UpdateLast, $My
 		unset($answer);
 	}
 
-//	$hsq = MySQLHasSubQueries();
-	$hsq = false;	// subqueries are far slower in this application
-	if ($hsq) {
-		$NOTVTable = ",$DVD_GENRES_TABLE g";
-		$NOTVQuery = " AND g.id=d.id AND (SELECT COUNT(*) FROM $DVD_GENRES_TABLE g WHERE g.id=d.id AND genre='Television')=0";
+	// subqueries are far slower in this application
+	$NOTVTable = '';
+	$NOTVQuery = '';
+	$tmp = '(';
+	$result = $db->sql_query("SELECT DISTINCT id FROM $DVD_GENRES_TABLE WHERE genre='Television'") or die($db->sql_error());
+	while ($zzz = $db->sql_fetch_array($result)) {
+		if ($tmp != '(') $tmp .= ',';
+		$tmp .= "'$zzz[id]'";
 	}
-	else {
-		$NOTVTable = '';
-		$NOTVQuery = '';
-		$tmp = '(';
-		$result = $db->sql_query("SELECT DISTINCT id FROM $DVD_GENRES_TABLE WHERE genre='Television'") or die($db->sql_error());
-		while ($zzz = $db->sql_fetch_array($result)) {
-			if ($tmp != '(') $tmp .= ',';
-			$tmp .= "'$zzz[id]'";
-		}
-		$db->sql_freeresult($result);
-		if ($tmp != '(') {
-			$NOTVQuery = " AND d.id NOT IN $tmp)";
-		}
+	$db->sql_freeresult($result);
+	if ($tmp != '(') {
+		$NOTVQuery = " AND d.id NOT IN $tmp)";
 	}
 	$db->sql_query("UPDATE $DVD_PROPERTIES_TABLE SET value='-2.2||0|0|0|0|$MyConnectionId' WHERE property='CurrentPosition'") or die($db->sql_error());
 

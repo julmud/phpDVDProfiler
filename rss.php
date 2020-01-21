@@ -119,27 +119,7 @@ if (isset($rss_logo_url) && !empty ($rss_logo_url)) {
 	$logo .= 	"	</image>\n";
 }
 
-$MySQLHasSubQueries = false;
-if (($ver=MySQLVersion()) !== false) {
-	list($major, $minor, $patch) = explode('.', $ver);
-	if ($major > 4 || ($major == 4 && $minor >= 1)) {
-		$MySQLHasSubQueries = true;
-	}
-}
 $RemoveNoRSSTagged = "(SELECT COUNT(*) FROM $DVD_TAGS_TABLE WHERE id = dvd.id AND fullyqualifiedname='NoRSS') = 0 AND ";
-if (!$MySQLHasSubQueries) {
-	$RemoveNoRSSTagged = '';
-	$result = $db->sql_query("SELECT DISTINCT id FROM $DVD_TAGS_TABLE WHERE fullyqualifiedname='NoRSS'");
-	$tmp = '(';
-	while ($zzz = $db->sql_fetch_array($result)) {
-		if ($tmp != '(') $tmp .= ',';
-		$tmp .= "'$zzz[id]'";
-	}
-	$db->sql_freeresult($result);
-	if ($tmp != '(') {
-		$RemoveNoRSSTagged = "dvd.id NOT IN $tmp) AND ";
-	}
-}
 
 // Display Filters
 if ($filter <> "NA" && $filter <> "") {
