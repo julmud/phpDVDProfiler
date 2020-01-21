@@ -1,6 +1,6 @@
 <?php
 
-// $Id: lang_fr.php, v 2.4.2, 24-oct-2005 - French translation by Thiebaud Maurisset (tmaurisset@hotmail.com)
+// $Id$
 
 /* Strings in this file should avoid the use of non-usascii characters, and
    instead use HTML entities (eg. &eacute;) to make the strings more portable to different charsets */
@@ -909,4 +909,7 @@ $lang['COLOR'] = "Color";
 $lang['BLACK&WHITE'] = "Black &amp; White";
 $lang['COLORIZED'] = "Colorized";
 $lang['COLORUNSET'] = "[Color status unset]";
+
+$lang['HDR10'] = "HDR10";
+$lang['DOLBYVISION'] = "Dolby Vision";
 ?>

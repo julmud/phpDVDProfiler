@@ -1,5 +1,5 @@
 <?php
-/*	$Id: index.php,v 1.12 2004/03/16 14:31:55 djoe Exp $	*/
+/*	$Id$	*/
 
 define('IN_SCRIPT', 1);
 include_once('version.php');
@@ -1679,9 +1679,9 @@ EOT;
 
 EOT;
 
-	if (!isset($ii_ignorelocked)) 
+	if (!isset($ii_ignorelocked))
 		$ii_ignorelocked = false;
-	if (!isset($locale)) 
+	if (!isset($locale))
 		$locale = "en";
 //	if (is_readable('imagedata.php') && $forumuser && $collectionurl) echo <<<EOT
 //	momItems[num++]=["$lang[IMAGE]", "http://dvdaholic.me.uk/ii/index.php?user=$forumuser&locked=$ii_ignorelocked&lang=$locale", "_new"]
@@ -1860,12 +1860,12 @@ global $db, $PHP_SELF, $mobilepage;
 				$lpcount = floor((($totrows) / $TitlesPerPage)-1) * $TitlesPerPage;
 			else
 				$lpcount = floor(($totrows) / $TitlesPerPage) * $TitlesPerPage;
-	
+
 			$lrowlink = preg_replace($replace, '', "$PHP_SELF?$_SERVER[QUERY_STRING]")."&startrow=$lpcount";
 			$lrowlink = preg_replace("/&/", "&amp;", $lrowlink);
 			$lastpage = "<a class=n1 href=\"$lrowlink\" target=\"menu\" onmouseover=\"status='$lang[LAST]'; return true\" title=\"$lang[LAST]\">$lang[LAST]</a>";
 		}
-			
+
 	}
 
 	echo <<<EOT
@@ -2347,6 +2347,17 @@ if ($action == 'show') {
 		}
 		$dvd['format'] .= ' ' . $colours;
 
+		$dynamicRange = (($dvd['drhdr10']==1)	? '(' . $dynamicrange_translation['HDR10'] . ')' : '')
+			. (($dvd['drdolbyvision']==1) ? '(' . $dynamicrange_translation['DOLBYVISION'] . ')' : '');
+
+		if ($dvd['drhdr10']==1 && $dvd['drdolbyvision']==1) {
+			$dynamicRange = '(' . $dynamicrange_translation['HDR10']. ', ' . $dynamicrange_translation['DOLBYVISION'] . ')';
+		}
+
+		if ($dynamicRange != '') {
+			$dvd['format'] .= ' ' . $dynamicRange;
+		}
+
 		if ($dvd['format'] != '')
 			$dvd['format'] .= ',';
 		$dims = ''
@@ -2386,22 +2397,22 @@ if ($action == 'show') {
 			. (($dvd['featuremakingof']==1)			? ", $lang[MAKINGOF]": '')
 			. (($dvd['featurecommentary']==1)		? ", $lang[COMMENTARY]": '')
 			. (($dvd['featuredeletedscenes']==1)		? ", $lang[DELETEDSCENES]": '')
-			. (($dvd['featureinterviews']==1)		? ", $lang[INTERVIEWS]": '')			
+			. (($dvd['featureinterviews']==1)		? ", $lang[INTERVIEWS]": '')
 			. (($dvd['featureouttakes']==1)			? ", $lang[OUTTAKES]": '')
-			. (($dvd['featurestoryboardcomparisons']==1)	? ", $lang[STORYBOARDCOMPARISONS]": '')			
+			. (($dvd['featurestoryboardcomparisons']==1)	? ", $lang[STORYBOARDCOMPARISONS]": '')
 			. (($dvd['featurephotogallery']==1)		? ", $lang[PHOTOGALLERY]": '')
 			. (($dvd['featureproductionnotes']==1)		? ", $lang[PRODUCTIONNOTES]": '')
-			. (($dvd['featuredvdromcontent']==1)		? ", $lang[DVDROMCONTENT]": '')			
-			. (($dvd['featuregame']==1)			? ", $lang[GAME]": '')			
+			. (($dvd['featuredvdromcontent']==1)		? ", $lang[DVDROMCONTENT]": '')
+			. (($dvd['featuregame']==1)			? ", $lang[GAME]": '')
 			. (($dvd['featuremultiangle']==1)		? ", $lang[MULTIANGLE]": '')
 			. (($dvd['featuremusicvideos']==1)		? ", $lang[MUSICVIDEOS]": '')
 			. (($dvd['featurethxcertified']==1)		? ", $lang[THXCERTIFIED]": '')
 			. (($dvd['featureclosedcaptioned']==1)		? ", $lang[CLOSEDCAPTIONED]": '')
-			. (($dvd['featuredigitalcopy']==1)		? ", $lang[DIGITALCOPY]": '')			
-			. (($dvd['featurepip']==1)		? ", $lang[PIP]": '')	
-			. (($dvd['featurebdlive']==1)			? ", $lang[BDLIVE]": '')			
+			. (($dvd['featuredigitalcopy']==1)		? ", $lang[DIGITALCOPY]": '')
+			. (($dvd['featurepip']==1)		? ", $lang[PIP]": '')
+			. (($dvd['featurebdlive']==1)			? ", $lang[BDLIVE]": '')
 			. ((isset($dvd['featuredbox']) && $dvd['featuredbox']==1)			? ", $lang[DBOX]": '')
-			. ((isset($dvd['featurecinechat']) && $dvd['featurecinechat']==1)			? ", $lang[CINECHAT]": '')			
+			. ((isset($dvd['featurecinechat']) && $dvd['featurecinechat']==1)			? ", $lang[CINECHAT]": '')
 			. ((isset($dvd['featuremovieiq']) && $dvd['featuremovieiq']==1)		? ", $lang[MOVIEIQ]": '')
 			. ((strlen($dvd['featureother'])>0)		? ", $dvd[featureother]": '');
 
@@ -2569,7 +2580,7 @@ if ($action == 'show') {
 								$dvd['backimageanchor'] = "<a href=\"$PHP_SELF?img=$dvd[backimage]&amp;mediaid=$dvd[id]&amp;mtype=$dvd[mediabannerfront]\" target=\"_self\">";
 							}
 							$dvd['thumbs'] .= "$dvd[backimageanchor]$hdflogo<img width=\"$thumbwidth\" src=\"$dvd[backthumb]\" alt=\"$TheTitle\" title=\"$TheTitle\"/></a><br>";
-							
+
 						}
 						else
 							$dvd['thumbs'] .= "<img width=\"$thumbwidth\" src=\"$dvd[backthumb]\" alt=\"$TheTitle\" title=\"$TheTitle\"/><br>";
@@ -2598,7 +2609,7 @@ if ($action == 'show') {
 		$regions = "<a target=\"_blank\" href=\"http://www.invelos.com/Forums.aspx?task=contributionnotes&amp;type=DVD&amp;ProfileUPC=$dvd[id]\">$dvd[upc]</a>";
 		$regions .= " <img src=\"gfx/loc$locale.gif\" style=\"vertical-align:-30%; margin-bottom:2px\" title=\"" . $lang['LOCALE'.$locale] .'" alt=""/> ';
 
-		if (strstr($dvd['region'], '0') !== false) { 
+		if (strstr($dvd['region'], '0') !== false) {
 			$regions .= "<img src=\"gfx/region_0.gif\" style=\"vertical-align:-30%; margin-bottom:2px\" title=\"$lang[ALLREGIONS]\" alt=\"\"/>\n";
 		}
 		else if (strstr($dvd['region'], '@') !== false) {
@@ -2695,7 +2706,7 @@ if ($action == 'show') {
 				else if ($lastlinkcat == 'Ratings') $z = 'Rating.jpg';
 				else if ($lastlinkcat == 'General Information') $z = 'Information.jpg';
 				else if ($lastlinkcat == 'Games') $z = 'Games.jpg';
-				else 
+				else
 					$z = 'Other.jpg';
 				$mylinks .= "<hr />\n<img src=\"gfx/$z\" height=24 width=24 style=\"vertical-align:middle\">&nbsp;<b>" . $lang['LINKS_'.strtoupper(str_replace(' ', '', $linkrow['category']))] . "</b>";
 			}

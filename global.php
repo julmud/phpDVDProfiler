@@ -439,6 +439,12 @@ $alang_translation = array(
 	'Zulu'			=> '<img src="gfx/za.png" alt=""/> '.$lang['AUDIO']['ZULU']
 );
 
+$dynamicrange_translation = array(
+	'' => $lang[''],
+	'HDR10' => '<acronym title="High-Dynamic Range 10 Media Profile" style="text-decoration:underline">' . $lang['HDR10'] . '</acronym>',
+	'DOLBYVISION' => $lang['DOLBYVISION']
+);
+
 $aformat_translation = array(
 	'' => $lang[''],
 /***/	'Auro-3D' => '<acronym title="'.$lang['AUDIO']['AURO-3D'].'" style="text-decoration:underline"><img src="gfx/Auro3d.png"></acronym>',
