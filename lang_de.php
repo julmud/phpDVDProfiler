@@ -1,6 +1,6 @@
 <?php
 
-// $Id: lang_de.php,v 3.1.1.0 2007/11/04 Exp $
+// $Id$
 
 /* Strings in this file should avoid the use of non-usascii characters, and
    instead use HTML entities (eg. &eacute;) to make the strings more portable to different charsets */
@@ -915,4 +915,7 @@ $lang['COLOR'] = "Color";
 $lang['BLACK&WHITE'] = "Black &amp; White";
 $lang['COLORIZED'] = "Colorized";
 $lang['COLORUNSET'] = "[Color status unset]";
+
+$lang['HDR10'] = "HDR10";
+$lang['DOLBYVISION'] = "Dolby Vision";
 ?>
