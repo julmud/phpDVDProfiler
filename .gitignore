@@ -12,3 +12,4 @@ sonar-project.properties
 localsiteconfig.php
 *.xml
 *.xml.gz
+.env
