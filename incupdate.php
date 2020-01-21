@@ -135,13 +135,7 @@ global $lang, $WeCannotContinue, $inbrowser;
 	$outputbuffer = '';
 	if (!$WeCannotContinue)
 		return;
-	$schema_file = 'schema.pre-4.1.sql';
-	if (($ver=MySQLVersion()) !== false) {
-		list($major, $minor, $patch) = explode('.', $ver);
-		if ($major > 4 || ($major == 4 && $minor >= 1)) {
-			$schema_file = 'schema.sql';
-		}
-	}
+	$schema_file = 'schema.sql';
 	if ($inbrowser) {
 		$outputbuffer = "$lang[IMPORTBADSCHEMA6]";
 		schema_update($schema_file);
