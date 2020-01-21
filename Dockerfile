@@ -1,6 +1,9 @@
 FROM php:7.2-fpm-alpine
 
 RUN apk update && apk upgrade \
+    && apk add gnu-libiconv --no-cache \
+        --repository http://dl-cdn.alpinelinux.org/alpine/edge/community/ \
+        --allow-untrusted \
     && apk add --no-cache \
         freetype \
         libpng \
