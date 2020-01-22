@@ -20,11 +20,15 @@ SendNoCacheHeaders('Content-Type: text/html; charset="windows-1252";');
 	$thelimit .= "</select>\n";
 	$thelimit = sprintf($lang['CHOOSERHEADER'], $thelimit);
 
-	$collections = "<b>$lang[COLLECTIONTYPE]</b>:<br><select onChange=\"HandleSelectChange(this)\" name=\"collectiontype\"><option value=\"?\" selected>$lang[ALL]</option>";
+	$collections = "<b>$lang[COLLECTIONTYPE]</b>:<br><select onChange=\"HandleSelectChange(this)\" name=\"collectiontype\"><option value=\"?\">$lang[ALL]</option>";
  	$res = $db->sql_query("SELECT DISTINCT collectiontype FROM $DVD_TABLE ORDER BY collectiontype") or die($db->sql_error());
 	while ($val = $db->sql_fetchrow($res)) {
 		$displayCollectionType = isset($lang[strtoupper($val['collectiontype'])]) ? $lang[strtoupper($val['collectiontype'])] : ucfirst($val['collectiontype']);
-		$collections .= "<option value=\"$val[collectiontype]\">" . $displayCollectionType . "</option>";
+		$collections .= "<option value=\"$val[collectiontype]\"";
+		if (strtoupper($val['collectiontype']) == 'OWNED') {
+			$collections .= ' selected="selected"';
+		}
+		$collections .= ">" . $displayCollectionType . "</option>";
 	}
 	$db->sql_freeresult($res);
 
