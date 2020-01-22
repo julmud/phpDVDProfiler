@@ -98,6 +98,7 @@ EOT;
 		if ($val['counts'] != 0) {
 			if ($tmpcount++ % 5 == 1) $genretable .= "</tr>\n<tr>";
 			$gen = str_replace(' ', '_', $val['genre']);
+			$gen = str_replace("'", '#', $gen);
 			$valgen .= "\tif ($('genre_{$gen}_input').value == '1') genrecount++;\n";
 			$genretable .= "<td><img style=\"vertical-align:middle\" onClick=\"SwitchState('genre_$gen')\" src=\"gfx/dontcare.jpg\""
 					." id=\"genre_{$gen}_img\"><input type=\"hidden\" name=\"genre_$gen\" id=\"genre_{$gen}_input\""
