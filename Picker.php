@@ -62,7 +62,9 @@ global $getimages, $img_webpathf, $thumbnails;
 				break;
 			case 1:
 				$needtable['genre'] = true;
-				$where .= " AND g$numgenretables.genre='".str_replace('_', ' ', $db->sql_escape(substr($key, 6)))."'";
+				$searchGenre = str_replace('_', ' ', substr($key, 6));
+				$searchGenre = str_replace('#', "'", $searchGenre);
+				$where .= " AND g$numgenretables.genre='".$db->sql_escape($searchGenre)."'";
 				$numgenretables++;
 				break;
 			case -1:
