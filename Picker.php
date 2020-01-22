@@ -273,6 +273,19 @@ global $getimages, $img_webpathf, $thumbnails;
 				break;
 			}
 			break;
+		case 'mediatypeultrahd':
+			switch ($value) {
+			case '?':
+				break;
+			case 1:
+				$where .= " AND (builtinmediatype=".MEDIA_TYPE_ULTRAHD." OR builtinmediatype=".MEDIA_TYPE_ULTRAHD_BLURAY." OR builtinmediatype=".MEDIA_TYPE_ULTRAHD_BLURAY_DVD.")";
+				break;
+			case -1:
+//				$where .= " AND (builtinmediatype!=".MEDIA_TYPE_ULTRAHD." AND builtinmediatype!=".MEDIA_TYPE_ULTRAHD_BLURAY." AND builtinmediatype!=".MEDIA_TYPE_ULTRAHD_BLURAY_DVD.")";
+				$where .= " AND (builtinmediatype!=".MEDIA_TYPE_ULTRAHD.")";
+				break;
+			}
+			break;
 		case 'collectiontype':
 			switch ($value) {
 			case '?':

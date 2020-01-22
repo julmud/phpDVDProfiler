@@ -51,6 +51,7 @@ SendNoCacheHeaders('Content-Type: text/html; charset="windows-1252";');
   <tr><td><img style="vertical-align:middle" onClick="SwitchState('mediatypedvd')" src="gfx/dontcare.jpg" id="mediatypedvd_img"><input type="hidden" name="mediatypedvd" id="mediatypedvd_input" value="?">&nbsp;$lang[DVD]</td></tr>
   <tr><td><img style="vertical-align:middle" onClick="SwitchState('mediatypehddvd')" src="gfx/dontcare.jpg" id="mediatypehddvd_img"><input type="hidden" name="mediatypehddvd" id="mediatypehddvd_input" value="?">&nbsp;$lang[HDDVD]</td></tr>
   <tr><td><img style="vertical-align:middle" onClick="SwitchState('mediatypebluray')" src="gfx/dontcare.jpg" id="mediatypebluray_img"><input type="hidden" name="mediatypebluray" id="mediatypebluray_input" value="?">&nbsp;$lang[BLURAY]</td></tr>
+  <tr><td><img style="vertical-align:middle" onClick="SwitchState('mediatypeultrahd')" src="gfx/dontcare.jpg" id="mediatypeultrahd_img"><input type="hidden" name="mediatypeultrahd" id="mediatypeultrahd_input" value="?">&nbsp;$lang[ULTRAHD]</td></tr>
 </table>
 EOT;
 
