@@ -293,13 +293,23 @@ global $getimages, $img_webpathf, $thumbnails;
 			case 'owned':
 			case 'ordered':
 			case 'wishlist':
-				$where .= " AND $key='$value'";
+				$where .= " AND $key='" . $db->sql_escape($value) . "'";
 				break;
 			case 'loaned':
 				$where .= " AND loaninfo!=''";
 				break;
 			default:
-				$where .= " AND auxcolltype LIKE '%/".addslashes($masterauxcolltype[$value])."/%'";
+				$res = $db->sql_query("SELECT collectiontype FROM $DVD_TABLE WHERE $key = '" . $db->sql_escape($value) . "'");
+				$ctype = $db->sql_fetchrow($res);
+				$db->sql_freeresult($res);
+				if (isset($ctype) && $ctype !== false) {
+					$where .= " AND $key='$ctype[collectiontype]'";
+				} else if (isset($masterauxcolltype[$value])) {
+					$where .= " AND auxcolltype LIKE '%/".addslashes($masterauxcolltype[$value])."/%'";
+				} else {
+					// We've received an impossible value, make sure we don't return anything
+					$where .= ' AND 1 = 2';
+				}
 				break;
 			}
 			break;
