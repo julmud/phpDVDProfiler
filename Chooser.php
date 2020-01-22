@@ -23,7 +23,8 @@ SendNoCacheHeaders('Content-Type: text/html; charset="windows-1252";');
 	$collections = "<b>$lang[COLLECTIONTYPE]</b>:<br><select onChange=\"HandleSelectChange(this)\" name=\"collectiontype\"><option value=\"?\" selected>$lang[ALL]</option>";
  	$res = $db->sql_query("SELECT DISTINCT collectiontype FROM $DVD_TABLE ORDER BY collectiontype") or die($db->sql_error());
 	while ($val = $db->sql_fetchrow($res)) {
-		$collections .= "<option value=\"$val[collectiontype]\">".$lang[strtoupper($val['collectiontype'])]."</option>";
+		$displayCollectionType = isset($lang[strtoupper($val['collectiontype'])]) ? $lang[strtoupper($val['collectiontype'])] : ucfirst($val['collectiontype']);
+		$collections .= "<option value=\"$val[collectiontype]\">" . $displayCollectionType . "</option>";
 	}
 	$db->sql_freeresult($res);
 
@@ -168,7 +169,8 @@ EOT;
 		$PossibleRegions = '0123456@ABC';
 		$regioncombo .= "<tr><td align=right>$lang[REGION]:</td><td><select onChange=\"HandleSelectChange(this)\" name=\"region\"><option value=\"?\" selected>$lang[CHOOSERDONTCARE]</option>";
 		for ($i=0; $i<=strlen($PossibleRegions); $i++) {
-			if (strpos($rgnlist, substr($PossibleRegions, $i, 1)) !== false) {
+			$currentRegion = substr($PossibleRegions, $i, 1);
+			if (!empty($currentRegion) && strpos($rgnlist, $currentRegion) !== false) {
 				$val = $PossibleRegions{$i};
 				$disp = $PossibleRegions{$i};
 				if ($val == '0') $disp = $lang['ALLREGIONSDVD'];
