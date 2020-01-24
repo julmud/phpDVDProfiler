@@ -8,88 +8,111 @@
 	 x="0px" y="0px" width="700px" height="700px" viewBox="-65.142 -63.105 700 700" enable-background="new -65.142 -63.105 700 700"
 	 xml:space="preserve">
 <defs>
+	<clipPath id="worldCircleA">
+		<circle cx="284.704" cy="164.434" r="98.15"/>
+	</clipPath>
+	<clipPath id="worldCircleB">
+		<circle cx="143.404" cy="409.584" r="98.15"/>
+	</clipPath>
+	<clipPath id="worldCircleC">
+			<circle cx="428.004" cy="410.584" r="98.15"/>
+	</clipPath>
 </defs>
-<circle cx="284.704" cy="164.434" r="98.15"/>
-<path fill="#FFFFFF" d="M259.428,99.318h49.979l23.631,121.039h-33.66l-3.061-20.4h-23.799l-3.06,20.4h-33.66L259.428,99.318z
+<style>
+	.globeBackground {
+		fill: black;
+	}
+	.hexagon {
+		stroke: black;
+	}
+	.foregroundLetter {
+		fill: white;
+	}
+	.foregroundLines {
+		stroke: white;
+	}
+</style>
+<circle cx="284.704" cy="164.434" r="98.15" class="globeBackground"/>
+<path class="foregroundLetter" d="M259.428,99.318h49.979l23.631,121.039h-33.66l-3.061-20.4h-23.799l-3.06,20.4h-33.66L259.428,99.318z
 	 M284.587,122.777h-0.34l-7.65,49.979h15.639L284.587,122.777z"/>
-<circle cx="143.404" cy="409.584" r="98.15"/>
-<path fill="#FFFFFF" d="M103.958,348.469h46.75c26.35,0,37.57,15.299,37.57,32.129c0,12.41-6.8,21.25-17.85,24.82v0.34
+<circle cx="143.404" cy="409.584" r="98.15" class="globeBackground"/>
+<path class="foregroundLetter" d="M103.958,348.469h46.75c26.35,0,37.57,15.299,37.57,32.129c0,12.41-6.8,21.25-17.85,24.82v0.34
 	c10.37,2.55,21.08,10.369,21.08,28.56c0,17.34-12.58,35.189-41.99,35.189h-45.56V348.469z M136.258,395.728h9.01
 	c7.99,0,11.56-4.08,11.56-9.86c0-7.649-5.1-10.199-14.96-10.199h-5.61V395.728z M136.258,441.288h10.71
 	c7.65,0,11.22-4.76,11.22-11.22c0-7.819-4.08-10.88-13.09-10.88h-8.84V441.288z"/>
-<circle cx="428.004" cy="410.584" r="98.15"/>
-<path fill="#FFFFFF" d="M459.239,469.329c-4.08,1.701-14.45,3.91-24.48,3.91c-32.129,0-46.749-23.119-46.749-59.499
+<circle cx="428.004" cy="410.584" r="98.15" class="globeBackground"/>
+<path class="foregroundLetter" d="M459.239,469.329c-4.08,1.701-14.45,3.91-24.48,3.91c-32.129,0-46.749-23.119-46.749-59.499
 	c0-38.759,16.489-65.619,48.279-65.619c6.46,0,14.45,1.53,22.95,4.76v31.11c-4.59-3.23-9.521-5.271-14.11-5.271
 	c-14.45,0-22.78,10.71-22.78,34.169c0,19.211,6.291,29.75,18.19,29.75c7.31,0,11.56-1.869,18.7-6.289V469.329z"/>
 <g>
-	<g>
-		<path fill="none" stroke="#FFFFFF" stroke-width="5" stroke-miterlimit="10" d="M59.003,308.871c55.628,0,111.256,0,166.884,0
+	<g clip-path="url(#worldCircleB)">
+		<path fill="none" class="foregroundLines" stroke-width="5" stroke-miterlimit="10" d="M59.003,308.871c55.628,0,111.256,0,166.884,0
 			c42.163,61.364,42.166,140.541,0,201.904c-55.628,0-111.256,0-166.884,0C16.835,449.417,16.841,370.229,59.003,308.871z"/>
-		<path fill="none" stroke="#FFFFFF" stroke-width="5" stroke-miterlimit="10" d="M41.197,480.133c67.499,0,134.997,0,202.495,0"/>
-		<path fill="none" stroke="#FFFFFF" stroke-width="5" stroke-miterlimit="10" d="M30.53,445.913c74.61,0,149.22,0,223.831,0"/>
-		<path fill="none" stroke="#FFFFFF" stroke-width="5" stroke-miterlimit="10" d="M26.966,409.823c76.986,0,153.972,0,230.958,0"/>
-		<path fill="none" stroke="#FFFFFF" stroke-width="5" stroke-miterlimit="10" d="M30.529,373.736c74.61,0,149.221,0,223.832,0"/>
-		<path fill="none" stroke="#FFFFFF" stroke-width="5" stroke-miterlimit="10" d="M41.197,339.515c67.499,0,134.997,0,202.496,0"/>
-		<path fill="none" stroke="#FFFFFF" stroke-width="5" stroke-miterlimit="10" d="M198.06,308.871
+		<path fill="none" class="foregroundLines" stroke-width="5" stroke-miterlimit="10" d="M41.197,480.133c67.499,0,134.997,0,202.495,0"/>
+		<path fill="none" class="foregroundLines" stroke-width="5" stroke-miterlimit="10" d="M30.53,445.913c74.61,0,149.22,0,223.831,0"/>
+		<path fill="none" class="foregroundLines" stroke-width="5" stroke-miterlimit="10" d="M26.966,409.823c76.986,0,153.972,0,230.958,0"/>
+		<path fill="none" class="foregroundLines" stroke-width="5" stroke-miterlimit="10" d="M30.529,373.736c74.61,0,149.221,0,223.832,0"/>
+		<path fill="none" class="foregroundLines" stroke-width="5" stroke-miterlimit="10" d="M41.197,339.515c67.499,0,134.997,0,202.496,0"/>
+		<path fill="none" class="foregroundLines" stroke-width="5" stroke-miterlimit="10" d="M198.06,308.871
 			c28.803,62.896,28.808,139.009,0,201.904"/>
-		<path fill="none" stroke="#FFFFFF" stroke-width="5" stroke-miterlimit="10" d="M170.271,308.871
+		<path fill="none" class="foregroundLines" stroke-width="5" stroke-miterlimit="10" d="M170.271,308.871
 			c14.925,65.461,14.927,136.443,0,201.904"/>
-		<path fill="none" stroke="#FFFFFF" stroke-width="5" stroke-miterlimit="10" d="M142.446,308.871c0,67.302,0,134.603,0,201.904"/>
-		<path fill="none" stroke="#FFFFFF" stroke-width="5" stroke-miterlimit="10" d="M114.618,308.871
+		<path fill="none" class="foregroundLines" stroke-width="5" stroke-miterlimit="10" d="M142.446,308.871c0,67.302,0,134.603,0,201.904"/>
+		<path fill="none" class="foregroundLines" stroke-width="5" stroke-miterlimit="10" d="M114.618,308.871
 			c-14.924,65.467-14.919,136.437,0,201.904"/>
-		<path fill="none" stroke="#FFFFFF" stroke-width="5" stroke-miterlimit="10" d="M86.831,308.871
+		<path fill="none" class="foregroundLines" stroke-width="5" stroke-miterlimit="10" d="M86.831,308.871
 			c-28.805,62.894-28.804,139.012,0,201.905"/>
 	</g>
 </g>
 <g>
-	<g>
-		<path fill="none" stroke="#FFFFFF" stroke-width="5" stroke-miterlimit="10" d="M344.564,308.871c55.628,0,111.255,0,166.883,0
+	<g clip-path="url(#worldCircleC)">
+		<path fill="none" class="foregroundLines" stroke-width="5" stroke-miterlimit="10" d="M344.564,308.871c55.628,0,111.255,0,166.883,0
 			c42.162,61.371,42.16,140.533,0,201.904c-55.628,0-111.255,0-166.883,0C302.393,449.421,302.397,370.225,344.564,308.871z"/>
-		<path fill="none" stroke="#FFFFFF" stroke-width="5" stroke-miterlimit="10" d="M326.755,480.133c67.498,0,134.996,0,202.494,0"/>
-		<path fill="none" stroke="#FFFFFF" stroke-width="5" stroke-miterlimit="10" d="M316.092,445.913c74.608,0,149.216,0,223.824,0"/>
-		<path fill="none" stroke="#FFFFFF" stroke-width="5" stroke-miterlimit="10" d="M312.527,409.823c76.985,0,153.971,0,230.956,0"/>
-		<path fill="none" stroke="#FFFFFF" stroke-width="5" stroke-miterlimit="10" d="M316.09,373.736c74.608,0,149.218,0,223.826,0"/>
-		<path fill="none" stroke="#FFFFFF" stroke-width="5" stroke-miterlimit="10" d="M326.757,339.515c67.498,0,134.995,0,202.493,0"/>
-		<path fill="none" stroke="#FFFFFF" stroke-width="5" stroke-miterlimit="10" d="M483.62,308.871
+		<path fill="none" class="foregroundLines" stroke-width="5" stroke-miterlimit="10" d="M326.755,480.133c67.498,0,134.996,0,202.494,0"/>
+		<path fill="none" class="foregroundLines" stroke-width="5" stroke-miterlimit="10" d="M316.092,445.913c74.608,0,149.216,0,223.824,0"/>
+		<path fill="none" class="foregroundLines" stroke-width="5" stroke-miterlimit="10" d="M312.527,409.823c76.985,0,153.971,0,230.956,0"/>
+		<path fill="none" class="foregroundLines" stroke-width="5" stroke-miterlimit="10" d="M316.09,373.736c74.608,0,149.218,0,223.826,0"/>
+		<path fill="none" class="foregroundLines" stroke-width="5" stroke-miterlimit="10" d="M326.757,339.515c67.498,0,134.995,0,202.493,0"/>
+		<path fill="none" class="foregroundLines" stroke-width="5" stroke-miterlimit="10" d="M483.62,308.871
 			c28.803,62.897,28.806,139.008,0,201.904"/>
-		<path fill="none" stroke="#FFFFFF" stroke-width="5" stroke-miterlimit="10" d="M455.832,308.871
+		<path fill="none" class="foregroundLines" stroke-width="5" stroke-miterlimit="10" d="M455.832,308.871
 			c14.92,65.463,14.927,136.441,0,201.904"/>
-		<path fill="none" stroke="#FFFFFF" stroke-width="5" stroke-miterlimit="10" d="M428.004,308.871
+		<path fill="none" class="foregroundLines" stroke-width="5" stroke-miterlimit="10" d="M428.004,308.871
 			c0.012,67.302,0.012,134.603,0,201.904"/>
-		<path fill="none" stroke="#FFFFFF" stroke-width="5" stroke-miterlimit="10" d="M400.174,308.871
+		<path fill="none" class="foregroundLines" stroke-width="5" stroke-miterlimit="10" d="M400.174,308.871
 			c-14.921,65.467-14.916,136.438,0,201.904"/>
-		<path fill="none" stroke="#FFFFFF" stroke-width="5" stroke-miterlimit="10" d="M372.39,308.871
+		<path fill="none" class="foregroundLines" stroke-width="5" stroke-miterlimit="10" d="M372.39,308.871
 			c-28.805,62.894-28.808,139.012,0,201.905"/>
 	</g>
 </g>
 <g>
-	<g>
-		<path fill="none" stroke="#FFFFFF" stroke-width="5" stroke-miterlimit="10" d="M201.262,63.481
+	<g clip-path="url(#worldCircleA)">>
+		<path fill="none" class="foregroundLines" stroke-width="5" stroke-miterlimit="10" d="M201.262,63.481
 			c55.628-0.002,111.255,0.001,166.883,0c42.158,61.374,42.167,140.534,0,201.907c-55.628,0-111.256,0.003-166.884-0.001
 			C159.096,204.029,159.098,124.839,201.262,63.481z"/>
-		<path fill="none" stroke="#FFFFFF" stroke-width="5" stroke-miterlimit="10" d="M183.457,234.744c67.498,0,134.995,0,202.492,0"/>
-		<path fill="none" stroke="#FFFFFF" stroke-width="5" stroke-miterlimit="10" d="M172.789,200.522
+		<path fill="none" class="foregroundLines" stroke-width="5" stroke-miterlimit="10" d="M183.457,234.744c67.498,0,134.995,0,202.492,0"/>
+		<path fill="none" class="foregroundLines" stroke-width="5" stroke-miterlimit="10" d="M172.789,200.522
 			c74.61,0.005,149.219,0.001,223.83,0.001"/>
-		<path fill="none" stroke="#FFFFFF" stroke-width="5" stroke-miterlimit="10" d="M169.225,164.433c76.985,0,153.971,0,230.956,0"/>
-		<path fill="none" stroke="#FFFFFF" stroke-width="5" stroke-miterlimit="10" d="M172.788,128.348c74.61-0.003,149.22,0,223.831,0"
+		<path fill="none" class="foregroundLines" stroke-width="5" stroke-miterlimit="10" d="M169.225,164.433c76.985,0,153.971,0,230.956,0"/>
+		<path fill="none" class="foregroundLines" stroke-width="5" stroke-miterlimit="10" d="M172.788,128.348c74.61-0.003,149.22,0,223.831,0"
 			/>
-		<path fill="none" stroke="#FFFFFF" stroke-width="5" stroke-miterlimit="10" d="M183.457,94.125c67.498,0,134.995,0,202.492,0"/>
-		<path fill="none" stroke="#FFFFFF" stroke-width="5" stroke-miterlimit="10" d="M340.318,63.48
+		<path fill="none" class="foregroundLines" stroke-width="5" stroke-miterlimit="10" d="M183.457,94.125c67.498,0,134.995,0,202.492,0"/>
+		<path fill="none" class="foregroundLines" stroke-width="5" stroke-miterlimit="10" d="M340.318,63.48
 			c28.803,62.905,28.806,139.002,0,201.907"/>
-		<path fill="none" stroke="#FFFFFF" stroke-width="5" stroke-miterlimit="10" d="M312.53,63.48
+		<path fill="none" class="foregroundLines" stroke-width="5" stroke-miterlimit="10" d="M312.53,63.48
 			c14.926,65.467,14.921,136.441,0,201.908"/>
-		<path fill="none" stroke="#FFFFFF" stroke-width="5" stroke-miterlimit="10" d="M284.705,63.48c0,67.302-0.003,134.605,0,201.907"
+		<path fill="none" class="foregroundLines" stroke-width="5" stroke-miterlimit="10" d="M284.705,63.48c0,67.302-0.003,134.605,0,201.907"
 			/>
-		<path fill="none" stroke="#FFFFFF" stroke-width="5" stroke-miterlimit="10" d="M256.876,63.481
+		<path fill="none" class="foregroundLines" stroke-width="5" stroke-miterlimit="10" d="M256.876,63.481
 			c-14.926,65.457-14.93,136.45,0,201.907"/>
-		<path fill="none" stroke="#FFFFFF" stroke-width="5" stroke-miterlimit="10" d="M229.089,63.481
+		<path fill="none" class="foregroundLines" stroke-width="5" stroke-miterlimit="10" d="M229.089,63.481
 			c-28.806,62.898-28.798,139.008,0,201.906"/>
 	</g>
 </g>
-<polygon fill="none" stroke="#000000" stroke-width="25" stroke-miterlimit="10" points="272.308,484.584 142.405,559.584 
+<polygon fill="none" class="hexagon" stroke-width="25" stroke-miterlimit="10" points="272.308,484.584 142.405,559.584
 	12.5,484.584 12.5,334.584 142.405,259.584 272.308,334.584 "/>
-<polygon fill="none" stroke="#000000" stroke-width="25" stroke-miterlimit="10" points="414.608,239.434 284.704,314.434 
+<polygon fill="none" class="hexagon" stroke-width="25" stroke-miterlimit="10" points="414.608,239.434 284.704,314.434
 	154.8,239.434 154.8,89.434 284.704,14.434 414.608,89.434 "/>
-<polygon fill="none" stroke="#000000" stroke-width="25" stroke-miterlimit="10" points="556.909,484.584 427.005,559.586 
+<polygon fill="none" class="hexagon" stroke-width="25" stroke-miterlimit="10" points="556.909,484.584 427.005,559.586
 	297.101,484.584 297.101,334.584 427.005,259.584 556.909,334.584 "/>
 </svg>

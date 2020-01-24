@@ -8,34 +8,51 @@
 	 x="0px" y="0px" width="350px" height="350px" viewBox="-32.743 -10.256 350 350" enable-background="new -32.743 -10.256 350 350"
 	 xml:space="preserve">
 <defs>
+	<clipPath id="worldCircle">
+		<circle cx="142.404" cy="164.434" r="98.15"/>
+	</clipPath>
 </defs>
-<circle cx="143.403" cy="165.434" r="98.15"/>
-<path fill="#FFFFFF" d="M174.638,224.178c-4.08,1.701-14.45,3.91-24.48,3.91c-32.129,0-46.749-23.119-46.749-59.499
+<style>
+	.globeBackground {
+		fill: black;
+	}
+	.hexagon {
+		stroke: black;
+	}
+	.foregroundLetter {
+		fill: white;
+	}
+	.foregroundLines {
+		stroke: white;
+	}
+</style>
+<circle cx="143.403" cy="165.434" r="98.15" class="globeBackground"/>
+<path class="foregroundLetter" d="M174.638,224.178c-4.08,1.701-14.45,3.91-24.48,3.91c-32.129,0-46.749-23.119-46.749-59.499
 	c0-38.759,16.49-65.619,48.279-65.619c6.46,0,14.45,1.53,22.95,4.76v31.11c-4.59-3.23-9.521-5.27-14.11-5.27
 	c-14.45,0-22.78,10.71-22.78,34.169c0,19.211,6.291,29.75,18.19,29.75c7.31,0,11.56-1.869,18.7-6.289V224.178z"/>
 <g>
-	<g>
-		<path fill="none" stroke="#FFFFFF" stroke-width="5" stroke-miterlimit="10" d="M59.961,63.719c55.628,0.004,111.257,0,166.885,0
+	<g clip-path="url(#worldCircle)">
+		<path fill="none" class="foregroundLines" stroke-width="5" stroke-miterlimit="10" d="M59.961,63.719c55.628,0.004,111.257,0,166.885,0
 			c42.161,61.375,42.159,140.531,0,201.906c-55.628,0-111.257,0-166.885,0C17.798,204.258,17.797,125.086,59.961,63.719z"/>
-		<path fill="none" stroke="#FFFFFF" stroke-width="5" stroke-miterlimit="10" d="M42.154,234.983c67.499,0,134.997,0,202.495,0"/>
-		<path fill="none" stroke="#FFFFFF" stroke-width="5" stroke-miterlimit="10" d="M31.489,200.763c74.609,0,149.217,0,223.827,0"/>
-		<path fill="none" stroke="#FFFFFF" stroke-width="5" stroke-miterlimit="10" d="M27.924,164.671c76.986-0.003,153.971,0,230.958,0
+		<path fill="none" class="foregroundLines" stroke-width="5" stroke-miterlimit="10" d="M42.154,234.983c67.499,0,134.997,0,202.495,0"/>
+		<path fill="none" class="foregroundLines" stroke-width="5" stroke-miterlimit="10" d="M31.489,200.763c74.609,0,149.217,0,223.827,0"/>
+		<path fill="none" class="foregroundLines" stroke-width="5" stroke-miterlimit="10" d="M27.924,164.671c76.986-0.003,153.971,0,230.958,0
 			"/>
-		<path fill="none" stroke="#FFFFFF" stroke-width="5" stroke-miterlimit="10" d="M31.487,128.586c74.609,0,149.219,0,223.829,0"/>
-		<path fill="none" stroke="#FFFFFF" stroke-width="5" stroke-miterlimit="10" d="M42.156,94.364c67.498-0.002,134.996,0,202.494,0"
+		<path fill="none" class="foregroundLines" stroke-width="5" stroke-miterlimit="10" d="M31.487,128.586c74.609,0,149.219,0,223.829,0"/>
+		<path fill="none" class="foregroundLines" stroke-width="5" stroke-miterlimit="10" d="M42.156,94.364c67.498-0.002,134.996,0,202.494,0"
 			/>
-		<path fill="none" stroke="#FFFFFF" stroke-width="5" stroke-miterlimit="10" d="M199.019,63.719
+		<path fill="none" class="foregroundLines" stroke-width="5" stroke-miterlimit="10" d="M199.019,63.719
 			c28.804,62.903,28.801,139.003,0,201.906"/>
-		<path fill="none" stroke="#FFFFFF" stroke-width="5" stroke-miterlimit="10" d="M171.23,63.719
+		<path fill="none" class="foregroundLines" stroke-width="5" stroke-miterlimit="10" d="M171.23,63.719
 			c14.92,65.468,14.921,136.438,0,201.906"/>
-		<path fill="none" stroke="#FFFFFF" stroke-width="5" stroke-miterlimit="10" d="M143.405,63.719c0,67.302-0.006,134.604,0,201.906
+		<path fill="none" class="foregroundLines" stroke-width="5" stroke-miterlimit="10" d="M143.405,63.719c0,67.302-0.006,134.604,0,201.906
 			"/>
-		<path fill="none" stroke="#FFFFFF" stroke-width="5" stroke-miterlimit="10" d="M115.576,63.719
+		<path fill="none" class="foregroundLines" stroke-width="5" stroke-miterlimit="10" d="M115.576,63.719
 			c-14.925,65.465-14.921,136.441-0.001,201.906"/>
-		<path fill="none" stroke="#FFFFFF" stroke-width="5" stroke-miterlimit="10" d="M87.789,63.719
+		<path fill="none" class="foregroundLines" stroke-width="5" stroke-miterlimit="10" d="M87.789,63.719
 			c-28.806,62.899-28.801,139.006,0,201.906"/>
 	</g>
 </g>
-<polygon fill="none" stroke="#000000" stroke-width="25" stroke-miterlimit="10" points="272.308,239.434 142.404,314.436 
+<polygon fill="none" class="hexagon" stroke-width="25" stroke-miterlimit="10" points="272.308,239.434 142.404,314.436
 	12.5,239.434 12.5,89.434 142.404,14.434 272.308,89.434 "/>
 </svg>
