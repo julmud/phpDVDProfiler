@@ -23,6 +23,8 @@
 
 $galleryver = "2 v1.5";
 
+header('Content-Type: text/html; charset="windows-1252";');
+
 function get_children($id,$bs){
 	global $sql, $DVD_TABLE, $db, $plusclass, $FnExt, $FnWebPath, $img_physpath, $PHP_SELF;
 
@@ -178,6 +180,7 @@ function css($divheight, $divwidth){
 <head>
  <title><?php echo $Title; ?></title>
  <link rel="stylesheet" type="text/css" href="./format.css.php">
+ <meta http-equiv="content-type" content="text/html; charset=windows-1252">
  <script type="text/javascript">
   <!--
    function dh(theitems, obj) {

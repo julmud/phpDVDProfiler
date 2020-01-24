@@ -1,5 +1,7 @@
 <?php
-/*	$Id: processskin.php,v 1.0 2006/03/03 14:31:55 fred Exp $	*/
+/*	$Id$	*/
+
+header('Content-Type: text/html; charset="windows-1252";');
 
 function print_param($param, $processed) {
 global $debugskin;
