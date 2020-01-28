@@ -3,5 +3,6 @@
 .github                 export-ignore
 .gitignore              export-ignore
 .sonarcloud.properties  export-ignore
+**/svg                  export-ignore
 **/*.php                ident
 **/*.sql                ident

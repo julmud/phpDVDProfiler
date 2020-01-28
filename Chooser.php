@@ -8,7 +8,7 @@ include_once('global.php');
 SendNoCacheHeaders('Content-Type: text/html; charset="windows-1252";');
 
 	if (!isset($ChangedColor))
-		$ChangedColor = 'yellow';
+		$ChangedColor = 'Gold';
 	$limit = 5;
 	$thelimit = "<select onChange=\"HandleSelectChange(this)\" style=\"vertical-align:middle\" name=\"limit\">";
 	$thelimit .= "<option value=\"1\">1</option>";
@@ -48,58 +48,58 @@ SendNoCacheHeaders('Content-Type: text/html; charset="windows-1252";');
 
 	$mediatable = <<<EOT
 <table cellpadding=3 border=1><tr><th>$lang[MEDIATYPE]</th></tr>
-  <tr><td><img style="vertical-align:middle" onClick="SwitchState('mediatypedvd')" src="gfx/dontcare.jpg" id="mediatypedvd_img"><input type="hidden" name="mediatypedvd" id="mediatypedvd_input" value="?">&nbsp;$lang[DVD]</td></tr>
-  <tr><td><img style="vertical-align:middle" onClick="SwitchState('mediatypehddvd')" src="gfx/dontcare.jpg" id="mediatypehddvd_img"><input type="hidden" name="mediatypehddvd" id="mediatypehddvd_input" value="?">&nbsp;$lang[HDDVD]</td></tr>
-  <tr><td><img style="vertical-align:middle" onClick="SwitchState('mediatypebluray')" src="gfx/dontcare.jpg" id="mediatypebluray_img"><input type="hidden" name="mediatypebluray" id="mediatypebluray_input" value="?">&nbsp;$lang[BLURAY]</td></tr>
-  <tr><td><img style="vertical-align:middle" onClick="SwitchState('mediatypeultrahd')" src="gfx/dontcare.jpg" id="mediatypeultrahd_img"><input type="hidden" name="mediatypeultrahd" id="mediatypeultrahd_input" value="?">&nbsp;$lang[ULTRAHD]</td></tr>
+  <tr><td><img style="vertical-align:middle" onClick="SwitchState('mediatypedvd')" src="gfx/dontcare.png" id="mediatypedvd_img"><input type="hidden" name="mediatypedvd" id="mediatypedvd_input" value="?">&nbsp;$lang[DVD]</td></tr>
+  <tr><td><img style="vertical-align:middle" onClick="SwitchState('mediatypehddvd')" src="gfx/dontcare.png" id="mediatypehddvd_img"><input type="hidden" name="mediatypehddvd" id="mediatypehddvd_input" value="?">&nbsp;$lang[HDDVD]</td></tr>
+  <tr><td><img style="vertical-align:middle" onClick="SwitchState('mediatypebluray')" src="gfx/dontcare.png" id="mediatypebluray_img"><input type="hidden" name="mediatypebluray" id="mediatypebluray_input" value="?">&nbsp;$lang[BLURAY]</td></tr>
+  <tr><td><img style="vertical-align:middle" onClick="SwitchState('mediatypeultrahd')" src="gfx/dontcare.png" id="mediatypeultrahd_img"><input type="hidden" name="mediatypeultrahd" id="mediatypeultrahd_input" value="?">&nbsp;$lang[ULTRAHD]</td></tr>
 </table>
 EOT;
 
 	$formattable = <<<EOT
 <table cellpadding=3 border=1><tr><th colspan=2>$lang[FORMAT]</th></tr>
-  <tr><td><img style="vertical-align:middle" onClick="SwitchState('formatletterbox')" src="gfx/dontcare.jpg" id="formatletterbox_img"><input type="hidden" name="formatletterbox" id="formatletterbox_input" value="?">&nbsp;$lang[WIDESCREEN]</td>
-  <td><img style="vertical-align:middle" onClick="SwitchState('formatpanandscan')" src="gfx/dontcare.jpg" id="formatpanandscan_img"><input type="hidden" name="formatpanandscan" id="formatpanandscan_input" value="?">&nbsp;$lang[PANANDSCAN]</td></tr>
-  <tr><td><img style="vertical-align:middle" onClick="SwitchState('formatfullframe')" src="gfx/dontcare.jpg" id="formatfullframe_img"><input type="hidden" name="formatfullframe" id="formatfullframe_input" value="?">&nbsp;$lang[FULLFRAME]</td>
-  <td><img style="vertical-align:middle" onClick="SwitchState('format16x9')" src="gfx/dontcare.jpg" id="format16x9_img"><input type="hidden" name="format16x9" id="format16x9_input" value="?">&nbsp;{$lang['16X9']}</td></tr>
-  <tr><td><img style="vertical-align:middle" onClick="SwitchState('formatdualsided')" src="gfx/dontcare.jpg" id="formatdualsided_img"><input type="hidden" name="formatdualsided" id="formatdualsided_input" value="?">&nbsp;$lang[DUALSIDED]</td>
-  <td><img style="vertical-align:middle" onClick="SwitchState('formatduallayered')" src="gfx/dontcare.jpg" id="formatduallayered_img"><input type="hidden" name="formatduallayered" id="formatduallayered_input" value="?">&nbsp;$lang[DUALLAYERED]</td></tr>
+  <tr><td><img style="vertical-align:middle" onClick="SwitchState('formatletterbox')" src="gfx/dontcare.png" id="formatletterbox_img"><input type="hidden" name="formatletterbox" id="formatletterbox_input" value="?">&nbsp;$lang[WIDESCREEN]</td>
+  <td><img style="vertical-align:middle" onClick="SwitchState('formatpanandscan')" src="gfx/dontcare.png" id="formatpanandscan_img"><input type="hidden" name="formatpanandscan" id="formatpanandscan_input" value="?">&nbsp;$lang[PANANDSCAN]</td></tr>
+  <tr><td><img style="vertical-align:middle" onClick="SwitchState('formatfullframe')" src="gfx/dontcare.png" id="formatfullframe_img"><input type="hidden" name="formatfullframe" id="formatfullframe_input" value="?">&nbsp;$lang[FULLFRAME]</td>
+  <td><img style="vertical-align:middle" onClick="SwitchState('format16x9')" src="gfx/dontcare.png" id="format16x9_img"><input type="hidden" name="format16x9" id="format16x9_input" value="?">&nbsp;{$lang['16X9']}</td></tr>
+  <tr><td><img style="vertical-align:middle" onClick="SwitchState('formatdualsided')" src="gfx/dontcare.png" id="formatdualsided_img"><input type="hidden" name="formatdualsided" id="formatdualsided_input" value="?">&nbsp;$lang[DUALSIDED]</td>
+  <td><img style="vertical-align:middle" onClick="SwitchState('formatduallayered')" src="gfx/dontcare.png" id="formatduallayered_img"><input type="hidden" name="formatduallayered" id="formatduallayered_input" value="?">&nbsp;$lang[DUALLAYERED]</td></tr>
 </table>
 EOT;
 
 	$bstable = <<<EOT
 <table cellpadding=3 border=1><tr><th>$lang[BOXSET]</th></tr>
-  <tr><td><img style="vertical-align:middle" onClick="SwitchState('boxchild')" src="gfx/dontcare.jpg" id="boxchild_img"><input type="hidden" name="boxchild" id="boxchild_input" value="?">&nbsp;$lang[CHOOSERBOXCHILD]</td></tr>
-  <tr><td><img style="vertical-align:middle" onClick="SwitchState('boxparent')" src="gfx/dontcare.jpg" id="boxparent_img"><input type="hidden" name="boxparent" id="boxparent_input" value="?">&nbsp;$lang[CHOOSERBOXPARENT]</td></tr>
-  <tr><td><img style="vertical-align:middle" onClick="SwitchState('boxtvparent')" src="gfx/dontcare.jpg" id="boxtvparent_img"><input type="hidden" name="boxtvparent" id="boxtvparent_input" value="?">&nbsp;$lang[CHOOSERBOXTVPARENT]</td></tr>
+  <tr><td><img style="vertical-align:middle" onClick="SwitchState('boxchild')" src="gfx/dontcare.png" id="boxchild_img"><input type="hidden" name="boxchild" id="boxchild_input" value="?">&nbsp;$lang[CHOOSERBOXCHILD]</td></tr>
+  <tr><td><img style="vertical-align:middle" onClick="SwitchState('boxparent')" src="gfx/dontcare.png" id="boxparent_img"><input type="hidden" name="boxparent" id="boxparent_input" value="?">&nbsp;$lang[CHOOSERBOXPARENT]</td></tr>
+  <tr><td><img style="vertical-align:middle" onClick="SwitchState('boxtvparent')" src="gfx/dontcare.png" id="boxtvparent_img"><input type="hidden" name="boxtvparent" id="boxtvparent_input" value="?">&nbsp;$lang[CHOOSERBOXTVPARENT]</td></tr>
 </table>
 EOT;
 
 	$extrastable = <<<EOT
 <table cellpadding=3 border=1><tr><th colspan=3>$lang[EXTRAS]</th></tr>
-  <tr><td><img style="vertical-align:middle" onClick="SwitchState('featuresceneaccess')" src="gfx/dontcare.jpg" id="featuresceneaccess_img"><input type="hidden" name="featuresceneaccess" id="featuresceneaccess_input" value="?">&nbsp;$lang[SCENEACCESS]</td>
-  <td><img style="vertical-align:middle" onClick="SwitchState('featureplayall')" src="gfx/dontcare.jpg" id="featureplayall_img"><input type="hidden" name="featureplayall" id="featureplayall_input" value="?">&nbsp;$lang[PLAYALL]</td>
-  <td><img style="vertical-align:middle" onClick="SwitchState('featuretrailer')" src="gfx/dontcare.jpg" id="featuretrailer_img"><input type="hidden" name="featuretrailer" id="featuretrailer_input" value="?">&nbsp;$lang[TRAILER]</td></tr>
-  <tr><td><img style="vertical-align:middle" onClick="SwitchState('featurebonustrailers')" src="gfx/dontcare.jpg" id="featurebonustrailers_img"><input type="hidden" name="featurebonustrailers" id="featurebonustrailers_input" value="?">&nbsp;$lang[BONUSTRAILERS]</td>
-  <td><img style="vertical-align:middle" onClick="SwitchState('featuremakingof')" src="gfx/dontcare.jpg" id="featuremakingof_img"><input type="hidden" name="featuremakingof" id="featuremakingof_input" value="?">&nbsp;$lang[MAKINGOF]</td>
-  <td><img style="vertical-align:middle" onClick="SwitchState('featurecommentary')" src="gfx/dontcare.jpg" id="featurecommentary_img"><input type="hidden" name="featurecommentary" id="featurecommentary_input" value="?">&nbsp;$lang[COMMENTARY]</td></tr>
-  <tr><td><img style="vertical-align:middle" onClick="SwitchState('featuredeletedscenes')" src="gfx/dontcare.jpg" id="featuredeletedscenes_img"><input type="hidden" name="featuredeletedscenes" id="featuredeletedscenes_input" value="?">&nbsp;$lang[DELETEDSCENES]</td>
-  <td><img style="vertical-align:middle" onClick="SwitchState('featureinterviews')" src="gfx/dontcare.jpg" id="featureinterviews_img"><input type="hidden" name="featureinterviews" id="featureinterviews_input" value="?">&nbsp;$lang[INTERVIEWS]</td>
-  <td><img style="vertical-align:middle" onClick="SwitchState('featureouttakes')" src="gfx/dontcare.jpg" id="featureouttakes_img"><input type="hidden" name="featureouttakes" id="featureouttakes_input" value="?">&nbsp;$lang[OUTTAKES]</td></tr>
-  <tr><td><img style="vertical-align:middle" onClick="SwitchState('featurestoryboardcomparisons')" src="gfx/dontcare.jpg" id="featurestoryboardcomparisons_img"><input type="hidden" name="featurestoryboardcomparisons" id="featurestoryboardcomparisons_input" value="?">&nbsp;$lang[STORYBOARDCOMPARISONS]</td>
-  <td><img style="vertical-align:middle" onClick="SwitchState('featurephotogallery')" src="gfx/dontcare.jpg" id="featurephotogallery_img"><input type="hidden" name="featurephotogallery" id="featurephotogallery_input" value="?">&nbsp;$lang[PHOTOGALLERY]</td>
-  <td><img style="vertical-align:middle" onClick="SwitchState('featureproductionnotes')" src="gfx/dontcare.jpg" id="featureproductionnotes_img"><input type="hidden" name="featureproductionnotes" id="featureproductionnotes_input" value="?">&nbsp;$lang[PRODUCTIONNOTES]</td></tr>
-  <tr><td><img style="vertical-align:middle" onClick="SwitchState('featuredvdromcontent')" src="gfx/dontcare.jpg" id="featuredvdromcontent_img"><input type="hidden" name="featuredvdromcontent" id="featuredvdromcontent_input" value="?">&nbsp;$lang[DVDROMCONTENT]</td>
-  <td><img style="vertical-align:middle" onClick="SwitchState('featuregame')" src="gfx/dontcare.jpg" id="featuregame_img"><input type="hidden" name="featuregame" id="featuregame_input" value="?">&nbsp;$lang[GAME]</td>
-  <td><img style="vertical-align:middle" onClick="SwitchState('featuremultiangle')" src="gfx/dontcare.jpg" id="featuremultiangle_img"><input type="hidden" name="featuremultiangle" id="featuremultiangle_input" value="?">&nbsp;$lang[MULTIANGLE]</td></tr>
-  <tr><td><img style="vertical-align:middle" onClick="SwitchState('featuremusicvideos')" src="gfx/dontcare.jpg" id="featuremusicvideos_img"><input type="hidden" name="featuremusicvideos" id="featuremusicvideos_input" value="?">&nbsp;$lang[MUSICVIDEOS]</td>
-  <td><img style="vertical-align:middle" onClick="SwitchState('featurethxcertified')" src="gfx/dontcare.jpg" id="featurethxcertified_img"><input type="hidden" name="featurethxcertified" id="featurethxcertified_input" value="?">&nbsp;$lang[THXCERTIFIED]</td>
-  <td><img style="vertical-align:middle" onClick="SwitchState('featureclosedcaptioned')" src="gfx/dontcare.jpg" id="featureclosedcaptioned_img"><input type="hidden" name="featureclosedcaptioned" id="featureclosedcaptioned_input" value="?">&nbsp;$lang[CLOSEDCAPTIONED]</td></tr>
-  <tr><td><img style="vertical-align:middle" onClick="SwitchState('featuredigitalcopy')" src="gfx/dontcare.jpg" id="featuredigitalcopy_img"><input type="hidden" name="featuredigitalcopy" id="featuredigitalcopy_input" value="?">&nbsp;$lang[DIGITALCOPY]</td>
-  <td><img style="vertical-align:middle" onClick="SwitchState('featurepip')" src="gfx/dontcare.jpg" id="featurepip_img"><input type="hidden" name="featurepip" id="featurepip_input" value="?">&nbsp;$lang[PIP]</td>
-  <td><img style="vertical-align:middle" onClick="SwitchState('featurebdlive')" src="gfx/dontcare.jpg" id="featurebdlive_img"><input type="hidden" name="featurebdlive" id="featurebdlive_input" value="?">&nbsp;$lang[BDLIVE]</td></tr>
-  <tr><td><img style="vertical-align:middle" onClick="SwitchState('featuredbox')" src="gfx/dontcare.jpg" id="featuredbox_img"><input type="hidden" name="featuredbox" id="featuredbox_input" value="?">&nbsp;$lang[DBOX]</td>
-  <td><img style="vertical-align:middle" onClick="SwitchState('featurecinechat')" src="gfx/dontcare.jpg" id="featurecinechat_img"><input type="hidden" name="featurecinechat" id="featurecinechat_input" value="?">&nbsp;$lang[CINECHAT]</td>
-  <td><img style="vertical-align:middle" onClick="SwitchState('featuremovieiq')" src="gfx/dontcare.jpg" id="featuremovieiq_img"><input type="hidden" name="featuremovieiq" id="featuremovieiq_input" value="?">&nbsp;$lang[MOVIEIQ]</td></tr>
+  <tr><td><img style="vertical-align:middle" onClick="SwitchState('featuresceneaccess')" src="gfx/dontcare.png" id="featuresceneaccess_img"><input type="hidden" name="featuresceneaccess" id="featuresceneaccess_input" value="?">&nbsp;$lang[SCENEACCESS]</td>
+  <td><img style="vertical-align:middle" onClick="SwitchState('featureplayall')" src="gfx/dontcare.png" id="featureplayall_img"><input type="hidden" name="featureplayall" id="featureplayall_input" value="?">&nbsp;$lang[PLAYALL]</td>
+  <td><img style="vertical-align:middle" onClick="SwitchState('featuretrailer')" src="gfx/dontcare.png" id="featuretrailer_img"><input type="hidden" name="featuretrailer" id="featuretrailer_input" value="?">&nbsp;$lang[TRAILER]</td></tr>
+  <tr><td><img style="vertical-align:middle" onClick="SwitchState('featurebonustrailers')" src="gfx/dontcare.png" id="featurebonustrailers_img"><input type="hidden" name="featurebonustrailers" id="featurebonustrailers_input" value="?">&nbsp;$lang[BONUSTRAILERS]</td>
+  <td><img style="vertical-align:middle" onClick="SwitchState('featuremakingof')" src="gfx/dontcare.png" id="featuremakingof_img"><input type="hidden" name="featuremakingof" id="featuremakingof_input" value="?">&nbsp;$lang[MAKINGOF]</td>
+  <td><img style="vertical-align:middle" onClick="SwitchState('featurecommentary')" src="gfx/dontcare.png" id="featurecommentary_img"><input type="hidden" name="featurecommentary" id="featurecommentary_input" value="?">&nbsp;$lang[COMMENTARY]</td></tr>
+  <tr><td><img style="vertical-align:middle" onClick="SwitchState('featuredeletedscenes')" src="gfx/dontcare.png" id="featuredeletedscenes_img"><input type="hidden" name="featuredeletedscenes" id="featuredeletedscenes_input" value="?">&nbsp;$lang[DELETEDSCENES]</td>
+  <td><img style="vertical-align:middle" onClick="SwitchState('featureinterviews')" src="gfx/dontcare.png" id="featureinterviews_img"><input type="hidden" name="featureinterviews" id="featureinterviews_input" value="?">&nbsp;$lang[INTERVIEWS]</td>
+  <td><img style="vertical-align:middle" onClick="SwitchState('featureouttakes')" src="gfx/dontcare.png" id="featureouttakes_img"><input type="hidden" name="featureouttakes" id="featureouttakes_input" value="?">&nbsp;$lang[OUTTAKES]</td></tr>
+  <tr><td><img style="vertical-align:middle" onClick="SwitchState('featurestoryboardcomparisons')" src="gfx/dontcare.png" id="featurestoryboardcomparisons_img"><input type="hidden" name="featurestoryboardcomparisons" id="featurestoryboardcomparisons_input" value="?">&nbsp;$lang[STORYBOARDCOMPARISONS]</td>
+  <td><img style="vertical-align:middle" onClick="SwitchState('featurephotogallery')" src="gfx/dontcare.png" id="featurephotogallery_img"><input type="hidden" name="featurephotogallery" id="featurephotogallery_input" value="?">&nbsp;$lang[PHOTOGALLERY]</td>
+  <td><img style="vertical-align:middle" onClick="SwitchState('featureproductionnotes')" src="gfx/dontcare.png" id="featureproductionnotes_img"><input type="hidden" name="featureproductionnotes" id="featureproductionnotes_input" value="?">&nbsp;$lang[PRODUCTIONNOTES]</td></tr>
+  <tr><td><img style="vertical-align:middle" onClick="SwitchState('featuredvdromcontent')" src="gfx/dontcare.png" id="featuredvdromcontent_img"><input type="hidden" name="featuredvdromcontent" id="featuredvdromcontent_input" value="?">&nbsp;$lang[DVDROMCONTENT]</td>
+  <td><img style="vertical-align:middle" onClick="SwitchState('featuregame')" src="gfx/dontcare.png" id="featuregame_img"><input type="hidden" name="featuregame" id="featuregame_input" value="?">&nbsp;$lang[GAME]</td>
+  <td><img style="vertical-align:middle" onClick="SwitchState('featuremultiangle')" src="gfx/dontcare.png" id="featuremultiangle_img"><input type="hidden" name="featuremultiangle" id="featuremultiangle_input" value="?">&nbsp;$lang[MULTIANGLE]</td></tr>
+  <tr><td><img style="vertical-align:middle" onClick="SwitchState('featuremusicvideos')" src="gfx/dontcare.png" id="featuremusicvideos_img"><input type="hidden" name="featuremusicvideos" id="featuremusicvideos_input" value="?">&nbsp;$lang[MUSICVIDEOS]</td>
+  <td><img style="vertical-align:middle" onClick="SwitchState('featurethxcertified')" src="gfx/dontcare.png" id="featurethxcertified_img"><input type="hidden" name="featurethxcertified" id="featurethxcertified_input" value="?">&nbsp;$lang[THXCERTIFIED]</td>
+  <td><img style="vertical-align:middle" onClick="SwitchState('featureclosedcaptioned')" src="gfx/dontcare.png" id="featureclosedcaptioned_img"><input type="hidden" name="featureclosedcaptioned" id="featureclosedcaptioned_input" value="?">&nbsp;$lang[CLOSEDCAPTIONED]</td></tr>
+  <tr><td><img style="vertical-align:middle" onClick="SwitchState('featuredigitalcopy')" src="gfx/dontcare.png" id="featuredigitalcopy_img"><input type="hidden" name="featuredigitalcopy" id="featuredigitalcopy_input" value="?">&nbsp;$lang[DIGITALCOPY]</td>
+  <td><img style="vertical-align:middle" onClick="SwitchState('featurepip')" src="gfx/dontcare.png" id="featurepip_img"><input type="hidden" name="featurepip" id="featurepip_input" value="?">&nbsp;$lang[PIP]</td>
+  <td><img style="vertical-align:middle" onClick="SwitchState('featurebdlive')" src="gfx/dontcare.png" id="featurebdlive_img"><input type="hidden" name="featurebdlive" id="featurebdlive_input" value="?">&nbsp;$lang[BDLIVE]</td></tr>
+  <tr><td><img style="vertical-align:middle" onClick="SwitchState('featuredbox')" src="gfx/dontcare.png" id="featuredbox_img"><input type="hidden" name="featuredbox" id="featuredbox_input" value="?">&nbsp;$lang[DBOX]</td>
+  <td><img style="vertical-align:middle" onClick="SwitchState('featurecinechat')" src="gfx/dontcare.png" id="featurecinechat_img"><input type="hidden" name="featurecinechat" id="featurecinechat_input" value="?">&nbsp;$lang[CINECHAT]</td>
+  <td><img style="vertical-align:middle" onClick="SwitchState('featuremovieiq')" src="gfx/dontcare.png" id="featuremovieiq_img"><input type="hidden" name="featuremovieiq" id="featuremovieiq_input" value="?">&nbsp;$lang[MOVIEIQ]</td></tr>
 </table>
 EOT;
 
@@ -113,7 +113,7 @@ EOT;
 			$gen = str_replace(' ', '_', $val['genre']);
 			$gen = str_replace("'", '#', $gen);
 			$valgen .= "\tif ($('genre_{$gen}_input').value == '1') genrecount++;\n";
-			$genretable .= "<td><img style=\"vertical-align:middle\" onClick=\"SwitchState('genre_$gen')\" src=\"gfx/dontcare.jpg\""
+			$genretable .= "<td><img style=\"vertical-align:middle\" onClick=\"SwitchState('genre_$gen')\" src=\"gfx/dontcare.png\""
 					." id=\"genre_{$gen}_img\"><input type=\"hidden\" name=\"genre_$gen\" id=\"genre_{$gen}_input\""
 					." value=\"?\">&nbsp;".GenreTranslation($val['genre'])."</td>";
 		}
@@ -207,7 +207,7 @@ EOT;
 			$casecombo .= "<option value=\"$val[casetype]\">$val[casetype]</option>";
 		}
 		$casecombo .= "</select>&nbsp;<span><img style=\"vertical-align:middle\" onClick=\"SwitchState('caseslipcover')\""
-			." src=\"gfx/dontcare.jpg\" id=\"caseslipcover_img\"><input type=\"hidden\" name=\"caseslipcover\""
+			." src=\"gfx/dontcare.png\" id=\"caseslipcover_img\"><input type=\"hidden\" name=\"caseslipcover\""
 			." id=\"caseslipcover_input\" value=\"?\">&nbsp;$lang[SLIPCOVER]</span></td></tr>";
 	}
 	$db->sql_freeresult($res);
@@ -256,7 +256,7 @@ EOT;
 				if ($count++ % 3 == 1)
 					$watchedby .=  "</tr>\n<tr>";
 				$name = $val['uid'];
-  				$watchedby .=  "<td><img style=\"vertical-align:middle\" onClick=\"SwitchState('watched_$name')\" src=\"gfx/dontcare.jpg\""
+  				$watchedby .=  "<td><img style=\"vertical-align:middle\" onClick=\"SwitchState('watched_$name')\" src=\"gfx/dontcare.png\""
 						." id=\"watched_{$name}_img\"><input type=\"hidden\" name=\"watched_$name\" id=\"watched_{$name}_input\""
 						." value=\"?\">&nbsp;$val[firstname] " . HideName($val['lastname']) . "</td>";
 			}
@@ -274,7 +274,7 @@ EOT;
 			if ($count++ % 3 == 1)
 				$tagtable .= "</tr>\n<tr>";
 			$name = urlencode($val['fullyqualifiedname']);
-  			$tagtable .= "<td><img style=\"vertical-align:middle\" onClick=\"SwitchState('tag_$name')\" src=\"gfx/dontcare.jpg\""
+  			$tagtable .= "<td><img style=\"vertical-align:middle\" onClick=\"SwitchState('tag_$name')\" src=\"gfx/dontcare.png\""
 				." id=\"tag_{$name}_img\"><input type=\"hidden\" name=\"tag_$name\" id=\"tag_{$name}_input\""
 				." value=\"?\">&nbsp;$val[fullyqualifiedname]</td>\n";
 		}
@@ -350,7 +350,7 @@ var theform=$('search_form');
 			break;
 		case 'hidden':
 			theform.elements[i].value = '?';
-			$(theform.elements[i].id.replace('_input', '_img')).src = "gfx/dontcare.jpg";
+			$(theform.elements[i].id.replace('_input', '_img')).src = "gfx/dontcare.png";
 			theform.elements[i].parentNode.style.backgroundColor = '';
 			break;
 		default:
@@ -371,17 +371,17 @@ function SwitchState(obj) {
 	switch ($(obj+"_input").value) {
 	case "-1":
 		$(obj+"_input").value = '?';
-		$(obj+"_img").src = "gfx/dontcare.jpg";
+		$(obj+"_img").src = "gfx/dontcare.png";
 		$(obj+"_img").parentNode.style.backgroundColor = '';
 		break;
 	case "?":
 		$(obj+"_input").value = 1;
-		$(obj+"_img").src = "gfx/wantit.jpg";
+		$(obj+"_img").src = "gfx/wantit.png";
 		$(obj+"_img").parentNode.style.backgroundColor = '$ChangedColor';
 		break;
 	case "1":
 		$(obj+"_input").value = -1;
-		$(obj+"_img").src = "gfx/dontwantit.jpg";
+		$(obj+"_img").src = "gfx/dontwantit.png";
 		$(obj+"_img").parentNode.style.backgroundColor = '$ChangedColor';
 		break;
 	}
