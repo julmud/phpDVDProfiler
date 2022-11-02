@@ -102,7 +102,7 @@ function format_addinfo (&$dvd){
 		break;
 	case 'reviews':
 		for ($i=0; $i<strlen($reviewsort); $i++)
-			$dvd['addinfo'] .= FormatLabel(FixAReviewValue($dvd[$ReviewLabels[$reviewsort{$i}]])/2, $lang['REVIEWNAMES'][$reviewsort{$i}], false);
+			$dvd['addinfo'] .= FormatLabel(FixAReviewValue($dvd[$ReviewLabels[$reviewsort[$i]]])/2, $lang['REVIEWNAMES'][$reviewsort[$i]], false);
 		break;
 	}
 	return(true);
@@ -651,7 +651,7 @@ function get_SQL($page, $dpp = 60){
 
 	switch ($searchby) {
 	case "title":
-		if ($searchtext{0} == '^')
+		if ($searchtext[0] == '^')
 			$searchsql="AND (title LIKE '" . substr($searchtext, 1) ."%' OR originaltitle LIKE '".substr($searchtext,1)."%' OR description LIKE '".substr($searchtext,1)."%')";
 		else
 			$searchsql="AND (title LIKE '%".$searchtext."%' OR originaltitle LIKE '%".$searchtext."%' OR description LIKE '%".$searchtext."%')";
