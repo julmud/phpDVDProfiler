@@ -28,7 +28,7 @@ function DisplayAResultSet(&$db, $sql) {
 }
 
 	$table = @$_GET['table'];
-	if ($table{0} == '$')
+	if ($table[0] == '$')
 		$table = $GLOBALS[substr($table, 1)];
 	if ($table == '')
 		$table = $DVD_STATS_TABLE;
