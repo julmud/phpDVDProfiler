@@ -185,8 +185,8 @@ EOT;
 		for ($i=0; $i<=strlen($PossibleRegions); $i++) {
 			$currentRegion = substr($PossibleRegions, $i, 1);
 			if (!empty($currentRegion) && strpos($rgnlist, $currentRegion) !== false) {
-				$val = $PossibleRegions{$i};
-				$disp = $PossibleRegions{$i};
+				$val = $PossibleRegions[$i];
+				$disp = $PossibleRegions[$i];
 				if ($val == '0') $disp = $lang['ALLREGIONSDVD'];
 				if ($val == '@') $disp = $lang['ALLREGIONSBLURAY'];
 				$regioncombo .= "<option value=\"$val\">$disp</option>";

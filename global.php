@@ -8,6 +8,10 @@ ini_set('error_reporting', E_ALL);
 ini_set('log_errors', 1);
 ini_set('error_log', 'ERROR_LOG');
 
+// removeme
+define('IN_SCRIPT', 1);
+// ---
+
 if (!defined('IN_SCRIPT')) {
 	die('This script should not be manually executed ... Possible Hacking attempt');
 }
@@ -33,6 +37,19 @@ $EGPCS = array(
 		'_GET'
 		);
 
+#if (get_magic_quotes_gpc()) {
+if (False) {
+function StripMagicQuotes(&$var) {
+	if (is_array($var)) {
+		foreach ($var as $k=>$v)
+			StripMagicQuotes($var[$k]);
+		return;
+	}
+	$var = stripslashes($var);
+}
+	foreach ($EGPCS as $k => $v)
+		StripMagicQuotes($$v);
+}
 @extract($_POST);
 @extract($_GET);
 

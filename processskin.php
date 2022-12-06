@@ -754,7 +754,7 @@ global $dvd;
 	$ret = $prefix;
 	for ($i=0; $i<strlen($dvd['region']); $i++) {
 		if ($ret != '') $ret .= ', ';
-		$ret .= $dvd['region']{$i};
+		$ret .= $dvd['region'][$i];
 	}
 	return($ret);
 }
