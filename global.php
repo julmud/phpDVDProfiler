@@ -33,19 +33,6 @@ $EGPCS = array(
 		'_GET'
 		);
 
-#if (get_magic_quotes_gpc()) {
-if (False) {
-function StripMagicQuotes(&$var) {
-	if (is_array($var)) {
-		foreach ($var as $k=>$v)
-			StripMagicQuotes($var[$k]);
-		return;
-	}
-	$var = stripslashes($var);
-}
-	foreach ($EGPCS as $k => $v)
-		StripMagicQuotes($$v);
-}
 @extract($_POST);
 @extract($_GET);
 
