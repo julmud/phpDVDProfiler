@@ -986,7 +986,7 @@ global $db, $DVD_TABLE, $DVD_EVENTS_TABLE, $DVD_USERS_TABLE, $lang, $watched, $h
 
 	$rs = $times+1;
 	if ($getimages == 3)
-		$thumbname = "$img_webpath{$id}f.jpg";
+		$thumbname = "$img_webpath[$id]f.jpg";
 	else
 		$thumbname = PhyspathToWebpath(resize_jpg($id, "f", 60, 100));
 

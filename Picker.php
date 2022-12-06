@@ -9,7 +9,7 @@ global $getimages, $img_webpathf, $thumbnails;
 
 	if ($getimages > 0) {
 		if ($getimages == 3) {
-			$thumbs = "<img alt=\"\" width=60 height=84 src=\"{$img_webpathf}$thumbnails/{$id}f.jpg\">";
+			$thumbs = "<img alt=\"\" width=60 height=84 src=\"{$img_webpathf}$thumbnails/[$id]f.jpg\">";
 		}
 		else {
 			$thumbs = '<img alt="" width=60 height=84 src="' . resize_jpg($id, 'f', 60, 100) . '">';

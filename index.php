@@ -5,6 +5,7 @@ define('IN_SCRIPT', 1);
 include_once('version.php');
 include_once('global.php');
 
+
 function UpdateDataRow(&$dvd) {
 	$dvd['primegenre'] = GenreTranslation($dvd['primegenre']);
 	FormatTheTitle($dvd);
@@ -388,7 +389,7 @@ function IsValidReviewString($review) {
 	if (strlen($review) > 4)
 		return(false);
 	for ($i=0; $i<strlen($review); $i++) {
-		if (strpos('FVAE', $review{$i}) === false)
+		if (strpos('FVAE', $review[$i]) === false)
 			return(false);
 	}
 	return(true);
@@ -400,7 +401,7 @@ global $ReviewLabels;
 	$sort = '';
 	if (IsValidReviewString($review)) {
 		for ($i=0; $i<strlen($review); $i++) {
-			$sort .= $ReviewLabels[$review{$i}] . " $order,";
+			$sort .= $ReviewLabels[$review[$i]] . " $order,";
 		}
 	}
 	$sort .= 'sorttitle ASC';
@@ -414,7 +415,7 @@ global $lang, $ReviewLabels;
 		return($lang['BADREVIEWSTRING'].$review);
 	$title = '';
 	for ($i=0; $i<strlen($review); $i++)
-		$title .= FormatLabel(FixAReviewValue($dvd[$ReviewLabels[$review{$i}]])/2, $lang['REVIEWNAMES'][$review{$i}], $short);
+		$title .= FormatLabel(FixAReviewValue($dvd[$ReviewLabels[$review[$i]]])/2, $lang['REVIEWNAMES'][$review[$i]], $short);
 
 	if (substr($title, -1, 1) == ' ')
 		$title = substr($title, 0, -1);
@@ -445,12 +446,12 @@ global $lang, $ReviewLabels;
 
 	$rest = $width;
 	for ($j=0; $j<strlen($review); $j++) {
-		$m = FixAReviewValue($dvd[$ReviewLabels[$review{$j}]]);
+		$m = FixAReviewValue($dvd[$ReviewLabels[$review[$j]]]);
 		$rest -= $WidthOfOne*$m;
 		$nm = floor($m/2); $rm = $m - $nm*2;
 		for ($i=0; $i<$nm; $i++)
-			$ret .= '<TD WIDTH='. (2*$WidthOfOne-1) .' BGCOLOR="'.$bincolors[$review{$j}].'"></TD>';
-		if ($rm != 0) $ret .= '<TD WIDTH='. ($WidthOfOne-1) .' BGCOLOR="'.$bincolors[$review{$j}].'"></TD>';
+			$ret .= '<TD WIDTH='. (2*$WidthOfOne-1) .' BGCOLOR="'.$bincolors[$review[$j]].'"></TD>';
+		if ($rm != 0) $ret .= '<TD WIDTH='. ($WidthOfOne-1) .' BGCOLOR="'.$bincolors[$review[$j]].'"></TD>';
 	}
 
 	$ret .= "<TD WIDTH=$rest>";
@@ -508,7 +509,7 @@ global $colnorange, $lang, $order, $reviewsort;
 	switch ($sort) {
 	case 'sorttitle':
 		if ($dvd['sorttitle'] != '')
-			$sepa = strtolower($dvd['sorttitle']{0});
+			$sepa = strtolower($dvd['sorttitle'][0]);
 		else
 			$sepa = '';
 		if (preg_match("/\d/", $sepa)) {
@@ -1269,7 +1270,7 @@ $srchtext = $db->sql_escape($srchtext);
 switch ($searchby) {
 case 'title':
 // Add the ability to anchor search to the start of the field
-	if ($srchtext{0} == '^')
+	if ($srchtext[0] == '^')
 		$where .= " AND (dvd.title LIKE '".substr($srchtext,1)."%' OR originaltitle LIKE '".substr($srchtext,1)."%' OR description LIKE '".substr($srchtext,1)."%')";
 	else
 		$where .= " AND (dvd.title LIKE '%$srchtext%' OR originaltitle LIKE '%$srchtext%' OR description LIKE '%$srchtext%')";
@@ -1455,7 +1456,7 @@ if ($action == 'main') {
   $rssfeed
   <script type="text/javascript" src="top.js"></script>
 </head>
-<frameset id="thecols" cols="$widthgt800,*" $nomove>
+<frameset id="thecols" cols="$widthgt800,*" $nomove bordercolor=$ClassColor[1]>
   <frameset id="therows" rows="*,1" border=0 frameborder=0 framespacing=0>
     <frame src="$PHP_SELF?sort=$sort&amp;order=$order&amp;collection=$collection&amp;searchby=$searchby&amp;searchtext=$searchurl&amp;action=nav" name="nav" scrolling=no framespacing=0 marginheight=2 marginwidth=2>
     <frame src="$PHP_SELF?sort=$sort&amp;order=$order&amp;collection=$collection&amp;searchby=$searchby&amp;searchtext=$searchurl&amp;action=menu" name="menu" scrolling=yes framespacing=0 marginheight=0 marginwidth=0>
@@ -1913,7 +1914,6 @@ if ($action == 'show') {
 		exit;
 	}
 	$result = $db->sql_query("SELECT * FROM $DVD_TABLE WHERE id='".$db->sql_escape($mediaid)."' LIMIT 1") or die($db->sql_error());
-
 	$dvd = $db->sql_fetchrow($result);
 	$db->sql_freeresult($result);
 	if ($dvd) {
@@ -2097,7 +2097,6 @@ if ($action == 'show') {
 		}
 		unset($credit);
 		$db->sql_freeresult($result);
-
 		$IMDBNum = array();
 // Make list of discs - ajm
 		$result = $db->sql_query("SELECT * FROM $DVD_DISCS_TABLE WHERE id='".$db->sql_escape($mediaid)."' ORDER BY discno ASC") or die($db->sql_error());
@@ -2161,7 +2160,6 @@ if ($action == 'show') {
 		$db->sql_freeresult($result);
 		if ($locval == ', ')
 			$locval = '';
-
 // Make list of events - ajm
 		$dvd['p_events'] = '';
 		$dvd['events'] = array();
@@ -2197,7 +2195,6 @@ if ($action == 'show') {
 		$locks['features'] = $locks['subtitles'] = $locks['eastereggs'] = $locks['runningtime'] = '';
 		$locks['releasedate'] = $locks['productionyear'] = $locks['casetype'] = $locks['videoformats'] = '';
 		$locks['rating'] = $locks['mediatype'] = '';
-
 		if (DisplayIfIsPrivateOrAlways($searchlocks)) {
 // Make list of locks - ajm
 			$result = $db->sql_query("SELECT * FROM $DVD_LOCKS_TABLE WHERE id='".$db->sql_escape($mediaid)."'") or die($db->sql_error());
@@ -2280,7 +2277,6 @@ if ($action == 'show') {
 		unset($subtitle);
 		$db->sql_freeresult($result);
 		if ($dvd['p_subtitles'] == '') $dvd['p_subtitles'] = '&nbsp;';
-
 // Make list of studios
 		$dvd['p_studios'] = '';
 		$ps = $mc = '';
@@ -2346,7 +2342,6 @@ if ($action == 'show') {
 			if (strpos($colours, ',') !== false) $colours = "($colours)";
 		}
 		$dvd['format'] .= ' ' . $colours;
-
 		$dynamicRange = (($dvd['drhdr10']==1)	? '(' . $dynamicrange_translation['HDR10'] . ')' : '')
 			. (($dvd['drdolbyvision']==1) ? '(' . $dynamicrange_translation['DOLBYVISION'] . ')' : '');
 
@@ -2389,7 +2384,6 @@ if ($action == 'show') {
 		$dvd['media'] = (($dvd['formatdualsided']==1)  ? $lang['DUALSIDED']: $lang['SINGLESIDED'])
 			. (($dvd['formatduallayered']==1)      ? ", $lang[DUALLAYERED]": ", $lang[SINGLELAYERED]");
 		$dvd['media'] = preg_replace('/^, /', '', $dvd['media']);
-
 		$dvd['p_extras'] = (($dvd['featuresceneaccess']==1)	? ", $lang[SCENEACCESS]": '')
 			. ((isset($dvd['featureplayall']) && $dvd['featureplayall']==1)		? ", $lang[PLAYALL]": '')
 			. (($dvd['featuretrailer']==1)			? ", $lang[TRAILER]": '')
@@ -2621,8 +2615,8 @@ if ($action == 'show') {
 				$regions .= "<img height=\"17px\" src=\"gfx/region_".substr($dvd['region'], $i, 1).".gif\" style=\"vertical-align:-30%; margin-bottom:2px\" title=\"$lang[REGION] ".substr($dvd['region'], $i, 1)."\" alt=\"\"/>\n";
 			}
 		}
-
 		$db->sql_freeresult($result);
+
 		$dvd['p_casetype'] = $lang[strtoupper(str_replace(' ', '', $dvd['casetype']))];
 		if ($dvd['caseslipcover'] != 0)
 			$dvd['p_casetype'] .= ", $lang[SLIPCOVER]";
@@ -2943,7 +2937,7 @@ var item=document.getElementById(theitems);
 </tr>
 </table>
 
-<table class=bgl width="100%">
+<table class=bgd width="100%">
 <tr>
 <td valign=top class=bgd width="100%" rowspan=2>
 <table width="100%" cellpadding=0>

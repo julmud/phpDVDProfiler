@@ -1,5 +1,5 @@
 <?php
-/*	$Id: userpref.php,v 1.0 2005/01/01 14:31:55 fred Exp $	*/
+/*	$Id$	*/
 
 define('IN_SCRIPT', 1);
 include_once('version.php');

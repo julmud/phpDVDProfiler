@@ -2187,8 +2187,8 @@ global $audiospecialcondition, $Highlight_Last_X_PurchaseDates, $UpdateLast, $My
 // Profile totals per region (ie. number of discs playable in region 2)
 	for ($i=0; $i<strlen($PossibleRegions); $i++) {
 		DoSomeStats('Region', false,
-			"'".$PossibleRegions{$i}."','','',COUNT(*) AS total FROM $DVD_TABLE ",
-			"WHERE region LIKE '%".$PossibleRegions{$i}."%' AND collectiontype='owned' $regionspecialcondition",
+			"'".$PossibleRegions[$i]."','','',COUNT(*) AS total FROM $DVD_TABLE ",
+			"WHERE region LIKE '%".$PossibleRegions[$i]."%' AND collectiontype='owned' $regionspecialcondition",
 			'',
 			$noadulttitles, $ProfileName, $Profile, $numtimings, $t0);
 	}

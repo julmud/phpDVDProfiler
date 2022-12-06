@@ -1,5 +1,5 @@
 <?php
-/*	$Id: statistics.php,v 1.1 2005/02/06 14:31:55 fred Exp $	*/
+/*	$Id$	*/
 
 function MakeAPercentage($value, $total, $decimals=0) {
 	if ($total == 0)

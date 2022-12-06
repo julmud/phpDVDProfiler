@@ -423,7 +423,8 @@ class sql_db
 		{
 			$query_id = $this->query_result;
 		}
-		if ($query_id) {
+		if ($query_id && isset($query_id->num_rows))
+		{
 			@mysqli_free_result($query_id);
 			return true;
 		} else {
