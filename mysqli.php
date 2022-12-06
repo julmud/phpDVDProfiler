@@ -417,14 +417,13 @@ class sql_db
 		return ($this->db_connect_id) ? @mysqli_insert_id($this->db_connect_id) : false;
 	}
 
-	function sql_freeresult($query_id = false)
+	function sql_freeresult($query_id = false) 
 	{
 		if (!$query_id)
 		{
 			$query_id = $this->query_result;
 		}
-		if ($query_id && isset($query_id->num_rows))
-		{
+		if ($query_id && isset($query_id->num_rows)) {
 			@mysqli_free_result($query_id);
 			return true;
 		} else {

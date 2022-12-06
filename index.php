@@ -5,7 +5,6 @@ define('IN_SCRIPT', 1);
 include_once('version.php');
 include_once('global.php');
 
-
 function UpdateDataRow(&$dvd) {
 	$dvd['primegenre'] = GenreTranslation($dvd['primegenre']);
 	FormatTheTitle($dvd);
@@ -1914,6 +1913,7 @@ if ($action == 'show') {
 		exit;
 	}
 	$result = $db->sql_query("SELECT * FROM $DVD_TABLE WHERE id='".$db->sql_escape($mediaid)."' LIMIT 1") or die($db->sql_error());
+
 	$dvd = $db->sql_fetchrow($result);
 	$db->sql_freeresult($result);
 	if ($dvd) {
@@ -2097,6 +2097,7 @@ if ($action == 'show') {
 		}
 		unset($credit);
 		$db->sql_freeresult($result);
+
 		$IMDBNum = array();
 // Make list of discs - ajm
 		$result = $db->sql_query("SELECT * FROM $DVD_DISCS_TABLE WHERE id='".$db->sql_escape($mediaid)."' ORDER BY discno ASC") or die($db->sql_error());
@@ -2160,6 +2161,7 @@ if ($action == 'show') {
 		$db->sql_freeresult($result);
 		if ($locval == ', ')
 			$locval = '';
+
 // Make list of events - ajm
 		$dvd['p_events'] = '';
 		$dvd['events'] = array();
@@ -2195,6 +2197,7 @@ if ($action == 'show') {
 		$locks['features'] = $locks['subtitles'] = $locks['eastereggs'] = $locks['runningtime'] = '';
 		$locks['releasedate'] = $locks['productionyear'] = $locks['casetype'] = $locks['videoformats'] = '';
 		$locks['rating'] = $locks['mediatype'] = '';
+
 		if (DisplayIfIsPrivateOrAlways($searchlocks)) {
 // Make list of locks - ajm
 			$result = $db->sql_query("SELECT * FROM $DVD_LOCKS_TABLE WHERE id='".$db->sql_escape($mediaid)."'") or die($db->sql_error());
@@ -2277,6 +2280,7 @@ if ($action == 'show') {
 		unset($subtitle);
 		$db->sql_freeresult($result);
 		if ($dvd['p_subtitles'] == '') $dvd['p_subtitles'] = '&nbsp;';
+
 // Make list of studios
 		$dvd['p_studios'] = '';
 		$ps = $mc = '';
@@ -2342,6 +2346,7 @@ if ($action == 'show') {
 			if (strpos($colours, ',') !== false) $colours = "($colours)";
 		}
 		$dvd['format'] .= ' ' . $colours;
+
 		$dynamicRange = (($dvd['drhdr10']==1)	? '(' . $dynamicrange_translation['HDR10'] . ')' : '')
 			. (($dvd['drdolbyvision']==1) ? '(' . $dynamicrange_translation['DOLBYVISION'] . ')' : '');
 
@@ -2384,6 +2389,7 @@ if ($action == 'show') {
 		$dvd['media'] = (($dvd['formatdualsided']==1)  ? $lang['DUALSIDED']: $lang['SINGLESIDED'])
 			. (($dvd['formatduallayered']==1)      ? ", $lang[DUALLAYERED]": ", $lang[SINGLELAYERED]");
 		$dvd['media'] = preg_replace('/^, /', '', $dvd['media']);
+
 		$dvd['p_extras'] = (($dvd['featuresceneaccess']==1)	? ", $lang[SCENEACCESS]": '')
 			. ((isset($dvd['featureplayall']) && $dvd['featureplayall']==1)		? ", $lang[PLAYALL]": '')
 			. (($dvd['featuretrailer']==1)			? ", $lang[TRAILER]": '')
@@ -2615,8 +2621,8 @@ if ($action == 'show') {
 				$regions .= "<img height=\"17px\" src=\"gfx/region_".substr($dvd['region'], $i, 1).".gif\" style=\"vertical-align:-30%; margin-bottom:2px\" title=\"$lang[REGION] ".substr($dvd['region'], $i, 1)."\" alt=\"\"/>\n";
 			}
 		}
-		$db->sql_freeresult($result);
 
+		$db->sql_freeresult($result);
 		$dvd['p_casetype'] = $lang[strtoupper(str_replace(' ', '', $dvd['casetype']))];
 		if ($dvd['caseslipcover'] != 0)
 			$dvd['p_casetype'] .= ", $lang[SLIPCOVER]";
