@@ -1455,7 +1455,7 @@ if ($action == 'main') {
   $rssfeed
   <script type="text/javascript" src="top.js"></script>
 </head>
-<frameset id="thecols" cols="$widthgt800,*" $nomove bordercolor=$ClassColor[1]>
+<frameset id="thecols" cols="$widthgt800,*" $nomove>
   <frameset id="therows" rows="*,1" border=0 frameborder=0 framespacing=0>
     <frame src="$PHP_SELF?sort=$sort&amp;order=$order&amp;collection=$collection&amp;searchby=$searchby&amp;searchtext=$searchurl&amp;action=nav" name="nav" scrolling=no framespacing=0 marginheight=2 marginwidth=2>
     <frame src="$PHP_SELF?sort=$sort&amp;order=$order&amp;collection=$collection&amp;searchby=$searchby&amp;searchtext=$searchurl&amp;action=menu" name="menu" scrolling=yes framespacing=0 marginheight=0 marginwidth=0>
@@ -2943,7 +2943,7 @@ var item=document.getElementById(theitems);
 </tr>
 </table>
 
-<table class=bgd width="100%">
+<table class=bgl width="100%">
 <tr>
 <td valign=top class=bgd width="100%" rowspan=2>
 <table width="100%" cellpadding=0>
