@@ -348,7 +348,7 @@ global $inbrowser, $lang, $WorkAroundLibxmlBug, $HTMLEntSearch, $HTMLEntReplace;
 		$start = $where_exactly - $amt_on_either_side;
 		if ($start < 0) $start = 0;
 		echo hexdump(substr($data, $start, $where_exactly-$start), $where_exactly-$start, '     ');
-		echo hexdump($data{$where_exactly}, 1, '===> ');
+		echo hexdump($data[$where_exactly], 1, '===> ');
 		echo hexdump(substr($data, $where_exactly+1, $amt_on_either_side), $amt_on_either_side, '     ');
 		echo $lang['IMPORTBADXML5'];
 		if ($inbrowser) {
