@@ -417,7 +417,7 @@ class sql_db
 		return ($this->db_connect_id) ? @mysqli_insert_id($this->db_connect_id) : false;
 	}
 
-	function sql_freeresult($query_id = false) 
+	function sql_freeresult($query_id = false)
 	{
 		if (!$query_id)
 		{
