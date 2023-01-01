@@ -133,4 +133,3 @@ if ($language_override != '') {
 	}
 }
 require_once("monetary.php");
-?>

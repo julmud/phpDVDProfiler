@@ -95,4 +95,3 @@ if (count($leg) <= 20)
 
 $graph->Add($bplot);
 $graph->Stroke();
-?>

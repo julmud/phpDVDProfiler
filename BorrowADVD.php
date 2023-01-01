@@ -67,13 +67,13 @@ function isValidEmail(str) {
 }
 
 function ValidateForm(form) {
-	if (!isValidEmail(form.emailaddr.value)) { 
+	if (!isValidEmail(form.emailaddr.value)) {
 		alert('$lang[BORROW_BAD_EMAIL]');
-		form.emailaddr.focus(); 
+		form.emailaddr.focus();
 		return(false);
-	} 
+	}
 	return(true);;
-} 
+}
 </script>
 </head>
 <body class=f6>
@@ -85,4 +85,3 @@ function ValidateForm(form) {
 $endbody</html>
 
 EOT;
-?>

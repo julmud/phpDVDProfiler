@@ -114,6 +114,3 @@ while($dvd = mysql_fetch_array($result)) {
 	echo " </tr>\n";
 }
 echo "</table>\n";
-
-
-?>

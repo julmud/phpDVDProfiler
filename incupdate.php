@@ -1,5 +1,4 @@
 <?php
-/*	$Id$	*/
 
 if (!$inbrowser)
 	error_reporting(E_ALL);
@@ -2517,4 +2516,3 @@ global $audiospecialcondition, $Highlight_Last_X_PurchaseDates, $UpdateLast, $My
 	unset($ProfileName);
 	unset($Profile);
 }
-?>

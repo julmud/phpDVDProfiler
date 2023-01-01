@@ -470,4 +470,3 @@ if ($ii) {
     flush();
     @ob_flush();
 }
-?>

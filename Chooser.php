@@ -469,4 +469,3 @@ $tagtable
 </body>
 </html>
 EOT;
-?>

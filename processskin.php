@@ -1361,4 +1361,3 @@ if (is_readable("$skinloc/$skinfile")) {
 	DebugSQL($db, "skin($skinloc/$skinfile)");
 	exit;		// don't fall through: falling through does the internal skin
 }
-?>

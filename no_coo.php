@@ -101,4 +101,3 @@ $db->sql_freeresult($result);
 
 if ($inbrowser)
 	echo "</pre>";
-?>

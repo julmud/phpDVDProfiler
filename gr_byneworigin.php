@@ -123,4 +123,3 @@ $bplot->value->SetColor('black');
 
 $graph->Add($bplot);
 $graph->Stroke();
-?>

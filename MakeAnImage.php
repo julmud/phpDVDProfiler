@@ -23,4 +23,3 @@ if ($TryToChangeMemoryAndTimeLimits) @ini_set('memory_limit', -1);
 SendNoCacheHeaders('Content-Type: image/jpeg');
 readfile(resize_jpg($mediaid, $side, $x, 100, $y, 'FFFFFF', false));
 exit;
-?>

@@ -66,5 +66,3 @@ Have a great day
 
 Fred
 EOT;
-
-?>

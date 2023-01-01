@@ -40,4 +40,3 @@ $old_error_handler = set_error_handler("myErrorHandler");
 	}
 	closedir($handle);
 	echo "Done\n";
-?>

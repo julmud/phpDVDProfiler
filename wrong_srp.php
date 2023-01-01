@@ -83,4 +83,3 @@ $db->sql_freeresult($result);
 echo "There are $cnt profiles with the wrong SRP currency. Done\n";
 if ($inbrowser)
 	echo "</pre>";
-?>

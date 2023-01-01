@@ -45,7 +45,7 @@ global $debugskin;
 			$allowskins = false;
 	}
 
-	if (!$allowactorsort && 
+	if (!$allowactorsort &&
 	    !$allowsecondcol &&
 	    !$allowthirdcol &&
 	    !$allowdefaultsorttype &&
@@ -100,10 +100,10 @@ var index1 = cookiestring.indexOf(cookiename);
 var index2;
 
 	if (index1 == -1 || cookiename == "")
-		return(""); 
+		return("");
 	index2 = cookiestring.indexOf(';', index1);
 	if (index2 == -1)
-		index2 = cookiestring.length; 
+		index2 = cookiestring.length;
 	return(unescape(cookiestring.substring(index1+cookiename.length+1, index2)));
 }
 
@@ -477,4 +477,3 @@ EOT;
 	echo '</table><br><center><input type="submit" value="',$lang['PREFS']['UPDATEPREFS'],'"></center></form>';
 	echo '<center><a class="URLref" href="index.php" target="_top">', $lang['IMPORTCLICK'], "</a></center>\n";
 	echo "$endbody</html>\n";
-?>

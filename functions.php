@@ -1053,4 +1053,3 @@ function GetRatingLogo($locale, $ratingsystem, $rating) {
 	}
 	return NULL;
 }
-?>

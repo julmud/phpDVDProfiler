@@ -43,4 +43,3 @@ SendNoCacheHeaders('Content-Type: text/html; charset="windows-1252";');
 	if ($inbrowser) {
 		echo "</table></center><br>\n";
 	}
-?>

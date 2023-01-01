@@ -31,4 +31,3 @@ global $lang;
 	$j = preg_replace_callback('/\\$lang\\[(.*)\\]/U', "ReplaceLang", $j);
 
 	echo $j;
-?>

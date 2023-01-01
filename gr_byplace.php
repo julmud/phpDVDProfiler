@@ -45,7 +45,7 @@ foreach ($places as $key => $val) {
 		$name .= "$key ($places[$key])";
 	}
 }
-		
+
 $places[' '.$lang['OTHER']] = $others;
 
 uksort($places, 'cmp');
@@ -82,4 +82,3 @@ $bplot->SetShadow();
 
 $graph->Add($bplot);
 $graph->Stroke();
-?>

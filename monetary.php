@@ -11,7 +11,7 @@ function money_digits($CurrencyID) {
 	case 'KRW':
 	case 'VEB':
 		return(0);
-	
+
 	case 'ARP':
 	case 'AUD':
 	case 'BRL':
@@ -197,5 +197,3 @@ global $lang;
 	. number_format($value, money_digits($CurrencyID), $lang['MON_DECIMAL_POINT'], $lang['MON_THOUSANDS_SEP'])
 	. money_postfix($CurrencyID));
 }
-
-?>

@@ -402,4 +402,3 @@ $results<br>$pre$MainQuery
 </body>
 </html>
 EOT;
-?>

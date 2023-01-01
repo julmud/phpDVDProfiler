@@ -50,7 +50,7 @@ if (isset($year) && $year == 'last') {
 
 $sql = $db->sql_query("SELECT date_format(from_unixtime(purchasedate), '$filter') AS month,"
 			."builtinmediatype AS bi,custommediatype AS custom "
-                        ."FROM $DVD_TABLE $monthspecialprecondition WHERE collectiontype='owned' " 
+                        ."FROM $DVD_TABLE $monthspecialprecondition WHERE collectiontype='owned' "
                         ."$monthspecialcondition ORDER BY month") or die($db->sql_error());
 
 $dvds = array();
@@ -103,7 +103,7 @@ while($current <= $highest) {
 	if (!array_key_exists($current, $hddvds))
 		$hddvds[$current] = 0;
 
-	if (!isset($year) || $year <> 'year') { 
+	if (!isset($year) || $year <> 'year') {
 		list($year, $month) = explode('/', $current);
 		$month++;
 		if ($month > 12) {
@@ -116,7 +116,7 @@ while($current <= $highest) {
 	else {
 		$current++;
 	}
-	
+
 }
 
 ksort($dvds);
@@ -180,4 +180,3 @@ if (count($leg) <= 20) {
 
 $graph->Add($gbplot);
 $graph->Stroke();
-?>

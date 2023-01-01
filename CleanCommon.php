@@ -29,4 +29,3 @@ global $db;
 	CheckCommonTable($DVD_ACTOR_TABLE, $DVD_COMMON_ACTOR_TABLE);
 	echo "Checking Crew\n";
 	CheckCommonTable($DVD_CREDITS_TABLE, $DVD_COMMON_CREDITS_TABLE);
-?>

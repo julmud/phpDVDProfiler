@@ -1748,9 +1748,9 @@ echo "<pre>\$me="; print_r($me);echo "\n\$profiles="; print_r($profiles);
 		if(is_array($me_includetags)) {
 			$tagcmd = "SELECT COUNT(*) as cnt FROM $DVD_TABLE ot WHERE id = '$row[id]'";
 			foreach($me_includetags as $includetag) {
-				$tagcmd .= "AND EXISTS (SELECT id FROM $DVD_TAGS_TABLE it WHERE it.id = ot.id AND it.name = '$includetag')"; 
+				$tagcmd .= "AND EXISTS (SELECT id FROM $DVD_TAGS_TABLE it WHERE it.id = ot.id AND it.name = '$includetag')";
 			}
-			//echo("<br>" . $tagcmd); 
+			//echo("<br>" . $tagcmd);
 			$tagsql = $db->sql_query($tagcmd) or die($db->sql_error());
 			$tagrow = $db->sql_fetch_array($tagsql);
 			//echo(" ==> " . $tagrow['cnt']);
@@ -1833,7 +1833,7 @@ echo "<pre>\$me="; print_r($me);echo "\n\$profiles="; print_r($profiles);
 	ImageJPEG($im2, $filename, $me_quality);
 	ImageDestroy($im2);	// fjw added plug memory leak
 
-  //DJ Doena 
+  //DJ Doena
   # code for imagemap
   if($me_createmap) {
     $imagemap .= "\n</map>\n";
@@ -1846,4 +1846,3 @@ echo "<pre>\$me="; print_r($me);echo "\n\$profiles="; print_r($profiles);
 
 	return;
 }
-?>

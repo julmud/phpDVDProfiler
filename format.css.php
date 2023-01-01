@@ -358,4 +358,3 @@ img.b {	border-style: solid;
 }
 
 EOT;
-?>

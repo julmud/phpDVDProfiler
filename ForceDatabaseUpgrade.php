@@ -17,4 +17,3 @@ EOT;
 else {
 	echo "Your database schema has been invalidated - you need to run an update now\n";
 }
-?>
