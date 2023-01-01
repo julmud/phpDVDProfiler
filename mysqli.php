@@ -11,6 +11,7 @@ if (!defined('SQL_LAYER'))
 
 define('SQL_LAYER', 'mysql');
 
+#[AllowDynamicProperties]
 class sql_db
 {
 	var $db_connect_id;
