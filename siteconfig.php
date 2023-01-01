@@ -566,7 +566,7 @@ $DisplayNotesAsHTML = true;
 //	Danish == 'dk'
 //	Russian == 'ru'
 // This requires language files such as lang_de.php. In there there are DATEFORMAT and SHORTDATEFORMAT
-// strings. The format of these strings follows the format of the strftime() functions, see www.php.net
+// strings. The format of these strings follows the format of the strftimeReplacement() functions, see www.php.net
 // NOTE: if month names appear in English when you have chosen another language, please see the
 // notes in global.php. Look for '***** LOCALE Settings ****' for details
 // The $allow variable (true or false) lets visitors configure this field for their own view
@@ -574,7 +574,7 @@ $locale			= 'en';
 $allowlocale		= true;
 
 // Language Support
-// The lanuage of the user interface is controlled by the $locale variable mentioned above. This is
+// The language of the user interface is controlled by the $locale variable mentioned above. This is
 // done by reading a file named "lang_xx.php" where xx is the value of the $locale variable. In these
 // lang_xx.php files are the text strings that are used in the user interface.
 // The values of the strings so loaded can be overridden by providing setting a variable in localsiteconfig.php

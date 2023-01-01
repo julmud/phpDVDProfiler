@@ -2,6 +2,7 @@
 
 /* Strings in this file should avoid the use of non-usascii characters, and
    instead use HTML entities (eg. &eacute;) to make the strings more portable to different charsets */
+$lang['__strftime_locale'] = 'de-DE';
 
 $lang['NULL'] = 'Missing Value';
 $lang['LOADING'] = 'Lade ...';

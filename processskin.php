@@ -482,7 +482,7 @@ global $dvd, $lang;
 
 	$late = (($dvd['loandue'] - time()) < 0);
 	if ($ifoverdue == '') {
-		$ret = fix88595(ucwords(strftime($lang['SKINDATEFORMAT'], $dvd['loandue'])));
+		$ret = fix88595(ucwords(strftimeReplacement($lang['SKINDATEFORMAT'], $dvd['loandue'])));
 	}
 	else {
 		if ($late)
@@ -534,7 +534,7 @@ global $dvd, $DVD_EVENTS_TABLE, $watched, $db, $lang;
 	$db->sql_freeresult($res);
 	$ret = '';
 	if ($t != '')
-		$ret = fix88595(ucwords(strftime($lang['SKINDATEFORMAT'], $t)));
+		$ret = fix88595(ucwords(strftimeReplacement($lang['SKINDATEFORMAT'], $t)));
 	return($ret);
 }
 function last_watched_by($param) {
@@ -846,7 +846,7 @@ global $dvd, $lang;
 	$prefix = ProcessAParameter($param, 'PREFIX', 'string', '');
 	print_param($param, array('NAME','PREFIX'));
 
-	$ret = $prefix.fix88595(ucwords(strftime($lang['SKINDATEFORMAT'], $dvd['purchasedate'])));
+	$ret = $prefix.fix88595(ucwords(strftimeReplacement($lang['SKINDATEFORMAT'], $dvd['purchasedate'])));
 	return($ret);
 }
 function purchplace($param) {
@@ -1043,10 +1043,10 @@ global $dvd, $lang;
 	if ($dvd['released'] == '')
 		return($blank);
 	if ($yearonly) {
-		$ret = fix88595(ucwords(strftime(($yeardigits=='4'?"%Y":"%y"), $dvd['released'])));
+		$ret = fix88595(ucwords(strftimeReplacement(($yeardigits=='4'?"%Y":"%y"), $dvd['released'])));
 	}
 	else {
-		$ret = fix88595(ucwords(strftime($lang['SKINDATEFORMAT'], $dvd['released'])));
+		$ret = fix88595(ucwords(strftimeReplacement($lang['SKINDATEFORMAT'], $dvd['released'])));
 	}
 	return($ret);
 }

@@ -9,7 +9,7 @@ include_once('global.php');
 	$dvd = $db->sql_fetchrow($result);
 	$db->sql_freeresult($result);
 	if ($dvd) {
-		$dvd['p_released'] = ($dvd['released'] === NULL? '': fix88595(ucwords(strftime($lang['DATEFORMAT'], $dvd['released']))));
+		$dvd['p_released'] = ($dvd['released'] === NULL? '': fix88595(ucwords(strftimeReplacement($lang['DATEFORMAT'], $dvd['released']))));
 		if ($dvd['builtinmediatype'] == MEDIA_TYPE_HDDVD || $dvd['builtinmediatype'] == MEDIA_TYPE_HDDVD_DVD ) $dvd['upc'] .= ' HDDVD';
 		if ($dvd['builtinmediatype'] == MEDIA_TYPE_BLURAY || $dvd['builtinmediatype'] == MEDIA_TYPE_BLURAY_DVD ) $dvd['upc'] .= ' Blu-ray';
 		if ($dvd['builtinmediatype'] == MEDIA_TYPE_ULTRAHD || $dvd['builtinmediatype'] == MEDIA_TYPE_ULTRAHD_BLURAY || $dvd['builtinmediatype'] == MEDIA_TYPE_ULTRAHD_BLURAY_DVD ) $dvd['upc'] .= ' ULTRAHD';

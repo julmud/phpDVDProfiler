@@ -69,11 +69,11 @@ function format_addinfo (&$dvd){
 			}
 		}
 		else {
-			$dvd['addinfo'] = fix88595(ucwords(strftime($lang['DATEFORMAT'], $dvd['addinfo'])));
+			$dvd['addinfo'] = fix88595(ucwords(strftimeReplacement($lang['DATEFORMAT'], $dvd['addinfo'])));
 		}
 		break;
 	case 'released':
-		$dvd['addinfo'] = fix88595(ucwords(strftime($lang['DATEFORMAT'], $dvd['addinfo'])));
+		$dvd['addinfo'] = fix88595(ucwords(strftimeReplacement($lang['DATEFORMAT'], $dvd['addinfo'])));
 		break;
 	case 'collectionnumber':
 		if ($dvd['addinfo'] == '0' ) {
@@ -393,7 +393,7 @@ function site_header (){
 				$sort = $lang['SORTREVIEWS'];
 				break;
 		}
-		$thedatetime = file_exists($xmlfile)? fix88595(ucwords(strftime($lang['DATEFORMAT'], filemtime($xmlfile)))): $lang['UNKNOWN'];
+		$thedatetime = file_exists($xmlfile)? fix88595(ucwords(strftimeReplacement($lang['DATEFORMAT'], filemtime($xmlfile)))): $lang['UNKNOWN'];
 ?>
  <div style="width:95%;">
   <div id="printbox" class="f4" style="background-color:transparent"><a href="javascript:self.print()"><img src="./gfx/printer.gif" style = "border: 0;"  alt="Print" title="Print this page."></a></div>
