@@ -1027,7 +1027,7 @@ function GetRatingLogo($locale, $ratingsystem, $rating) {
 	$rfn = "rating_{$locale}_" . str_replace('/', '-', strtolower($ratingsystem.'_'.$rating)) . '.gif';
 	if (extension_loaded('intl')) {
 		$transliterator = Transliterator::createFromRules(':: Any-Latin; :: Latin-ASCII; :: NFD; :: [:Nonspacing Mark:] Remove; :: Lower(); :: NFC;', Transliterator::FORWARD);
-		$normalized = $transliterator->transliterate(utf8_encode($rfn));
+		$normalized = $transliterator->transliterate(mb_convert_encoding($rfn, 'ISO-8859-1', 'UTF-8'));
 		$logo = _testFile($normalized);
 		if ($logo) {
 			return $logo;
