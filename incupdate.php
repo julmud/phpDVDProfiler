@@ -78,7 +78,7 @@ global $db, $RatingCallbackResult, $DVD_PROPERTIES_TABLE;
 	$result = $db->sql_query("SELECT value FROM $DVD_PROPERTIES_TABLE WHERE property='Rating~LastLocalitiesUpdateTime'") or die($db->sql_error());
 	$lastmtime = $db->sql_fetchrow($result);
 	$db->sql_freeresult($result);
-	if ($lastmtime === false || ($lastmtime['value'] < $now)) {
+	if ($lastmtime === false || $lastmtime === null || ($lastmtime['value'] < $now)) {
 		$data = file_get_contents('localities.xod');
 		$RatingCallbackResult = '';
 		preg_replace_callback('/<([^>]*)>/U', "ProcessLocalitiesCallback", $data);
@@ -521,7 +521,7 @@ function OnOffAuto(&$str, $side, $caseslipcover, $casetype, $builtinmediatype, $
 }
 
 function TrueFalse(&$str) {
-	return((strtolower($str) == 'true') ? 1 : 0);
+	return ((strtolower($str !== null ? $str : '') == 'true') ? 1 : 0);
 }
 
 function GetHashs(&$oldhashs) {
@@ -958,9 +958,9 @@ global $common_actor, $common_actor_stats, $common_credit, $common_credit_stats,
 				ExitSpecial();	// Yes, the end html tag will precede the error div. none will care
 			}
 			$booya = fstat($fh);
-			$currentxmlfilesize = $booya['size'];
+			$currentxmlfilesize = $booya ? $booya['size'] : false;
 			unset($booya);
-			if ($UpdateLast['Offset'] > 0 && isset($UpdateLast['Filesize']) && $UpdateLast['Filesize'] != $currentxmlfilesize) {
+			if ($currentxmlfilesize && $UpdateLast['Offset'] > 0 && isset($UpdateLast['Filesize']) && $UpdateLast['Filesize'] != $currentxmlfilesize) {
 				printf($lang['UPDATEFILECHANGED1'].$eoln, $currentxmlfile);
 				printf($lang['UPDATEFILECHANGED2'].$eoln, $UpdateLast['Filesize'], $currentxmlfilesize);
 				echo "$lang[UPDATEFILECHANGED3]$eoln";
@@ -1478,7 +1478,7 @@ global $db_schema_version;
                	$xxx = "SELECT sid FROM $DVD_SUPPLIER_TABLE WHERE suppliername='" . $db->sql_escape($suppliername) . "'";
                	$result = $db->sql_query($xxx) or die($db->sql_error());
                	$row = $db->sql_fetchrow($result);
-               	$sid = $row['sid'];
+               	$sid = $row === null ? false : $row['sid'];
                	if (!$sid) {
                        	$sql = "INSERT INTO $DVD_SUPPLIER_TABLE " . $db->sql_build_array('INSERT', $supplier);
                        	$db->sql_query($sql) or die($db->sql_error());
@@ -2003,7 +2003,9 @@ global $db_schema_version;
 	$f .= ',hashcrew';			$v .= ",'$hashs[hashcrew]'";
 	$f .= ',lastedited';			$v .=','   . MakeAUnixTime(@$dvd_info['LASTEDITED'][0]['VALUE'], 0);
 
-	$db->sql_query("INSERT INTO $DVD_TABLE ($f) VALUES ($v)") or die($db->sql_error());
+	$sql = "INSERT INTO $DVD_TABLE ($f) VALUES ($v)";
+
+	$db->sql_query($sql) or die($db->sql_error($sql));
 	$db->sql_transaction('commit') or die($db->sql_error());
 	$db->sql_query("SET autocommit=1;") or die($db->sql_error());
 	return(0);

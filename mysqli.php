@@ -438,6 +438,9 @@ class sql_db
 
 	function sql_error($sql = '')
 	{
+
+if ($sql != '') { echo "<br/><pre>JMU_SQL: $sql</pre><br/>\n";}
+
 		$result = array(
 			'message' => @mysqli_error($this->db_connect_id),
 			'code' => @mysqli_errno($this->db_connect_id)

@@ -460,7 +460,7 @@ function ProjectAColumn($colname, &$dvd, $align) {
 global $lang, $reviewsort;
 	switch ($colname) {
 	case 'loandue':
-		$colvalue = ($dvd['loandue'] === NULL? '': fix88595(ucwords(strftime($lang['SHORTDATEFORMAT'], $dvd['loandue']))));
+		$colvalue = ($dvd['loandue'] === NULL? '': fix88595(ucwords(strftimeReplacement($lang['SHORTDATEFORMAT'], $dvd['loandue']))));
 		break;
 	case 'loaninfo':
 		$colvalue = $dvd['loaninfo'];
@@ -469,7 +469,7 @@ global $lang, $reviewsort;
 		$colvalue = $dvd['productionyear'];
 		break;
 	case 'released':
-		$colvalue = ($dvd['released'] === NULL? '': fix88595(ucwords(strftime($lang['SHORTDATEFORMAT'], $dvd['released']))));
+		$colvalue = ($dvd['released'] === NULL? '': fix88595(ucwords(strftimeReplacement($lang['SHORTDATEFORMAT'], $dvd['released']))));
 		break;
 	case 'runningtime':
 		$colvalue = "$dvd[runningtime] $lang[MINUTES]";
@@ -484,7 +484,7 @@ global $lang, $reviewsort;
 		$colvalue = $dvd['primegenre'];
 		break;
 	case 'purchasedate':
-		$colvalue = ($dvd['wishpriority']!='0') ? $lang['SHORTWISHNAME'.$dvd['wishpriority']]: fix88595(ucwords(strftime($lang['SHORTDATEFORMAT'], $dvd['purchasedate'])));
+		$colvalue = ($dvd['wishpriority']!='0') ? $lang['SHORTWISHNAME'.$dvd['wishpriority']]: fix88595(ucwords(strftimeReplacement($lang['SHORTDATEFORMAT'], $dvd['purchasedate'])));
 		break;
 	case 'director':
 		$colvalue = $dvd['primedirector'];
@@ -543,7 +543,7 @@ global $colnorange, $lang, $order, $reviewsort;
 		$separator = $sepa;
 		break;
 	case 'loandue':
-		$sepa = fix88595(ucwords(strftime($lang['DATEFORMAT'], $dvd['loandue'])));
+		$sepa = fix88595(ucwords(strftimeReplacement($lang['DATEFORMAT'], $dvd['loandue'])));
 		$separator = $sepa;
 		break;
 	case 'released':
@@ -552,7 +552,7 @@ global $colnorange, $lang, $order, $reviewsort;
 			$separator = $lang['NULL'];
 		}
 		else {
-			$sepa = fix88595(ucwords(strftime("%B %Y", $dvd['released'])));
+			$sepa = fix88595(ucwords(strftimeReplacement("%B %Y", $dvd['released'])));
 			$separator = $sepa;
 		}
 		break;
@@ -562,7 +562,7 @@ global $colnorange, $lang, $order, $reviewsort;
 			$separator = $sepa;
 		}
 		else {
-			$sepa = fix88595(ucwords(strftime("%B %Y", $dvd['purchasedate'])));
+			$sepa = fix88595(ucwords(strftimeReplacement("%B %Y", $dvd['purchasedate'])));
 			$separator = $sepa;
 		}
 		break;
@@ -780,7 +780,7 @@ if ($action == 'nav') {
 	$db->sql_freeresult($result);
 	$infoline .= "$numincollection[all] $lang[TOTAL]";
 	$thedatetime = GetLastUpdateTime('LastUpdate');
-	$thedatetime = ($thedatetime!=0)? fix88595(ucwords(strftime($lang['SHORTDATEFORMAT'], $thedatetime))): $lang['UNKNOWN'];
+	$thedatetime = ($thedatetime!=0)? fix88595(ucwords(strftimeReplacement($lang['SHORTDATEFORMAT'], $thedatetime))): $lang['UNKNOWN'];
 	$infoline .= " ($lang[UPDATED] $thedatetime)";
 
 	$sel_title = $sel_credits = $sel_genre = $sel_director = $sel_tag = $sel_actor = $sel_lock = $sel_rating =
@@ -2175,7 +2175,7 @@ if ($action == 'show') {
 				if ($events['eventtype'] == 'Watched' && $dvd['lastwatched'] == '') {
 					$dvd['lastwatched'] = my_mktime(0, 0, 0, $ts_month, $ts_day, $ts_year);
 				}
-				$events['timestamp'] = fix88595(ucwords(strftime($lang['DATEFORMAT'], my_mktime(0, 0, 0, $ts_month, $ts_day, $ts_year))));
+				$events['timestamp'] = fix88595(ucwords(strftimeReplacement($lang['DATEFORMAT'], my_mktime(0, 0, 0, $ts_month, $ts_day, $ts_year))));
 				$dvd['p_events'] .= "<tr>";
 				$dvd['p_events'] .= "<td class=f2>$events[firstname] $events[lastname]</td>";
 				$dvd['p_events'] .= "<td class=f2 align=center>$events[phonenumber]</td>";
@@ -2320,8 +2320,8 @@ if ($action == 'show') {
 		if ($dvd['p_genres'] != '')
 			$dvd['p_genres'] = substr($dvd['p_genres'], 4);
 
-		$dvd['p_released'] = ($dvd['released'] === NULL? '': fix88595(ucwords(strftime($lang['DATEFORMAT'], $dvd['released']))));
-		$dvd['p_purchasedate'] = fix88595(ucwords(strftime($lang['DATEFORMAT'], $dvd['purchasedate'])));
+		$dvd['p_released'] = ($dvd['released'] === NULL? '': fix88595(ucwords(strftimeReplacement($lang['DATEFORMAT'], $dvd['released']))));
+		$dvd['p_purchasedate'] = fix88595(ucwords(strftimeReplacement($lang['DATEFORMAT'], $dvd['purchasedate'])));
 		if ($dvd['collectiontype'] == 'wishlist')
 			$dvd['p_purchasedate'] = '';
 

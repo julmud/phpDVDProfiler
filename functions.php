@@ -1,9 +1,17 @@
 <?php
 
 error_reporting(E_ALL);
+require_once 'php-8.1-strftime.php';
+use function PHP81_BC\strftime;
 
 if (!defined('IN_SCRIPT')) {
 	die('This script should not be manually executed ... Possible Hacking attempt');
+}
+
+function strftimeReplacement(string $format, ?int $timestamp = null)
+{
+	global $lang;
+	return mb_convert_encoding(strftime($format, $timestamp, $lang['__strftime_locale']), 'WINDOWS-1252', 'UTF-8');
 }
 
 function UpdateUpdateLast($str='0||0|0|0|0|0') {
@@ -532,7 +540,7 @@ function my_mktime() {
 	if (!is_numeric($year)) $year = $temp['year'];
 	unset($temp);
 	$ret = @mktime($hours, $minutes, $seconds, $mon, $mday, $year);
-	if ($ret === false || $ret < 0) $ret = 0;
+	if ($ret === false) $ret = 0;
 	return($ret);
 }
 
@@ -685,7 +693,7 @@ global $thumbnails;
 
 	list ($width_orig, $height_orig) = getimagesize($img_path.$file_name);
 	$width = 180;
-	$height = ($width / $width_orig) * $height_orig;
+	$height = (int) (($width / $width_orig) * $height_orig);
 	$image = ImageCreateFromJPEG($img_path.$file_name);
 
 	if (checkTrueColor()) {

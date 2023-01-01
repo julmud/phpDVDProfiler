@@ -821,7 +821,7 @@ global $uclass, $yclass, $ws_month, $usejpgraph, $dolast, $domost, $dobest, $dow
 
 			$link .= "&amp;dolast=$dolast&amp;domost=$domost&amp;dobest=$dobest&amp;doworst=$doworst";
 			# This gets the month name in the current locale
-			$amth = fix88595(ucwords(strftime("%B", mktime(0,0,0,$mth,1,0))));
+			$amth = fix88595(ucwords(strftimeReplacement("%B", mktime(0,0,0,$mth,1,0))));
 				# $width = 45 + (cal_days_in_month(CAL_GREGORIAN, $mth, $year) * 10);
 				$width = 45 + (date("j", mktime(0,0,0,intval($month)+1,0, $year)) * 10);
 				$mouse = "<a href=\"$link\"";
@@ -925,7 +925,7 @@ EOT;
 		list($tyear, $tmonth, $tday) = explode('-', $tdate);
 		list($thour, $tmin, $tsec) = explode(':',$ttime);
 		$tm = mktime($thour, $tmin, $tsec, $tmonth, $tday, $tyear);
-		$dt = fix88595(ucwords(strftime($lang['SHORTDATEFORMAT'], $tm)));
+		$dt = fix88595(ucwords(strftimeReplacement($lang['SHORTDATEFORMAT'], $tm)));
 
 		if ($ws_title) {
 			$title = addslashes($title);
@@ -1029,7 +1029,7 @@ global $db, $DVD_TABLE, $DVD_EVENTS_TABLE, $DVD_USERS_TABLE, $lang, $watched, $h
 		list($tyear, $tmonth, $tday) = explode('-', $tdate);
 		list($thour, $tmin, $tsec) = explode(':',$ttime);
 		$tm = mktime($thour, $tmin, $tsec, $tmonth, $tday, $tyear);
-		$dt = fix88595(ucwords(strftime($lang['SHORTDATEFORMAT'], $tm)));
+		$dt = fix88595(ucwords(strftimeReplacement($lang['SHORTDATEFORMAT'], $tm)));
 		$mouse .= "<td style=\'padding-left:5px; padding-right=5px\'valign=middle align=center>$dt</td>";
 		$mouse .= "</tr>";
 	}
@@ -1612,7 +1612,7 @@ echo "<pre>\$me="; print_r($me);echo "\n\$profiles="; print_r($profiles);
 		$tm = $timestamp;
 	}
 
-	$thedatetime = fix88595(ucwords(strftime($me_datefmt, $tm)));
+	$thedatetime = fix88595(ucwords(strftimeReplacement($me_datefmt, $tm)));
 
 #	Ok, work out the size of the text to be displayed.
 	$ttext = preg_replace('/#NAME#/', $me_nick, $me_topmsg);
@@ -1798,7 +1798,7 @@ echo "<pre>\$me="; print_r($me);echo "\n\$profiles="; print_r($profiles);
 				$formattedTitle = htmlentities($row['title']);
 			}
 			if($me_mapwithdate) {
-				$formattedTitle .= ' (' . fix88595(ucwords(strftime($me_datefmt, strtotime($row['timestamp'])))) . ')';
+				$formattedTitle .= ' (' . fix88595(ucwords(strftimeReplacement($me_datefmt, strtotime($row['timestamp'])))) . ')';
 			}
 			$imagemap .= " alt=\"$formattedTitle\" title=\"$formattedTitle\" />";
 		}

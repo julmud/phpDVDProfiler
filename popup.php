@@ -304,8 +304,8 @@ EOT;
 					$actor['role'] = $lang['REGION'].' '.AddCommas($actor['role']);
 			}
 
-			$actor['released'] = ($actor['released'] === NULL? '': fix88595(ucwords(strftime($lang['DATEFORMAT'], $actor['released']))));
-			$actor['purchasedate'] = ($actor['purchasedate'] == 0? '': fix88595(ucwords(strftime($lang['DATEFORMAT'], $actor['purchasedate']))));
+			$actor['released'] = ($actor['released'] === NULL? '': fix88595(ucwords(strftimeReplacement($lang['DATEFORMAT'], $actor['released']))));
+			$actor['purchasedate'] = ($actor['purchasedate'] == 0? '': fix88595(ucwords(strftimeReplacement($lang['DATEFORMAT'], $actor['purchasedate']))));
 			$j = $actor['runningtime']%60;
 			if ($j < 10) $j = '0'.$j;
 			$runtime = floor($actor['runningtime']/60) . ":$j";

@@ -647,8 +647,8 @@ else
 		if ($dvd['builtinmediatype'] == MEDIA_TYPE_ULTRAHD_BLURAY_DVD) $mediatype = '4K UHD/Blu-ray/DVD Hybrid';
 		$pupdate = date ('r', $dvd['purchasedate']);
 		$releaseddate_int=intval($dvd['released']);
-		$dvd['purchasedate'] = fix88595(ucwords(strftime($lang['DATEFORMAT'], $dvd['purchasedate'])));
-		$dvd['released'] = fix88595(ucwords(strftime($lang['DATEFORMAT'], $dvd['released'])));
+		$dvd['purchasedate'] = fix88595(ucwords(strftimeReplacement($lang['DATEFORMAT'], $dvd['purchasedate'])));
+		$dvd['released'] = fix88595(ucwords(strftimeReplacement($lang['DATEFORMAT'], $dvd['released'])));
 		$dvd['title'] = htmlspecialchars($dvd['title'], ENT_COMPAT, 'ISO-8859-1');
 
 // Now overview can have html in it ... truncate if necessary, and append closing bold and italic tags just in case :)
