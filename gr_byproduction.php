@@ -81,4 +81,3 @@ if ($high-$low <= 20) {
 
 $graph->Add($bplot);
 $graph->Stroke();
-?>

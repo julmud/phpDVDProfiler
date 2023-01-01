@@ -1,5 +1,4 @@
 <?php
-/*	$Id$	*/
 
 error_reporting(E_ALL);
 //error_reporting(7);
@@ -778,4 +777,3 @@ if (!DisplayIfIsPrivateOrAlways($searchtags)) {
 if (!DisplayIfIsPrivateOrAlways($searchlocks)) {
 	$lockcombo = false;
 }
-?>

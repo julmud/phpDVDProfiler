@@ -37,4 +37,3 @@ function DisplayAResultSet(&$db, $sql) {
 	echo "<html><head><title>Dump of table $table</title></head><body>\n";
 	DisplayAResultSet($db, $request);
 	echo "</body></html>\n";
-?>

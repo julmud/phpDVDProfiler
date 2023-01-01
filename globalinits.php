@@ -282,4 +282,3 @@ $widthgt800		= 474;
 $xmldir			= '';
 $xmlfile		= 'collection.xml';
 // End of default defaults
-?>

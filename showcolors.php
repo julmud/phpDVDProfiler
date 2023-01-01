@@ -19,4 +19,3 @@ foreach ($ClassColor as $ind => $val) {
 	echo "<td>That cell background is color " . $ClassColor[$ind] . "</td></tr>";
 }
 echo "</table></center></body></html>";
-?>

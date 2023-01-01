@@ -56,4 +56,3 @@ echo "$LOAN_TITLE, $LOAN_DATE_BORROWED, $LOAN_DATE_DUE, $LOAN_REMINDER_TO, $LOAN
 	$themessage = wordwrap($message[$WhichMessage], 76);
 	mail($LOAN_REMINDER_TO, $subject[$WhichSubject], $themessage, $headers, $parameters);
 }
-?>

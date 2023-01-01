@@ -1,6 +1,4 @@
 <?php
-/*	$Id$	*/
-
 define('IN_SCRIPT', 1);
 include_once('version.php');
 include_once('global.php');
@@ -3490,4 +3488,3 @@ EOT;
 	DebugSQL($db, "$action: $mediaid");
 	exit;
 }
-?>

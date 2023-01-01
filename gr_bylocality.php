@@ -63,4 +63,3 @@ $bplot->value->SetColor('black', 'navy');
 $graph->Add($bplot);
 $graph->legend->SetPos(0.01,0.05,'left','top');
 $graph->Stroke();
-?>

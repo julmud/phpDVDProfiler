@@ -40,4 +40,3 @@ SendNoCacheHeaders('Content-Type: text/html; charset="windows-1252";');
 	}
 	$db->sql_freeresult($result);
 	echo "Done\n";
-?>

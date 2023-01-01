@@ -269,4 +269,3 @@ global $eoln;
 			echo "${eoln}Consider setting \$GDFontPathOverride = '${jpgraphlocation}fonts/truetype'; in your $localsiteconfig$eoln";
 	}
 	exit;
-?>

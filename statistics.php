@@ -1,5 +1,4 @@
 <?php
-/*	$Id$	*/
 
 function MakeAPercentage($value, $total, $decimals=0) {
 	if ($total == 0)
@@ -129,8 +128,8 @@ EOT;
 		$totalnum = 1;
 	printf("<tr><td class=f3np>$lang[TOTRUNTIME]</td>"
 		."<td class=f2np>%s $lang[LITTLEMINUTES] (%s:%02d)</td>"
-		."<td class=f2np>$lang[AVERAGING]</td></tr>\n", 
-		number_format($totaltime, 0, $lang['MON_DECIMAL_POINT'], $lang['MON_THOUSANDS_SEP']), number_format(floor($totaltime/60), 0, $lang['MON_DECIMAL_POINT'], $lang['MON_THOUSANDS_SEP']), 
+		."<td class=f2np>$lang[AVERAGING]</td></tr>\n",
+		number_format($totaltime, 0, $lang['MON_DECIMAL_POINT'], $lang['MON_THOUSANDS_SEP']), number_format(floor($totaltime/60), 0, $lang['MON_DECIMAL_POINT'], $lang['MON_THOUSANDS_SEP']),
 		$totaltime%60, round($totaltime/$totalnum));
 	$db->sql_freeresult($result);
 
@@ -143,9 +142,9 @@ EOT;
 			$paid = $dvd['paid'];
 			printf("<tr><td class=f3np>$lang[TOTALPAID]</td>"
 				."<td class=f2np>$lang[THETOTAL]</td>"
-				."<td class=f2np>$lang[AVGPERPROF]</td></tr>\n", 
-				$dvd['ppci'],	
-				my_money_format($dvd['ppci'], $paid), $dvd['ppci'], $dvd['num'], 
+				."<td class=f2np>$lang[AVGPERPROF]</td></tr>\n",
+				$dvd['ppci'],
+				my_money_format($dvd['ppci'], $paid), $dvd['ppci'], $dvd['num'],
 				my_money_format($dvd['ppci'], round($paid/$dvd['num'], money_digits($dvd['ppci']))), $dvd['ppci']);
 		}
 		$db->sql_freeresult($result);
@@ -160,9 +159,9 @@ EOT;
 			$srp = $dvd['srp'];
 			printf("<tr><td class=f3np>$lang[TOTALSRP]</td>"
 				."<td class=f2np>$lang[THETOTAL]</td>"
-				."<td class=f2np>$lang[AVGPERPROF]</td></tr>\n", 
-				$dvd['sci'],	
-				my_money_format($dvd['sci'], $srp), $dvd['sci'], $dvd['num'], 
+				."<td class=f2np>$lang[AVGPERPROF]</td></tr>\n",
+				$dvd['sci'],
+				my_money_format($dvd['sci'], $srp), $dvd['sci'], $dvd['num'],
 				my_money_format($dvd['sci'], round($srp/$dvd['num'], money_digits($dvd['sci']))), $dvd['sci']);
 		}
 		$db->sql_freeresult($result);
@@ -530,7 +529,7 @@ EOT;
 		."<td align=center class=f2np>$centertable</td></tr>\n",
 		$lang['AUDIO']['DTS'], $dvd['total'], MakeAPercentage($dvd['total'], $total));
 	$db->sql_freeresult($result);
-		
+
 // Total number of DVDs with 5.1 audio channels
 	$sql = "SELECT COUNT(distinct(d.id)) AS total FROM $DVD_TABLE d, $DVD_AUDIO_TABLE a "
 		."WHERE audiochannels LIKE '%5.1%' AND d.id=a.id AND collectiontype='owned' $noadult";
@@ -540,7 +539,7 @@ EOT;
 		."<td align=center class=f2np>$centertable</td></tr>\n",
 		$lang['5.1CHANNEL'], $dvd['total'], MakeAPercentage($dvd['total'], $total));
 	$db->sql_freeresult($result);
-		
+
 // Total number of DVDs with 6.1 audio channels
 	$sql = "SELECT COUNT(distinct(d.id)) AS total FROM $DVD_TABLE d, $DVD_AUDIO_TABLE a "
 		."WHERE audiochannels LIKE '%6.1%' AND d.id=a.id AND collectiontype='owned' $noadult";
@@ -574,7 +573,7 @@ EOT;
 	echo "</table></center><BR>\n";
 	$ProfileName[$numtimings] = 'AudioStats'; $Profile[$numtimings++] = microtime_float()-$t0; $t0 = microtime_float();
 
-// Audio FORMAT/COMPRESSION/CHANNELS SECTION  
+// Audio FORMAT/COMPRESSION/CHANNELS SECTION
 
 	echo "<center><table width=\"75%\" class=f1><tr><td>$lang[NUMPROFAUDFORM]</td></tr></table></center><BR>\n";
 	echo "<center><table width=\"50%\" class=bgl>\n";
@@ -708,7 +707,7 @@ EOT;
 			."'popup.php?acttype=ACTOR&amp;fullname=".urlencode($dvd['namestring1'])."',"
 			."'Actors',$ActorWindowSettings); return false;\">$dvd[fullname]</a>";
 		printf("<tr><td class=f3np>%s</td>"
-			."<td class=f2np align=right>%d&nbsp;(%d)</td></tr>\n", 
+			."<td class=f2np align=right>%d&nbsp;(%d)</td></tr>\n",
 			"$image&nbsp;$str", $dvd['times'], $dvd['namestring2']);
 	}
 	$db->sql_freeresult($result);
@@ -856,7 +855,7 @@ EOT;
 			."'popup.php?acttype=ACTOR&amp;fullname=".urlencode($dvd['namestring1'])."',"
 			."'Actors',$ActorWindowSettings); return false;\">$dvd[fullname]</a>";
 		printf("<tr><td class=f3np>%s</td>"
-			."<td class=f2np align=right>%d&nbsp;(%d)</td></tr>\n", 
+			."<td class=f2np align=right>%d&nbsp;(%d)</td></tr>\n",
 			"$image&nbsp;$str", $dvd['times'], $dvd['namestring2']);
 	}
 	$db->sql_freeresult($result);
@@ -1083,7 +1082,7 @@ EOT;
 			."'popup.php?acttype=STUDIO&amp;fullname=".urlencode($dvd['studio'])."',"
 			."'Actors',$ActorWindowSettings); return false;\">$dvd[studio]</a>";
 		printf("<tr><td class=f3np>%s</td>"
-			."<td class=f2np align=right>%d</td></tr>\n", 
+			."<td class=f2np align=right>%d</td></tr>\n",
 			$str, $dvd['times']);
 	}
 	$db->sql_freeresult($result);
@@ -1103,7 +1102,7 @@ EOT;
 			."'popup.php?acttype=STUDIO&amp;fullname=".urlencode($dvd['studio'])."',"
 			."'Actors',$ActorWindowSettings); return false;\">$dvd[studio]</a>";
 		printf("<tr><td class=f3np>%s</td>"
-			."<td class=f2np align=right>%d</td></tr>\n", 
+			."<td class=f2np align=right>%d</td></tr>\n",
 			$str, $dvd['times']);
 	}
 	$db->sql_freeresult($result);
@@ -1131,8 +1130,8 @@ EOT;
 			if ($countppci <= $TopX) {
 				$dvd['title'] = "<a href=\"$PHP_SELF?mediaid=$dvd[id]&action=show\">$dvd[title]</a>";
 				printf("<tr><td class=f3np>%s</td>"
-					."<td class=f2np align=right>%s&nbsp;%s</td></tr>\n", 
-					$dvd['title'], 
+					."<td class=f2np align=right>%s&nbsp;%s</td></tr>\n",
+					$dvd['title'],
 					my_money_format($dvd['ppci'], round($dvd['paid']/1000, money_digits($dvd['ppci']))), $dvd['ppci']);
 			}
 		}
@@ -1144,7 +1143,7 @@ EOT;
 if (0) {  // ********** not being executed *********
 // ***************** Lists of Profiles by Audio characteristics
 // List of Profiles with true 6.1 Audio Channels
-	echo "<center><table width=\"75%\" class=f1><tr><td>Titres encodés en 6.1 canaux discrets</td></tr></table></center><BR>\n";
+	echo "<center><table width=\"75%\" class=f1><tr><td>Titres encodï¿½s en 6.1 canaux discrets</td></tr></table></center><BR>\n";
 	echo "<center><table width=\"75%\" class=bgl>\n";
 	$sql = "SELECT DISTINCT(d.id), title, sorttitle, featureother, audiolanguage, audiochannels, audiocompression AS compression FROM $DVD_TABLE d, $DVD_AUDIO_TABLE a "
 		."WHERE audiochannels LIKE '6.1%' AND d.id=a.id AND collectiontype='owned' $noadult "
@@ -1160,7 +1159,7 @@ if (0) {  // ********** not being executed *********
 				$str = 'DTS-ES Discrete';	// would need to be translated
 			printf("<tr><td class=f3np>%s</td>"
 				."<td class=f2np>%s</td>"
-				."<td class=f2np>%s</td></tr>\n", 
+				."<td class=f2np>%s</td></tr>\n",
 				$dvd['title'], $str, $alang_translation[$dvd['audiolanguage']]);
 		}
 	}
@@ -1168,7 +1167,7 @@ if (0) {  // ********** not being executed *********
 	echo "</table></center><BR>\n";
 
 // List of Profiles with 5+1.1 Audio Channels (Matrix)
-	echo "<center><table width=\"75%\" class=f1><tr><td>Titres encodés en 5+1.1 canaux matricés</td></tr></table></center><BR>\n";
+	echo "<center><table width=\"75%\" class=f1><tr><td>Titres encodï¿½s en 5+1.1 canaux matricï¿½s</td></tr></table></center><BR>\n";
 	echo "<center><table width=\"75%\" class=bgl>\n";
 	$sql = "SELECT DISTINCT(d.id), title, sorttitle, featureother, audiolanguage, audiochannels, audiocompression AS compression FROM $DVD_TABLE d, $DVD_AUDIO_TABLE a "
 		."WHERE audiochannels LIKE '6.1%' AND d.id=a.id AND collectiontype='owned' $noadult "
@@ -1181,7 +1180,7 @@ if (0) {  // ********** not being executed *********
 			if (strpos('Matrix', $dvd['featureother']) !== false) {
 				printf("<tr><td class=f3np>%s</td>"
 					."<td class=f2np>%s</td>"
-					."<td class=f2np>%s</td></tr>\n", 
+					."<td class=f2np>%s</td></tr>\n",
 					$dvd['title'], 'DTS-ES Matrix',	// would need to be translated
 					$alang_translation[$dvd['audiolanguage']]);
 			}
@@ -1189,7 +1188,7 @@ if (0) {  // ********** not being executed *********
 		else  {
 			printf("<tr><td class=f3np>%s</td>"
 				."<td class=f2np>%s</td>"
-				."<td class=f2np>%s</td></tr>\n", 
+				."<td class=f2np>%s</td></tr>\n",
 				$dvd['title'], 'Dolby EX',	// would need to be translated
 				$alang_translation[$dvd['audiolanguage']]);
 		}
@@ -1213,4 +1212,3 @@ if (0) {  // ********** not being executed *********
 	unset($Profile);
 	echo '<script language="JavaScript" type="text/javascript" src="wz_tooltip.js"></script>';
 	echo "$endbody</html>\n";
-?>

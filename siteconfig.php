@@ -43,7 +43,7 @@ $usetemptable		= false;
 
 // There are a number of tunable variables introduced, which should be fine with their
 // default values.
-// 
+//
 // $SubmitOldStyle - defaults to false. If set to true, then the old mechanism is used to update
 // $UpdateDebug - defaults to false. If set to true, it puts a debug button on the UI and makes
 //                the JavaScript code instrument the update run. When the debug button is pressed,
@@ -135,7 +135,7 @@ $genremax		= 10;
 // So set this to add some padding to the scales. It's a percentage.
 $jpgrace		= 3;
 
-// $display[name] controls when potentially private graphs are displayed 
+// $display[name] controls when potentially private graphs are displayed
 // month, place, currency
 // Set to 1 they obey IsPrivate. Set to 0 they always display.
 $displaymonth		= 1;
@@ -233,7 +233,7 @@ $sitetitle		= "My DVD Collection";
 //$TitlesPerPage	= 50;
 $TitlesPerPage		= 0;
 
-// Meaning of the letter URLs. 
+// Meaning of the letter URLs.
 // $lettermeaning = 1 means that when you click on a letter, the current display (either a
 // search, or the current collection) will be displayed ordered by the sorttitle, starting
 // at the selected letter and limited to titles whose sorttitle first letter matches the
@@ -394,7 +394,7 @@ $img_webpath		= 'images/';	// Path on webserver
 # Setting imagecachedir and ensuring the permission on it is 777 means that the webserver can create
 # tiny thumbnail images and only send those rather than sending normal thumbnails and
 # letting the browser resize them. Therefore less data is sent over the internet.
-$imagecachedir 		= "imagecache/"; 
+$imagecachedir 		= "imagecache/";
 
 // Episode replacements. These are to support the excellent work done putting episode guides into the database.
 // The episode guides are HTML, and to make them look nice we need to map the paths for images and sound files
@@ -438,12 +438,12 @@ $actorsort		= 2;
 $allowactorsort		= true;
 
 // Value for the second and third columns -- Choices are:
-//  'productionyear' 
+//  'productionyear'
 //  'released'
 //  'runningtime'
 //  'rating'
 //  'genres'
-//  'purchasedate' 
+//  'purchasedate'
 //  'reviews'
 //  'collectionnumber'
 //  'none'  -- disables the column entirely
@@ -643,4 +643,3 @@ $AddFormatIcons		= 2;
 //$maxheadshotwidth - maximum width (in pixels) for headshots
 //$maxheadshotwidthccw - maximum width (in pixels) for headshots in cast/crew popup window
 //$thumbwidth
-?>

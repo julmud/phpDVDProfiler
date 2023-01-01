@@ -468,5 +468,3 @@ class sql_db
 } // class sql_db
 
 } // if ... define
-
-?>

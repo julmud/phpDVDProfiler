@@ -111,4 +111,3 @@ $bplot->SetShadow();
 
 $graph->Add($bplot);
 $graph->Stroke();
-?>

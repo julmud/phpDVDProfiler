@@ -852,4 +852,3 @@ while($dvd = $db->sql_fetch_array($result)) {
 
 }
 site_footer();
-?>

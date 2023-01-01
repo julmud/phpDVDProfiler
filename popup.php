@@ -113,7 +113,7 @@ global $DVD_ACTOR_TABLE, $DVD_CREDITS_TABLE, $db, $lang, $ApplyDividerContinuati
 				$image = $none;
 			}
 			$onlyone++;
-				
+
 			foreach ($thesummary as $k => $name)
 				if ($name == $row['role'])
 					break;
@@ -248,7 +248,7 @@ EOT;
 			."WHERE sid=purchaseplace AND region='".$db->sql_escape($slashedfullname)."' $noadult ORDER BY $sortby,mediaid";
 	}
 	$result = $db->sql_query($sql) or die($db->sql_error());
-	
+
 	if ($acttype == 'REGION') {
 		$dispname = "$lang[REGION] ".AddCommas($fullname);
 		if ($fullname == '0') $dispname = $lang['ALLREGIONSDVD'];
@@ -396,7 +396,7 @@ EOT;
 			if ($actor['numthisprofile'] != 1)
 				$credtimes = sprintf($lang['CREDTIMES'], $actor['numthisprofile']);
 
-			
+
 			$prefix = "\n<tr><td class=f8 style=\"padding-left:3px; vertical-align:top\"><a target=entry href=\"$thisurl\">$thumbs</a></td><td class=f5>\n"
 				."<table cellspacing=0 cellpadding=0>\n"
 				."<tr><td class=f6 align=left colspan=7 nowrap><a target=entry href=\"$thisurl\">$actor[title]</a></td><td width=\"100%\" nowrap>&nbsp;</td></tr>\n"
@@ -419,4 +419,3 @@ EOT;
 	echo "</table>$endbody</html>";
 	DebugSQL($db, "popup: $acttype");
 	exit;
-?>

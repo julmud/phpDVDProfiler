@@ -49,7 +49,7 @@ include_once('global.php');
 			$locale = '0';
 
 		$regions = '';
-		if (strstr($dvd['region'], '0') !== false) { 
+		if (strstr($dvd['region'], '0') !== false) {
 			$regions .= $lang['ALLREGIONS'];
 		}
 		else if (strstr($dvd['region'], '@') !== false) {
@@ -95,4 +95,3 @@ include_once('global.php');
 EOT;
 	}
 	exit;
-?>
