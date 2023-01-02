@@ -1,3 +1,8 @@
+Version 20230102 (phpdvdprofiler.20230102.zip)
+Changes since version 20200130 ()
+    - support for PHP 8.0 and 8.1
+    - preliminary support for PHP 8.2
+
 Version 20200130 (phpdvdprofiler.20200130.zip)
 Changes since version 20200115 (phpdvdprofiler.20200115.zip)
     - add the display of dynamic range information (thanks Lowpro)
