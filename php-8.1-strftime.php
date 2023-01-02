@@ -28,9 +28,10 @@
    * @return string
    * @author BohwaZ <https://bohwaz.net/>
    */
-  function strftime (string $format, $timestamp = null, ?string $locale = null) : string {
+  function strftime(string $format, $timestamp = null, ?string $locale = null) : string
+  {
     if (!($timestamp instanceof DateTimeInterface)) {
-      $timestamp = is_int($timestamp) ? '@' . $timestamp : (string) $timestamp;
+      $timestamp = is_numeric($timestamp) ? '@' . $timestamp : (string) $timestamp;
 
       try {
         $timestamp = new DateTime($timestamp);
@@ -208,6 +209,7 @@
         case '-':
           // remove leading zeros but keep last char if also zero
           return preg_replace('/^0+(?=.)/', '', $result);
+        default:
       }
 
       return $result;

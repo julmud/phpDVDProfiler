@@ -460,7 +460,7 @@ function ProjectAColumn($colname, &$dvd, $align) {
 global $lang, $reviewsort;
 	switch ($colname) {
 	case 'loandue':
-		$colvalue = ($dvd['loandue'] === NULL? '': fix88595(ucwords(strftimeReplacement($lang['SHORTDATEFORMAT'], $dvd['loandue']))));
+		$colvalue = ($dvd['loandue'] === null? '': fix88595(ucwords(strftimeReplacement($lang['SHORTDATEFORMAT'], $dvd['loandue']))));
 		break;
 	case 'loaninfo':
 		$colvalue = $dvd['loaninfo'];
@@ -469,7 +469,7 @@ global $lang, $reviewsort;
 		$colvalue = $dvd['productionyear'];
 		break;
 	case 'released':
-		$colvalue = ($dvd['released'] === NULL? '': fix88595(ucwords(strftimeReplacement($lang['SHORTDATEFORMAT'], $dvd['released']))));
+		$colvalue = ($dvd['released'] === null? '': fix88595(ucwords(strftimeReplacement($lang['SHORTDATEFORMAT'], $dvd['released']))));
 		break;
 	case 'runningtime':
 		$colvalue = "$dvd[runningtime] $lang[MINUTES]";
@@ -547,7 +547,7 @@ global $colnorange, $lang, $order, $reviewsort;
 		$separator = $sepa;
 		break;
 	case 'released':
-		if ($dvd['released'] === NULL) {
+		if ($dvd['released'] === null) {
 			$sepa = '';
 			$separator = $lang['NULL'];
 		}
@@ -2320,7 +2320,7 @@ if ($action == 'show') {
 		if ($dvd['p_genres'] != '')
 			$dvd['p_genres'] = substr($dvd['p_genres'], 4);
 
-		$dvd['p_released'] = ($dvd['released'] === NULL? '': fix88595(ucwords(strftimeReplacement($lang['DATEFORMAT'], $dvd['released']))));
+		$dvd['p_released'] = ($dvd['released'] === null? '': fix88595(ucwords(strftimeReplacement($lang['DATEFORMAT'], $dvd['released']))));
 		$dvd['p_purchasedate'] = fix88595(ucwords(strftimeReplacement($lang['DATEFORMAT'], $dvd['purchasedate'])));
 		if ($dvd['collectiontype'] == 'wishlist')
 			$dvd['p_purchasedate'] = '';

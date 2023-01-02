@@ -521,7 +521,8 @@ function OnOffAuto(&$str, $side, $caseslipcover, $casetype, $builtinmediatype, $
 }
 
 function TrueFalse(&$str) {
-	return ((strtolower($str !== null ? $str : '') == 'true') ? 1 : 0);
+	$value = $str !== null ? $str : '';
+	return ((strtolower($value) == 'true') ? 1 : 0);
 }
 
 function GetHashs(&$oldhashs) {
