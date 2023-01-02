@@ -532,15 +532,15 @@ $replacement = array(
 function my_mktime() {
 	@list($hours, $minutes, $seconds, $mon, $mday, $year) = func_get_args();
 	$temp = @getdate();
-	if (!is_numeric($hours)) $hours = $temp['hours'];
-	if (!is_numeric($minutes)) $minutes = $temp['minutes'];
-	if (!is_numeric($seconds)) $seconds = $temp['seconds'];
-	if (!is_numeric($mon)) $mon = $temp['mon'];
-	if (!is_numeric($mday)) $mday = $temp['mday'];
-	if (!is_numeric($year)) $year = $temp['year'];
+	if (!is_numeric($hours)) { $hours = $temp['hours']; }
+	if (!is_numeric($minutes)) { $minutes = $temp['minutes']; }
+	if (!is_numeric($seconds)) { $seconds = $temp['seconds']; }
+	if (!is_numeric($mon)) { $mon = $temp['mon']; }
+	if (!is_numeric($mday)) { $mday = $temp['mday']; }
+	if (!is_numeric($year)) { $year = $temp['year']; }
 	unset($temp);
 	$ret = @mktime($hours, $minutes, $seconds, $mon, $mday, $year);
-	if ($ret === false) $ret = 0;
+	if ($ret === false) { $ret = 0; }
 	return($ret);
 }
 
