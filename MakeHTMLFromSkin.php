@@ -8,7 +8,7 @@
 // This code puts the language strings into a skin by replacing the $lang[] elements
 // for the purpose of creating an HTML file for import into DVDProfiler
 
-include('lang_'.$_SERVER['argv'][1].'.php');
+include_once('lang_'.$_SERVER['argv'][1].'.php');
 
 function Replace2Lang($matches) {
 global $lang;

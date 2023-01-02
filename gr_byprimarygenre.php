@@ -3,9 +3,9 @@ define('IN_SCRIPT', 1);
 
 include_once('global.php');
 if ($TryToChangeMemoryAndTimeLimits) @ini_set('memory_limit', -1);
-include($jpgraphlocation.'jpgraph.php');
-include($jpgraphlocation.'jpgraph_pie.php');
-include($jpgraphlocation.'jpgraph_pie3d.php');
+include_once($jpgraphlocation.'jpgraph.php');
+include_once($jpgraphlocation.'jpgraph_pie.php');
+include_once($jpgraphlocation.'jpgraph_pie3d.php');
 
 if (!isset($graphx) || !$graphx)
 	$graphx = 800 - 40;

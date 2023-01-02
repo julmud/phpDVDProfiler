@@ -2,7 +2,7 @@
 
 error_reporting(E_ALL);
 define('IN_SCRIPT', 1);
-include('global.php');
+include_once('global.php');
 
 if ($inbrowser)
 	echo "<pre>";

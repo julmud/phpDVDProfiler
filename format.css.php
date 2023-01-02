@@ -6,11 +6,11 @@ include_once('version.php');
 include_once('functions.php');
 include_once('globalinits.php');
 if (is_readable('multisite.php'))
-	include('multisite.php');
+	include_once('multisite.php');
 
-include('siteconfig.php');
+include_once('siteconfig.php');
 if (is_readable($localsiteconfig))
-	include($localsiteconfig);
+	include_once($localsiteconfig);
 
 @header('Content-Type: text/css; charset="windows-1252";');
 echo <<<EOT

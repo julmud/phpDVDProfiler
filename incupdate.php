@@ -1168,7 +1168,7 @@ global $common_actor, $common_actor_stats, $common_credit, $common_credit_stats,
 
 		if (is_readable($CustomPostUpdate)) {
 			echo "$lang[EXECUTING] $CustomPostUpdate$eoln";
-			include($CustomPostUpdate);
+			include_once($CustomPostUpdate);
 		}
 		$db->sql_query("UPDATE $DVD_PROPERTIES_TABLE SET value='0||0|0|0|0|$MyConnectionId' WHERE property='CurrentPosition'") or die($db->sql_error());
 

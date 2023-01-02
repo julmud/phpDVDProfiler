@@ -5,9 +5,9 @@ $originsmin = 0;
 $hideunknown = true;
 include_once('global.php');
 if ($TryToChangeMemoryAndTimeLimits) @ini_set('memory_limit', -1);
-include($jpgraphlocation.'jpgraph.php');
-include($jpgraphlocation.'jpgraph_bar.php');
-include($jpgraphlocation.'jpgraph_log.php');
+include_once($jpgraphlocation.'jpgraph.php');
+include_once($jpgraphlocation.'jpgraph_bar.php');
+include_once($jpgraphlocation.'jpgraph_log.php');
 
 function FormatLog($val) {
 	return($val);

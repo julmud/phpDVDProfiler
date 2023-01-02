@@ -4,7 +4,7 @@ error_reporting(E_ALL);
 define('IN_SCRIPT', 1);
 if (!isset($_SERVER['QUERY_STRING']))
 	$_SERVER['QUERY_STRING'] = '(Null)';
-include('global.php');
+include_once('global.php');
 SendNoCacheHeaders('Content-Type: text/html; charset="windows-1252";');
 
 	if (!isset($runtimeslack))

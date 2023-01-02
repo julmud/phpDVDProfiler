@@ -5,8 +5,8 @@ define('IN_SCRIPT', 1);
 
 include_once('global.php');
 if ($TryToChangeMemoryAndTimeLimits) @ini_set('memory_limit', -1);
-include($jpgraphlocation.'jpgraph.php');
-include($jpgraphlocation.'jpgraph_bar.php');
+include_once($jpgraphlocation.'jpgraph.php');
+include_once($jpgraphlocation.'jpgraph_bar.php');
 
 if (!isset($graphx) || !$graphx)
 	$graphx = 800 - 40;
