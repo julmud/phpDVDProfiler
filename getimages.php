@@ -1,7 +1,7 @@
 <?php
 
 define('IN_SCRIPT', 1);
-include('global.php');
+include_once('global.php');
 error_reporting(E_ALL);
 
 // Force the global.php AcquireAThumbnail routine to try to download

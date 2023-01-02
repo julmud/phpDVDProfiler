@@ -120,16 +120,16 @@ if ($language_override != '') {
 		}
 	}
 	if (is_readable($language_override . "_$locale")) {
-		include($language_override . "_$locale");
+		include_once($language_override . "_$locale");
 	}
 	else if (is_readable($language_override . "_$locale.php")) {
-		include($language_override . "_$locale.php");
+		include_once($language_override . "_$locale.php");
 	}
 	else if (is_readable($language_override)) {
-		include($language_override);
+		include_once($language_override);
 	}
 	else if (is_readable($language_override . ".php")) {
-		include($language_override . ".php");
+		include_once($language_override . ".php");
 	}
 }
 require_once("monetary.php");

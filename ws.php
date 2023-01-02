@@ -214,8 +214,8 @@ if ($me) {
 if ($action <> 'update') {
 
 if ($usejpgraph) {
-	include($jpgraphlocation.'jpgraph.php');
-	include($jpgraphlocation.'jpgraph_bar.php');
+	include_once($jpgraphlocation.'jpgraph.php');
+	include_once($jpgraphlocation.'jpgraph_bar.php');
 }
 
 if (isset($graph)) {

@@ -181,7 +181,7 @@ EOT;
 
 if ($action == 'upload' || $action == 'uploadxml') {
 	if (is_readable('upload.php')) {
-		include('upload.php');
+		include_once('upload.php');
 	}
 }
 
@@ -304,7 +304,7 @@ EOT;
 	if ($LeaveMissing)
 		$remove_missing = false;
 
-	include('incupdate.php');
+	include_once('incupdate.php');
 	HandleOutOfDateSchema($outputtext);
 	if ($action == 'UpdateStats') {
 		$UpdateLast['Offset'] = -2;
@@ -1891,22 +1891,22 @@ EOT;
 if ($action == 'show') {
 	if (!isset($mediaid)) $mediaid = $InitialRightFrame;
 	if ($mediaid == 'Chooser' && $AllowChooser) {
-		include('Chooser.php');
+		include_once('Chooser.php');
 		DebugSQL($db, "$action: $mediaid");
 		exit;
 	}
 	if ($mediaid == 'Statistics') {
-		include('statistics.php');
+		include_once('statistics.php');
 		DebugSQL($db, "$action: $mediaid");
 		exit;
 	}
 	if ($mediaid == 'WatchedStatistics' && is_readable('ws.php')) {
-		include('ws.php');
+		include_once('ws.php');
 		DebugSQL($db, "$action: $mediaid");
 		exit;
 	}
 	if ($mediaid == 'Gallery' || $mediaid == 'GalleryB') {
-		include('gallery.php');
+		include_once('gallery.php');
 		DebugSQL($db, "$action: $mediaid");
 		exit;
 	}
@@ -2847,7 +2847,7 @@ if ($action == 'show') {
 		if ($AlwaysRemoveFromNotes != '')
 			$dvd['notes'] = str_replace($AlwaysRemoveFromNotes, '', $dvd['notes']);
 		if ($skinfile != 'internal') {
-			include('processskin.php');
+			include_once('processskin.php');
 // if we get here, we really want to do the internal skin
 		}
 

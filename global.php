@@ -37,7 +37,7 @@ $EGPCS = array(
 
 include_once('globalinits.php');
 if (is_readable('multisite.php'))
-	include('multisite.php');
+	include_once('multisite.php');
 
 $DontNeedDatabase = array(
 	'phpinfo',
@@ -63,9 +63,9 @@ else if (isset($_SERVER['REMOTE_ADDR']))
 else
 	$remote_ip = '';
 
-include('siteconfig.php');
+include_once('siteconfig.php');
 if (is_readable($localsiteconfig))
-	include($localsiteconfig);
+	include_once($localsiteconfig);
 
 if ($InitialRightFrame == '')
 	if (isset($StatisticsOnFrameInit) && $StatisticsOnFrameInit)
@@ -650,7 +650,7 @@ $DVD_EXCLUSIONS_TABLE = $table_prefix.'dvd_exclusions';
 $DVD_LINKS_TABLE = $table_prefix.'dvd_links';
 $DVD_USERS_TABLE = $table_prefix.'dvd_users';
 
-include($dbtype.'.php');
+include_once($dbtype.'.php');
 
 /*
 // Common Code

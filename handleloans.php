@@ -1,7 +1,7 @@
 <?php
 define('IN_SCRIPT', 1);
 include_once('global.php');
-include('emailmessageconfig.php');
+include_once('emailmessageconfig.php');
 
 if (!isset($LOAN_REMINDER_FROM) || $LOAN_REMINDER_FROM == 'fred@bws.com') {
 	echo "\$LOAN_REMINDER_FROM ***MUST*** be set in the file emailmessageconfig.php\n";
