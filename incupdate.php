@@ -843,7 +843,7 @@ global $common_actor, $common_actor_stats, $common_credit, $common_credit_stats,
 	$res = $db->sql_query("SELECT value FROM $DVD_PROPERTIES_TABLE WHERE property='CurrentPosition'", 0, true);
 	$row = $db->sql_fetchrow($res);
 	$db->sql_freeresult($res);
-	$val = substr($row['value'], 0, strrpos($row['value'], '|'));
+	$val = $row != null ? substr($row['value'], 0, strrpos($row['value'], '|')) : null;
 	unset($row);
 	$db->sql_query("UPDATE $DVD_PROPERTIES_TABLE SET value='$val|-$MyConnectionId' WHERE property='CurrentPosition'") or die($db->sql_error());
 

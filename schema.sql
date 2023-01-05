@@ -31,7 +31,7 @@ CREATE TABLE DVDPROFILER_dvd (
   ratingvariant varchar(20) default NULL,
   ratingdetails varchar(255) default NULL,
   productionyear varchar(4) default NULL,
-  released int unsigned default NULL,
+  released bigint default NULL,
   runningtime smallint unsigned default NULL,
   casetype varchar(20) default NULL,
   caseslipcover tinyint unsigned default NULL,
@@ -94,13 +94,13 @@ CREATE TABLE DVDPROFILER_dvd (
   purchasepricecurrencyid varchar(10) default NULL,
   purchasepricecurrencyname varchar(100) default NULL,
   paid decimal(10,3) default NULL,
-  purchasedate int unsigned default NULL,
+  purchasedate bigint default NULL,
   purchaseplace int default NULL,
   loaninfo varchar(250) default NULL,
-  loandue int unsigned default NULL,
+  loandue bigint default NULL,
   overview mediumtext default NULL,
   eastereggs mediumtext default NULL,
-  lastedited int unsigned default NULL,
+  lastedited bigint default NULL,
   countas smallint signed default NULL,
   hashprofile varchar(10) default NULL,
   hashnocolid varchar(10) default NULL,
@@ -394,5 +394,5 @@ CREATE TABLE DVDPROFILER_dvd_links (
   KEY id (id)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 #
-INSERT INTO DVDPROFILER_dvd_properties VALUES ("db_schema_version", "2.9");
+INSERT INTO DVDPROFILER_dvd_properties VALUES ("db_schema_version", "2.10");
 # --------------------------------------------------------

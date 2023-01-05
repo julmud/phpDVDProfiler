@@ -11,7 +11,7 @@ if ($inbrowser) {
 <body>
 <center>Your database schema has been invalidated - you need to run an update now<br>
 <br>
-<a style="text-decoration:underline; color:blue" href="$PHP_SELF" target="_top">$lang[IMPORTCLICK]</a></center></html>
+<a style="text-decoration:underline; color:blue" href="index.php" target="_top">$lang[IMPORTCLICK]</a></center></html>
 EOT;
 }
 else {
