@@ -693,7 +693,7 @@ $mobilepage = $PHP_SELF;
 if ($mobileshow)
 	$mobilepage = 'smallshow.php';
 
-$code_schema_version = '2.9';
+$code_schema_version = '2.10';
 $db_schema_version = 'Unknown';
 
 $db = new sql_db($dbhost, $dbuser, $dbpasswd, $dbname, $dbport, false, $debugSQL, true);
