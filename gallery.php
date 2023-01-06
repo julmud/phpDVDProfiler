@@ -146,7 +146,6 @@ function show_profile(&$dvd, $bs = 'DVDs') {
 		 	    ."   </div>\n";
 	}
 
-
 	echo "   <div class = \"gallery\">\n".
 		 "    <div class = \"picbox\">\n".
 		 "     <div class = \"bigbox\">\n".
@@ -160,8 +159,6 @@ function show_profile(&$dvd, $bs = 'DVDs') {
 	echo $boxcode;
 	echo "    </div>\n".
 		 "   </div>\n";
-
-
 }
 
 function css($divheight, $divwidth){
