@@ -615,8 +615,16 @@ $AddFormatIcons		= 2;
 //$MediaTypes['MP4 File'] = array('FormatIcon' => 'mp4.png', 'Icon' => 'big_mp4.jpg', 'Banner' => 'mp4file.png');
 // Note that Banners *must* be png files
 
+// Add mediatype banner on generated thumbnails.
+// If you change this value, you'll have to do a full update of your collection, and then remove every image in the imagecache folder.
+// Choices are:
+//   0 - Adhere to the DVDProfiler way (mostly: banner on HD formats)
+//   1 - Always add a media banner to thumbnails
+//   2 - Don't add a media banner to thumbnails
+$AddBannerOnThumbnails = 0;
+
 // The following variables need documentation. I hope to get around to it soon :)
-//$AllowProfileLabelsToWrap - boolean that tries to contol line-wrapping in profile labels
+//$AllowProfileLabelsToWrap - boolean that tries to control line-wrapping in profile labels
 //$MaxX - number of items stored in stats table at update time. must be larger than $TopX
 //$ProfileStatistics - causes timing profiling to be done on statistics
 //$allowtitlesperpage

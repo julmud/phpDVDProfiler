@@ -495,7 +495,7 @@ function FigureOutBuiltinMediaType($mediatypedvd, $mediatypehddvd, $mediatypeblu
 
 function OnOffAuto(&$str, $side, $caseslipcover, $casetype, $builtinmediatype, $custommediatype) {
 // TODO: This is the place that determines whether the image needs a banner on it. The rules for this
-// in the windows program are opaque due to bugs (settings do not cause reproducable results).
+// in the windows program are opaque due to bugs (settings do not cause reproducible results).
 // There is currently no way to change the behavior for the Builtin mediatypes, but here would be
 // the place to do it ...
 // Note that in windows 3.7.2, 'automatic' will put a banner on the back covers - it didn't used
@@ -504,17 +504,12 @@ function OnOffAuto(&$str, $side, $caseslipcover, $casetype, $builtinmediatype, $
 	$defaulthasbanner = ($caseslipcover == 0 && ($casetype == 'HD Keep Case' || $casetype == 'HD Slim'));
 	if (isset($str)) {
 		$tmp = strtolower($str);
-		if ($tmp == 'off')
-			return(0);
-		if ($custommediatype != '')
-			return(-1);
-		if ($tmp == 'on' || ($tmp == 'automatic' && $defaulthasbanner))
-			return($builtinmediatype);
-	}
-	else {
+		if ($tmp == 'off') { return(0); }
+		if ($custommediatype != '') { return(-1); }
+		if ($tmp == 'on' || ($tmp == 'automatic' && $defaulthasbanner)) { return($builtinmediatype); }
+	} else {
 		if ($defaulthasbanner) {
-			if ($builtinmediatype != MEDIA_TYPE_DVD)
-				return($builtinmediatype);
+			if ($builtinmediatype != MEDIA_TYPE_DVD) { return($builtinmediatype); }
 		}
 	}
 	return(0);
@@ -1346,7 +1341,7 @@ global $DVD_COMMON_CREDITS_TABLE, $DVD_CREDITS_TABLE, $DVD_BOXSET_TABLE, $DVD_ST
 global $DVD_SUPPLIER_TABLE, $DVD_GENRES_TABLE, $DVD_EXCLUSIONS_TABLE, $DVD_LINKS_TABLE, $AddWatchedEventWhenReturned;
 global $db, $img_episode, $episode_replacements, $pcre_episode_replacements, $delete, $all_in_one_go, $CollectionsNotInOwned;
 global $common_actor, $common_actor_stats, $common_credit, $common_credit_stats, $max_packet, $db_fast_update, $lang;
-global $db_schema_version;
+global $db_schema_version, $AddBannerOnThumbnails;
 
 	$TheProfileID = $dvd_info['ID'][0]['VALUE'];
 
@@ -1887,12 +1882,26 @@ global $db_schema_version;
 	$custommediatype = (isset($dvd_info['MEDIATYPES'][0]['CUSTOMMEDIATYPE'][0]['VALUE']) ? $db->sql_escape($dvd_info['MEDIATYPES'][0]['CUSTOMMEDIATYPE'][0]['VALUE']) : '');
 
 	$TheDVDTitle = $db->sql_escape($dvd_info['TITLE'][0]['VALUE']);
+	switch ($AddBannerOnThumbnails) {
+		case 1:
+			$onOffAutoFront = 'on';
+			$onOffAutoBack  = 'on';
+			break;
+		case 2:
+			$onOffAutoFront = 'off';
+			$onOffAutoBack  = 'off';
+			break;
+		default:
+			$onOffAutoFront = $dvd_info['MEDIABANNERS'][0]['ATTRIBUTES']['FRONT'];
+			$onOffAutoBack  = $dvd_info['MEDIABANNERS'][0]['ATTRIBUTES']['BACK'];
+			break;
+	}
 	$f  = 'id';				$v  = "'$TheProfileID'";
 	$f .= ',upc';				$v .= ",'" . $dvd_info['UPC'][0]['VALUE'] . "'";
 	$f .= ',builtinmediatype';		$v .= ','  . $builtinmediatype;
 	$f .= ',custommediatype';		$v .= ",'$custommediatype'";
-	$f .= ',mediabannerfront';		$v .= ','  . OnOffAuto($dvd_info['MEDIABANNERS'][0]['ATTRIBUTES']['FRONT'], 'f', $caseslipcover, $casetype, $builtinmediatype, $custommediatype);
-	$f .= ',mediabannerback';		$v .= ','  . OnOffAuto($dvd_info['MEDIABANNERS'][0]['ATTRIBUTES']['BACK'], 'b', $caseslipcover, $casetype, $builtinmediatype, $custommediatype);
+	$f .= ',mediabannerfront';		$v .= ','  . OnOffAuto($onOffAutoFront, 'f', $caseslipcover, $casetype, $builtinmediatype, $custommediatype);
+	$f .= ',mediabannerback';		$v .= ','  . OnOffAuto($onOffAutoBack, 'b', $caseslipcover, $casetype, $builtinmediatype, $custommediatype);
 	$f .= ',title';				$v .= ",'$TheDVDTitle'";
 	$f .= ',sorttitle';			$v .= ",'" . StringIfThere($dvd_info['SORTTITLE'][0]['VALUE'], $TheDVDTitle) . "'";
 	$f .= ',originaltitle';			$v .= ",'" . StringIfThere($dvd_info['ORIGINALTITLE'][0]['VALUE']) . "'";

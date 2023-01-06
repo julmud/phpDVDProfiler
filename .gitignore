@@ -9,6 +9,6 @@ images/
 sonar-project.properties
 
 # Prevent local collection and configuration from being uploaded to git
-localsiteconfig.php
+localsiteconfig.php*
 *.xml
 *.xml.gz
