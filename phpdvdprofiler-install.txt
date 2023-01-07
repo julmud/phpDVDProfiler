@@ -15,10 +15,14 @@ Andrea Whitlock (andrea [at] mobius-soft [dot] com).
 		3) a MySQL database (others may work; contact me for assistance)
 
 Specifically, this software needs an installation of PHP which has php-xml
-installed and with either the mysql or the mysqli extentions. Versions of PHP
-previous to PHP 5 generally have the mysql extentions already installed. The
-software should work with almost any version of MySQL, although it is tested
-primarily on my system, which has MySQL 3.23.42. 
+installed and with the mysqli extensions. The software should work with almost
+any version of MySQL, although it is tested primarily on my system, which has MariaDB 10.10.2.
+
+The following PHP extensions are needed:
+  * mysqli
+  * mbstring
+  * intl
+  * gd2 (optional, used to resize the covers and generate thumbnails)
 
 All of the things which require configuration are in the file siteconfig.php,
 which is extensively documented regarding what the available options are.
@@ -75,47 +79,47 @@ collection.  Set these to whatever you'd like.
 --------------------------------------------------------------------------------
 
 Change permissions on files so apache can read them.
-Remember to also give execute permissions on the directories.  After you setup 
-siteconfig.php, you might want to make apache own the file and have no one else 
-with permissions on it, so no one on your system can look at your settings in 
+Remember to also give execute permissions on the directories.  After you setup
+siteconfig.php, you might want to make apache own the file and have no one else
+with permissions on it, so no one on your system can look at your settings in
 the file (database user names, passwords, web page logins, etc.).
 
 Change group on images/thumbnails to apache and make it group writeable
-(everyone else has read and execute permissions on it). 
+(everyone else has read and execute permissions on it).
 
 --------------------------------------------------------------------------------
 
-Export dvdprofiler collection to DVDAll.xml (on your PC) and transfer 
+Export dvdprofiler collection to DVDAll.xml (on your PC) and transfer
 DVDAll.xml to your web server into ~/public_html/phpdvdprofiler. You can use
 whatever name you like rather than DVDAll.xml; it is configured in siteconfig.php
 
 --------------------------------------------------------------------------------
 
-Transfer copies of all jpg files in 
-C:\Program Files\InterVocative Software\DVD Profiler\IMAGES to 
+Transfer copies of all jpg files in
+C:\Program Files\InterVocative Software\DVD Profiler\IMAGES to
 ~/public_html/phpdvdprofiler/images.
 
-Transfer copies of all jpg files in 
-C:\Program Files\InterVocative Software\DVD Profiler\IMAGES\THUMBNAILS to 
+Transfer copies of all jpg files in
+C:\Program Files\InterVocative Software\DVD Profiler\IMAGES\THUMBNAILS to
 ~/public_html/phpdvdprofiler/images/thumbnails.
 
 Don't forget to CHMOD the image files so that the Apache user can read them.
 
-Here is some DVD Profiler trivia. You might notice that there is an IMAGES 
-directory and an IMAGES\THUMBNAILS directory for DVD Profiler.  And some 
-pictures are not in the THUMBNAILS directory.  The thumbnails are created 
-when you run a report that displays thumbnails.  If you have not run a recent 
-report that uses thumbnails and have entered in new DVDs, there will only be 
-pictures for the new DVDs in the IMAGES directory and not in the THUMBNAILS 
-directory.  You should run a report (I recommend the IVS Classic DVD Listing 
-report with Options set to "Standard (show all records, sort by title)") to 
-refresh all the pictures in THUMBNAILS and then copy the files 
-from C:\Program Files\InterVocative Software\DVD Profiler\IMAGES\THUMBNAILS 
-to your web server (~/public_html/phpdvdprofiler/images/thumbnails).  
+Here is some DVD Profiler trivia. You might notice that there is an IMAGES
+directory and an IMAGES\THUMBNAILS directory for DVD Profiler.  And some
+pictures are not in the THUMBNAILS directory.  The thumbnails are created
+when you run a report that displays thumbnails.  If you have not run a recent
+report that uses thumbnails and have entered in new DVDs, there will only be
+pictures for the new DVDs in the IMAGES directory and not in the THUMBNAILS
+directory.  You should run a report (I recommend the IVS Classic DVD Listing
+report with Options set to "Standard (show all records, sort by title)") to
+refresh all the pictures in THUMBNAILS and then copy the files
+from C:\Program Files\InterVocative Software\DVD Profiler\IMAGES\THUMBNAILS
+to your web server (~/public_html/phpdvdprofiler/images/thumbnails).
 
 --------------------------------------------------------------------------------
 
-I set $dbuser to guest in siteconfig.php, so I did the following commands to 
+I set $dbuser to guest in siteconfig.php, so I did the following commands to
 create a mysql database called phpdvdprofiler for the user guest.
 
 $ mysqladmin -u root -p create phpdvdprofiler

@@ -1,2 +1,3 @@
 <?php
-$VersionNum = '3.8.2.1';
+$VersionNum = '20230108';
+$code_schema_version = '2.10';

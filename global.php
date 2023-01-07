@@ -12,6 +12,7 @@ if (!defined('IN_SCRIPT')) {
 }
 
 include_once('functions.php');
+include_once('version.php');
 
 // Force GET/POST,etc. arguments to _not_ be quoted, and push GET and POST into the namespace
 // Ensure that we can find superglobals
@@ -693,7 +694,6 @@ $mobilepage = $PHP_SELF;
 if ($mobileshow)
 	$mobilepage = 'smallshow.php';
 
-$code_schema_version = '2.10';
 $db_schema_version = 'Unknown';
 
 $db = new sql_db($dbhost, $dbuser, $dbpasswd, $dbname, $dbport, false, $debugSQL, true);
