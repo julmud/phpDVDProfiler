@@ -1044,6 +1044,8 @@ global $common_actor, $common_actor_stats, $common_credit, $common_credit_stats,
 						unset($tree);
 						if ($retval != 0) {
 							echo "$currentxmlfile: " . $lang['ADDERRORS'][$retval] . $total . $eoln;
+							// The profile couldn't be added, so decrease the added counter
+							$added--;
 						}
 					}
 				}
