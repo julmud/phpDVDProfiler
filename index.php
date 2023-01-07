@@ -1427,7 +1427,13 @@ if ($action == 'main') {
 			$result = $db->sql_query($sql) or die($db->sql_error());
 			$media = $db->sql_fetchrow($result);
 			$db->sql_freeresult($result);
-			$lastmedia = $media['lastmedia'];
+			if ($media !== null) {
+				$lastmedia = $media['lastmedia'];
+			} else {
+				$sanitizedSql = str_replace(array("\n", "\r", "\t"), '', $sql);
+				error_log('lastmedia query returned no result! SQL: [' . $sanitizedSql . ']');
+				$lastmedia = '';
+			}
 			break;
 		}
 	}
