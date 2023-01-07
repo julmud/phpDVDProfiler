@@ -1,7 +1,16 @@
+Version 20230108 (phpdvdprofiler.20230108.zip)
+Changes since version 20230102 (phpdvdprofiler.20230102.zip)
+    - new: the mediatype banner can now be forced to be displayed on every media (see AddBannerOnThumbnails in siteconfig.php)
+    - new: support dates pre-1970 for release date, purchase date, ...
+    - fix: better handling of DB connection problems
+    - fix: don't count ignored profiles in added counter during collection update
+    - fix: the interface wasn't displayed if the collection (or search result) was empty
+
 Version 20230102 (phpdvdprofiler.20230102.zip)
-Changes since version 20200130 ()
-    - support for PHP 8.0 and 8.1
+Changes since version 20200130 (phpdvdprofiler.20200130.zip)
+    - support for PHP 7.4, 8.0 and 8.1 (thanks Sebastian for PHP 8.0 support)
     - preliminary support for PHP 8.2
+    - better quality images for the Swiss DVD age system
 
 Version 20200130 (phpdvdprofiler.20200130.zip)
 Changes since version 20200115 (phpdvdprofiler.20200115.zip)

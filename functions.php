@@ -3,6 +3,7 @@
 error_reporting(E_ALL);
 require_once 'php-8.1-strftime.php';
 use function PHP81_BC\strftime;
+include_once('version.php');
 
 if (!defined('IN_SCRIPT')) {
 	die('This script should not be manually executed ... Possible Hacking attempt');
