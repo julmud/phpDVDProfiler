@@ -9,7 +9,7 @@ if (!defined('IN_SCRIPT')) {
 if (!defined('SQL_LAYER'))
 {
 
-define('SQL_LAYER', 'mysql');
+define('SQL_LAYER', 'mysqli');
 
 #[AllowDynamicProperties]
 class sql_db
@@ -38,7 +38,19 @@ class sql_db
 		$this->server = $sqlserver . (($port) ? ':' . $port : '');
 		$this->dbname = $database;
 
-		$this->db_connect_id = ($this->persistency) ? @mysqli_pconnect($this->server, $this->user, $this->password) : @mysqli_connect($this->server, $this->user, $this->password);
+		try {
+			$this->db_connect_id = ($this->persistency) ? @mysqli_pconnect($this->server, $this->user, $this->password) : @mysqli_connect($this->server, $this->user, $this->password);
+		} catch (mysqli_sql_exception $e) {
+			$this->ErrorArray['message'] =  @mysqli_connect_error();
+			$this->ErrorArray['code'] =  @mysqli_connect_errno();
+			return;
+		}
+
+		if (mysqli_connect_errno()) {
+			$this->ErrorArray['message'] =  @mysqli_connect_error();
+			$this->ErrorArray['code'] =  @mysqli_connect_errno();
+			return;
+		}
 
 		if ($this->db_connect_id && $this->dbname != '')
 		{
@@ -49,9 +61,9 @@ class sql_db
 			}
 		}
 
-		if ($bequiet) {
-			$this->ErrorArray['message'] =  @mysqli_error();
-			$this->ErrorArray['code'] =  @mysqli_errno();
+		if ($bequiet && $this->db_connect_id) {
+			$this->ErrorArray['message'] =  @mysqli_error($this->db_connect_id);
+			$this->ErrorArray['code'] =  @mysqli_errno($this->db_connect_id);
 			return;
 		}
 		$this->sql_error('');
@@ -439,9 +451,9 @@ class sql_db
 
 	function sql_error($sql = '')
 	{
-
-if ($sql != '') { echo "<br/><pre>JMU_SQL: $sql</pre><br/>\n";}
-
+		if ($sql != '') {
+			error_log('SQL in error: ' . $sql);
+		}
 		$result = array(
 			'message' => @mysqli_error($this->db_connect_id),
 			'code' => @mysqli_errno($this->db_connect_id)
@@ -464,8 +476,6 @@ if ($sql != '') { echo "<br/><pre>JMU_SQL: $sql</pre><br/>\n";}
 			$message = '<u>SQL ERROR</u> [ ' . SQL_LAYER . ' ]<br /><br />' . @mysqli_error($this->db_connect_id) . '<br /><br /><u>CALLING PAGE</u><br /><br />'  . $this_page . (($sql != '') ? '<br /><br /><u>SQL</u><br /><br />' . $sql : '') . '<br />';
 			trigger_error($message, E_USER_ERROR);
 		}
-
-
 		return $result;
 	}
 
