@@ -84,7 +84,7 @@ if ($action == 'UpdateStatus') {
 	$result = $db->sql_query("SELECT value FROM $DVD_PROPERTIES_TABLE WHERE property='CurrentPosition'", 0, true);
 	$row = $db->sql_fetchrow($result);
 	$db->sql_freeresult($result);
-	$UpdateStatus = '*' . str_replace('|', '*', $row['value']) . '*';
+	$UpdateStatus = $row !== false ? '*' . str_replace('|', '*', $row['value']) . '*' : '';
 	$found = 'false';
 	if (preg_match('/\*([^\*]*)\*$/', $UpdateStatus, $matches) == 1) {
 		$RunningID = $matches[1];
