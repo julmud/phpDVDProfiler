@@ -12,6 +12,8 @@ if (isset($img)) $action = 'image';
 if (!isset($action)) $action = 'main';
 CheckOutOfDateSchema($action);
 
+$iconPath = dirname($_SERVER['SCRIPT_NAME']) . '/gfx';
+
 if (!isset($collection)) $collection = $DefaultCollection;
 
 $colno = array_search($collection, $collectiontypelist);
@@ -160,7 +162,9 @@ if ($action == 'image') {
 <META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=windows-1252">
 <title>CoverScan</title>
 <link rel=stylesheet type="text/css" href="format.css.php">
-<link rel="SHORTCUT ICON" href="/gfx/favicon.ico">
+<link rel="SHORTCUT ICON" href="$iconPath/favicon.ico">
+<link rel="icon" type="image/png" href="$iconPath/favicon-192x192.png" sizes="192x192">
+<link rel="apple-touch-icon" sizes="180x180" href="$iconPath/apple-touch-icon-180x180.png">
 </head>
 <body onLoad="self.focus();">
 <table width="95%" style="vertical-align:middle; height:100%;" cellpadding=0 cellspacing=0>
@@ -265,6 +269,9 @@ if ($action == 'update' || $action == 'CompleteUpdate' || $action == 'UpdateStat
 <META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=windows-1252">
 <title>$lang[IMPORTTITLE]</title>
 <link rel="stylesheet" type="text/css" href="format.css.php">
+<link rel="SHORTCUT ICON" href="$iconPath/favicon.ico">
+<link rel="icon" type="image/png" href="$iconPath/favicon-192x192.png" sizes="192x192">
+<link rel="apple-touch-icon" sizes="180x180" href="$iconPath/apple-touch-icon-180x180.png">
 $JavascriptOnerr$Javascript</head>
 <body class=f6 onLoad="$OnloadStyle">
 <form class=f1 name="LoginForm" id="LoginForm" action="$PHP_SELF" method="POST">
@@ -878,6 +885,9 @@ if ($action == 'nav') {
 <META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=windows-1252">
   <title>Nav Frame</title>
   <link rel=stylesheet type="text/css" href="format.css.php">
+  <link rel="SHORTCUT ICON" href="$iconPath/favicon.ico">
+  <link rel="icon" type="image/png" href="$iconPath/favicon-192x192.png" sizes="192x192">
+  <link rel="apple-touch-icon" sizes="180x180" href="$iconPath/apple-touch-icon-180x180.png">
   <base target="menu">
   <script type="text/javascript" src="navframe.js"></script>
 </head>
@@ -1458,6 +1468,9 @@ if ($action == 'main') {
   <title>$CurrentSiteTitle</title>
   $rssfeed
   <script type="text/javascript" src="top.js"></script>
+  <link rel="SHORTCUT ICON" href="$iconPath/favicon.ico">
+  <link rel="icon" type="image/png" href="$iconPath/favicon-192x192.png" sizes="192x192">
+  <link rel="apple-touch-icon" sizes="180x180" href="$iconPath/apple-touch-icon-180x180.png">
 </head>
 <frameset id="thecols" cols="$widthgt800,*" $nomove>
   <frameset id="therows" rows="*,1" border=0 frameborder=0 framespacing=0>
@@ -1572,6 +1585,9 @@ if ($action == 'menu') {
 <link rel=stylesheet type="text/css" href="format.css.php">
 <base target="entry">
 <title>Menu Frame</title>
+<link rel="SHORTCUT ICON" href="$iconPath/favicon.ico">
+<link rel="icon" type="image/png" href="$iconPath/favicon-192x192.png" sizes="192x192">
+<link rel="apple-touch-icon" sizes="180x180" href="$iconPath/apple-touch-icon-180x180.png">
   <script type="text/javascript">
   <!--
      defaultStatus = "$lang[STATUSLINE] $VersionNum";
@@ -2923,6 +2939,9 @@ if ($action == 'show') {
 <META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=windows-1252">
 <title>$dvd[title]</title>
 <link rel="stylesheet" type="text/css" href="format.css.php">
+<link rel="SHORTCUT ICON" href="$iconPath/favicon.ico">
+<link rel="icon" type="image/png" href="$iconPath/favicon-192x192.png" sizes="192x192">
+<link rel="apple-touch-icon" sizes="180x180" href="$iconPath/apple-touch-icon-180x180.png">
 <script type="text/javascript">
 function SwitchOutRows(theitems, obj) {
 var item=document.getElementById(theitems);
@@ -3478,6 +3497,9 @@ EOT;
 <META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=windows-1252">
 <title>$lang[EMPTYLIST]</title>
 <link rel="stylesheet" type="text/css" href="format.css.php">
+<link rel="SHORTCUT ICON" href="$iconPath/favicon.ico">
+<link rel="icon" type="image/png" href="$iconPath/favicon-192x192.png" sizes="192x192">
+<link rel="apple-touch-icon" sizes="180x180" href="$iconPath/apple-touch-icon-180x180.png">
 </head>
 <body>
 <table width="100%">
