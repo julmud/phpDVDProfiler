@@ -1,3 +1,7 @@
+Unreleased version
+Changes since version 20230108 (phpdvdprofiler.20230108.zip)
+    - fix: gallery no longer has an internal error when called directly
+
 Version 20230108 (phpdvdprofiler.20230108.zip)
 Changes since version 20230102 (phpdvdprofiler.20230102.zip)
     - new: the mediatype banner can now be forced to be displayed on every media (see AddBannerOnThumbnails in siteconfig.php)

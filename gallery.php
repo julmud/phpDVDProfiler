@@ -22,6 +22,8 @@
 ################################################################################
 
 $galleryver = "2 v1.5";
+define('IN_SCRIPT', 1);
+include_once('global.php');
 
 header('Content-Type: text/html; charset="windows-1252";');
 
@@ -625,14 +627,15 @@ function get_SQL($page, $dpp = 60){
 		default:
 					if (is_numeric($ct)) {
 						$where = "auxcolltype LIKE '%/".addslashes($masterauxcolltype[$ct])."/%'";
-					}
-					else if (substr($ct, 0, strlen('FJW-')) == 'FJW-') {
+					} elseif (substr($ct, 0, strlen('FJW-')) == 'FJW-') {
 						$where = "realcollectiontype = '".addslashes($collectiontypelist[(int)substr($ct, strlen('FJW-'))])."' $noadult";
 						if (isset($removetabbed) && $removetabbed)
 							$where .= " AND auxcolltype=''";
+					} else {
+						$where = " $noadult";
 					}
-						$orderby = "ORDER BY $sortby $order,wishpriority $order, sorttitle $secsort";
-						break;
+					$orderby = "ORDER BY $sortby $order,wishpriority $order, sorttitle $secsort";
+					break;
 	}
 
 	if ($sortby == "reviews") $orderby =  "ORDER BY ".$mysort;
