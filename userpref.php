@@ -1,7 +1,7 @@
 <?php
 /*	$Id$	*/
 
-define('IN_SCRIPT', 1);
+defined('IN_SCRIPT') || define('IN_SCRIPT', 1);
 include_once('version.php');
 include_once('global.php');
 

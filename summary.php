@@ -1,6 +1,6 @@
 <?php
 
-define('IN_SCRIPT', 1);
+defined('IN_SCRIPT') || define('IN_SCRIPT', 1);
 // DON'T CALL THIS SCRIPT FROM INSIDE PHPDVDPROFILER. It can remove config variables
 // from the symbol table.
 //

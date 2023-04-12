@@ -1,5 +1,5 @@
 <?php
-define('IN_SCRIPT', 1);
+defined('IN_SCRIPT') || define('IN_SCRIPT', 1);
 
 include_once('global.php');
 if ($TryToChangeMemoryAndTimeLimits) @ini_set('memory_limit', -1);

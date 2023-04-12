@@ -1,6 +1,6 @@
 <?php
 error_reporting(E_ALL);
-define('IN_SCRIPT', 1);
+defined('IN_SCRIPT') || define('IN_SCRIPT', 1);
 include_once('global.php');
 
 function CheckCommonTable($t1, $t2) {

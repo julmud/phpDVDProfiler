@@ -1,5 +1,5 @@
 <?php
-define('IN_SCRIPT', 1);
+defined('IN_SCRIPT') || define('IN_SCRIPT', 1);
 include_once('global.php');
 include_once('emailmessageconfig.php');
 

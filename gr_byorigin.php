@@ -1,5 +1,5 @@
 <?php
-define('IN_SCRIPT', 1);
+defined('IN_SCRIPT') || define('IN_SCRIPT', 1);
 
 $originsmin = 0;
 $hideunknown = true;
