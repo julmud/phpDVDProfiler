@@ -1,7 +1,7 @@
 <?php
 
 error_reporting(E_ALL);
-define('IN_SCRIPT', 1);
+defined('IN_SCRIPT') || define('IN_SCRIPT', 1);
 if (!isset($_SERVER['QUERY_STRING']))
 	$_SERVER['QUERY_STRING'] = '(Null)';
 include_once('global.php');

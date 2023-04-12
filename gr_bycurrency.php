@@ -1,5 +1,5 @@
 <?php
-define('IN_SCRIPT', 1);
+defined('IN_SCRIPT') || define('IN_SCRIPT', 1);
 
 #Version 1.1, 11th July 2006. Added "collectiontype='owned' and " to select.
 

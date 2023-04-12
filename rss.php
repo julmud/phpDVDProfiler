@@ -66,7 +66,7 @@ $rssver = '0.6.4';  // Versionnumber
 #		- added shortened Overview.
 #		- added Hybrid DVD (thanks to Fred)
 
-define('IN_SCRIPT', 1);
+defined('IN_SCRIPT') || define('IN_SCRIPT', 1);
 
 ################ RSS DEFAULT VALUES ################
 $rss_allow_rss = 1;

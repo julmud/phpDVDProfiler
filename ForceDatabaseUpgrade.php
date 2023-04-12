@@ -1,6 +1,6 @@
 <?php
 
-define('IN_SCRIPT', 1);
+defined('IN_SCRIPT') || define('IN_SCRIPT', 1);
 include_once('global.php');
 
 $db->sql_query("UPDATE $DVD_PROPERTIES_TABLE SET value='0.0' WHERE property='db_schema_version'");

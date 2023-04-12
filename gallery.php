@@ -22,7 +22,7 @@
 ################################################################################
 
 $galleryver = "2 v1.5";
-define('IN_SCRIPT', 1);
+defined('IN_SCRIPT') || define('IN_SCRIPT', 1);
 include_once('global.php');
 
 header('Content-Type: text/html; charset="windows-1252";');
