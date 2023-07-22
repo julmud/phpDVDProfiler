@@ -676,7 +676,7 @@ if (!$inbrowser) {
 			$temp = explode('=', $value);
 			if (!isset($temp[1]))
 				$temp[1] = '';
-			$$temp[0] = $temp[1];
+			${$temp[0]} = $temp[1];
 			unset($temp);
 		}
 		unset($args);
