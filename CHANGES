@@ -1,4 +1,4 @@
-Unreleased version
+Version 20230807 (phpdvdprofiler.20230807.zip)
 Changes since version 20230108 (phpdvdprofiler.20230108.zip)
     - fix: correctly display the favicon.ico and add icons for Android and Apple Touch (#41)
     - fix: gallery no longer has an internal error when called directly (#43)
