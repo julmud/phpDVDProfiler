@@ -893,21 +893,31 @@ global $maxheadshotwidth, $ClassColor;
 	$ColScheme = "this.T_BGCOLOR='$ClassColor[2]';this.T_TITLECOLOR='$ClassColor[17]';this.T_BORDERCOLOR='$ClassColor[5]'";
 
 	$imagename = HeadImage($person, $headdir, $subdirs, $filename, $UPC);
-	if ($imagename != '') {
+	if ($imagename != "") {
 		$isize = getimagesize($imagename);
-		if ($isize[0] > $maxheadshotwidth)
+		if ($isize[0] > $maxheadshotwidth) {
 			$isize[0] = $maxheadshotwidth;
-		$filenameurl = str_replace("'", '%27', preg_replace('/[^\x20-\x7F]/e', '"%".dechex(ord("$0"))', htmlspecialchars($imagename, ENT_COMPAT, 'ISO-8859-1')));
+		}
+		$escapedfilename = preg_replace_callback(
+			'/[^\x20-\x7F]/',
+			function ($matches) {
+				return "%" . dechex(ord($matches[0]));
+			},
+			htmlspecialchars($imagename, ENT_COMPAT, "ISO-8859-1")
+		);
+		$filenameurl = $escapedfilename
+			? str_replace("'", "%27", $escapedfilename)
+			: "";
 		$mouse = "onmouseover=\"$ColScheme;this.T_TITLE='$displayname';this.T_WIDTH=$isize[0];return escape('<img src=\'$filenameurl\' alt=\'\' width=$isize[0] ')\"";
 		unset($isize);
-		$sanifilename = str_replace("'", '&#39;', $imagename);
+		$sanifilename = str_replace("'", "&#39;", $imagename);
 		$chsimg = "<img src='gfx/head.gif' title='$sanifilename' alt=''/>";
-	}
-	else {
-		$mouse = '';
-		if (isset($person['creditedas']) && $person['creditedas'] != '')
+	} else {
+		$mouse = "";
+		if (isset($person["creditedas"]) && $person["creditedas"] != "") {
 			$mouse = "onmouseover=\" $ColScheme;this.T_TITLE='$displayname';this.T_WIDTH=100;this.T_BORDERWIDTH=0;this.T_PADDING=0;return escape('')\"";
-		$sanifilename = str_replace("'", '&#39;', $filename);
+		}
+		$sanifilename = str_replace("'", "&#39;", $filename);
 		$chsimg = "<img src='gfx/no_head.gif' title='$sanifilename' alt=''/>";
 	}
 	return;
