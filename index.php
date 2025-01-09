@@ -2038,12 +2038,12 @@ if ($action == 'show') {
 				if ($oldtype != $credit['credittype']) {
 					$GroupIndent = false;
 					$oldtype = $credit['credittype'];
-					$ind = ($outerind == 0)? '': " style=\"padding-left:${outerind}px\"";
+					$ind = ($outerind == 0)? '': " style=\"padding-left:{$outerind}px\"";
 					$dvd['p_credits'] .= '<tr style="font-weight:bold"><td colspan=3'.$ind.'>'
 						.$lang[strtoupper(str_replace(' ','',$oldtype))].'</td></tr>';
 				}
 				$xx = ($GroupIndent == 0)? $outerind: $outerind+20;
-				$ind = ($xx == 0)? '': " style=\"padding-left:${xx}px\"";
+				$ind = ($xx == 0)? '': " style=\"padding-left:{$xx}px\"";
 
 				$credit['oc'] = "window.open('popup.php?acttype=CREDIT&amp;fullname=$credit[caid]',"
 					."'Actors',$ActorWindowSettings); return false;";
@@ -2105,7 +2105,7 @@ if ($action == 'show') {
 					$outerind = 20;
 				}
 				else if ($credit['caid'] == -2) {
-					$ind = ($outerind == 0)? '': " style=\"padding-left:${outerind}px\"";
+					$ind = ($outerind == 0)? '': " style=\"padding-left:{$outerind}px\"";
 					$dvd['p_credits'] .= "<tr><td$ind colspan=4 class=\"GroupDivider\">$credit[creditedas]</td></tr>\n";
 					$GroupIndent = true;
 				}
