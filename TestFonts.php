@@ -15,7 +15,7 @@ $comic = array(0 => 0,  1 => 4, 2 => 128, 3 => 4, 4 => 128, 5 => -12, 6 => 0,  7
 $times = array(0 => -1, 1 => 3, 2 => 111, 3 => 3, 4 => 111, 5 => -10, 6 => -1, 7 => -10);
 
 function DisplayError($heading) {
-global $eoln, $g_errno, $g_errstr, $g_errfile, $g_errline, $g_errcontext;
+global $eoln, $g_errno, $g_errstr, $g_errfile, $g_errline;
 
 	if ($eoln !== "\n") {
 		$bold = '<b>'; $unbold = '</b>';
@@ -33,15 +33,14 @@ global $eoln, $g_errno, $g_errstr, $g_errfile, $g_errline, $g_errcontext;
 		echo "$space Error Location: Line $g_errline of $g_errfile$eoln";
 }
 
-function myErrorHandler($errno, $errstr, $errfile, $errline, $errcontext) {
-global $IAmReady, $g_errno, $g_errstr, $g_errfile, $g_errline, $g_errcontext, $ItWorked;
+function myErrorHandler($errno, $errstr, $errfile, $errline) {
+global $IAmReady, $g_errno, $g_errstr, $g_errfile, $g_errline, $ItWorked;
 
 	$ItWorked = false;
 	$g_errno = $errno;
 	$g_errstr = $errstr;
 	$g_errfile = $errfile;
 	$g_errline = $errline;
-	$g_errcontext = $errcontext;
 	if (!$IAmReady) {
 		DisplayError("Error Handler: Unexpected error");
 	}
@@ -101,7 +100,7 @@ global $eoln;
 }
 
 function TestAFont($fontname, $MyResult='') {
-global $eoln, $IAmReady, $g_errno, $g_errstr, $g_errfile, $g_errline, $g_errcontext, $ItWorked;
+global $eoln, $IAmReady, $g_errno, $g_errstr, $g_errfile, $g_errline, $ItWorked;
 global $$MyResult;
 
 	$ItWorked = true;
