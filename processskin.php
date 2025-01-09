@@ -150,7 +150,7 @@ $lang_en_WISHNAME[6] = 'Not Set';
 	$retval .= "\tvar DP_ProgramDatabaseName = \"$dbname.$table_prefix\";\r\n";
 	$retval .= "\tvar DP_ProgramPathDatabase = \"$dbhost\";\r\n";
 	$retval .= "\tvar DP_ProgramPathImages = \"$base$img_webpath\";\r\n";
-	$retval .= "\tvar DP_ProgramPathThumbnails = \"$base${img_webpath}$thumbnails/\";\r\n";
+	$retval .= "\tvar DP_ProgramPathThumbnails = \"$base{$img_webpath}$thumbnails/\";\r\n";
 	$retval .= "\tvar DP_ProgramPathLayouts = \"{$base}skins/\";\r\n";
 	$retval .= "\tvar DP_ProgramPathReports = \"$base\";\r\n";
 	$retval .= "\tvar DP_ProgramPathTemp = \"$base$imagecachedir\";\r\n";

@@ -210,16 +210,16 @@ global $eoln;
 				echo "The directories in that location are:$eoln";
 				DisplayFilesInDir($jpgraphlocation, '', 'dir');
 				if (!is_dir($jpgraphlocation.'fonts')) {
-					echo "Sadly, there is no ${jpgraphlocation}fonts directory, so likely no fonts.$eoln";
+					echo "Sadly, there is no {$jpgraphlocation}fonts directory, so likely no fonts.$eoln";
 				}
 				else {
-					echo "The directories in ${jpgraphlocation}fonts are:$eoln";
+					echo "The directories in {$jpgraphlocation}fonts are:$eoln";
 					DisplayFilesInDir($jpgraphlocation.'fonts/', '', 'dir');
 					if (!is_dir($jpgraphlocation.'fonts/truetype')) {
-						echo "Sadly, there is no ${jpgraphlocation}fonts/truetype directory, so likely no fonts.$eoln";
+						echo "Sadly, there is no {$jpgraphlocation}fonts/truetype directory, so likely no fonts.$eoln";
 					}
 					else {
-						echo "TrueType fonts available in ${jpgraphlocation}fonts/truetype are:$eoln";
+						echo "TrueType fonts available in {$jpgraphlocation}fonts/truetype are:$eoln";
 						$num = DisplayFilesInDir($jpgraphlocation.'fonts/truetype/', 'ttf');
 						echo "for a total of $num fonts$eoln";
 						$TryJpGraph = true;
@@ -238,25 +238,25 @@ global $eoln;
 		}
 	}
 
-	echo "${eoln}/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\/\\$eoln";
+	echo "{$eoln}/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\/\\$eoln";
 	echo "Testing ImageTTFBBox() calls with the current configuration$eoln";
 	$FontsSucceeded = TestConfiguration($fontnames);
 	$numsystem = count($FontsSucceeded);
 	if ($TryJpGraph) {
-		echo "${eoln}/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\/\\$eoln";
-		echo "Testing ImageTTFBBox() calls using ${jpgraphlocation}fonts/truetype in the fontpath$eoln";
-        	$gdfp = @putenv("GDFONTPATH=${jpgraphlocation}fonts/truetype");
+		echo "{$eoln}/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\/\\$eoln";
+		echo "Testing ImageTTFBBox() calls using {$jpgraphlocation}fonts/truetype in the fontpath$eoln";
+        	$gdfp = @putenv("GDFONTPATH={$jpgraphlocation}fonts/truetype");
 		if ($gdfp === false)
 			echo "The putenv() call to set the path indicates that it FAILED$eoln";
 		$FontsSucceeded = TestConfiguration($fontnames);
 		$numjpgraph = count($FontsSucceeded);
 		if ($numsystem != $numjpgraph)
-			echo "Current configuration: $numsystem fonts available${eoln}JpGraph configuration: $numjpgraph fonts available$eoln";
+			echo "Current configuration: $numsystem fonts available{$eoln}JpGraph configuration: $numjpgraph fonts available$eoln";
 		if ($numjpgraph > $numsystem)
-			echo "${eoln}Consider setting \$GDFontPathOverride = '${jpgraphlocation}fonts/truetype'; in your $localsiteconfig$eoln";
+			echo "{$eoln}Consider setting \$GDFontPathOverride = '{$jpgraphlocation}fonts/truetype'; in your $localsiteconfig$eoln";
 	}
 	if (isset($GDFontPathOverride) && $GDFPOGood) {
-		echo "${eoln}/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\/\\$eoln";
+		echo "{$eoln}/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\/\\$eoln";
 		echo "Testing ImageTTFBBox() calls using $GDFontPathOverride in the fontpath$eoln";
         	$gdfp = @putenv("GDFONTPATH=$GDFontPathOverride");
 		if ($gdfp === false)
@@ -264,8 +264,8 @@ global $eoln;
 		$FontsSucceeded = TestConfiguration($fontnames);
 		$numgdfpo = count($FontsSucceeded);
 		if ($numsystem != $gdfpo)
-			echo "Current configuration: $numsystem fonts available${eoln}\$GDFontPathOverride configuration: $gdfpo fonts available$eoln";
+			echo "Current configuration: $numsystem fonts available{$eoln}\$GDFontPathOverride configuration: $gdfpo fonts available$eoln";
 		if ($numjpgraph > $numsystem)
-			echo "${eoln}Consider setting \$GDFontPathOverride = '${jpgraphlocation}fonts/truetype'; in your $localsiteconfig$eoln";
+			echo "{$eoln}Consider setting \$GDFontPathOverride = '{$jpgraphlocation}fonts/truetype'; in your $localsiteconfig$eoln";
 	}
 	exit;
