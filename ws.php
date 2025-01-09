@@ -788,8 +788,8 @@ global $uclass, $yclass, $ws_month, $usejpgraph, $dolast, $domost, $dobest, $dow
                 $mucnt = 0;
                 $row = $db->sql_fetch_array($sql4);
                 $db->sql_freeresult($sql4);
-                $mrt = $row['runningtime'];
-                $mcnt = $row['count'];
+                $mrt = $row == null ? 0 : $row['runningtime'];
+                $mcnt = $row == null ? 0 : $row['count'];
 		$mavg = 0;
 		if ($mcnt <> 0) $mavg = intval($mrt / $mcnt);
 
