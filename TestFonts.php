@@ -262,9 +262,9 @@ global $eoln;
 			echo "The putenv() call to set the path indicates that it FAILED$eoln";
 		$FontsSucceeded = TestConfiguration($fontnames);
 		$numgdfpo = count($FontsSucceeded);
-		if ($numsystem != $gdfpo)
+		if ($numsystem != $numgdfpo)
 			echo "Current configuration: $numsystem fonts available{$eoln}\$GDFontPathOverride configuration: $gdfpo fonts available$eoln";
-		if ($numjpgraph > $numsystem)
+		if ($numgdfpo > $numsystem)
 			echo "{$eoln}Consider setting \$GDFontPathOverride = '{$jpgraphlocation}fonts/truetype'; in your $localsiteconfig$eoln";
 	}
 	exit;
