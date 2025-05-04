@@ -5,7 +5,7 @@ defined('IN_SCRIPT') || define('IN_SCRIPT', 1);
 include_once('global.php');
 
 if ($inbrowser)
-	echo "<pre>";
+    echo "<pre>";
 
 #Currency's for each locality. Can be more than one (eg, Euro and Franc as dvd's existed before France changed to the Euro)
 $curr['LOCALE0'] = "USD";
@@ -66,20 +66,20 @@ printf("%20s - %-15s - %-10s - %s\n", "id", "locality", "currency", "title");
 $cnt = 0;
 
 while ($dvd = $db->sql_fetchrow($result)) {
-	$id = $dvd['id'];
-	$locality =  substr(strstr($dvd['id'], '.'), 1, 2);
-	if (!$locality)
-		$locality = 0;
+    $id = $dvd['id'];
+    $locality =  substr(strstr($dvd['id'], '.'), 1, 2);
+    if (!$locality)
+        $locality = 0;
 
-	$pcurr = $dvd['srpcurrencyid'];
+    $pcurr = $dvd['srpcurrencyid'];
 
-	if ($pcurr != $curr['LOCALE' . $locality]) {
-		$cnt++;
-		$title = $dvd['title'];
-		printf("%20s - %-15s - %-10s - %s\n", $id, $lang['LOCALE' . $locality], $pcurr, $title);
-	}
+    if ($pcurr != $curr['LOCALE' . $locality]) {
+        $cnt++;
+        $title = $dvd['title'];
+        printf("%20s - %-15s - %-10s - %s\n", $id, $lang['LOCALE' . $locality], $pcurr, $title);
+    }
 }
 $db->sql_freeresult($result);
 echo "There are $cnt profiles with the wrong SRP currency. Done\n";
 if ($inbrowser)
-	echo "</pre>";
+    echo "</pre>";

@@ -14,8 +14,8 @@ echo <<<EOT
 EOT;
 
 foreach ($ClassColor as $ind => $val) {
-	echo "<tr><td>ClassColor[$ind]</td>";
-	echo "<td style=\"background-color: " . $ClassColor[$ind] . ";\">This cell background is color " . $ClassColor[$ind] . "</td>";
-	echo "<td>That cell background is color " . $ClassColor[$ind] . "</td></tr>";
+    echo "<tr><td>ClassColor[$ind]</td>";
+    echo "<td style=\"background-color: " . $ClassColor[$ind] . ";\">This cell background is color " . $ClassColor[$ind] . "</td>";
+    echo "<td>That cell background is color " . $ClassColor[$ind] . "</td></tr>";
 }
 echo "</table></center></body></html>";

@@ -6,11 +6,11 @@ include_once('version.php');
 include_once('functions.php');
 include_once('globalinits.php');
 if (is_readable('multisite.php'))
-	include('multisite.php');
+    include('multisite.php');
 
 include('siteconfig.php');
 if (is_readable($localsiteconfig))
-	include($localsiteconfig);
+    include($localsiteconfig);
 
 header('Content-Type: text/javascript; charset="windows-1252";');
 ?>
@@ -30,7 +30,7 @@ slideSpeed=25
 waitTime=250;
 <?php echo "menuBGColor=\"$ClassColor[27]\";\n"; ?>
 menuIsStatic="yes";
-menuWidth=190;	// this value should be a multiple of 10 to avoid drawing bugs
+menuWidth=190;  // this value should be a multiple of 10 to avoid drawing bugs
 menuCols=2;
 hdrFontFamily="verdana";
 hdrFontSize="2";
@@ -51,7 +51,7 @@ barFontSize="1";
 <?php echo "barFontColor=\"$ClassColor[31]\";\n"; ?>
 barVAlign="center";
 barWidth=10;
-barText="Navigation";	// no $lang vaiable here, and non us-ascii won't work anyway
+barText="Navigation";   // no $lang vaiable here, and non us-ascii won't work anyway
 //-->
 
 /* Links in die PHP-Datei verlegt, da die dynamisch sind. */

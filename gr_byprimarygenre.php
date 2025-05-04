@@ -8,15 +8,15 @@ include_once($jpgraphlocation.'jpgraph_pie.php');
 include_once($jpgraphlocation.'jpgraph_pie3d.php');
 
 if (!isset($graphx) || !$graphx)
-	$graphx = 800 - 40;
+    $graphx = 800 - 40;
 if (!isset($graphy) || !$graphy)
-	$graphy = 'auto';
+    $graphy = 'auto';
 if ($graphy == 'auto')
-	$graphy = ($graphx*3)/4;
+    $graphy = ($graphx*3)/4;
 
 $numslices = $genremax;
 if ($numslices < 5)
-	$numslices = 5;
+    $numslices = 5;
 
 $genrespecialcondition = str_replace('genre', 'primegenre', $genrespecialcondition);
 $sql = $db->sql_query("SELECT primegenre,COUNT(*) AS total FROM $DVD_TABLE WHERE collectiontype='owned' $genrespecialcondition GROUP BY primegenre ORDER BY total DESC") or die($db->sql_error());
@@ -27,17 +27,17 @@ $order = array();
 $other = 0;
 $i = 0;
 while ($row = $db->sql_fetchrow($sql)) {
-	if ($i == 0)
-		$most = $row['total'];
-	if ($i > $numslices-1) {
-		$other += $row['total'];
-	}
-	else {
-		$data[$i] = $row['total'];
-		$name[$i] = html_entity_decode(GenreTranslation($row['primegenre'])."\n%.1f%%");
-		$order[$i] = strlen($name[$i]);
-	}
-	$i++;
+    if ($i == 0)
+        $most = $row['total'];
+    if ($i > $numslices-1) {
+        $other += $row['total'];
+    }
+    else {
+        $data[$i] = $row['total'];
+        $name[$i] = html_entity_decode(GenreTranslation($row['primegenre'])."\n%.1f%%");
+        $order[$i] = strlen($name[$i]);
+    }
+    $i++;
 }
 $data[] = $other;
 $name[] = $ttt = html_entity_decode("$lang[OTHER]\n%.1f%%");

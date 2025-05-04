@@ -6,7 +6,7 @@ include_once('global.php');
 $db->sql_query("UPDATE $DVD_PROPERTIES_TABLE SET value='0.0' WHERE property='db_schema_version'");
 
 if ($inbrowser) {
-	echo <<<EOT
+    echo <<<EOT
 <html>
 <body>
 <center>Your database schema has been invalidated - you need to run an update now<br>
@@ -15,5 +15,5 @@ if ($inbrowser) {
 EOT;
 }
 else {
-	echo "Your database schema has been invalidated - you need to run an update now\n";
+    echo "Your database schema has been invalidated - you need to run an update now\n";
 }

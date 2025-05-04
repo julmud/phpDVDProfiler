@@ -8,15 +8,15 @@ include_once($jpgraphlocation.'jpgraph_pie.php');
 include_once($jpgraphlocation.'jpgraph_pie3d.php');
 
 if (!isset($graphx) || !$graphx)
-	$graphx = 800 - 40;
+    $graphx = 800 - 40;
 if (!isset($graphy) || !$graphy)
-	$graphy = 'auto';
+    $graphy = 'auto';
 if ($graphy == 'auto')
-	$graphy = ($graphx*3)/4;
+    $graphy = ($graphx*3)/4;
 
 $sql = "SELECT IF (LOCATE('.',id) = '0',0,SUBSTRING(id,locate('.',id)+1,LENGTH(id)-LOCATE('.',id)))+0 as locality, "
-	."SUM(1) AS count FROM $DVD_TABLE WHERE collectiontype='owned' $localespecialcondition "
-	."GROUP BY locality ORDER BY count DESC";
+    ."SUM(1) AS count FROM $DVD_TABLE WHERE collectiontype='owned' $localespecialcondition "
+    ."GROUP BY locality ORDER BY count DESC";
 $result = $db->sql_query($sql) or die($db->sql_error());
 
 $i = 1;
@@ -25,21 +25,21 @@ $name = array();
 $data[0] = 0;
 $name[0] = $lang['OTHER'].' (%d)';
 while ($row = $db->sql_fetchrow($result)) {
-	$cnt = $row['count'];
-	if ($i > 1 && (($data[1] * $localemin) > $cnt)) {
-		#echo "$i, $cnt, $data[1]\n";
-		$data[0] += $row['count'];
-	}
-	else {
-		$loc = $row['locality'];
-		$data[$i] = $row['count'];
-		$name[$i] = html_entity_decode($lang["LOCALE$loc"].' (%d)');
-		$i++;
-	}
+    $cnt = $row['count'];
+    if ($i > 1 && (($data[1] * $localemin) > $cnt)) {
+        #echo "$i, $cnt, $data[1]\n";
+        $data[0] += $row['count'];
+    }
+    else {
+        $loc = $row['locality'];
+        $data[$i] = $row['count'];
+        $name[$i] = html_entity_decode($lang["LOCALE$loc"].' (%d)');
+        $i++;
+    }
 }
 if ($data[0] == 0) {
-	unset($data[0]);
-	unset($name[0]);
+    unset($data[0]);
+    unset($name[0]);
 }
 
 $cnt = array_shift($data);

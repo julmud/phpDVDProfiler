@@ -8,22 +8,22 @@ include_once($jpgraphlocation.'jpgraph_pie.php');
 include_once($jpgraphlocation.'jpgraph_pie3d.php');
 
 if (!isset($graphx) || !$graphx)
-	$graphx = 800 - 40;
+    $graphx = 800 - 40;
 if (!isset($graphy) || !$graphy)
-	$graphy = 'auto';
+    $graphy = 'auto';
 if ($graphy == 'auto')
-	$graphy = ($graphx*3)/4;
+    $graphy = ($graphx*3)/4;
 
 $numslices = $genremax;
 if ($numslices < 5)
-	$numslices = 5;
+    $numslices = 5;
 $fmt = '%.1f%%';
 if (strtolower($genrefmt) == 'absolute')
-	$fmt = '(%d)';
+    $fmt = '(%d)';
 
 $sql = "SELECT genre,COUNT(genre) AS total FROM $DVD_TABLE d,$DVD_GENRES_TABLE g "
-	."WHERE d.id=g.id and collectiontype='owned' $genrespecialcondition "
-	."GROUP BY genre ORDER BY total DESC";
+    ."WHERE d.id=g.id and collectiontype='owned' $genrespecialcondition "
+    ."GROUP BY genre ORDER BY total DESC";
 $result = $db->sql_query($sql) or die($db->sql_error());
 
 $data = array();
@@ -32,17 +32,17 @@ $order = array();
 $other = 0;
 $i = 0;
 while ($row = $db->sql_fetchrow($result)) {
-	if ($i == 0)
-		$most = $row['total'];
-	if ($i > $numslices-1) {
-		$other += $row['total'];
-	}
-	else {
-		$data[$i] = $row['total'];
-		$name[$i] = html_entity_decode(GenreTranslation($row['genre'])."\n$fmt");
-		$order[$i] = strlen($name[$i]);
-	}
-	$i++;
+    if ($i == 0)
+        $most = $row['total'];
+    if ($i > $numslices-1) {
+        $other += $row['total'];
+    }
+    else {
+        $data[$i] = $row['total'];
+        $name[$i] = html_entity_decode(GenreTranslation($row['genre'])."\n$fmt");
+        $order[$i] = strlen($name[$i]);
+    }
+    $i++;
 }
 $data[] = $other;
 $name[] = $ttt = html_entity_decode("$lang[OTHER]\n$fmt");

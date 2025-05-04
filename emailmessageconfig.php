@@ -15,23 +15,23 @@
 // of different subjects need not match the number of different messages.
 //
 // The messages and subjects may use some special variables to allow personalisation:
-// $LOAN_TO		- The borrower's name (from DVDProfiler)
-// $LOAN_TITLE		- The title of the borrowed DVD
-// $LOAN_QUOTED_TITLE	- The title of the DVD in quotes
-// $LOAN_DATE_BORROWED	- The date the DVD was borrowed (from DVDProfiler)
-// $LOAN_DATE_DUE	- The date the DVD was due to be returned (from DVDProfiler)
-// $LOAN_GRACE		- The grace period before any email reminders are sent (in days)
+// $LOAN_TO     - The borrower's name (from DVDProfiler)
+// $LOAN_TITLE      - The title of the borrowed DVD
+// $LOAN_QUOTED_TITLE   - The title of the DVD in quotes
+// $LOAN_DATE_BORROWED  - The date the DVD was borrowed (from DVDProfiler)
+// $LOAN_DATE_DUE   - The date the DVD was due to be returned (from DVDProfiler)
+// $LOAN_GRACE      - The grace period before any email reminders are sent (in days)
 // $LOAN_WARNING_INTERVAL - The frequency with which email warnings are sent (in days)
-// $LOAN_REMINDER_TO	- The email address where the reminder is being sent (from DVDProfiler)
-// $LOAN_WARNING_NUMBER	- The number of the current warning (is the message number to be sent)
-// $NOW			- The current date
+// $LOAN_REMINDER_TO    - The email address where the reminder is being sent (from DVDProfiler)
+// $LOAN_WARNING_NUMBER - The number of the current warning (is the message number to be sent)
+// $NOW         - The current date
 
 $subject[1] = "You borrowed $LOAN_QUOTED_TITLE on $LOAN_DATE_BORROWED";
 
 if ($LOAN_GRACE == 0) {
-	$message[1] = <<<EOT
+    $message[1] = <<<EOT
 Hi $LOAN_TO,
-	You've had $LOAN_QUOTED_TITLE since $LOAN_DATE_BORROWED. It was due back on $LOAN_DATE_DUE. It'd be great to get it back. I'll send another note in $LOAN_WARNING_INTERVAL days.
+    You've had $LOAN_QUOTED_TITLE since $LOAN_DATE_BORROWED. It was due back on $LOAN_DATE_DUE. It'd be great to get it back. I'll send another note in $LOAN_WARNING_INTERVAL days.
 
 Cheers!
 
@@ -39,9 +39,9 @@ Fred
 EOT;
 }
 else {
-	$message[1] = <<<EOT
+    $message[1] = <<<EOT
 Hi $LOAN_TO,
-	You've had $LOAN_QUOTED_TITLE since $LOAN_DATE_BORROWED. It was due back on $LOAN_DATE_DUE. I thought I'd wait $LOAN_GRACE days before mentioning it. It'd be great to get it back. I'll send another note in $LOAN_WARNING_INTERVAL days.
+    You've had $LOAN_QUOTED_TITLE since $LOAN_DATE_BORROWED. It was due back on $LOAN_DATE_DUE. I thought I'd wait $LOAN_GRACE days before mentioning it. It'd be great to get it back. I'll send another note in $LOAN_WARNING_INTERVAL days.
 
 Cheers!
 
@@ -51,7 +51,7 @@ EOT;
 
 $message[2] = <<<EOT
 Good Day,
-	You've had $LOAN_QUOTED_TITLE since $LOAN_DATE_BORROWED. It was due back on $LOAN_DATE_DUE and it's now $NOW. It'd _really_ be great to get it back. Soon, please. I'll send another note in $LOAN_WARNING_INTERVAL days in case you missed my point.
+    You've had $LOAN_QUOTED_TITLE since $LOAN_DATE_BORROWED. It was due back on $LOAN_DATE_DUE and it's now $NOW. It'd _really_ be great to get it back. Soon, please. I'll send another note in $LOAN_WARNING_INTERVAL days in case you missed my point.
 
 Cheers!
 
@@ -60,7 +60,7 @@ EOT;
 
 $message[3] = <<<EOT
 Hey Butt-Nugget,
-	You've had $LOAN_QUOTED_TITLE since $LOAN_DATE_BORROWED. You said you'd return it by $LOAN_DATE_DUE and it's now $NOW!!! I'm sending over Guido and Nunzio, the broken-nose twins to extract the DVD from your miserable carcass!!!
+    You've had $LOAN_QUOTED_TITLE since $LOAN_DATE_BORROWED. You said you'd return it by $LOAN_DATE_DUE and it's now $NOW!!! I'm sending over Guido and Nunzio, the broken-nose twins to extract the DVD from your miserable carcass!!!
 
 Have a great day
 
