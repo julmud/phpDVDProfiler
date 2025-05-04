@@ -6,10 +6,10 @@ error_reporting(E_ALL);
 
 // Force the global.php AcquireAThumbnail routine to try to download
 function GetAThumbnail($file) {
-	$temp = $getimages;
-	$getimages = 2;
-	AcquireAThumbnail($file);
-	$getimages = $temp;
+    $temp = $getimages;
+    $getimages = 2;
+    AcquireAThumbnail($file);
+    $getimages = $temp;
 }
 
 $gi = '0.1.1';
@@ -45,72 +45,72 @@ echo "<html>\n
 
 while($dvd = mysql_fetch_array($result)) {
 
-	$getfront = false;
-	$getback = false;
+    $getfront = false;
+    $getback = false;
 
-	echo "<tr>\n
+    echo "<tr>\n
     <td>$dvd[title]</td>\n";
 
-	$front = $dvd['id'].'f.jpg';
-	if (!file_exists($img_physpath.$thumbnails.'/'.$front)) {
-		if (($tmp=findfilecase($img_physpath.$thumbnails, $front)) != '')
-			$front = $tmp;
-	}
+    $front = $dvd['id'].'f.jpg';
+    if (!file_exists($img_physpath.$thumbnails.'/'.$front)) {
+        if (($tmp=findfilecase($img_physpath.$thumbnails, $front)) != '')
+            $front = $tmp;
+    }
 
-	$back  = $dvd['id'].'b.jpg';
-	if (!file_exists($img_physpath.$thumbnails.'/'.$back)) {
-		if (($tmp=findfilecase($img_physpath.$thumbnails, $back)) != '')
-			$back = $tmp;
-	}
+    $back  = $dvd['id'].'b.jpg';
+    if (!file_exists($img_physpath.$thumbnails.'/'.$back)) {
+        if (($tmp=findfilecase($img_physpath.$thumbnails, $back)) != '')
+            $back = $tmp;
+    }
 
-	if (file_exists($img_physpath.$front)) {
-		echo "    <td align=\"center\"><a target=\"_blank\" href=\"{$img_webpath}$front\"><img border=0 src=\"gfx/yes.png\"></a></td>\n";
-	}
-	else {
-		echo "    <td align=\"center\"><img border=0 src=\"gfx/no.png\"></td>\n";
-	}
-	if (file_exists($img_physpath.$back)) {
-		echo "    <td align=\"center\"><a target=\"_blank\" href=\"{$img_webpath}$back\"><img border=0 src=\"gfx/yes.png\"></a></td>\n";
-	}
-	else {
-		echo "    <td align=\"center\"><img border=0 src=\"gfx/no.png\"></td>\n";
-	}
-	if (file_exists($img_physpath.$thumbnails.'/'.$front)) {
-		echo "    <td align=\"center\"><a target=\"_blank\" href=\"{$img_webpath}$thumbnails/$front\"><img border=0 src=\"gfx/yes.png\"></a></td>\n";
-	}
-	else {
-		echo "    <td align=\"center\"><img border=0 src=\"gfx/no.png\"></td>\n";
+    if (file_exists($img_physpath.$front)) {
+        echo "    <td align=\"center\"><a target=\"_blank\" href=\"{$img_webpath}$front\"><img border=0 src=\"gfx/yes.png\"></a></td>\n";
+    }
+    else {
+        echo "    <td align=\"center\"><img border=0 src=\"gfx/no.png\"></td>\n";
+    }
+    if (file_exists($img_physpath.$back)) {
+        echo "    <td align=\"center\"><a target=\"_blank\" href=\"{$img_webpath}$back\"><img border=0 src=\"gfx/yes.png\"></a></td>\n";
+    }
+    else {
+        echo "    <td align=\"center\"><img border=0 src=\"gfx/no.png\"></td>\n";
+    }
+    if (file_exists($img_physpath.$thumbnails.'/'.$front)) {
+        echo "    <td align=\"center\"><a target=\"_blank\" href=\"{$img_webpath}$thumbnails/$front\"><img border=0 src=\"gfx/yes.png\"></a></td>\n";
+    }
+    else {
+        echo "    <td align=\"center\"><img border=0 src=\"gfx/no.png\"></td>\n";
 
-		$getfront = true;
+        $getfront = true;
 
-		GetAThumbnail($front);
-	}
-	if (file_exists($img_physpath.$thumbnails.'/'.$back)) {
-		echo "    <td align=\"center\"><a target=\"_blank\" href=\"{$img_webpath}$thumbnails/$back\"><img border=0 src=\"gfx/yes.png\"></a></td>\n";
-	}
-	else {
-		echo "    <td align=\"center\"><img border=0 src=\"gfx/no.png\"></td>\n";
-		$getback = true;
+        GetAThumbnail($front);
+    }
+    if (file_exists($img_physpath.$thumbnails.'/'.$back)) {
+        echo "    <td align=\"center\"><a target=\"_blank\" href=\"{$img_webpath}$thumbnails/$back\"><img border=0 src=\"gfx/yes.png\"></a></td>\n";
+    }
+    else {
+        echo "    <td align=\"center\"><img border=0 src=\"gfx/no.png\"></td>\n";
+        $getback = true;
 
-		GetAThumbnail($back);
-	}
+        GetAThumbnail($back);
+    }
 
-	if ($getfront == true && file_exists($img_physpath.$thumbnails.'/'.$front)) {
-		echo "    <td align=\"center\"><a target=\"_blank\" href=\"{$img_webpath}$thumbnails/$front\"><img border=0 src=\"gfx/yes.png\"></a></td>\n";
-	}
-	elseif ($getfront == true && !file_exists($img_physpath.$thumbnails.'/'.$front)){
-		echo "    <td align=\"center\"><img border=0 src=\"gfx/no.png\"></td>\n";
-	}
-	else { echo "<td>&nbsp;</td>\n";}
+    if ($getfront == true && file_exists($img_physpath.$thumbnails.'/'.$front)) {
+        echo "    <td align=\"center\"><a target=\"_blank\" href=\"{$img_webpath}$thumbnails/$front\"><img border=0 src=\"gfx/yes.png\"></a></td>\n";
+    }
+    elseif ($getfront == true && !file_exists($img_physpath.$thumbnails.'/'.$front)){
+        echo "    <td align=\"center\"><img border=0 src=\"gfx/no.png\"></td>\n";
+    }
+    else { echo "<td>&nbsp;</td>\n";}
 
-	if ($getback == true && file_exists($img_physpath.$thumbnails.'/'.$back)) {
-		echo "    <td align=\"center\"><a target=\"_blank\" href=\"{$img_webpath}$thumbnails/$back\"><img border=0 src=\"gfx/yes.png\"></a></td>\n";
-	}
-	elseif ($getback == true && !file_exists($img_physpath.$thumbnails.'/'.$back)){
-		echo "    <td align=\"center\"><img border=0 src=\"gfx/no.png\"></td>\n";
-	}
-	else { echo "<td>&nbsp;</td>\n";}
+    if ($getback == true && file_exists($img_physpath.$thumbnails.'/'.$back)) {
+        echo "    <td align=\"center\"><a target=\"_blank\" href=\"{$img_webpath}$thumbnails/$back\"><img border=0 src=\"gfx/yes.png\"></a></td>\n";
+    }
+    elseif ($getback == true && !file_exists($img_physpath.$thumbnails.'/'.$back)){
+        echo "    <td align=\"center\"><img border=0 src=\"gfx/no.png\"></td>\n";
+    }
+    else { echo "<td>&nbsp;</td>\n";}
 
-	echo " </tr>\n";
+    echo " </tr>\n";
 }
 echo "</table>\n";

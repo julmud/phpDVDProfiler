@@ -11,17 +11,17 @@ include_once($jpgraphlocation.'jpgraph_pie3d.php');
 //include_once($jpgraphlocation.'jpgraph_bar.php');
 
 function cmp($a, $b) {
-	if (strtolower($a) == strtolower($b))
-		return(0);
-	return((strtolower($a) < strtolower($b))? -1 : 1);
+    if (strtolower($a) == strtolower($b))
+        return(0);
+    return((strtolower($a) < strtolower($b))? -1 : 1);
 }
 
 if (!isset($graphx) || !$graphx)
-	$graphx = 800 - 40;
+    $graphx = 800 - 40;
 if (!isset($graphy) || !$graphy)
-	$graphy = 'auto';
+    $graphy = 'auto';
 if ($graphy == 'auto')
-	$graphy = ($graphx*3)/4;
+    $graphy = ($graphx*3)/4;
 
 $sql = "SELECT countryoforigin,countryoforigin2,countryoforigin3, sum(1) count FROM $DVD_TABLE WHERE collectiontype='owned' $originspecialcondition GROUP by countryoforigin,countryoforigin2,countryoforigin3";
 $result = $db->sql_query($sql) or die($db->sql_error());
@@ -69,12 +69,12 @@ $threshold = $maxcount*$originsmin;
 uksort($origins, 'cmp');
 
 foreach ($origins as $key => $val) {
-	if (!(($key == $unknownkey) && $hideunknown)) {
-		if ($origins[$key] >= $threshold) {
-			$data[] = $origins[$key];
-			$leg[] = "$key ";
-		}
-	}
+    if (!(($key == $unknownkey) && $hideunknown)) {
+        if ($origins[$key] >= $threshold) {
+            $data[] = $origins[$key];
+            $leg[] = "$key ";
+        }
+    }
 }
 
 //$graph = new Graph($graphx, $graphy, 'auto');
@@ -82,9 +82,9 @@ foreach ($origins as $key => $val) {
 //$graph->img->SetMargin(50, 30, 50, 120);
 //$unkncnt = $origins[$unknownkey];
 //if ($hideunknown)
-//	$graph->title->Set(html_entity_decode($lang['GRAPHS']['COO']."\n($lang[UNKNOWN] = $unkncnt)"));
+//  $graph->title->Set(html_entity_decode($lang['GRAPHS']['COO']."\n($lang[UNKNOWN] = $unkncnt)"));
 //else
-//	$graph->title->Set(html_entity_decode($lang['GRAPHS']['COO']));
+//  $graph->title->Set(html_entity_decode($lang['GRAPHS']['COO']));
 //
 //$graph->xaxis->SetTickLabels($leg);
 //$graph->xaxis->SetFont(FF_ARIAL);
@@ -107,9 +107,9 @@ foreach ($origins as $key => $val) {
 $graph = new PieGraph($graphx, $graphy, 'auto');
 $graph->img->SetMargin(50, 30, 50, 60);
 //if ($hideunknown)
-//	$graph->title->Set(html_entity_decode($lang['GRAPHS']['COO']."\n($lang[UNKNOWN] = $unkncnt)"));
+//  $graph->title->Set(html_entity_decode($lang['GRAPHS']['COO']."\n($lang[UNKNOWN] = $unkncnt)"));
 //else
-	$graph->title->Set(html_entity_decode($lang['GRAPHS']['COO']));
+    $graph->title->Set(html_entity_decode($lang['GRAPHS']['COO']));
 
 //$bplot = new PiePlot3D($data);
 $bplot = new PiePlot($data);

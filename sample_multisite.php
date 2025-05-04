@@ -1,15 +1,15 @@
 <?php
-	if (php_sapi_name() == 'cli') {
-		return;
-	}
-	if (!isset($_SERVER['REQUEST_URI']))
-		return;
-	if (substr($_SERVER['REQUEST_URI'], 0, strlen('/phpdvdprofiler.test/')) == '/phpdvdprofiler.test/') {
-		$localsiteconfig = 'test_localsiteconfig.php';
-	}
-	if (substr($_SERVER['REQUEST_URI'], 0, strlen('/phpdvdprofiler.pastel/')) == '/phpdvdprofiler.pastel/') {
-		$localsiteconfig = 'pastelsiteconfig.php';
-	}
+    if (php_sapi_name() == 'cli') {
+        return;
+    }
+    if (!isset($_SERVER['REQUEST_URI']))
+        return;
+    if (substr($_SERVER['REQUEST_URI'], 0, strlen('/phpdvdprofiler.test/')) == '/phpdvdprofiler.test/') {
+        $localsiteconfig = 'test_localsiteconfig.php';
+    }
+    if (substr($_SERVER['REQUEST_URI'], 0, strlen('/phpdvdprofiler.pastel/')) == '/phpdvdprofiler.pastel/') {
+        $localsiteconfig = 'pastelsiteconfig.php';
+    }
 
 //
 // The purpose of this piece of code is to set the variable $localsiteconfig to
@@ -50,14 +50,14 @@
 //    the particular installation (the names of each file should be different :)). Each
 //    file can be used to set any of the tunable knobs for a configuration, but should
 //    have a at least few things defined:
-//    $xmlfile	- each site needs an xml file from which to update
-//    $dbname	- each site needs its own database or alternatively, you could set
+//    $xmlfile  - each site needs an xml file from which to update
+//    $dbname   - each site needs its own database or alternatively, you could set
 //    $table_prefix - to use different tables in a single database
-//    $dbuser	- for security, each database should use a different access username/password
-//    $dbpasswd	- although technically, they could all use the same one. these are real MySQL
-//           	  users, and so may be restricted by your hosting provider.
-//    $images	- could be all set to the same directory, although then differences between
-//          	  cover images will be removed (for people who have dpecial covers).
+//    $dbuser   - for security, each database should use a different access username/password
+//    $dbpasswd - although technically, they could all use the same one. these are real MySQL
+//                users, and so may be restricted by your hosting provider.
+//    $images   - could be all set to the same directory, although then differences between
+//                cover images will be removed (for people who have dpecial covers).
 //    $update_login - used to update collections; should be different for security.
 //    $update_pass  - used to update collections; should be different for security.
 //    $sitetitle    - used in headers and page titles, etc.

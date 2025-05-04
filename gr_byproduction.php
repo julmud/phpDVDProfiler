@@ -7,17 +7,17 @@ include_once($jpgraphlocation.'jpgraph.php');
 include_once($jpgraphlocation.'jpgraph_bar.php');
 
 if (!isset($graphx) || !$graphx)
-	$graphx = 800 - 40;
+    $graphx = 800 - 40;
 if (!isset($graphy) || !$graphy)
-	$graphy = 'auto';
+    $graphy = 'auto';
 if ($graphy == 'auto')
-	$graphy = ($graphx*3)/4;
+    $graphy = ($graphx*3)/4;
 
 $sql = $db->sql_query("SELECT productionyear,COUNT(title) AS count "
-			."FROM $DVD_TABLE WHERE collectiontype='owned' "
-			."AND productionyear>0 "
-			."$productionyearspecialcondition GROUP BY productionyear "
-			."ORDER BY productionyear") or die($db->sql_error());
+            ."FROM $DVD_TABLE WHERE collectiontype='owned' "
+            ."AND productionyear>0 "
+            ."$productionyearspecialcondition GROUP BY productionyear "
+            ."ORDER BY productionyear") or die($db->sql_error());
 
 if (!isset($high)) $high = 9999;
 if (isset($low)) $current = $low - 1;
@@ -26,28 +26,28 @@ $data = array();
 $leg = array();
 $totalcount = 0;
 while ($row = $db->sql_fetch_array($sql)) {
-	$pdate = $row[0];
-	$cnt = $row[1];
-	if (!isset($low)) {
-		$low = 10*(int)($pdate/10);
-		$current = $low - 1;
-	}
-	if ($pdate > $high) {
-		while (++$current <= $high) {
-			$data[] = 0;
-			$leg[] = $current;
-		}
-		break;
-	}
-	if ($pdate < $low)
-		continue;
-	while (++$current < $pdate) {
-		$data[] = 0;
-		$leg[] = $current;
-	}
-	$totalcount += $cnt;
-	$data[] = $cnt;
-	$leg[] = $pdate;
+    $pdate = $row[0];
+    $cnt = $row[1];
+    if (!isset($low)) {
+        $low = 10*(int)($pdate/10);
+        $current = $low - 1;
+    }
+    if ($pdate > $high) {
+        while (++$current <= $high) {
+            $data[] = 0;
+            $leg[] = $current;
+        }
+        break;
+    }
+    if ($pdate < $low)
+        continue;
+    while (++$current < $pdate) {
+        $data[] = 0;
+        $leg[] = $current;
+    }
+    $totalcount += $cnt;
+    $data[] = $cnt;
+    $leg[] = $pdate;
 }
 $db->sql_freeresult($sql);
 
@@ -71,12 +71,12 @@ $bplot = new BarPlot($data);
 $bplot->SetFillColor('lightgreen'); // Fill color
 $bplot->value->SetColor('black', 'navy');
 if ($high-$low <= 20) {
-	$bplot->value->Show();
-	$bplot->value->SetFormat('%d');
-	$bplot->value->SetFont(FF_ARIAL, FS_BOLD);
-	$bplot->value->HideZero();
-	$bplot->SetValuePos('center');
-	$bplot->SetShadow();
+    $bplot->value->Show();
+    $bplot->value->SetFormat('%d');
+    $bplot->value->SetFont(FF_ARIAL, FS_BOLD);
+    $bplot->value->HideZero();
+    $bplot->SetValuePos('center');
+    $bplot->SetShadow();
 }
 
 $graph->Add($bplot);

@@ -2,51 +2,51 @@
 
 error_reporting(E_ALL);
 if (!defined('IN_SCRIPT'))
-	define('IN_SCRIPT', 1);
+    define('IN_SCRIPT', 1);
 include_once('global.php');
 
 SendNoCacheHeaders('Content-Type: text/html; charset="windows-1252";');
 
-	if (!isset($ChangedColor))
-		$ChangedColor = 'Gold';
-	$limit = 5;
-	$thelimit = "<select onChange=\"HandleSelectChange(this)\" style=\"vertical-align:middle\" name=\"limit\">";
-	$thelimit .= "<option value=\"1\">1</option>";
-	for ($i=5; $i<55; $i+=5) {
-		$sel = ''; if ($i == $limit) $sel = 'selected';
-		$thelimit .= "<option value=\"$i\" $sel>$i</option>";
-	}
-	$thelimit .= "<option value=\"100\" $sel>100</option>";
-	$thelimit .= "</select>\n";
-	$thelimit = sprintf($lang['CHOOSERHEADER'], $thelimit);
+    if (!isset($ChangedColor))
+        $ChangedColor = 'Gold';
+    $limit = 5;
+    $thelimit = "<select onChange=\"HandleSelectChange(this)\" style=\"vertical-align:middle\" name=\"limit\">";
+    $thelimit .= "<option value=\"1\">1</option>";
+    for ($i=5; $i<55; $i+=5) {
+        $sel = ''; if ($i == $limit) $sel = 'selected';
+        $thelimit .= "<option value=\"$i\" $sel>$i</option>";
+    }
+    $thelimit .= "<option value=\"100\" $sel>100</option>";
+    $thelimit .= "</select>\n";
+    $thelimit = sprintf($lang['CHOOSERHEADER'], $thelimit);
 
-	$collections = "<b>$lang[COLLECTIONTYPE]</b>:<br><select onChange=\"HandleSelectChange(this)\" name=\"collectiontype\"><option value=\"?\">$lang[ALL]</option>";
- 	$res = $db->sql_query("SELECT DISTINCT collectiontype FROM $DVD_TABLE ORDER BY collectiontype") or die($db->sql_error());
-	while ($val = $db->sql_fetchrow($res)) {
-		$displayCollectionType = isset($lang[strtoupper($val['collectiontype'])]) ? $lang[strtoupper($val['collectiontype'])] : ucfirst($val['collectiontype']);
-		$collections .= "<option value=\"$val[collectiontype]\"";
-		if (strtoupper($val['collectiontype']) == 'OWNED') {
-			$collections .= ' selected="selected"';
-		}
-		$collections .= ">" . $displayCollectionType . "</option>";
-	}
-	$db->sql_freeresult($res);
+    $collections = "<b>$lang[COLLECTIONTYPE]</b>:<br><select onChange=\"HandleSelectChange(this)\" name=\"collectiontype\"><option value=\"?\">$lang[ALL]</option>";
+    $res = $db->sql_query("SELECT DISTINCT collectiontype FROM $DVD_TABLE ORDER BY collectiontype") or die($db->sql_error());
+    while ($val = $db->sql_fetchrow($res)) {
+        $displayCollectionType = isset($lang[strtoupper($val['collectiontype'])]) ? $lang[strtoupper($val['collectiontype'])] : ucfirst($val['collectiontype']);
+        $collections .= "<option value=\"$val[collectiontype]\"";
+        if (strtoupper($val['collectiontype']) == 'OWNED') {
+            $collections .= ' selected="selected"';
+        }
+        $collections .= ">" . $displayCollectionType . "</option>";
+    }
+    $db->sql_freeresult($res);
 
-	$res = $db->sql_query("SELECT COUNT(*) AS itemcount FROM $DVD_TABLE WHERE loaninfo != ''") or die($db->sql_error());
-	$val = $db->sql_fetchrow($res);
-	$db->sql_freeresult($res);
-	if ($val['itemcount'] != 0) {
-		$collections .= "<option value=loaned>$lang[LOANED]</option>";
-	}
+    $res = $db->sql_query("SELECT COUNT(*) AS itemcount FROM $DVD_TABLE WHERE loaninfo != ''") or die($db->sql_error());
+    $val = $db->sql_fetchrow($res);
+    $db->sql_freeresult($res);
+    if ($val['itemcount'] != 0) {
+        $collections .= "<option value=loaned>$lang[LOANED]</option>";
+    }
 
-	foreach ($masterauxcolltype as $num => $auxcoltype) {
-		if ($auxcoltype != '') {
-			$collections .= "<option value=$num>$auxcoltype</option>";
-		}
-	}
-	$collections .= "</select>\n";
+    foreach ($masterauxcolltype as $num => $auxcoltype) {
+        if ($auxcoltype != '') {
+            $collections .= "<option value=$num>$auxcoltype</option>";
+        }
+    }
+    $collections .= "</select>\n";
 
-	$mediatable = <<<EOT
+    $mediatable = <<<EOT
 <table cellpadding=3 border=1><tr><th>$lang[MEDIATYPE]</th></tr>
   <tr><td><img style="vertical-align:middle" onClick="SwitchState('mediatypedvd')" src="gfx/dontcare.png" id="mediatypedvd_img"><input type="hidden" name="mediatypedvd" id="mediatypedvd_input" value="?">&nbsp;$lang[DVD]</td></tr>
   <tr><td><img style="vertical-align:middle" onClick="SwitchState('mediatypehddvd')" src="gfx/dontcare.png" id="mediatypehddvd_img"><input type="hidden" name="mediatypehddvd" id="mediatypehddvd_input" value="?">&nbsp;$lang[HDDVD]</td></tr>
@@ -55,7 +55,7 @@ SendNoCacheHeaders('Content-Type: text/html; charset="windows-1252";');
 </table>
 EOT;
 
-	$formattable = <<<EOT
+    $formattable = <<<EOT
 <table cellpadding=3 border=1><tr><th colspan=2>$lang[FORMAT]</th></tr>
   <tr><td><img style="vertical-align:middle" onClick="SwitchState('formatletterbox')" src="gfx/dontcare.png" id="formatletterbox_img"><input type="hidden" name="formatletterbox" id="formatletterbox_input" value="?">&nbsp;$lang[WIDESCREEN]</td>
   <td><img style="vertical-align:middle" onClick="SwitchState('formatpanandscan')" src="gfx/dontcare.png" id="formatpanandscan_img"><input type="hidden" name="formatpanandscan" id="formatpanandscan_input" value="?">&nbsp;$lang[PANANDSCAN]</td></tr>
@@ -66,7 +66,7 @@ EOT;
 </table>
 EOT;
 
-	$bstable = <<<EOT
+    $bstable = <<<EOT
 <table cellpadding=3 border=1><tr><th>$lang[BOXSET]</th></tr>
   <tr><td><img style="vertical-align:middle" onClick="SwitchState('boxchild')" src="gfx/dontcare.png" id="boxchild_img"><input type="hidden" name="boxchild" id="boxchild_input" value="?">&nbsp;$lang[CHOOSERBOXCHILD]</td></tr>
   <tr><td><img style="vertical-align:middle" onClick="SwitchState('boxparent')" src="gfx/dontcare.png" id="boxparent_img"><input type="hidden" name="boxparent" id="boxparent_input" value="?">&nbsp;$lang[CHOOSERBOXPARENT]</td></tr>
@@ -74,7 +74,7 @@ EOT;
 </table>
 EOT;
 
-	$extrastable = <<<EOT
+    $extrastable = <<<EOT
 <table cellpadding=3 border=1><tr><th colspan=3>$lang[EXTRAS]</th></tr>
   <tr><td><img style="vertical-align:middle" onClick="SwitchState('featuresceneaccess')" src="gfx/dontcare.png" id="featuresceneaccess_img"><input type="hidden" name="featuresceneaccess" id="featuresceneaccess_input" value="?">&nbsp;$lang[SCENEACCESS]</td>
   <td><img style="vertical-align:middle" onClick="SwitchState('featureplayall')" src="gfx/dontcare.png" id="featureplayall_img"><input type="hidden" name="featureplayall" id="featureplayall_input" value="?">&nbsp;$lang[PLAYALL]</td>
@@ -103,186 +103,186 @@ EOT;
 </table>
 EOT;
 
-	$genretable = "<table cellpadding=3 border=1><tr><th colspan=5>$lang[GENRES]</th></tr><tr>";
-	$res = $db->sql_query("SELECT genre,COUNT(genre) AS counts FROM $DVD_GENRES_TABLE GROUP BY genre ORDER BY genre") or die($db->sql_error());
-	$tmpcount = 1;
-	$valgen = "\tgenrecount = 0;\n";
-	while ($val = $db->sql_fetchrow($res)) {
-		if ($val['counts'] != 0) {
-			if ($tmpcount++ % 5 == 1) $genretable .= "</tr>\n<tr>";
-			$gen = str_replace(' ', '_', $val['genre']);
-			$gen = str_replace("'", '#', $gen);
-			$valgen .= "\tif ($('genre_{$gen}_input').value == '1') genrecount++;\n";
-			$genretable .= "<td><img style=\"vertical-align:middle\" onClick=\"SwitchState('genre_$gen')\" src=\"gfx/dontcare.png\""
-					." id=\"genre_{$gen}_img\"><input type=\"hidden\" name=\"genre_$gen\" id=\"genre_{$gen}_input\""
-					." value=\"?\">&nbsp;".GenreTranslation($val['genre'])."</td>";
-		}
-	}
-	$db->sql_freeresult($res);
-	$genretable .= "</tr></table>";
+    $genretable = "<table cellpadding=3 border=1><tr><th colspan=5>$lang[GENRES]</th></tr><tr>";
+    $res = $db->sql_query("SELECT genre,COUNT(genre) AS counts FROM $DVD_GENRES_TABLE GROUP BY genre ORDER BY genre") or die($db->sql_error());
+    $tmpcount = 1;
+    $valgen = "\tgenrecount = 0;\n";
+    while ($val = $db->sql_fetchrow($res)) {
+        if ($val['counts'] != 0) {
+            if ($tmpcount++ % 5 == 1) $genretable .= "</tr>\n<tr>";
+            $gen = str_replace(' ', '_', $val['genre']);
+            $gen = str_replace("'", '#', $gen);
+            $valgen .= "\tif ($('genre_{$gen}_input').value == '1') genrecount++;\n";
+            $genretable .= "<td><img style=\"vertical-align:middle\" onClick=\"SwitchState('genre_$gen')\" src=\"gfx/dontcare.png\""
+                    ." id=\"genre_{$gen}_img\"><input type=\"hidden\" name=\"genre_$gen\" id=\"genre_{$gen}_input\""
+                    ." value=\"?\">&nbsp;".GenreTranslation($val['genre'])."</td>";
+        }
+    }
+    $db->sql_freeresult($res);
+    $genretable .= "</tr></table>";
 
-	$aspectcombo = '';
-	$res = $db->sql_query("SELECT DISTINCT formataspectratio FROM $DVD_TABLE ORDER BY formataspectratio") or die($db->sql_error());
-	if ($db->sql_numrows($res) < 2) {
-		$val = $db->sql_fetchrow($res);
-		$aspectcombo .= "<tr><td align=right>$lang[ASPECTRATIO]:</td><td>$val[formataspectratio]</td></tr>";
-	}
-	else {
-		$aspectcombo .= "<tr><td align=right>$lang[ASPECTRATIO]:</td><td><select onChange=\"HandleSelectChange(this)\" name=\"formataspectratio\"><option value=\"?\" selected>$lang[CHOOSERDONTCARE]</option>";
-		while ($val = $db->sql_fetchrow($res)) {
-			$aspectcombo .= "<option value=\"$val[formataspectratio]\">$val[formataspectratio]</option>";
-		}
-		$aspectcombo .= "</select></td></tr>";
-	}
-	$db->sql_freeresult($res);
+    $aspectcombo = '';
+    $res = $db->sql_query("SELECT DISTINCT formataspectratio FROM $DVD_TABLE ORDER BY formataspectratio") or die($db->sql_error());
+    if ($db->sql_numrows($res) < 2) {
+        $val = $db->sql_fetchrow($res);
+        $aspectcombo .= "<tr><td align=right>$lang[ASPECTRATIO]:</td><td>$val[formataspectratio]</td></tr>";
+    }
+    else {
+        $aspectcombo .= "<tr><td align=right>$lang[ASPECTRATIO]:</td><td><select onChange=\"HandleSelectChange(this)\" name=\"formataspectratio\"><option value=\"?\" selected>$lang[CHOOSERDONTCARE]</option>";
+        while ($val = $db->sql_fetchrow($res)) {
+            $aspectcombo .= "<option value=\"$val[formataspectratio]\">$val[formataspectratio]</option>";
+        }
+        $aspectcombo .= "</select></td></tr>";
+    }
+    $db->sql_freeresult($res);
 
-	$vidstdcombo = '';
-	$res = $db->sql_query("SELECT DISTINCT formatvideostandard FROM $DVD_TABLE ORDER BY formatvideostandard") or die($db->sql_error());
-	if ($db->sql_numrows($res) < 2) {
-		$val = $db->sql_fetchrow($res);
-		$vidstdcombo .= "<tr><td align=right>$lang[CHOOSERVIDEOSTANDARD]:</td><td>$val[formatvideostandard]</td></tr>";
-	}
-	else {
-		$vidstdcombo .= "<tr><td align=right>$lang[CHOOSERVIDEOSTANDARD]:</td><td><select onChange=\"HandleSelectChange(this)\" name=\"formatvideostandard\"><option value=\"?\" selected>$lang[CHOOSERDONTCARE]</option>";
-		while ($val = $db->sql_fetchrow($res)) {
-			$vidstdcombo .= "<option value=\"$val[formatvideostandard]\">$val[formatvideostandard]</option>";
-		}
-		$vidstdcombo .= "</select></td></tr>";
-	}
-	$db->sql_freeresult($res);
+    $vidstdcombo = '';
+    $res = $db->sql_query("SELECT DISTINCT formatvideostandard FROM $DVD_TABLE ORDER BY formatvideostandard") or die($db->sql_error());
+    if ($db->sql_numrows($res) < 2) {
+        $val = $db->sql_fetchrow($res);
+        $vidstdcombo .= "<tr><td align=right>$lang[CHOOSERVIDEOSTANDARD]:</td><td>$val[formatvideostandard]</td></tr>";
+    }
+    else {
+        $vidstdcombo .= "<tr><td align=right>$lang[CHOOSERVIDEOSTANDARD]:</td><td><select onChange=\"HandleSelectChange(this)\" name=\"formatvideostandard\"><option value=\"?\" selected>$lang[CHOOSERDONTCARE]</option>";
+        while ($val = $db->sql_fetchrow($res)) {
+            $vidstdcombo .= "<option value=\"$val[formatvideostandard]\">$val[formatvideostandard]</option>";
+        }
+        $vidstdcombo .= "</select></td></tr>";
+    }
+    $db->sql_freeresult($res);
 
-	$coocombo = '';
-	$res = $db->sql_query("SELECT DISTINCT countryoforigin FROM $DVD_TABLE ORDER BY countryoforigin") or die($db->sql_error());
-	if ($db->sql_numrows($res) < 2) {
-		$val = $db->sql_fetchrow($res);
-		$coocombo .= "<tr><td align=right>$lang[COUNTRYOFORIGIN]:</td><td>$val[countryoforigin]</td></tr>";
-	}
-	else {
-		$coocombo .= "<tr><td align=right>$lang[COUNTRYOFORIGIN]:</td><td><select onChange=\"HandleSelectChange(this)\" name=\"countryoforigin\"><option value=\"?\" selected>$lang[CHOOSERDONTCARE]</option>";
-		while ($val = $db->sql_fetchrow($res)) {
-			$vvv = $val['countryoforigin'];
-			if ($vvv == '')
-				$vvv = $lang['UNKNOWN'];
-			$coocombo .= "<option value=\"$val[countryoforigin]\">$vvv</option>";
-		}
-		$coocombo .= "</select></td></tr>";
-	}
-	$db->sql_freeresult($res);
+    $coocombo = '';
+    $res = $db->sql_query("SELECT DISTINCT countryoforigin FROM $DVD_TABLE ORDER BY countryoforigin") or die($db->sql_error());
+    if ($db->sql_numrows($res) < 2) {
+        $val = $db->sql_fetchrow($res);
+        $coocombo .= "<tr><td align=right>$lang[COUNTRYOFORIGIN]:</td><td>$val[countryoforigin]</td></tr>";
+    }
+    else {
+        $coocombo .= "<tr><td align=right>$lang[COUNTRYOFORIGIN]:</td><td><select onChange=\"HandleSelectChange(this)\" name=\"countryoforigin\"><option value=\"?\" selected>$lang[CHOOSERDONTCARE]</option>";
+        while ($val = $db->sql_fetchrow($res)) {
+            $vvv = $val['countryoforigin'];
+            if ($vvv == '')
+                $vvv = $lang['UNKNOWN'];
+            $coocombo .= "<option value=\"$val[countryoforigin]\">$vvv</option>";
+        }
+        $coocombo .= "</select></td></tr>";
+    }
+    $db->sql_freeresult($res);
 
-	$regioncombo = '';
-	$res = $db->sql_query("SELECT DISTINCT region FROM $DVD_TABLE ORDER BY region") or die($db->sql_error());
-	$rgnlist = '';
-	while ($val = $db->sql_fetchrow($res)) {
-		$rgnlist .= $val['region'];
-	}
-	$db->sql_freeresult($res);
-	if (strlen($rgnlist) < 2) {
-		$regioncombo .= "<tr><td align=right>$lang[REGION]:</td><td>$rgnlist</td></tr>";
-	}
-	else {
-		$PossibleRegions = '0123456@ABC';
-		$regioncombo .= "<tr><td align=right>$lang[REGION]:</td><td><select onChange=\"HandleSelectChange(this)\" name=\"region\"><option value=\"?\" selected>$lang[CHOOSERDONTCARE]</option>";
-		for ($i=0; $i<=strlen($PossibleRegions); $i++) {
-			$currentRegion = substr($PossibleRegions, $i, 1);
-			if (!empty($currentRegion) && strpos($rgnlist, $currentRegion) !== false) {
-				$val = $PossibleRegions[$i];
-				$disp = $PossibleRegions[$i];
-				if ($val == '0') $disp = $lang['ALLREGIONSDVD'];
-				if ($val == '@') $disp = $lang['ALLREGIONSBLURAY'];
-				$regioncombo .= "<option value=\"$val\">$disp</option>";
-			}
-		}
-		$regioncombo .= "</select></td></tr>";
-	}
+    $regioncombo = '';
+    $res = $db->sql_query("SELECT DISTINCT region FROM $DVD_TABLE ORDER BY region") or die($db->sql_error());
+    $rgnlist = '';
+    while ($val = $db->sql_fetchrow($res)) {
+        $rgnlist .= $val['region'];
+    }
+    $db->sql_freeresult($res);
+    if (strlen($rgnlist) < 2) {
+        $regioncombo .= "<tr><td align=right>$lang[REGION]:</td><td>$rgnlist</td></tr>";
+    }
+    else {
+        $PossibleRegions = '0123456@ABC';
+        $regioncombo .= "<tr><td align=right>$lang[REGION]:</td><td><select onChange=\"HandleSelectChange(this)\" name=\"region\"><option value=\"?\" selected>$lang[CHOOSERDONTCARE]</option>";
+        for ($i=0; $i<=strlen($PossibleRegions); $i++) {
+            $currentRegion = substr($PossibleRegions, $i, 1);
+            if (!empty($currentRegion) && strpos($rgnlist, $currentRegion) !== false) {
+                $val = $PossibleRegions[$i];
+                $disp = $PossibleRegions[$i];
+                if ($val == '0') $disp = $lang['ALLREGIONSDVD'];
+                if ($val == '@') $disp = $lang['ALLREGIONSBLURAY'];
+                $regioncombo .= "<option value=\"$val\">$disp</option>";
+            }
+        }
+        $regioncombo .= "</select></td></tr>";
+    }
 
-	$casecombo = '';
-	$res = $db->sql_query("SELECT DISTINCT casetype FROM $DVD_TABLE ORDER BY casetype") or die($db->sql_error());
-	if ($db->sql_numrows($res) < 2) {
-		$val = $db->sql_fetchrow($res);
-		$casecombo .= "<tr><td align=right>$lang[CASETYPE]:</td><td>$val[casetype]</td></tr>";
-	}
-	else {
-		$casecombo .= "<tr><td align=right>$lang[CASETYPE]:</td><td><select onChange=\"HandleSelectChange(this)\" name=\"casetype\"><option value=\"?\" selected>$lang[CHOOSERDONTCARE]</option>";
-		while ($val = $db->sql_fetchrow($res)) {
-			$casecombo .= "<option value=\"$val[casetype]\">$val[casetype]</option>";
-		}
-		$casecombo .= "</select>&nbsp;<span><img style=\"vertical-align:middle\" onClick=\"SwitchState('caseslipcover')\""
-			." src=\"gfx/dontcare.png\" id=\"caseslipcover_img\"><input type=\"hidden\" name=\"caseslipcover\""
-			." id=\"caseslipcover_input\" value=\"?\">&nbsp;$lang[SLIPCOVER]</span></td></tr>";
-	}
-	$db->sql_freeresult($res);
+    $casecombo = '';
+    $res = $db->sql_query("SELECT DISTINCT casetype FROM $DVD_TABLE ORDER BY casetype") or die($db->sql_error());
+    if ($db->sql_numrows($res) < 2) {
+        $val = $db->sql_fetchrow($res);
+        $casecombo .= "<tr><td align=right>$lang[CASETYPE]:</td><td>$val[casetype]</td></tr>";
+    }
+    else {
+        $casecombo .= "<tr><td align=right>$lang[CASETYPE]:</td><td><select onChange=\"HandleSelectChange(this)\" name=\"casetype\"><option value=\"?\" selected>$lang[CHOOSERDONTCARE]</option>";
+        while ($val = $db->sql_fetchrow($res)) {
+            $casecombo .= "<option value=\"$val[casetype]\">$val[casetype]</option>";
+        }
+        $casecombo .= "</select>&nbsp;<span><img style=\"vertical-align:middle\" onClick=\"SwitchState('caseslipcover')\""
+            ." src=\"gfx/dontcare.png\" id=\"caseslipcover_img\"><input type=\"hidden\" name=\"caseslipcover\""
+            ." id=\"caseslipcover_input\" value=\"?\">&nbsp;$lang[SLIPCOVER]</span></td></tr>";
+    }
+    $db->sql_freeresult($res);
 
-	$ratingcombo = '';
-	$sql = "SELECT IF (LOCATE('.',id) = '0',0,SUBSTRING(id,locate('.',id)+1,LENGTH(id)-LOCATE('.',id)))+0 AS locality,rating"
-		." FROM $DVD_TABLE GROUP BY locality,rating ORDER BY locality,rating";
-	$res = $db->sql_query($sql) or die($db->sql_error());
-	if ($db->sql_numrows($res) < 2) {
-		$val = $db->sql_fetchrow($res);
-		$ratingcombo .= "<tr><td align=right>$lang[RATING]:</td><td>$val[rating] (".$lang['LOCALE'.$val['locality']].")</td></tr>";
-	}
-	else {
-		$ratingcombo .= "<tr><td align=right>$lang[RATING]:</td><td><select onChange=\"HandleSelectChange(this)\" name=\"rating\"><option value=\"?\" selected>$lang[CHOOSERDONTCARE]</option>";
-		while ($val = $db->sql_fetchrow($res)) {
-			$ratingcombo .= "<option value=\"$val[locality].$val[rating]\">$val[rating] (".$lang['LOCALE'.$val['locality']].")</option>";
-		}
-		$ratingcombo .= "</select></td></tr>";
-	}
-	$db->sql_freeresult($res);
+    $ratingcombo = '';
+    $sql = "SELECT IF (LOCATE('.',id) = '0',0,SUBSTRING(id,locate('.',id)+1,LENGTH(id)-LOCATE('.',id)))+0 AS locality,rating"
+        ." FROM $DVD_TABLE GROUP BY locality,rating ORDER BY locality,rating";
+    $res = $db->sql_query($sql) or die($db->sql_error());
+    if ($db->sql_numrows($res) < 2) {
+        $val = $db->sql_fetchrow($res);
+        $ratingcombo .= "<tr><td align=right>$lang[RATING]:</td><td>$val[rating] (".$lang['LOCALE'.$val['locality']].")</td></tr>";
+    }
+    else {
+        $ratingcombo .= "<tr><td align=right>$lang[RATING]:</td><td><select onChange=\"HandleSelectChange(this)\" name=\"rating\"><option value=\"?\" selected>$lang[CHOOSERDONTCARE]</option>";
+        while ($val = $db->sql_fetchrow($res)) {
+            $ratingcombo .= "<option value=\"$val[locality].$val[rating]\">$val[rating] (".$lang['LOCALE'.$val['locality']].")</option>";
+        }
+        $ratingcombo .= "</select></td></tr>";
+    }
+    $db->sql_freeresult($res);
 
-	$suppliercombo = '';
-	if (DisplayIfIsPrivateOrAlways($displayplace)) {
-		$res = $db->sql_query("SELECT sid,suppliername FROM $DVD_SUPPLIER_TABLE ORDER BY suppliername") or die($db->sql_error());
-		if ($db->sql_numrows($res) < 2) {
-			$val = $db->sql_fetchrow($res);
-			$suppliercombo .= "<tr><td align=right>$lang[PURCHASEPLACE]:</td><td>$val[suppliername]</td></tr>";
-		}
-		else {
-			$suppliercombo .= "<tr><td align=right>$lang[PURCHASEPLACE]:</td><td><select onChange=\"HandleSelectChange(this)\" name=\"purchaseplace\"><option value=\"?\" selected>$lang[CHOOSERDONTCARE]</option>";
-			while ($val = $db->sql_fetchrow($res)) {
-				$suppliercombo .= "<option value=\"$val[sid]\">$val[suppliername]</option>";
-			}
-			$suppliercombo .= "</select></td></tr>";
-		}
-		$db->sql_freeresult($res);
-	}
+    $suppliercombo = '';
+    if (DisplayIfIsPrivateOrAlways($displayplace)) {
+        $res = $db->sql_query("SELECT sid,suppliername FROM $DVD_SUPPLIER_TABLE ORDER BY suppliername") or die($db->sql_error());
+        if ($db->sql_numrows($res) < 2) {
+            $val = $db->sql_fetchrow($res);
+            $suppliercombo .= "<tr><td align=right>$lang[PURCHASEPLACE]:</td><td>$val[suppliername]</td></tr>";
+        }
+        else {
+            $suppliercombo .= "<tr><td align=right>$lang[PURCHASEPLACE]:</td><td><select onChange=\"HandleSelectChange(this)\" name=\"purchaseplace\"><option value=\"?\" selected>$lang[CHOOSERDONTCARE]</option>";
+            while ($val = $db->sql_fetchrow($res)) {
+                $suppliercombo .= "<option value=\"$val[sid]\">$val[suppliername]</option>";
+            }
+            $suppliercombo .= "</select></td></tr>";
+        }
+        $db->sql_freeresult($res);
+    }
 
-	$watchedby = '';
-	if ($IsPrivate) {
-		$res = $db->sql_query("SELECT u.uid,firstname,lastname,COUNT(id) AS numwatched FROM $DVD_EVENTS_TABLE e, $DVD_USERS_TABLE u WHERE e.uid=u.uid AND eventtype='watched' GROUP BY lastname,firstname") or die($db->sql_error());
-		if ($db->sql_numrows($res) >= 1) {
-			$watchedby .=  "<table cellpadding=3 border=1><tr><th colspan=3>$lang[CHOOSERWATCHEDBY]</th></tr><tr>";
-			$count = 1;
-			while ($val = $db->sql_fetchrow($res)) {
-				if ($count++ % 3 == 1)
-					$watchedby .=  "</tr>\n<tr>";
-				$name = $val['uid'];
-  				$watchedby .=  "<td><img style=\"vertical-align:middle\" onClick=\"SwitchState('watched_$name')\" src=\"gfx/dontcare.png\""
-						." id=\"watched_{$name}_img\"><input type=\"hidden\" name=\"watched_$name\" id=\"watched_{$name}_input\""
-						." value=\"?\">&nbsp;$val[firstname] " . HideName($val['lastname']) . "</td>";
-			}
-			$watchedby .=  "</tr></table>\n";
-		}
-		$db->sql_freeresult($res);
-	}
+    $watchedby = '';
+    if ($IsPrivate) {
+        $res = $db->sql_query("SELECT u.uid,firstname,lastname,COUNT(id) AS numwatched FROM $DVD_EVENTS_TABLE e, $DVD_USERS_TABLE u WHERE e.uid=u.uid AND eventtype='watched' GROUP BY lastname,firstname") or die($db->sql_error());
+        if ($db->sql_numrows($res) >= 1) {
+            $watchedby .=  "<table cellpadding=3 border=1><tr><th colspan=3>$lang[CHOOSERWATCHEDBY]</th></tr><tr>";
+            $count = 1;
+            while ($val = $db->sql_fetchrow($res)) {
+                if ($count++ % 3 == 1)
+                    $watchedby .=  "</tr>\n<tr>";
+                $name = $val['uid'];
+                $watchedby .=  "<td><img style=\"vertical-align:middle\" onClick=\"SwitchState('watched_$name')\" src=\"gfx/dontcare.png\""
+                        ." id=\"watched_{$name}_img\"><input type=\"hidden\" name=\"watched_$name\" id=\"watched_{$name}_input\""
+                        ." value=\"?\">&nbsp;$val[firstname] " . HideName($val['lastname']) . "</td>";
+            }
+            $watchedby .=  "</tr></table>\n";
+        }
+        $db->sql_freeresult($res);
+    }
 
-	$tagtable = '';
-	$res = $db->sql_query("SELECT DISTINCT fullyqualifiedname FROM $DVD_TAGS_TABLE WHERE fullyqualifiedname NOT LIKE 'tabs/%' AND fullyqualifiedname NOT LIKE 'tabs'") or die($db->sql_error());
-	if ($db->sql_numrows($res) >= 1) {
-		$tagtable .= "<table cellpadding=3 border=1><tr><th colspan=3>$lang[TAGS]</th></tr><tr>";
-		$count = 1;
-		while ($val = $db->sql_fetchrow($res)) {
-			if ($count++ % 3 == 1)
-				$tagtable .= "</tr>\n<tr>";
-			$name = urlencode($val['fullyqualifiedname']);
-  			$tagtable .= "<td><img style=\"vertical-align:middle\" onClick=\"SwitchState('tag_$name')\" src=\"gfx/dontcare.png\""
-				." id=\"tag_{$name}_img\"><input type=\"hidden\" name=\"tag_$name\" id=\"tag_{$name}_input\""
-				." value=\"?\">&nbsp;$val[fullyqualifiedname]</td>\n";
-		}
-		$tagtable .= "</tr></table>";
-	}
-	$db->sql_freeresult($res);
+    $tagtable = '';
+    $res = $db->sql_query("SELECT DISTINCT fullyqualifiedname FROM $DVD_TAGS_TABLE WHERE fullyqualifiedname NOT LIKE 'tabs/%' AND fullyqualifiedname NOT LIKE 'tabs'") or die($db->sql_error());
+    if ($db->sql_numrows($res) >= 1) {
+        $tagtable .= "<table cellpadding=3 border=1><tr><th colspan=3>$lang[TAGS]</th></tr><tr>";
+        $count = 1;
+        while ($val = $db->sql_fetchrow($res)) {
+            if ($count++ % 3 == 1)
+                $tagtable .= "</tr>\n<tr>";
+            $name = urlencode($val['fullyqualifiedname']);
+            $tagtable .= "<td><img style=\"vertical-align:middle\" onClick=\"SwitchState('tag_$name')\" src=\"gfx/dontcare.png\""
+                ." id=\"tag_{$name}_img\"><input type=\"hidden\" name=\"tag_$name\" id=\"tag_{$name}_input\""
+                ." value=\"?\">&nbsp;$val[fullyqualifiedname]</td>\n";
+        }
+        $tagtable .= "</tr></table>";
+    }
+    $db->sql_freeresult($res);
 
-	echo <<<EOT
+    echo <<<EOT
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
@@ -291,18 +291,18 @@ EOT;
 <link rel="stylesheet" type="text/css" href="format.css.php">
 <script type="text/javascript">
 function $(obj) {
-	return(document.getElementById(obj));
+    return(document.getElementById(obj));
 }
 
 function IsANumber(obj) {
-	if (obj.value != '?') {
-		if (/^\d+$/.test(obj.value) == false) {
-			alert('"' + obj.value + '" is not a number. Please enter a number of minutes.');
-			obj.focus();
-			return(false);
-		}
-	}
-	return(true);
+    if (obj.value != '?') {
+        if (/^\d+$/.test(obj.value) == false) {
+            alert('"' + obj.value + '" is not a number. Please enter a number of minutes.');
+            obj.focus();
+            return(false);
+        }
+    }
+    return(true);
 }
 
 function ValidateThenSubmit() {
@@ -311,95 +311,95 @@ var theform=$('search_form');
 // Check number of genres
 $valgen
 
-	if (genrecount > 5) {
-		alert('There can be no more than 5 genres selected');
-		return(false);
-	}
+    if (genrecount > 5) {
+        alert('There can be no more than 5 genres selected');
+        return(false);
+    }
 
-	if (IsANumber(document.getElementsByName('rtimelower')[0]) == false)
-		return(false);
-	if (IsANumber(document.getElementsByName('rtimehigher')[0]) == false)
-		return(false);
+    if (IsANumber(document.getElementsByName('rtimelower')[0]) == false)
+        return(false);
+    if (IsANumber(document.getElementsByName('rtimehigher')[0]) == false)
+        return(false);
 
 // Made it!
-	return(true);
+    return(true);
 }
 
 function HandleTextChange(textobj) {
-	if (textobj.value != '')
-		textobj.style.backgroundColor = '$ChangedColor';
-	else
-		textobj.style.backgroundColor = '';
+    if (textobj.value != '')
+        textobj.style.backgroundColor = '$ChangedColor';
+    else
+        textobj.style.backgroundColor = '';
 }
 
 function HandleSelectChange(selectobj) {
-	if (selectobj.selectedIndex != 0)
-		selectobj.style.backgroundColor = '$ChangedColor';
-	else
-		selectobj.style.backgroundColor = '';
+    if (selectobj.selectedIndex != 0)
+        selectobj.style.backgroundColor = '$ChangedColor';
+    else
+        selectobj.style.backgroundColor = '';
 }
 
 function ResetToDontCare() {
 var theform=$('search_form');
 
-	for (i=0; i<theform.elements.length; i++) {
-		switch (theform.elements[i].type) {
-		case 'select-one':
-		case 'text':
-			theform.elements[i].style.backgroundColor = '';
-			break;
-		case 'hidden':
-			theform.elements[i].value = '?';
-			$(theform.elements[i].id.replace('_input', '_img')).src = "gfx/dontcare.png";
-			theform.elements[i].parentNode.style.backgroundColor = '';
-			break;
-		default:
-			break;
-		}
-	}
+    for (i=0; i<theform.elements.length; i++) {
+        switch (theform.elements[i].type) {
+        case 'select-one':
+        case 'text':
+            theform.elements[i].style.backgroundColor = '';
+            break;
+        case 'hidden':
+            theform.elements[i].value = '?';
+            $(theform.elements[i].id.replace('_input', '_img')).src = "gfx/dontcare.png";
+            theform.elements[i].parentNode.style.backgroundColor = '';
+            break;
+        default:
+            break;
+        }
+    }
 }
 
 function FixIFrame() {
 var InMenu='0';
-	if (window.name == 'entry')
-		InMenu = '1';
-	$('search_form').action = "Picker.php?InMenu="+InMenu;
-	$('theiframe').src = "Picker.php?InMenu="+InMenu;
+    if (window.name == 'entry')
+        InMenu = '1';
+    $('search_form').action = "Picker.php?InMenu="+InMenu;
+    $('theiframe').src = "Picker.php?InMenu="+InMenu;
 }
 
 function SwitchState(obj) {
-	switch ($(obj+"_input").value) {
-	case "-1":
-		$(obj+"_input").value = '?';
-		$(obj+"_img").src = "gfx/dontcare.png";
-		$(obj+"_img").parentNode.style.backgroundColor = '';
-		break;
-	case "?":
-		$(obj+"_input").value = 1;
-		$(obj+"_img").src = "gfx/wantit.png";
-		$(obj+"_img").parentNode.style.backgroundColor = '$ChangedColor';
-		break;
-	case "1":
-		$(obj+"_input").value = -1;
-		$(obj+"_img").src = "gfx/dontwantit.png";
-		$(obj+"_img").parentNode.style.backgroundColor = '$ChangedColor';
-		break;
-	}
+    switch ($(obj+"_input").value) {
+    case "-1":
+        $(obj+"_input").value = '?';
+        $(obj+"_img").src = "gfx/dontcare.png";
+        $(obj+"_img").parentNode.style.backgroundColor = '';
+        break;
+    case "?":
+        $(obj+"_input").value = 1;
+        $(obj+"_img").src = "gfx/wantit.png";
+        $(obj+"_img").parentNode.style.backgroundColor = '$ChangedColor';
+        break;
+    case "1":
+        $(obj+"_input").value = -1;
+        $(obj+"_img").src = "gfx/dontwantit.png";
+        $(obj+"_img").parentNode.style.backgroundColor = '$ChangedColor';
+        break;
+    }
 }
 function ManageRT(obj, inout) {
-	if (inout == 'in') {
-		if (obj.value == '?') {
-			obj.value = '';
-		}
-	}
-	else if (inout == 'out') {
-		if (obj.value == '' || obj.value == '?') {
-			obj.value = '?';
-			obj.style.backgroundColor = '';
-		}
-		else
-			obj.style.backgroundColor = '$ChangedColor';
-	}
+    if (inout == 'in') {
+        if (obj.value == '?') {
+            obj.value = '';
+        }
+    }
+    else if (inout == 'out') {
+        if (obj.value == '' || obj.value == '?') {
+            obj.value = '?';
+            obj.style.backgroundColor = '';
+        }
+        else
+            obj.style.backgroundColor = '$ChangedColor';
+    }
 }
 </script>
 </head>

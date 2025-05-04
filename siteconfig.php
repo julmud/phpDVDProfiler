@@ -1,7 +1,7 @@
 <?php
 
 if (!defined('IN_SCRIPT')) {
-	die('This script should not be manually executed ... Possible Hacking attempt');
+    die('This script should not be manually executed ... Possible Hacking attempt');
 }
 
 /*
@@ -18,15 +18,15 @@ if (!defined('IN_SCRIPT')) {
 // $usetemptable will speed up statistics calculation on updates. It requires that the mysql user
 // that the update runs as be allowed to create temporary tables (and that the db support that).
 // This may require the database administrator to GRANT CREATE TEMPORARY TABLES on db.* to dbuser
-$dbtype			= 'mysqli';
-$dbhost			= 'localhost';
-$dbuser			= 'admin';
-$dbpasswd		= 'admin';
-$dbname			= 'phpdvdprofiler';
-$dbport			= '';	// leave blank if on default port
-$table_prefix		= 'DVDPROFILER_';
-$force_cleanup		= false;
-$usetemptable		= false;
+$dbtype         = 'mysqli';
+$dbhost         = 'localhost';
+$dbuser         = 'admin';
+$dbpasswd       = 'admin';
+$dbname         = 'phpdvdprofiler';
+$dbport         = '';   // leave blank if on default port
+$table_prefix       = 'DVDPROFILER_';
+$force_cleanup      = false;
+$usetemptable       = false;
 
 // New (3.7.2.2) update mechanism
 //
@@ -77,7 +77,7 @@ $usetemptable		= false;
 // NOTE: the new automatic update ignores this value: it always starts out with this set
 // to true, and if it determines that the update is failing consistantly, then it resets
 // it to false for further attempts.
-$db_fast_update		= true;
+$db_fast_update     = true;
 
 // $displayfreq controls how frequently the "Updated xxx profiles" message appears. It defaults
 // to 100, although it may be more interesting for it to be smaller on slow machines. Set it
@@ -87,7 +87,7 @@ $displayfreq = 100;
 // This variable, if set to true, will cause the program to try to find old-style-named image
 // files if the new-style-named images don't exist. This could make it a little easier to
 // migrate from V2 to V3
-$try_prev3_images	= false;
+$try_prev3_images   = false;
 
 // Change these next two lines to your Invelos ID, and the URL of your phpdvdprofiler website
 // It ignores is_private and goes directly off of handleadult. Only if you always allow adult does
@@ -98,17 +98,17 @@ $try_prev3_images	= false;
 // **NOTE** Set $collectionurl to the public url for your collection. However, if your collection won't
 // **NOTE** be publicly available, still set it, but set it to 'http://localhost/phpdvdprofiler/'
 //
-//$forumuser		= 'FredLooks';				// Change this to your username on the Invelos Website
-//$forumuser		= 'UsernameMustBeCustomizedHere';	// Change this to your username on the Invelos Website
-$forumuser		= '';
-//$collectionurl	= 'http://localhost/phpdvdprofiler/';	// with trailing '/' without terminal 'index.php'
-$collectionurl		= '';
+//$forumuser        = 'FredLooks';              // Change this to your username on the Invelos Website
+//$forumuser        = 'UsernameMustBeCustomizedHere';   // Change this to your username on the Invelos Website
+$forumuser      = '';
+//$collectionurl    = 'http://localhost/phpdvdprofiler/';   // with trailing '/' without terminal 'index.php'
+$collectionurl      = '';
 // Set $forceimageupdate to true (best in localsiteconfig.php) to force a complete image update to ajm's site
-//$forceimageupdate	= true;
+//$forceimageupdate = true;
 
 // This variable makes the word "for" in the nav pane into a link which can be used to debug
 // Javascript, or to check the setting for the screen width.
-$debugon		= true;
+$debugon        = true;
 
 // Here (or more appropriately in localsiteconfig.php) you could configure awstats support. The
 // PHP variable $endbody is defined as '</body>'. To make awstats apply you could define it to be:
@@ -125,42 +125,42 @@ $debugon		= true;
 // serves the same purpose in the profiles-by-purchaseplace graph.
 // genremax controls how many segments are in the genre pie chart.
 
-//$usejpgraph		= true;
-$usejpgraph		= false;
-$jpgraphlocation	= '../jpgraph/';
-$localemin		='0.05';
-$placesmin		='0.05';
-$genremax		= 10;
+//$usejpgraph       = true;
+$usejpgraph     = false;
+$jpgraphlocation    = '../jpgraph/';
+$localemin      ='0.05';
+$placesmin      ='0.05';
+$genremax       = 10;
 // Although jpgraph does try to pad scales, sometimes its not perfect.
 // So set this to add some padding to the scales. It's a percentage.
-$jpgrace		= 3;
+$jpgrace        = 3;
 
 // $display[name] controls when potentially private graphs are displayed
 // month, place, currency
 // Set to 1 they obey IsPrivate. Set to 0 they always display.
-$displaymonth		= 1;
-$displayplace		= 1;
-$displaycurrency	= 1;
+$displaymonth       = 1;
+$displayplace       = 1;
+$displaycurrency    = 1;
 
 // The $xxxspecialcondition variables reflects oddities in the data. AJM doesn't want to include any profiles that
 // don't have a purchase place. FredLooks doesn't want to include any profiles with a purchasedate
 // before 01 Jan 2000.
 // Some of the special conditions are used at runtime: when the statistics page is displayed. These include
-// 	$runtimespecialcondition
-// 	$monthspecialprecondition
-// 	$monthspecialcondition
-//	$srpspecialcondition
-// 	$productionyearspecialcondition
+//  $runtimespecialcondition
+//  $monthspecialprecondition
+//  $monthspecialcondition
+//  $srpspecialcondition
+//  $productionyearspecialcondition
 // Others of the special conditions are used at update time: when the database is updated with changes to the collection.
 // These include
-//	$audiospecialcondition
-//	$currencyspecialcondition
-//	$genrespecialcondition
-//	$localespecialcondition
-//	$originspecialcondition
-//	$placespecialcondition
-//	$regionspecialcondition
-//	$shortestspecialcondition
+//  $audiospecialcondition
+//  $currencyspecialcondition
+//  $genrespecialcondition
+//  $localespecialcondition
+//  $originspecialcondition
+//  $placespecialcondition
+//  $regionspecialcondition
+//  $shortestspecialcondition
 
 // $monthspecialcondition is used for purchases by month.
 // Andy's example : - (it was much easier before we moves the supplier to there own table!)
@@ -168,38 +168,38 @@ $displaycurrency	= 1;
 //$monthspecialprecondition       = ", $DVD_SUPPLIER_TABLE ";
 
 // Fred's example :-
-//$monthspecialcondition	= "AND purchasedate > ".my_mktime(0,0,0,1,1,2000);
+//$monthspecialcondition    = "AND purchasedate > ".my_mktime(0,0,0,1,1,2000);
 
-$monthspecialcondition		= '';
-$monthspecialprecondition	= '';
+$monthspecialcondition      = '';
+$monthspecialprecondition   = '';
 
 // $localespecialcondition is used for the purchases-by-locale graph
-//$localespecialcondition	= "AND purchaseplace <> ''";
-$localespecialcondition		= '';
+//$localespecialcondition   = "AND purchaseplace <> ''";
+$localespecialcondition     = '';
 
-//$runtimespecialcondition	= "AND boxparent = ''";		// ignore child profiles
-//$runtimespecialcondition	= "AND boxchild = 0";		// ignore parent profiles
-$runtimespecialcondition	= '';
+//$runtimespecialcondition  = "AND boxparent = ''";     // ignore child profiles
+//$runtimespecialcondition  = "AND boxchild = 0";       // ignore parent profiles
+$runtimespecialcondition    = '';
 
-//$shortestspecialcondition	= "AND runningtime <> 0";
-$shortestspecialcondition	= '';
+//$shortestspecialcondition = "AND runningtime <> 0";
+$shortestspecialcondition   = '';
 
 //$productionyearspecialcondition = "AND productionyear <> '0'";
 $productionyearspecialcondition = "AND productionyear <> '0'";
 
-//$currencyspecialcondition	= "AND purchaseplace <> ''";
-$currencyspecialcondition	= '';
+//$currencyspecialcondition = "AND purchaseplace <> ''";
+$currencyspecialcondition   = '';
 // $currencypriority is for controlling the cost-by-month graph. $onlycurrencypriority says don't
 // show currencies I don't list here. Otherwise, the graphs cycle through all of the available currencies
-//$onlycurrencypriority		= false;
-//$currencypriority[0]		= 'USD';
-//$currencypriority[0]		= 'CAD';
+//$onlycurrencypriority     = false;
+//$currencypriority[0]      = 'USD';
+//$currencypriority[0]      = 'CAD';
 
 // Force form based login on Apache servers instead of Basic HTTP authentification when updating
-$force_formlogin	= 1;
+$force_formlogin    = 1;
 // Login name and password for maintenance
-$update_login		= 'admin';
-$update_pass		= 'admin';
+$update_login       = 'admin';
+$update_pass        = 'admin';
 
 // Variables for gallery.php integration
 // $rows is the maximum number of rows of images per page; default = 20
@@ -209,16 +209,16 @@ $update_pass		= 'admin';
 //    same height. If false, then the image heights will depend on the actual images
 // If $BackGallery is set to true, then a menu item to display a gallery of back covers is added.
 // $thumbqual is the "quality" of the jpeg image created when re-sizing images
-$rows			= 20;
-$cols			= 3;
-$imagewidth		= 150;
-$constantratio		= true;
-$BackGallery		= false;
-$thumbqual		= 80;
+$rows           = 20;
+$cols           = 3;
+$imagewidth     = 150;
+$constantratio      = true;
+$BackGallery        = false;
+$thumbqual      = 80;
 
 // Title for webpages
-//$sitetitle		= "Fred's DVD Collection";
-$sitetitle		= "My DVD Collection";
+//$sitetitle        = "Fred's DVD Collection";
+$sitetitle      = "My DVD Collection";
 // If you want different text for your site's title depending on the translation you are using, you
 // can create additional variables, eg.
 // $sitetitle_translation['ru'] = "My Russian title string";
@@ -230,8 +230,8 @@ $sitetitle		= "My DVD Collection";
 // will load faster. Note that the actual number of titles that will appear on a page may vary. This variable
 // only really controls the number of top-level titles that appear on a page; child profiles are not counted
 // for this purpose.
-//$TitlesPerPage	= 50;
-$TitlesPerPage		= 0;
+//$TitlesPerPage    = 50;
+$TitlesPerPage      = 0;
 
 // Meaning of the letter URLs.
 // $lettermeaning = 1 means that when you click on a letter, the current display (either a
@@ -241,84 +241,84 @@ $TitlesPerPage		= 0;
 // $lettermeaning = 0 means that when you click on a letter, the current display (either a
 // search, or the current collection) will be displayed ordered by the sorttitle, starting
 // at the selected letter and continuing to the end, or to $TitlesPerPage titles.
-$lettermeaning		= 0;
+$lettermeaning      = 0;
 
 // Colornames
 // set $colornames=true to switch on, and set $colorfirst, $colormiddle, $colorlast to customize colors
-//$colornames		= true;
-//$colorfirst		= '#000070';
-//$colormiddle		= '#700000';
-//$colorlast		= '#007000';
+//$colornames       = true;
+//$colorfirst       = '#000070';
+//$colormiddle      = '#700000';
+//$colorlast        = '#007000';
 
 // Deprecated. Use variable $InitialRightFrame, below.
 // Display statistics page when initially loading site
 // Choices are:
 //   true - Display statistics page every time main frame is refreshed
 //  false - Display a selected DVD on main frame refresh
-//$StatisticsOnFrameInit	= false;
+//$StatisticsOnFrameInit    = false;
 
 // What to display in right-hand frame when initially loading site
 // Currently legal values are:
-//$InitialRightFrame = 'Statistics';	// Causes the Statistics page to be displayed
-//$InitialRightFrame = 'Front Gallery';	// Causes the Front Cover gallery to be displayed
-//$InitialRightFrame = 'Back Gallery';	// Causes the Back Cover gallery to be displayed
-$InitialRightFrame = '';		// Default. Causes the first profile in the menu to be displayed.
+//$InitialRightFrame = 'Statistics';    // Causes the Statistics page to be displayed
+//$InitialRightFrame = 'Front Gallery'; // Causes the Front Cover gallery to be displayed
+//$InitialRightFrame = 'Back Gallery';  // Causes the Back Cover gallery to be displayed
+$InitialRightFrame = '';        // Default. Causes the first profile in the menu to be displayed.
 // All other values are equivalent to the default.
 // In index.php, one can select the initial DVD to be displayed. There are several examples.
 // Look for the string ' $sql = "SELECT ' to locate the spot ...
 
 // Number of items in the Top "10" list
-$TopX			= 10;
+$TopX           = 10;
 
 // Width of the nav/menu frames, in pixels. One for screen resolutions of 800 or less and
 // one for resolutions greater than 800
 // **** Note that widthle800 has been deprecated. The code no longer distinguishes screens
 // **** less than 800 pixels
 // The $allow variable (true or false) lets visitors configure the width of the columns for their own view
-//$widthle800		= 275;
-$widthgt800		= 474;
-$allowwidths		= true;
+//$widthle800       = 275;
+$widthgt800     = 474;
+$allowwidths        = true;
 
 // Allowing display and search of locks on DVDs.
 // Choices are:
 //   0 - Allow lock icons to be displayed and searched for
 //   1 - Allow lock icons to be displayed and searched for if IsPrivate
 //   2 - Do NOT allow lock icons to be displayed or searched for
-$searchlocks		= 0;
+$searchlocks        = 0;
 
 // Allowing searches of tags in the collection
 // Choices are:
 //   0 - Allow tags to be searched
 //   1 - Allow tags to be searched if IsPrivate
 //   2 - Do NOT allow tags to be searched
-$searchtags		= 0;
+$searchtags     = 0;
 
 // Allowing display of tags in the collection
 // Choices are:
 //   0 - Allow tags to be displayed
 //   1 - Allow tags to be displayed if IsPrivate
 //   2 - Do NOT allow tags to be displayed
-$displaytags		= 0;
+$displaytags        = 0;
 
 // Displaying loaned DVDs as a selection in the collection-type drop-down list
 // Choices are:
 //   0 - Display loaned as selection
 //   1 - Display loaned as selection if IsPrivate
 //   2 - Never Display loaned as selection
-$displayloaned		= 1;
+$displayloaned      = 1;
 
 // Display of Notes field.
 // Choices are:
 //   true - Display only if IsPrivate
 //  false - Always display
-$PrivateNotes		= false;
+$PrivateNotes       = false;
 
 // Handling of watched statistics
 // Choices are:
 //   0 - Display Normally
 //   1 - Display if IsPrivate
 //   2 - Never Display
-$handlewatched		= 1;
+$handlewatched      = 1;
 
 // Default sort order for the watched stats
 // sorttitle, runningtime and timestamp are the real choices.
@@ -335,28 +335,28 @@ $maxthumbs = 10;
 //   0 - Display but default to hidden
 //   1 - Display but default to displayed
 //   2 - Never Display
-$lastlist		= 1;
-$mostlist		= 0;
-$bestlist		= 0;
-$worstlist		= 0;
+$lastlist       = 1;
+$mostlist       = 0;
+$bestlist       = 0;
+$worstlist      = 0;
 
 // Handling of titles containing the genre "Adult"
 // Choices are:
 //   0 - Display Normally
 //   1 - Display if IsPrivate
 //   2 - Never Display
-$handleadult		= 0;
+$handleadult        = 0;
 
 // Handling of Notes containing sound files
 // Choices are:
 //   0 - Play Sounds
 //   1 - Play Sounds if IsPrivate
 //   2 - Never Play Sounds
-$playsounds		= 1;
+$playsounds     = 1;
 
 // What to do with TABS. If 'removetabs' is set to 1, anything with a 'TAB' is removed
 // from the standard collection types 'owned', 'ordered' & 'wishlist'.
-$removetabbed		= 0;
+$removetabbed       = 0;
 
 // XML import into phpDVDProfiler
 //
@@ -365,14 +365,14 @@ $removetabbed		= 0;
 // The text is localised to the language selected at the time that the XML is exported.
 // $FixBadXML handles a problem where the <Notes> field is truncated in the XML file. It slows the
 // import process by about a factor of 3, so if you don't have this problem, leave this false.
-//$xmlfile		= 'DVDAll.xml';
-$xmlfile		= 'collection.xml';
-$watched		= 'Watched';
-$FixBadXML		= false;
+//$xmlfile      = 'DVDAll.xml';
+$xmlfile        = 'collection.xml';
+$watched        = 'Watched';
+$FixBadXML      = false;
 
 // This controls whether the names of profiles which have boxset contents that are not present in
 // your collection are displayed during the import process. Set to false if you don't care.
-$showbadboxsetnames	= true;
+$showbadboxsetnames = true;
 
 // How cover images are handled
 //   0 = no cover thumbs
@@ -386,15 +386,15 @@ $showbadboxsetnames	= true;
 // and $img_webpathb differently for front and rear covers.
 // The purpose of value 3 is for someone who is using a web-space provider for this program that cannot serve
 // images from that server.
-$getimages		= 1;
+$getimages      = 1;
 
 // Images paths
-$img_physpath		= 'images/';	// Path on filesystem
-$img_webpath		= 'images/';	// Path on webserver
+$img_physpath       = 'images/';    // Path on filesystem
+$img_webpath        = 'images/';    // Path on webserver
 # Setting imagecachedir and ensuring the permission on it is 777 means that the webserver can create
 # tiny thumbnail images and only send those rather than sending normal thumbnails and
 # letting the browser resize them. Therefore less data is sent over the internet.
-$imagecachedir 		= "imagecache/";
+$imagecachedir      = "imagecache/";
 
 // Episode replacements. These are to support the excellent work done putting episode guides into the database.
 // The episode guides are HTML, and to make them look nice we need to map the paths for images and sound files
@@ -403,26 +403,26 @@ $imagecachedir 		= "imagecache/";
 // that the strings are case-sensitive, so put one for each variant in case. The variable $pcre_episode_replacements
 // behaves the same as the other, except regular expressions are used. If both variables are defined, then the
 // $pcre_episode_replacements is done first.
-$episode_replacements	= array(
-	'C:\\Program Files\\Intervocative Software\\DVD Profiler\\epg\\',
-	'..\\epg\\',
-	'../epg/'
+$episode_replacements   = array(
+    'C:\\Program Files\\Intervocative Software\\DVD Profiler\\epg\\',
+    '..\\epg\\',
+    '../epg/'
 );
-$pcre_episode_replacements	= array(
-	'@C:[/\\\\]Program Files[/\\\\]Intervocative Software[/\\\\]DVD Profiler[/\\\\]epg[/\\\\]@i',
-	'@\.\.[/\\\\]epg[/\\\\]@i',
-	'@c:[/\\\\]DVDPro[/\\\\]epg[/\\\\]@i'
+$pcre_episode_replacements  = array(
+    '@C:[/\\\\]Program Files[/\\\\]Intervocative Software[/\\\\]DVD Profiler[/\\\\]epg[/\\\\]@i',
+    '@\.\.[/\\\\]epg[/\\\\]@i',
+    '@c:[/\\\\]DVDPro[/\\\\]epg[/\\\\]@i'
 );
-$img_episode		= 'epg/';	// Path to images, etc. for episode guides
+$img_episode        = 'epg/';   // Path to images, etc. for episode guides
 
-$local_lan = array(	// Set this to the IP nets that you want to consider to be local
-//	"10.0.0.",
-	"127.0.0.1",	// for people who are on this machine
-	"192.168.1."
+$local_lan = array( // Set this to the IP nets that you want to consider to be local
+//  "10.0.0.",
+    "127.0.0.1",    // for people who are on this machine
+    "192.168.1."
 );
 
 // Value for the range of collection numbers between "headers". A value of 0 means no headings.
-$colnorange		= 25;
+$colnorange     = 25;
 
 /*
 // Potentially viewer-configurable settings
@@ -434,8 +434,8 @@ $colnorange		= 25;
 //   1 - Sort by role
 //   2 - use order found in database (should be same as DVDProfiler shows)
 // The $allow variable (true or false) lets visitors configure this field for their own view
-$actorsort		= 2;
-$allowactorsort		= true;
+$actorsort      = 2;
+$allowactorsort     = true;
 
 // Value for the second and third columns -- Choices are:
 //  'productionyear'
@@ -448,27 +448,27 @@ $allowactorsort		= true;
 //  'collectionnumber'
 //  'none'  -- disables the column entirely
 // The $allow variable (true or false) lets visitors configure this field for their own view
-//$secondcol		= 'released';
-//$thirdcol		= 'collectionnumber';
-$secondcol		= 'genres';
-$allowsecondcol		= true;
+//$secondcol        = 'released';
+//$thirdcol     = 'collectionnumber';
+$secondcol      = 'genres';
+$allowsecondcol     = true;
 
-$thirdcol		= 'purchasedate';
-$allowthirdcol		= true;
+$thirdcol       = 'purchasedate';
+$allowthirdcol      = true;
 
 // Default sort -- Choices are 'firstcol', 'secondcol', or 'thirdcol', meaning that the default
 // sort will be on the values of the first, second or third column in the nav menu
 // The $allow variable (true or false) lets visitors configure this field for their own view
-//$defaultsorttype	= 'firstcol';
-$defaultsorttype	= 'thirdcol';
-$allowdefaultsorttype	= true;
+//$defaultsorttype  = 'firstcol';
+$defaultsorttype    = 'thirdcol';
+$allowdefaultsorttype   = true;
 
 // Like DVD Profiler, controls the display of title and originaltitle.
 // Choices are:
 //   0 - Title
 //   1 - Original Title
 //   2 - Title (Original Title)
-$titleorig		= 0;
+$titleorig      = 0;
 
 // Like DVD Profiler, controls the display of title and description.
 // Choices are:
@@ -477,16 +477,16 @@ $titleorig		= 0;
 //   2 - Title: Desc
 //   3 - Title - Desc
 // The $allow variable (true or false) lets visitors configure this field for their own view
-$titledesc		= 1;
-$allowtitledesc		= true;
+$titledesc      = 1;
+$allowtitledesc     = true;
 
 // Whether Box Sets are to be "sticky" (have expandable entries via javascript) (true or false)
 // The $allow variable (true or false) lets visitors configure this field for their own view
 // $expandboxsets controls whether sticky boxsets are expanded by default or not.
-//$stickyboxsets	= false;
-$stickyboxsets		= true;
-$allowstickyboxsets	= true;
-$expandboxsets		= false;
+//$stickyboxsets    = false;
+$stickyboxsets      = true;
+$allowstickyboxsets = true;
+$expandboxsets      = false;
 
 // Skins control the display of the right hand pane. The string 'internal' causes the internal
 // skin to be used. Other skins should be located in the skins directory, in a separate directory
@@ -494,10 +494,10 @@ $expandboxsets		= false;
 // the internal skin). The skins themselves are the result of exporting an HTML file of the DVDProfiler
 // skin of interest. Any images in the skin should be put into the directory with the HTML file.
 // $allowskins controls whether the viewer is allowed to change skins.
-//$skinloc		= 'skins/phpDVDProfiler_Skin';
-//$skinfile		= 'phpDVDProfiler Skin.html';
-$allowskins		= true;
-$skinfile		= 'internal';
+//$skinloc      = 'skins/phpDVDProfiler_Skin';
+//$skinfile     = 'phpDVDProfiler Skin.html';
+$allowskins     = true;
+$skinfile       = 'internal';
 
 // Control display of reviews
 // DVDProfiler has an options section that allows users to customise how reviews are displayed.
@@ -509,21 +509,21 @@ $skinfile		= 'internal';
 // in which the reviews are to be displayed/sorted. The full DVDProfiler graph would correspond to
 // $reviewgraph='FVAE'. DVDProfiler has two additional settings: Default, which is equivalent
 // to $reviewgraph='FV' and one called Simple, which is the same as $reviewgraph='F'.
-//$reviewgraph		= 'FVAE';
-$reviewgraph		= 'FV';
-//$reviewsort		= 'VFA';
-$reviewsort		= 'FV';
+//$reviewgraph      = 'FVAE';
+$reviewgraph        = 'FV';
+//$reviewsort       = 'VFA';
+$reviewsort     = 'FV';
 // $SeparateReviews controls whether reviews are shown as an image representing the score, or
 // as a graph, the way that DVDProfiler does it in the windows application
-$SeparateReviews	= true;
+$SeparateReviews    = true;
 
 // Control display of large images
 // Choices are:
 //   false - large images appear in the right-hand frame
 //   true  - large images appear in a separate browser window
 // The $allow variable (true or false) lets visitors configure this field for their own view
-$popupimages		= false;
-$allowpopupimages	= true;
+$popupimages        = false;
+$allowpopupimages   = true;
 
 // This variable mimics the DVDProfiler option Display Notes as HTML. Default is true
 // for backward compatibility
@@ -545,10 +545,10 @@ $DisplayNotesAsHTML = true;
 //$Highlight['loaned']['close'] = '</del></i>';
 //$Highlight['overdue']['open'] = '<b>';
 //$Highlight['overdue']['close'] = '</b>';
-//$Highlight_Last_N_Days = 14;		// Highlight profiles recent in the last 14 days
+//$Highlight_Last_N_Days = 14;      // Highlight profiles recent in the last 14 days
 //$Highlight['last_n_days']['open'] = '<b>';
 //$Highlight['last_n_days']['close'] = '</b>';
-//$Highlight_Last_X_PurchaseDates = 5;		// Highlight profiles purchased in the last 5 acquisitions
+//$Highlight_Last_X_PurchaseDates = 5;      // Highlight profiles purchased in the last 5 acquisitions
 // The system can store up to the last 22 purchasedates, so any value of $Highlight_Last_X_PurchaseDates
 // larger than that will be the same as $Highlight_Last_X_PurchaseDates = 22;
 //$Highlight['last_x_purchasedates']['open'] = '<span style="font-variant: small-caps">';
@@ -556,22 +556,22 @@ $DisplayNotesAsHTML = true;
 
 // Default language to use. This also controls date formats via the system's locale settings
 // Currently supported languages include:
-// 	Dutch  == 'nl'
-// 	English  == 'en'
-// 	French == 'fr'
-// 	German == 'de'
-// 	Norwegian  == 'no'
-// 	Swedish  == 'sv'
-//	Finnish == 'fi'
-//	Danish == 'dk'
-//	Russian == 'ru'
+//  Dutch  == 'nl'
+//  English  == 'en'
+//  French == 'fr'
+//  German == 'de'
+//  Norwegian  == 'no'
+//  Swedish  == 'sv'
+//  Finnish == 'fi'
+//  Danish == 'dk'
+//  Russian == 'ru'
 // This requires language files such as lang_de.php. In there there are DATEFORMAT and SHORTDATEFORMAT
 // strings. The format of these strings follows the format of the strftime() functions, see www.php.net
 // NOTE: if month names appear in English when you have chosen another language, please see the
 // notes in global.php. Look for '***** LOCALE Settings ****' for details
 // The $allow variable (true or false) lets visitors configure this field for their own view
-$locale			= 'en';
-$allowlocale		= true;
+$locale         = 'en';
+$allowlocale        = true;
 
 // Language Support
 // The language of the user interface is controlled by the $locale variable mentioned above. This is
@@ -595,7 +595,7 @@ $allowlocale		= true;
 //   0 - Display Icons on every line
 //   1 - Display only icons that are HiDef (Bluray, HD DVD and combos with those)
 //   2 - Don't Display Icons
-$AddFormatIcons		= 2;
+$AddFormatIcons     = 2;
 // One can change the images used by adding an entry such as:
 //$MediaTypes[MEDIA_TYPE_BLURAY]['FormatIcon'] = 'gfx/NewBlurayImage.png';
 //*********** Note that this has changed recently. The above is the new way to do it.

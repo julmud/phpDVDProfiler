@@ -209,9 +209,9 @@ $lang['NEXT'] = "Suivant";
 $lang['PREV'] = "Pr&eacute;c&eacute;dent";
 $lang['PROFILE'] = "R&eacute;sultat";
 $lang['PROFILES'] = "R&eacute;sultats";
-$lang['RESULTINPROFILE'] = " (%d occurence dans %d Profile)";	// 1 Result in 1 profile
-$lang['RESULTSINPROFILE'] = " (%d occurences in %d Profile)";	// >1 Results in 1 profile
-$lang['RESULTSINPROFILES'] = " (%d occurences in %d Profiles)";	// >1 results in >1 Profiles
+$lang['RESULTINPROFILE'] = " (%d occurence dans %d Profile)";   // 1 Result in 1 profile
+$lang['RESULTSINPROFILE'] = " (%d occurences in %d Profile)";   // >1 Results in 1 profile
+$lang['RESULTSINPROFILES'] = " (%d occurences in %d Profiles)"; // >1 results in >1 Profiles
 $lang['SKINNAME'] = "Current Skin Name";
 
 $lang['EVENTS'] = "Ev&eacute;nements";
@@ -329,8 +329,8 @@ $lang['GENRELIST']['DRAMA'] = "Drame";
 $lang['GENRELIST']['FAMILY'] = "Famille";
 $lang['GENRELIST']['FANTASY'] = "Fantaisie";
 $lang['GENRELIST']['FILMNOIR'] = "Film Noir";
-if (!isset($db_fast_update))		// Foreign is only for pre-v3. $db_fast_update exists only v3 and later
-	$lang['GENRELIST']['FOREIGN'] = "Etranger";
+if (!isset($db_fast_update))        // Foreign is only for pre-v3. $db_fast_update exists only v3 and later
+    $lang['GENRELIST']['FOREIGN'] = "Etranger";
 $lang['GENRELIST']['HORROR'] = "Horreur";
 $lang['GENRELIST']['MARTIALARTS'] = "Arts martiaux";
 $lang['GENRELIST']['MUSIC'] = "Musique";

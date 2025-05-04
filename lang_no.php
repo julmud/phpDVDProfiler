@@ -209,9 +209,9 @@ $lang['NEXT'] = "Neste";
 $lang['PREV'] = "Forrige";
 $lang['PROFILE'] = "Resultat";
 $lang['PROFILES'] = "Resultater";
-$lang['RESULTINPROFILE'] = " (%d Result in %d Profile)";	// 1 Result in 1 profile
-$lang['RESULTSINPROFILE'] = " (%d Results in %d Profile)";	// >1 Results in 1 profile
-$lang['RESULTSINPROFILES'] = " (%d Results in %d Profiles)";	// >1 results in >1 Profiles
+$lang['RESULTINPROFILE'] = " (%d Result in %d Profile)";    // 1 Result in 1 profile
+$lang['RESULTSINPROFILE'] = " (%d Results in %d Profile)";  // >1 Results in 1 profile
+$lang['RESULTSINPROFILES'] = " (%d Results in %d Profiles)";    // >1 results in >1 Profiles
 $lang['SKINNAME'] = "N&aring;v&aelig;rende utseende";
 
 $lang['EVENTS'] = "Hendelser";
@@ -329,8 +329,8 @@ $lang['GENRELIST']['DRAMA'] = "Drama";
 $lang['GENRELIST']['FAMILY'] = "Familie";
 $lang['GENRELIST']['FANTASY'] = "Fantasi";
 $lang['GENRELIST']['FILMNOIR'] = "Film Noir";
-if (!isset($db_fast_update))		// Foreign is only for pre-v3. $db_fast_update exists only v3 and later
-	$lang['GENRELIST']['FOREIGN'] = "Utenlandsk";
+if (!isset($db_fast_update))        // Foreign is only for pre-v3. $db_fast_update exists only v3 and later
+    $lang['GENRELIST']['FOREIGN'] = "Utenlandsk";
 $lang['GENRELIST']['HORROR'] = "Skrekk";
 $lang['GENRELIST']['MARTIALARTS'] = "Kampsport";
 $lang['GENRELIST']['MUSIC'] = "Musikk";
