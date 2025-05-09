@@ -330,7 +330,7 @@ function site_header (){
             //$tmp = $ct;
             break;
     }
-    $stxt = stripslashes(stripslashes($searchtext));
+    $stxt = htmlentities(stripslashes(stripslashes($searchtext)));
     switch ($searchby) {
         case '':
             $search = '';
@@ -449,6 +449,22 @@ function get_total_profiles($sql){
     return $total;
 }
 
+function buildPaginationURL($i, $mediaid, $ct, $searchby, $searchtext, $sortby, $order, $on_page, $text = null) {
+    GLOBAL $PHP_SELF;
+    $disp['i'] = htmlentities($i);
+    $disp['mediaid'] = htmlentities($mediaid);
+    $disp['ct'] = htmlentities($ct);
+    $disp['searchby'] = htmlentities($searchby);
+    $disp['searchtext'] = htmlentities($searchtext);
+    $disp['sortby'] = htmlentities($sortby);
+    $disp['order'] = htmlentities($order);
+    $disp['text'] = htmlentities($text == null ? $i : $text);
+
+    return ( $i == $on_page ) ? "<b>" . $disp['i'] . "</b>" : "<a href=\"".$PHP_SELF."?mediaid=".$disp['mediaid'].
+    "&amp;action=show&amp;page=".$disp['i']."&amp;ct=".$disp['ct']."&amp;searchby=".$disp['searchby']."&amp;searchtext=".
+    $disp['searchtext']."&amp;sort=".$disp['sortby']."&amp;order=".$disp['order']."\">" . $disp['text'] . "</a>";
+}
+
 function generate_pagination($num_items, $per_page, $start_item, $add_prevnext_text = TRUE){
     GLOBAL $PHP_SELF, $sortby, $order, $searchby, $searchtext, $letter, $ct, $mediaid, $page;
     $total_pages = ceil($num_items/$per_page);
@@ -465,7 +481,7 @@ function generate_pagination($num_items, $per_page, $start_item, $add_prevnext_t
 
         for($i = 1; $i < $init_page_max + 1; $i++)
         {
-            $page_string .= ( $i == $on_page ) ? "<b>" . $i . "</b>" : "<a href=\"".$PHP_SELF."?mediaid=".$mediaid."&amp;action=show&amp;page=".$i."&amp;ct=".$ct."&amp;searchby=".$searchby."&amp;searchtext=".$searchtext."&amp;sort=".$sortby."&amp;order=".$order."\">" . $i . "</a>";
+            $page_string .= buildPaginationURL($i, $mediaid, $ct, $searchby, $searchtext, $sortby, $order, $on_page);
             if ( $i <  $init_page_max )
             {
                 $page_string .= " |\n ";
@@ -483,7 +499,7 @@ function generate_pagination($num_items, $per_page, $start_item, $add_prevnext_t
 
                 for($i = $init_page_min - 1; $i < $init_page_max + 2; $i++)
                 {
-                    $page_string .= ($i == $on_page) ? "<b>" . $i . "</b>" : "<a href=\"".$PHP_SELF."?mediaid=".$mediaid."&amp;action=show&amp;page=".$i."&amp;ct=".$ct."&amp;searchby=".$searchby."&amp;searchtext=".$searchtext."&amp;sort=".$sortby."&amp;order=".$order."\">" . $i . "</a>";
+                    $page_string .= buildPaginationURL($i, $mediaid, $ct, $searchby, $searchtext, $sortby, $order, $on_page);
                     if ( $i <  $init_page_max + 1 )
                     {
                         $page_string .= " |\n ";
@@ -499,7 +515,7 @@ function generate_pagination($num_items, $per_page, $start_item, $add_prevnext_t
 
             for($i = $total_pages - 2; $i < $total_pages + 1; $i++)
             {
-                $page_string .= ( $i == $on_page ) ? "<b>" . $i . "</b>" : "<a href=\"".$PHP_SELF."?mediaid=".$mediaid."&amp;action=show&amp;page=".$i."&amp;ct=".$ct."&amp;searchby=".$searchby."&amp;searchtext=".$searchtext."&amp;sort=".$sortby."&amp;order=".$order."\">" . $i . "</a>";
+                $page_string .= buildPaginationURL($i, $mediaid, $ct, $searchby, $searchtext, $sortby, $order, $on_page);
                 if( $i <  $total_pages )
                 {
                     $page_string .= " |\n ";
@@ -511,7 +527,7 @@ function generate_pagination($num_items, $per_page, $start_item, $add_prevnext_t
     {
         for($i = 1; $i < $total_pages + 1; $i++)
         {
-            $page_string .= ( $i == $on_page ) ? "<b>" . $i . "</b>" : "<a href=\"".$PHP_SELF."?mediaid=".$mediaid."&amp;action=show&amp;page=".$i."&amp;ct=".$ct."&amp;searchby=".$searchby."&amp;searchtext=".$searchtext."&amp;sort=".$sortby."&amp;order=".$order."\">" . $i . "</a>";
+            $page_string .= buildPaginationURL($i, $mediaid, $ct, $searchby, $searchtext, $sortby, $order, $on_page);
             if ( $i <  $total_pages )
             {
                 $page_string .= " |\n ";
@@ -523,12 +539,12 @@ function generate_pagination($num_items, $per_page, $start_item, $add_prevnext_t
     {
         if ( $on_page > 1 )
         {
-            $page_string = "<a href=\"".$PHP_SELF."?mediaid=".$mediaid."&amp;action=show&amp;page=". ($on_page-1) ."&amp;ct=".$ct."&amp;searchby=".$searchby."&amp;searchtext=".$searchtext."&amp;sort=".$sortby."&amp;order=".$order."\">&lt;</a>\n" . $page_string;
+            $page_string = buildPaginationURL($on_page - 1, $mediaid, $ct, $searchby, $searchtext, $sortby, $order, $on_page, '<') . "\n" . $page_string;
         }
 
         if ( $on_page < $total_pages )
         {
-            $page_string .= "\n <a href=\"".$PHP_SELF."?mediaid=".$mediaid."&amp;action=show&amp;page=". ($on_page+1) ."&amp;ct=".$ct."&amp;searchby=".$searchby."&amp;searchtext=".$searchtext."&amp;sort=".$sortby."&amp;order=".$order."\">&gt;</a>";
+            $page_string .= "\n " . buildPaginationURL($on_page + 1, $mediaid, $ct, $searchby, $searchtext, $sortby, $order, $on_page, '>');
         }
 
     }

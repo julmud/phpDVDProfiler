@@ -685,7 +685,7 @@ global $Highlight, $loanlength;
 if (!isset($searchtext)) $searchtext = '';
 $searchtext = rawurldecode($searchtext);
 $searchurl = rawurlencode($searchtext);
-$searchdisp = htmlspecialchars($searchtext, ENT_COMPAT, 'ISO-8859-1');
+$searchdisp = htmlentities($searchtext, ENT_COMPAT, 'ISO-8859-1');
 
 if ($action == 'nav') {
     if (!isset($searchby)) $searchby = '';
@@ -917,7 +917,7 @@ $lockoption
 <option value=mediasubtitles $sel_mediasubtitles>$lang[MEDIASUBTITLES]</option>
 
 EOT;
-    echo "</select> $FOR&nbsp;<input type=text id=\"Textbox\" onKeyup=\"SetVal(this.value)\" value=\"".rawurldecode($searchurl)."\" style=\"width:$inputwidth\">\n";
+    echo "</select> $FOR&nbsp;<input type=text id=\"Textbox\" onKeyup=\"SetVal(this.value)\" value=\"".htmlentities(rawurldecode($searchurl))."\" style=\"width:$inputwidth\">\n";
     echo "<select name=\"Combobox\" id=genre style=\"position:absolute; left:auto; top:auto; width:$inputwidth; visibility:hidden\" onBlur=\"this.style.width='$inputwidth'\" onMouseDown=\"this.style.width='$maxinputwidth'\" onChange=\"this.style.width='$inputwidth';SetVal(this.value)\">\n";
     $sql = "SELECT DISTINCT(genre) FROM $DVD_GENRES_TABLE ORDER BY genre";
     $result = $db->sql_query($sql) or die($db->sql_error());
