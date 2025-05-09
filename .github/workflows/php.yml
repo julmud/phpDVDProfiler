@@ -11,4 +11,4 @@ jobs:
     - uses: actions/checkout@v1
 
     - name: PHP Syntax Checker (Lint)
-      uses: StephaneBour/actions-php-lint@8.2
+      uses: StephaneBour/actions-php-lint@8.4
