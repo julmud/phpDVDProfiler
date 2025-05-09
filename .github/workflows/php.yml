@@ -1,6 +1,6 @@
 name: PHP Syntax Checker
 
-on: [push]
+on: [push,workflow_dispatch]
 
 jobs:
   build:
