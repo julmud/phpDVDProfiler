@@ -771,31 +771,33 @@ global $uclass, $yclass, $ws_month, $usejpgraph, $dolast, $domost, $dobest, $dow
     $uuser = rawurlencode($user);
     $mline = 0;
     $maxmonths = 12;
-    if ($year == date("Y",time()))
+    if ($year == date("Y",time())) {
         $maxmonths = date("m", time());
+    }
 
-        for($mth=$maxmonths;$mth>0;$mth--){
-                $yearmonth = sprintf('%04d-%02d', $year, $mth);
-                $cmd = "SELECT SUM(runningtime) AS runningtime, SUM(1) AS count, e.id FROM $DVD_TABLE d, $DVD_EVENTS_TABLE e ";
+    for ($mth=$maxmonths;$mth>0;$mth--) {
+        $yearmonth = sprintf('%04d-%02d', $year, $mth);
+        $cmd = "SELECT SUM(runningtime) AS runningtime, SUM(1) AS count, e.id FROM $DVD_TABLE d, $DVD_EVENTS_TABLE e ";
         $cmd .= "WHERE e.id=d.id AND e.uid=$uid AND SUBSTRING(timestamp,1,7)='$yearmonth' AND $ws_wb";
-        if (($handleadult == 2) || (($handleadult == 1) && !$IsPrivate))
+        if (($handleadult == 2) || (($handleadult == 1) && !$IsPrivate)) {
             $cmd .= " AND isadulttitle=0";
+        }
 
         $cmd .= " GROUP BY SUBSTRING(timestamp,1,7)";
-                $sql4 = $db->sql_query($cmd) or die($db->sql_error());
+        $sql4 = $db->sql_query($cmd) or die($db->sql_error());
 
-                $murt = 0;
-                $mucnt = 0;
-                $row = $db->sql_fetch_array($sql4);
-                $db->sql_freeresult($sql4);
-                $mrt = $row['runningtime'];
-                $mcnt = $row['count'];
+        $murt = 0;
+        $mucnt = 0;
+        $row = $db->sql_fetch_array($sql4);
+        $db->sql_freeresult($sql4);
+        $mrt = $row == null ? 0 : $row['runningtime'];
+        $mcnt = $row == null ? 0 : $row['count'];
         $mavg = 0;
-        if ($mcnt <> 0) $mavg = intval($mrt / $mcnt);
+        if ($mcnt <> 0) { $mavg = intval($mrt / $mcnt); }
 
-                $days = floor($mrt / 1440);
-                $hours = floor(($mrt - ($days * 1440)) / 60);
-                $mins = $mrt - (($hours * 60) + ($days * 1440));
+        $days = floor($mrt / 1440);
+        $hours = floor(($mrt - ($days * 1440)) / 60);
+        $mins = $mrt - (($hours * 60) + ($days * 1440));
         $dhm = sprintf('%d : %02d : %02d', $days, $hours, $mins);
 
 # Display total month figures
