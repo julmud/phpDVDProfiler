@@ -205,7 +205,7 @@ if ($filter <> "NA" && $filter <> "") {
     case 'castlist':
         $sql="SELECT fullname, birthyear FROM $DVD_COMMON_ACTOR_TABLE WHERE lastname like '" . $db->sql_escape($_GET['alpha']) . "%' OR (lastname='' AND firstname like '" . $db->sql_escape($_GET['alpha']) . "%') " . $AdultFilter . " ORDER BY fullname";
         $result=$db->sql_query($sql);
-        echo "<description>Cast List - " . $_GET['alpha'] . "</description>";
+        echo "<description>Cast List - " . htmlentities($_GET['alpha']) . "</description>";
         while ($tmp = $db->sql_fetch_array($result)) {
             $by="";
             if ($tmp['birthyear'] != 0) $by=" (" . $tmp['birthyear'] . ")";
@@ -233,7 +233,7 @@ if ($filter <> "NA" && $filter <> "") {
     case 'crewlist':
         $sql="SELECT fullname, birthyear FROM $DVD_COMMON_CREDITS_TABLE WHERE lastname like '" . $db->sql_escape($_GET['alpha']) . "%' OR (lastname='' AND firstname like '" . $db->sql_escape($_GET['alpha']) . "%') " . $AdultFilter . " ORDER BY fullname";
         $result=$db->sql_query($sql);
-        echo "<description>Crew List - " . $_GET['alpha'] . "</description>";
+        echo "<description>Crew List - " . htmlentities($_GET['alpha']) . "</description>";
         while ($tmp = $db->sql_fetch_array($result)) {
             $by="";
             if ($tmp['birthyear'] != 0) $by=" (" . $tmp['birthyear'] . ")";
@@ -485,20 +485,19 @@ if ($iPhone <> "" && !isset($_GET['asql']) && $type == "all" && ($filter == "" |
 }
 
 
-if ($rss_report_leafs)
+if ($rss_report_leafs) {
     $rss_report_condition = "boxchild = 0";
-else
+} else {
     $rss_report_condition = "boxparent = ''";
-
-
+}
 
     $alphasql="";
     $alpha="";
     if (isset($_GET['asql'])) $alpha=$_GET['asql'];
     if ($alpha != "") {
-        $alphasql="(sorttitle LIKE '" . substr($alpha,0,1) . "%'";
+        $alphasql="(sorttitle LIKE '" . $db->sql_escape(substr($alpha,0,1)) . "%'";
         for ($loop=1; $loop < strlen($alpha); $loop += 1) {
-            $alphasql.= " OR sorttitle LIKE '" . substr($alpha,$loop,1) . "%'";
+            $alphasql.= " OR sorttitle LIKE '" . $db->sql_escape(substr($alpha,$loop,1)) . "%'";
         }
         $alphasql.=")";
     }
@@ -534,13 +533,13 @@ else
         break;
 
     case 'rating':
-        $rss_feeddescription = "DVDs filtered by Rating: ". $_GET['rating'];
-        $sql = "SELECT $fieldlist FROM $DVD_TABLE dvd WHERE $RemoveNoRSSTagged rating='$_GET[rating]' $AdultFilter AND collectiontype='owned' ORDER BY sorttitle";
+        $rss_feeddescription = "DVDs filtered by Rating: ". htmlentities($_GET['rating']);
+        $sql = "SELECT $fieldlist FROM $DVD_TABLE dvd WHERE $RemoveNoRSSTagged rating='" . $db->sql_escape($_GET['rating']) . "' $AdultFilter AND collectiontype='owned' ORDER BY sorttitle";
         break;
 
     case 'genre':
-        $rss_feeddescription = "DVDs filtered by Genre: ". $_GET['genre'];
-        $sql = "SELECT $fieldlist FROM $DVD_TABLE dvd JOIN $DVD_GENRE_TABLE gen ON dvd.id=gen.id WHERE $RemoveNoRSSTagged genre='$_GET[genre]' $AdultFilter AND collectiontype='owned' ORDER BY sorttitle";
+        $rss_feeddescription = "DVDs filtered by Genre: ". htmlentities($_GET['genre']);
+        $sql = "SELECT $fieldlist FROM $DVD_TABLE dvd JOIN $DVD_GENRE_TABLE gen ON dvd.id=gen.id WHERE $RemoveNoRSSTagged genre='" . $db->sql_escape($_GET['genre']) . "' $AdultFilter AND collectiontype='owned' ORDER BY sorttitle";
         break;
 
     case 'cast':
@@ -550,7 +549,7 @@ else
             ."( "
             ."SELECT count(*) FROM $DVD_ACTOR_TABLE a1, $DVD_COMMON_ACTOR_TABLE a2 "
             ."WHERE id=dvd.id "
-            ."  AND a2.caid=" . $_GET['caid'] . ""
+            ."  AND a2.caid=" . $db->sql_escape($_GET['caid']) . ""
             ."  AND a2.caid=a1.caid "
             .") > 0 "
             ."ORDER BY sorttitle";
@@ -564,44 +563,44 @@ else
             ."SELECT count(*) "
             ."FROM $DVD_CREDITS_TABLE a1, $DVD_COMMON_CREDITS_TABLE a2 "
             ."WHERE id=dvd.id "
-            ."  AND a2.caid=" . $_GET['caid'] . ""
+            ."  AND a2.caid=" . $db->sql_escape($_GET['caid']) . ""
             ."  AND a2.caid=a1.caid "
             .") > 0 "
             ."ORDER BY sorttitle";
         break;
 
     case 'feature':
-        $rss_feeddescription = "DVDs filtered by Feature: ". $_GET['feature'];
-        $sql = "SELECT $fieldlist FROM $DVD_TABLE dvd WHERE $RemoveNoRSSTagged collectiontype='owned' $AdultFilter AND feature$_GET[feature]=1 ORDER BY sorttitle";
+        $rss_feeddescription = "DVDs filtered by Feature: ". htmlentities($_GET['feature']);
+        $sql = "SELECT $fieldlist FROM $DVD_TABLE dvd WHERE $RemoveNoRSSTagged collectiontype='owned' $AdultFilter AND feature" . $db->sql_escape($_GET['feature']). "=1 ORDER BY sorttitle";
         break;
 
     case 'audiocontent':
-        $rss_feeddescription = "DVDs filtered by Audio Content: ". $_GET['audiocontent'];
+        $rss_feeddescription = "DVDs filtered by Audio Content: ". htmlentities($_GET['audiocontent']);
         $sql = "SELECT DISTINCT $fieldlist FROM $DVD_TABLE dvd LEFT JOIN $DVD_AUDIO_TABLE audio ON dvd.id=audio.id WHERE $RemoveNoRSSTagged "
-            ."audio.audiocontent='$_GET[audiocontent]' $AdultFilter AND collectiontype='owned' ORDER BY sorttitle";
+            ."audio.audiocontent='" . $db->sql_escape($_GET['audiocontent']) . "' $AdultFilter AND collectiontype='owned' ORDER BY sorttitle";
         break;
 
     case 'audioformat':
-        $rss_feeddescription = "DVDs filtered by Audio Format: ". $_GET['audioformat'];
+        $rss_feeddescription = "DVDs filtered by Audio Format: ". htmlentities($_GET['audioformat']);
         $sql = "SELECT DISTINCT $fieldlist FROM $DVD_TABLE dvd LEFT JOIN $DVD_AUDIO_TABLE audio ON dvd.id=audio.id WHERE $RemoveNoRSSTagged "
-            ."audio.audioformat='$_GET[audioformat]' $AdultFilter AND collectiontype='owned' ORDER BY sorttitle";
+            ."audio.audioformat='" . $db->sql_escape($_GET['audioformat']) . "' $AdultFilter AND collectiontype='owned' ORDER BY sorttitle";
         break;
 
     case 'subtitle':
-        $rss_feeddescription = "DVDs filtered by Subtitle: ". $_GET['subtitle'];
+        $rss_feeddescription = "DVDs filtered by Subtitle: ". htmlentities($_GET['subtitle']);
         $sql = "SELECT DISTINCT $fieldlist FROM $DVD_TABLE dvd LEFT JOIN $DVD_SUBTITLE_TABLE sub ON dvd.id=sub.id WHERE $RemoveNoRSSTagged "
-            ."sub.subtitle='$_GET[subtitle]' $AdultFilter AND collectiontype='owned' ORDER BY sorttitle";
+            ."sub.subtitle='" . $db->sql_escape($_GET['subtitle']) . "' $AdultFilter AND collectiontype='owned' ORDER BY sorttitle";
         break;
 
     case 'studio':
-        $rss_feeddescription = "DVDs filtered by Studio: ". $_GET['studio'];
+        $rss_feeddescription = "DVDs filtered by Studio: ". htmlentities($_GET['studio']);
         $sql = "SELECT DISTINCT $fieldlist FROM $DVD_TABLE dvd LEFT JOIN $DVD_STUDIO_TABLE stud ON dvd.id=stud.id WHERE $RemoveNoRSSTagged "
-            ."stud.studio='$_GET[studio]' $AdultFilter AND collectiontype='owned' ORDER BY sorttitle";
+            ."stud.studio='" . $db->sql_escape($_GET['studio']) . "' $AdultFilter AND collectiontype='owned' ORDER BY sorttitle";
         break;
 
     case 'loaned':
-        $rss_feeddescription = "DVDs loaned to " . $_GET['loaned'];
-        $sql = "SELECT $fieldlist FROM $DVD_TABLE dvd WHERE $RemoveNoRSSTagged loaninfo='$_GET[loaned]' $AdultFilter AND collectiontype='owned' ORDER BY sorttitle";
+        $rss_feeddescription = "DVDs loaned to " . htmlentities($_GET['loaned']);
+        $sql = "SELECT $fieldlist FROM $DVD_TABLE dvd WHERE $RemoveNoRSSTagged loaninfo='" . $db->sql_escape($_GET['loaned']) . "' $AdultFilter AND collectiontype='owned' ORDER BY sorttitle";
         break;
 
     case 'upcomingreleases':

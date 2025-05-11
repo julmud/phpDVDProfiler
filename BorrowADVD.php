@@ -54,6 +54,7 @@ EOT;
     $onfocus = 'onFocus="this.value=\'\'"';
     if ($_COOKIE['emailaddr'] != $lang['BORROW_PROMPT_STRING'])
         $onfocus = '';
+    $displayEmailaddr = htmlentities($_COOKIE['emailaddr']);
     echo<<<EOT
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -80,7 +81,7 @@ function ValidateForm(form) {
 <center><table width="100%" class=f1><tr><td>$lang[BORROW_PAGE_HEADING] $MY_EMAIL_ADDRESS</td></tr></table></center>
 <BR>
 <center><form action=$PHP_SELF method=post onSubmit="return ValidateForm(this);"><table width="75%" class=f1 cellpadding=5 border=1><tr><td align=right>$lang[BORROW_TITLE]</td><td align=left>$name</td></tr>
-<tr><td align=right>$lang[BORROW_EMAIL]</td><td align=left><input id=emailaddr $onfocus type=text name=emailaddr value="$_COOKIE[emailaddr]"></td></tr></table><br>
+<tr><td align=right>$lang[BORROW_EMAIL]</td><td align=left><input id=emailaddr $onfocus type=text name=emailaddr value="$displayEmailaddr"></td></tr></table><br>
 <input type=hidden name="mediaid" value="$mediaid"><input type=submit value="$lang[BORROW_SUBMIT_TEXT]"></form></center>
 $endbody</html>
 
