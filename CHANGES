@@ -1,4 +1,4 @@
-Unreleased
+Version 20250511 (phpdvdprofiler.20250511.zip)
 Changes since version v_20230807 (phpdvdprofiler.20230807.zip)
     - security: removed XSS using the search function (CVE-2025-46729)
     - fix: some minimal formatting
