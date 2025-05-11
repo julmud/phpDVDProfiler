@@ -48,7 +48,7 @@ function get_children($id,$bs){
 }
 
 function format_addinfo (&$dvd){
-    GLOBAL $lang, $reviewsort, $sortby, $ReviewLabels;
+    global $lang, $reviewsort, $sortby, $ReviewLabels;
 
     if (!isset($dvd['addinfo']) || empty($dvd['addinfo'])) {
         $dvd['addinfo'] = '';
@@ -316,7 +316,7 @@ function css($divheight, $divwidth){
 }
 
 function site_header (){
-    GLOBAL $Title, $lang, $CurrentSiteTitle, $xmlfile, $sql, $dpp, $sortby, $order, $searchby, $searchtext, $letter, $ct, $page;
+    global $Title, $lang, $CurrentSiteTitle, $xmlfile, $sql, $dpp, $sortby, $order, $searchby, $searchtext, $letter, $ct, $page;
     switch ($ct){
         case 'owned':
         case 'ordered':
@@ -417,7 +417,7 @@ function site_header (){
 }
 
 function site_footer(){
-    GLOBAL $sql, $dpp, $PHP_SELF,$_SERVER, $page;
+    global $sql, $dpp, $PHP_SELF,$_SERVER, $page;
     ?>
  </div>
  <div class="f4 noprint" style="background-color: transparent; text-align:center; width: 90%; clear:left;">
@@ -439,7 +439,7 @@ function site_footer(){
 }
 
 function get_total_profiles($sql){
-    GLOBAL $db, $TitlesPerPage;
+    global $db, $TitlesPerPage;
 
     $i = preg_replace('/(.*)(LIMIT)(.*)(,)(.*)/i', '\1', $sql);
 
@@ -450,7 +450,7 @@ function get_total_profiles($sql){
 }
 
 function buildPaginationURL($i, $mediaid, $ct, $searchby, $searchtext, $sortby, $order, $on_page, $text = null) {
-    GLOBAL $PHP_SELF;
+    global $PHP_SELF;
     $disp['i'] = htmlentities($i);
     $disp['mediaid'] = htmlentities($mediaid);
     $disp['ct'] = htmlentities($ct);
@@ -466,7 +466,7 @@ function buildPaginationURL($i, $mediaid, $ct, $searchby, $searchtext, $sortby, 
 }
 
 function generate_pagination($num_items, $per_page, $start_item, $add_prevnext_text = TRUE){
-    GLOBAL $PHP_SELF, $sortby, $order, $searchby, $searchtext, $letter, $ct, $mediaid, $page;
+    global $PHP_SELF, $sortby, $order, $searchby, $searchtext, $letter, $ct, $mediaid, $page;
     $total_pages = ceil($num_items/$per_page);
     if ( $total_pages == 1 )
     {

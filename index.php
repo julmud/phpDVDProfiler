@@ -1354,8 +1354,8 @@ case 'mediasubtitles':                                                  // JMM: 
 $nowhere = str_replace('%%BOXPARENT%%', '', $where);
 
 if ($action == 'main') {
-    $cookiesort = isset($_COOKIE['cookiesort']) ? $_COOKIE['cookiesort']: '';
-    $cookieorder = isset($_COOKIE['cookieorder']) ? $_COOKIE['cookieorder']: '';
+    $cookiesort = isset($_COOKIE['cookiesort']) ? htmlentities($_COOKIE['cookiesort']) : '';
+    $cookieorder = isset($_COOKIE['cookieorder']) ? htmlentities($_COOKIE['cookieorder']) : '';
     if ($collection == 'loaned') {
         $secondcol = 'loaninfo';
         $thirdcol = 'loandue';

@@ -14,7 +14,7 @@
 // locales, please consult your OS manual for details.
 //
 if ($allowlocale && isset($_COOKIE['locale'])) {
-    $tmp = $_COOKIE['locale'];
+    $tmp = htmlentities($_COOKIE['locale']);
     if (($tmp == 'en') ||
         ($tmp == 'dk') ||
         ($tmp == 'de') ||
@@ -23,8 +23,9 @@ if ($allowlocale && isset($_COOKIE['locale'])) {
         ($tmp == 'nl') ||
         ($tmp == 'sv') ||
         ($tmp == 'fi') ||
-        ($tmp == 'ru'))
-        $locale = $tmp;
+        ($tmp == 'ru')) {
+            $locale = $tmp;
+        }
 }
 
 $localeset = 'C';
